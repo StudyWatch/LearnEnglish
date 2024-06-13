@@ -1,17 +1,16 @@
-
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
   font-family: 'Assistant', sans-serif;
   font-size: 20px;
-
   text-align: right;
 }
+
 .top-section {
   height: 80vh;
-  background: url(/website/background6.png) no-repeat center / cover;
-  background-position: 50% 20%; /* מתאים את המיקום אופקית למרכז ואנכית ל-10% מהחלק העליון */
+  background: url('https://raw.githubusercontent.com/username/repo/branch/path/to/website/background6.png') no-repeat center / cover;
+  background-position: 50% 20%; /* מתאים את המיקום אופקית למרכז ואנכית ל-20% מהחלק העליון */
 }
 
 .word-treasure-container {
@@ -58,10 +57,10 @@ body, html {
   background-color: #ffeb3b;
   box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
 }
-/* CSS כדי להגדיר כיוון טקסט מימין לשמאל */
+
 .rtl {
-    direction: rtl;
-    text-align: right;
+  direction: rtl;
+  text-align: right;
 }
 
 .modal-content {
@@ -219,7 +218,6 @@ body, html {
   z-index: 100; /* Ensure it is above other elements */
 }
 
-
 .modal {
   display: none;
   position: fixed;
@@ -278,6 +276,7 @@ body, html {
   margin-left: 10px;
   word-break: break-all;
 }
+
 .word-treasure-header {
   position: relative;
   display: inline-block;
@@ -323,7 +322,6 @@ body, html {
   transform: scale(1.05);
 }
 
-
 .modal {
   display: none;
   position: fixed;
@@ -359,7 +357,6 @@ body, html {
   border-radius: 6px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 
 .penguin-container {
   position: absolute;
@@ -626,13 +623,10 @@ body, html {
   color: #007bff;
   transform: scale(1.05);
 }
+
 .game-container { /* החלף במחלקה הנכונה של הקונטיינר של המשחק */
   position: relative;
 }
-
-
-
-
 
 .end-game-modal {
   position: fixed;
@@ -666,8 +660,6 @@ body, html {
   align-items: center; /* מיישר את הכפתורים אנכית */
   gap: 10px; /* מרווח בין הכפתורים */
 }
-
-
 
 .play-again-btn:hover, .back-to-games-btn:hover {
   background-color: #0056b3; /* שינוי צבע רקע בעת ריחוף */
@@ -776,16 +768,17 @@ body, html {
   z-index: 1001;
 }
 
-
 #accessibilityBtn {
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
+
 #accessibilityBtn img {
   width: 40px; /* הגדר כאן את הרוחב הרצוי */
   height: auto;
 }
+
 #accessibilityOptions {
   display: none;
   background-color: white;
@@ -796,12 +789,12 @@ body, html {
   top: -60px; /* זה יזיז את התפריט קצת למעלה */
   right: 100%; /* נוסף */
 }
+
 .high-contrast {
   filter: invert(1); /* הפיך צבעים */
   background-color: black; /* רקע שחור */
   color: white; /* טקסט לבן */
 }
-
 
 #accessibilityOptions button {
   display: block;
@@ -833,9 +826,6 @@ body, html {
   border: none;
   cursor: pointer;
 }
-
-
-
 
 .modal {
   display: none;
@@ -943,7 +933,7 @@ body, html {
 
 #series-section {
   display: none;
-  background-image: url(/website/backgroundseries.webp); /* החלף בנתיב לתמונת הרקע שלך */
+  background-image: url('https://raw.githubusercontent.com/username/repo/branch/path/to/website/backgroundseries.webp'); /* החלף בנתיב לתמונת הרקע שלך */
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -954,7 +944,7 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: url('path/to/your/background-image.jpg') no-repeat center center / cover;
+  background: url('https://raw.githubusercontent.com/username/repo/branch/path/to/background-image.jpg') no-repeat center center / cover;
 }
 
 .tv-show {
@@ -978,8 +968,6 @@ body, html {
   height: 150px;
   object-fit: cover;
 }
-
-
 
 .tv-show-title {
   background-color: #FFF;
@@ -1191,7 +1179,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: url('path/to/your/background-image.jpg') no-repeat center center / cover;
+  background: url('https://raw.githubusercontent.com/username/repo/branch/path/to/background-image.jpg') no-repeat center center / cover;
 }
 
 #searchBarContainer {
@@ -1248,6 +1236,7 @@ body {
   opacity: 1;
   transform: translateY(-3px);
 }
+
 .quiz-modal {
   display: none;
   position: fixed;
@@ -1422,7 +1411,6 @@ body {
   transform: scale(1.05);
 }
 
-
 .play-again-btn, .back-to-games-btn, .back-to-vocabulary-btn {
   padding: 10px 15px;
   background-color: #fff;
@@ -1441,7 +1429,6 @@ body {
   color: #007bff;
   transform: scale(1.05);
 }
-
 
 .info-box {
   width: 120px;
@@ -1579,6 +1566,7 @@ body {
 .answer-button:hover {
   background-color: #0056b3;
 }
+
 /* Feedback Button */
 .feedback-button {
   position: fixed;
@@ -1596,10 +1584,6 @@ body {
 .feedback-button:hover {
   background-color: #0056b3;
 }
-
-
-
-
 
 form label {
   display: block;
@@ -1628,7 +1612,6 @@ form button[type="submit"]:hover {
 }
 
 @media (max-width: 600px) {
- 
   body, html {
     margin: 0;
     padding: 0;
@@ -1636,6 +1619,7 @@ form button[type="submit"]:hover {
     font-size: 14px;
     overflow-x: hidden;
   }
+
   .modal {
     width: 100%; /* מודל ברוחב מלא */
     height: 100vh; /* מודל בגובה מלא */
@@ -1644,6 +1628,7 @@ form button[type="submit"]:hover {
     border-radius: 0; /* אין עיגול פינות */
     overflow: hidden; /* מונע גלילה כפולה */
   }
+
   .grid-container, .word-treasure-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* שתי עמודות */
@@ -1652,14 +1637,15 @@ form button[type="submit"]:hover {
     padding: 10px; /* רווח בפנים */
     gap: 5px; /* מרווח בין כפתורים */
   }
+
   .modal-content {
     height: 100%; /* תוכן המודל ממלא את המודל */
     border-radius: 0; /* אין עיגול פינות לתוכן */
     padding-top: 30px !important; /* הכרחי להשיג רווח רצוי בחלק העליון */
     display: flex;
     flex-direction: column;
-    
   }
+
   .memory-game-button, .restart-btn, .play-again-btn, .back-to-games-btn {
     padding: 5px 10px; /* פדינג מתאים */
     font-size: 10px; /* גודל פונט קטן יותר */
@@ -1667,14 +1653,14 @@ form button[type="submit"]:hover {
     height: 50px; /* גובה הכפתור */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* הוספת צל לבולטות */
     border: 1px solid black; /* מסגרת שחורה דקה להבלטה נוספת */
-}
+  }
 
- 
   .grid-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* מנסה להכיל 5 טורים */
     gap: 1px; /* מקטין את הרווח בין טורים ושורות למינימום */
   }
+
   .memory-card {
     height: 60px; /* מקטין את הגובה */
     width: 40px; /* מקטין את הרוחב של כל קלף כדי להתאים לטור */
@@ -1682,26 +1668,23 @@ form button[type="submit"]:hover {
     font-size: 10px; /* מקטין את גודל הפונט בתוך קלף */
   }
 
-
-  /* כפתורי ניווט במודלים */
   .exit-button, .close, #back-to-word-treasure {
     font-size: 16px; /* קטן יותר */
     padding: 8px; /* קטן יותר */
   }
 
-  /* תיקון כללי לתצוגת מודל */
   .modal-content {
     padding: 10px; /* פדינג קטן יותר */
     width: 90%; /* הקטנת רוחב המודל */
   }
 
-  /* תיקון לכפתורים תחתונים כגון back-to-top וכו' */
   .back-to-top-button, .feedback-button {
     font-size: 10px; /* קטן יותר */
     padding: 5px 10px; /* קטן יותר */
     width: 30px; /* קטן יותר */
     height: 30px; /* קטן יותר */
   }
+
   .exit-button {
     align-self: flex-end; /* כפתור היציאה בצד ימין למעלה */
     margin: 10px; /* רווח סביב כפתור היציאה */
@@ -1724,38 +1707,38 @@ form button[type="submit"]:hover {
     font-size: 18px; /* שנה לגודל הכתב הרצוי */
     line-height: 1.5; /* להבטיח שהטקסט יהיה קריא */
     padding: 10px; /* ריווח פנימי לאלמנט */
-}
+  }
 
-.word-treasure-container h2 {
+  .word-treasure-container h2 {
     font-size: 24px; /* גודל הכתב לכותרות */
     font-weight: bold;
     margin-bottom: 10px; /* רווח תחתון לכותרת */
-}
+  }
 
-.word-treasure-container p {
+  .word-treasure-container p {
     font-size: 18px; /* גודל הכתב לפסקאות */
     margin-bottom: 10px; /* רווח תחתון לפסקאות */
-}
+  }
 
-.word-treasure-container .highlight {
+  .word-treasure-container .highlight {
     font-size: 20px; /* גודל הכתב למילים מודגשות */
     color: #007bff; /* צבע המילים המודגשות */
     font-weight: bold; /* משקל פונט למילים מודגשות */
-}
+  }
 
-
-.episode-button {
+  .episode-button {
     padding: 5px;
     font-size: 10px;
-}
+  }
 
-.episode-button:hover {
+  .episode-button:hover {
     transform: none;
-}
+  }
 
-.episode-button:active {
+  .episode-button:active {
     transform: none;
-}
+  }
+
   .bottom-section {
     display: flex;
     flex-direction: row;
@@ -1821,14 +1804,10 @@ form button[type="submit"]:hover {
     display: none;
   }
 
- 
-
-  /* Hide penguin on mobile */
   .penguin-container {
     display: none;
   }
 
-  /* Smaller and repositioned accessibility and back-to-top buttons */
   .accessibility-menu {
     position: fixed;
     top: 500px; /* Adjusted position */
@@ -1849,7 +1828,6 @@ form button[type="submit"]:hover {
     font-size: 10px; /* Smaller font size */
   }
 
-  /* Responsive navbar */
   .navbar-container {
     display: flex;
     flex-direction: column;
@@ -1866,6 +1844,4 @@ form button[type="submit"]:hover {
     width: 30px; /* Smaller size */
     height: 30px; /* Smaller size */
   }
-  
 }
-
