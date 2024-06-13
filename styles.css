@@ -1751,7 +1751,7 @@ form button[type="submit"]:hover {
   .shortcut-rectangle {
     flex-basis: 35%;
     margin-bottom: 10px;
-    width: 70vw;
+    width: 50vh;
     height: 10vh;
     flex-shrink: 0;
     margin-right: -30px;
