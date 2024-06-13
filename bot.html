@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -234,4 +235,242 @@ function recommendSeries() {
 }
 </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- קוד HTML - תוסיף זאת במקום המתאים בקובץ ה-HTML של דף הרובוט והסדרות -->
+<a href="/" class="back-to-home-button">חזור לדף הבית</a>
+
+<meta charset="UTF-8">
+<title>Series Recommendation Bot</title>
+<style>
+    .back-to-home-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #3498db; /* שינוי צבע לפי העיצוב של האתר */
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.back-to-home-button:hover {
+  background-color: #2980b9; /* כהה יותר בעת העברת העכבר */
+}
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #282c34;
+    color: #000000;
+    text-align: center;
+    padding: 60px;
+    margin: 0;
+    background-image: url(/img/DALL·E\ 2024-03-12\ 10.09.10\ -\ Design\ additional\ wide\,\ rectangular\ backgrounds\ with\ a\ cool\,\ futuristic\ robot\ on\ the\ left\ side\,\ pointing\ towards\ the\ right\,\ against\ a\ bright\ and\ profe.webp); /* Replace with your actual image URL */
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; /* Make sure the body takes at least the full viewport height */
+}
+    h2 {
+        font-weight: normal;
+    }
+    select, button {
+        margin: 15px 0;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 2px solid #090a0a;
+        outline: none;
+        font-size: 16px;
+        color: #282c34;
+        background-color: #61dafb;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    select:hover, button:hover {
+        background-color: #282c34;
+        color: #fb6161;
+        border: 2px solid #61dafb;
+    }
+    #recommendation {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #080b0c;
+        color: #9c9d9f;
+        display: inline-block;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        font-size: 18px;
+    }
+    .bot-image {
+        width: 120px;
+        height: auto;
+        display: block;
+        margin: 0 auto 30px auto;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+    }
+    .bot-image:hover {
+        transform: scale(1.1);
+    }
+</style>
+</head>
+<body>
+<img src="/img/DALL·E 2024-03-12 10.09.35 - Design a background for StudyWatch, featuring a minimalist and futuristic robot assistant against a professional backdrop. The color scheme is primari.webp" alt="Recommendation Bot" class="bot-image">
+<h2>TV Series Recommendation Bot</h2>
+<p>Which genre are you interested in?</p>
+<select id="genre">
+    <option value="comedy">Comedy</option>
+    <option value="drama">Drama</option>
+    <option value="sci-fi">Sci-Fi & Fantasy</option>
+    <option value="animation">Animation</option>
+    <option value="crime">Crime & Thriller</option>
+    <option value="romance">Romance</option>
+    <option value="documentary">Documentary</option>
+</select>
+
+<p>What is your English level?</p>
+<select id="englishLevel">
+    <option value="beginner">Beginner</option>
+    <option value="intermediate">Intermediate</option>
+    <option value="advanced">Advanced</option>
+</select>
+
+<button onclick="recommendSeries()">Recommend Series</button>
+
+<div id="recommendation"></div>
+
+
+<script>
+const seriesDB = [
+    // Comedy
+    { name: "Friends", genre: "comedy", level: "beginner" },
+    { name: "The Office (US)", genre: "comedy", level: "beginner" },
+    { name: "Brooklyn Nine-Nine", genre: "comedy", level: "intermediate" },
+    { name: "The Big Bang Theory", genre: "comedy", level: "intermediate" },
+    { name: "How I Met Your Mother", genre: "comedy", level: "beginner" },
+    { name: "Parks and Recreation", genre: "comedy", level: "intermediate" },
+    { name: "Modern Family", genre: "comedy", level: "intermediate" },
+    { name: "New Girl", genre: "comedy", level: "intermediate" },
+    { name: "Schitt's Creek", genre: "comedy", level: "intermediate" },
+    { name: "Arrested Development", genre: "comedy", level: "intermediate" },
+    { name: "Community", genre: "comedy", level: "intermediate" },
+    { name: "30 Rock", genre: "comedy", level: "intermediate" },
+    { name: "The Marvelous Mrs. Maisel", genre: "comedy", level: "intermediate" },
+    { name: "Veep", genre: "comedy", level: "intermediate" },
+    { name: "Ted Lasso", genre: "comedy", level: "intermediate" },
+    { name: "Scrubs", genre: "comedy", level: "intermediate" },
+    { name: "Curb Your Enthusiasm", genre: "comedy", level: "intermediate" },
+    { name: "The Good Place", genre: "comedy", level: "intermediate" },
+    { name: "Silicon Valley", genre: "comedy", level: "intermediate" },
+    { name: "Unbreakable Kimmy Schmidt", genre: "comedy", level: "intermediate" },
+    // Drama
+    { name: "The Crown", genre: "drama", level: "advanced" },
+    { name: "Breaking Bad", genre: "drama", level: "intermediate" },
+    { name: "Mad Men", genre: "drama", level: "advanced" },
+    { name: "Downton Abbey", genre: "drama", level: "advanced" },
+    { name: "The Handmaid's Tale", genre: "drama", level: "advanced" },
+    { name: "Grey's Anatomy", genre: "drama", level: "intermediate" },
+    { name: "This Is Us", genre: "drama", level: "intermediate" },
+    { name: "Sherlock", genre: "drama", level: "advanced" },
+    { name: "Westworld", genre: "drama", level: "advanced" },
+    { name: "The Wire", genre: "drama", level: "advanced" },
+    { name: "Better Call Saul", genre: "drama", level: "intermediate" },
+    { name: "The Sopranos", genre: "drama", level: "advanced" },
+    { name: "House of Cards", genre: "drama", level: "advanced" },
+    { name: "The West Wing", genre: "drama", level: "advanced" },
+    { name: "Homeland", genre: "drama", level: "advanced" },
+    { name: "Boardwalk Empire", genre: "drama", level: "advanced" },
+    { name: "The Affair", genre: "drama", level: "advanced" },
+    { name: "Outlander", genre: "drama", level: "advanced" },
+    { name: "The Americans", genre: "drama", level: "advanced" },
+    { name: "Lost", genre: "drama", level: "intermediate" },
+    // Sci-Fi & Fantasy
+    { name: "Stranger Things", genre: "sci-fi", level: "intermediate" },
+    { name: "Game of Thrones", genre: "sci-fi", level: "advanced" },
+    { name: "Black Mirror", genre: "sci-fi", level: "intermediate" },
+    { name: "Doctor Who", genre: "sci-fi", level: "intermediate" },
+    { name: "The Mandalorian", genre: "sci-fi", level: "intermediate" },
+    { name: "Star Trek: Discovery", genre: "sci-fi", level: "intermediate" },
+    { name: "The Witcher", genre: "sci-fi", level: "advanced" },
+    { name: "Dark", genre: "sci-fi", level: "advanced" },
+    { name: "Firefly", genre: "sci-fi", level: "intermediate" },
+    { name: "Battlestar Galactica", genre: "sci-fi", level: "intermediate" },
+    { name: "The Expanse", genre: "sci-fi", level: "intermediate" },
+    { name: "Buffy the Vampire Slayer", genre: "sci-fi", level: "intermediate" },
+    { name: "The Umbrella Academy", genre: "sci-fi", level: "intermediate" },
+    { name: "Westworld (again)", genre: "sci-fi", level: "advanced" },
+    { name: "The Magicians", genre: "sci-fi", level: "intermediate" },
+    // Animation
+    { name: "The Simpsons", genre: "animation", level: "intermediate" },
+    { name: "Rick and Morty", genre: "animation", level: "intermediate" },
+    { name: "BoJack Horseman", genre: "animation", level: "intermediate" },
+    { name: "Family Guy", genre: "animation", level: "intermediate" },
+    { name: "Avatar: The Last Airbender", genre: "animation", level: "beginner" },
+    { name: "South Park", genre: "animation", level: "intermediate" },
+    { name: "Adventure Time", genre: "animation", level: "beginner" },
+    { name: "Archer", genre: "animation", level: "intermediate" },
+    { name: "Steven Universe", genre: "animation", level: "beginner" },
+    { name: "Futurama", genre: "animation", level: "intermediate" },
+    // Crime & Thriller
+    { name: "Peaky Blinders", genre: "crime", level: "advanced" },
+    { name: "Mindhunter", genre: "crime", level: "advanced" },
+    { name: "Narcos", genre: "crime", level: "intermediate" },
+    { name: "True Detective", genre: "crime", level: "advanced" },
+    { name: "Fargo", genre: "crime", level: "advanced" },
+    { name: "The Sopranos", genre: "crime", level: "advanced" },
+    { name: "Ozark", genre: "crime", level: "intermediate" },
+    { name: "Breaking Bad (again)", genre: "crime", level: "intermediate" },
+    { name: "Dexter", genre: "crime", level: "intermediate" },
+    { name: "Broadchurch", genre: "crime", level: "advanced" },
+    { name: "Luther", genre: "crime", level: "advanced" },
+    { name: "The Killing", genre: "crime", level: "advanced" },
+    { name: "Money Heist (La Casa de Papel)", genre: "crime", level: "intermediate" },
+    { name: "Line of Duty", genre: "crime", level: "advanced" },
+    { name: "Sherlock (again)", genre: "crime", level: "advanced" },
+    // Romance
+    { name: "Bridgerton", genre: "romance", level: "intermediate" },
+    { name: "The Gilmore Girls", genre: "romance", level: "intermediate" },
+    { name: "Jane the Virgin", genre: "romance", level: "intermediate" },
+    { name: "Outlander (again)", genre: "romance", level: "advanced" },
+    { name: "The O.C.", genre: "romance", level: "beginner" },
+    { name: "Sex and the City", genre: "romance", level: "intermediate" },
+    { name: "Gossip Girl", genre: "romance", level: "intermediate" },
+    { name: "The Marvelous Mrs. Maisel (again)", genre: "romance", level: "advanced" },
+    { name: "Younger", genre: "romance", level: "intermediate" },
+    { name: "Crazy Ex-Girlfriend", genre: "romance", level: "intermediate" },
+    // Documentary
+    { name: "Planet Earth", genre: "documentary", level: "intermediate" },
+    { name: "The Last Dance", genre: "documentary", level: "intermediate" },
+    { name: "Making a Murderer", genre: "documentary", level: "intermediate" },
+    { name: "Chef's Table", genre: "documentary", level: "intermediate" },
+    { name: "Blue Planet II", genre: "documentary", level: "intermediate" },
+    { name: "Cosmos: A Spacetime Odyssey", genre: "documentary", level: "intermediate" },
+    { name: "The World According to Jeff Goldblum", genre: "documentary", level: "intermediate" },
+    { name: "Wild Wild Country", genre: "documentary", level: "intermediate" },
+    { name: "Abstract: The Art of Design", genre: "documentary", level: "intermediate" },
+    { name: "Our Planet", genre: "documentary", level: "intermediate" },
+];
+
+function recommendSeries() {
+    const genre = document.getElementById("genre").value;
+    const level = document.getElementById("englishLevel").value;
+    const recommendations = seriesDB.filter(series => series.genre === genre && series.level === level);
+    
+    const recommendationElement = document.getElementById("recommendation");
+    if (recommendations.length > 0) {
+        // Corrected the use of template literals below
+        const names = recommendations.map(series => series.name).join(", ");
+        recommendationElement.innerHTML = `Based on your choices, we recommend: ${names}`; // Use backticks here
+    } else {
+        recommendationElement.innerHTML = "Sorry, we couldn't find a series that matches your preferences.";
+    }
+}
+</script>
+</body>
+>>>>>>> e8b678b9568252101963c7ad64f4b15deb048865
 </html>
