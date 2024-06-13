@@ -1,376 +1,286 @@
 <!DOCTYPE html>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Watch</title>
-<link rel="stylesheet" href="https://raw.githubusercontent.com/username/repo/branch/path/to/styles.css">
-<script type="module" src="https://raw.githubusercontent.com/username/repo/branch/path/to/friends.js"></script>
-
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/username/repo/branch/path/to/styles.css">
+    <script type="module" src="https://raw.githubusercontent.com/username/repo/branch/path/to/friends.js"></script>
 </head>
 <body>
-  
     <header>
-      
-   <!-- כפתור המבורגר לפתיחת ה-navbar -->
-   <div class="hamburger-menu">
-    <button id="hamburgerBtn">
-        <img src="icons/menu.png" alt="Menu" class="nav-icon">
-    </button>
-</div>
-<nav class="navbar" id="navbar">
-    <div class="navbar-container">
-        <a href="#personal-area" class="nav-link" onclick="showModal('personal-area-modal')">
-            <img src="/icons/personalicon.png" alt="Personal Area" class="nav-icon"> האזור האישי שלי
-        </a>
-        <a href="#forum" class="nav-link" onclick="showModal('forum-modal')">
-            <img src="icons/forum icon.png" alt="Forum" class="nav-icon"> פורום
-        </a>
-        <a href="#about" class="nav-link" onclick="showModal('about-modal')">
-            <img src="icons/abouticon.png" alt="About" class="nav-icon"> אודות
-        </a>
-      <div id="personal-area-modal" class="modal">
-  <div class="modal-content">
-      <span class="close" onclick="closeModal('personal-area-modal')">&times;</span>
-      <p>האזור האישי בבנייה - האזור האישי יכלול את המשתמש שלכם כולל ההתקדמות שלכם, חידונים שבועיים, חודשיים, מאגר המידע השלם ששמרתם יהיה פה ועוד!</p>
-  </div>
-</div>
-        <div id="forum-modal" class="modal">
+        <!-- כפתור המבורגר לפתיחת ה-navbar -->
+        <div class="hamburger-menu">
+            <button id="hamburgerBtn">
+                <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/icons/menu.png" alt="Menu" class="nav-icon">
+            </button>
+        </div>
+        <nav class="navbar" id="navbar">
+            <div class="navbar-container">
+                <a href="#personal-area" class="nav-link" onclick="showModal('personal-area-modal')">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/icons/personalicon.png" alt="Personal Area" class="nav-icon"> האזור האישי שלי
+                </a>
+                <a href="#forum" class="nav-link" onclick="showModal('forum-modal')">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/icons/forum icon.png" alt="Forum" class="nav-icon"> פורום
+                </a>
+                <a href="#about" class="nav-link" onclick="showModal('about-modal')">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/icons/abouticon.png" alt="About" class="nav-icon"> אודות
+                </a>
+                <div id="personal-area-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('personal-area-modal')">&times;</span>
+                        <p>האזור האישי בבנייה - האזור האישי יכלול את המשתמש שלכם כולל ההתקדמות שלכם, חידונים שבועיים, חודשיים, מאגר המידע השלם ששמרתם יהיה פה ועוד!</p>
+                    </div>
+                </div>
+                <div id="forum-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('forum-modal')">&times;</span>
+                        <p>הפורום ייפתח בקרוב ויכלול הזדמנויות חדשות ללומדי שפות להיעזר אחד בשני עם פורום פעיל, להעלות יצירות שלכם ומשפטים שבניתם במשחקים לפורום!</p>
+                    </div>
+                </div>
+                <div id="about-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('about-modal')">&times;</span>
+                        <p>האתר החדשני ללימוד שפות מציע חוויית לימוד מותאמת אישית וחינמית. האתר כרגע בפיילוט וייתכן שחלק מהפונקציות עדיין לא יהיו פתוחות. תהנו מתהליך הלימוד המגוון והייחודי שלנו!</p>
+                    </div>
+                </div>
+                <button id="favoritesBtn" class="nav-link"> 
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/icons/staricon.jpeg" alt="Favorites" class="nav-icon"> המועדפים שלי
+                </button>
+            </div>
+        </nav>
+        <!-- Feedback Button -->
+        <button id="feedbackButton" class="feedback-button">תן משוב</button>
+        <!-- Feedback Modal -->
+        <div id="feedbackModal" class="modal">
             <div class="modal-content">
-                <span class="close" onclick="closeModal('forum-modal')">&times;</span>
-                <p>הפורום ייפתח בקרוב ויכלול הזדמנויות חדשות ללומדי שפות להיעזר אחד בשני עם פורום פעיל, להעלות יצירות שלכם ומשפטים שבניתם במשחקים לפורום!</p>
-            </div>
-        </div>
-        <div id="about-modal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('about-modal')">&times;</span>
-                <p>האתר החדשני ללימוד שפות מציע חוויית לימוד מותאמת אישית וחינמית. האתר כרגע בפיילוט וייתכן שחלק מהפונקציות עדיין לא יהיו פתוחות. תהנו מתהליך הלימוד המגוון והייחודי שלנו!</p>
-            </div>
-        </div>
-        <button id="favoritesBtn" class="nav-link"> 
-            <img src="icons/staricon.jpeg" alt="Favorites" class="nav-icon"> המועדפים שלי
-        </button>
-    </div>
-</nav>
-<!-- Feedback Button -->
-<button id="feedbackButton" class="feedback-button">תן משוב</button>
-
-<!-- Feedback Modal -->
-<div id="feedbackModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeFeedbackModal()">&times;</span>
-        <h2>משוב על האתר</h2>
-        <form id="feedbackForm">
-            <label for="rating">עד כמה אתה מרוצה מהאתר?</label>
-            <select id="rating" name="rating" required>
-                <option value="1">1 - בכלל לא מרוצה</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - מאוד מרוצה</option>
-            </select>
-            
-            <label for="uiSatisfaction">עד כמה אתה מרוצה מהממשק?</label>
-            <select id="uiSatisfaction" name="uiSatisfaction" required>
-                <option value="1">1 - בכלל לא מרוצה</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - מאוד מרוצה</option>
-            </select>
-            
-            <label for="learningExperience">איך היית מדרג את חווית הלימוד?</label>
-            <select id="learningExperience" name="learningExperience" required>
-                <option value="1">1 - בכלל לא מרוצה</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - מאוד מרוצה</option>
-            </select>
-            
-            <label for="improvements">מה היית משפר באתר?</label>
-            <textarea id="improvements" name="improvements" rows="4" required></textarea>
-            
-            <label for="additionalFeedback">משוב נוסף:</label>
-            <textarea id="additionalFeedback" name="additionalFeedback" rows="4"></textarea>
-            
-            <button type="submit">שלח משוב</button>
-        </form>
-    </div>
-</div>
-
-  <!-- כפתור גישה עם אייקון של כיסא גלגלים -->
-  
-  
-  <div id="favoritesModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('favoritesModal')">&times;</span>
-        <h2>My Favorites</h2>
-        <div class="favorites-container">
-            <div class="favorite-words">
-                <h3>Favorite Words</h3>
-                <ul id="favoriteWordsList">
-                    <!-- Favorite words will be listed here -->
-                </ul>
-            </div>
-            <div class="favorite-series">
-                <h3>Favorite Series</h3>
-                <ul id="favoriteSeriesList">
-                    <!-- Favorite series will be listed here -->
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-      
-      <button class="back-to-top-button">חזור לראש העמוד</button>
-      <div id="searchBarContainer" style="display: none;">
-        <div class="search-bar">
-          <span class="site-name">StudyWatch</span>
-          <input type="text" id="searchInputSeries" placeholder="Search for series...">
-        </div>
-    </div>
-     <div class="penguin-container">
-        <img src="img/pinguin1.png" alt="Penguin" id="penguin" onclick="togglePenguinInfo()">
-        <div class="thought-bubble" id="thoughtBubble">
-            <p id="didYouKnowText">Did you know?</p>
-        </div>
-    </div>   
-      <div class="top-section">
-        <!-- תוכן של החלק העליון -->
-    </div>
-    
-
-
-    <!-- מעבר לקישורים שבחלק התחתון -->
-    <div class="bottom-section">
-      <link rel="stylesheet" type="text/css" href="styles.css">
-      <div class="bottom-section">
-        <a href="#Series Rerquest" class="shortcut-rectangle" id="to-request">
-          <div class="content">
-            <div id="requestSeriesModal" class="modal">
-              <div class="modal-content">
-                  <span class="close">&times;</span>
-                <h2>בקשת סדרה חדשה</h2>
-                <form id="seriesRequestForm">
-                  <input type="text" placeholder="שם הסדרה" name="seriesName" required>
-                  <textarea placeholder="הערות נוספות (אופציונלי)"></textarea>
-                  <button type="submit">שלח בקשה</button>
+                <span class="close" onclick="closeFeedbackModal()">&times;</span>
+                <h2>משוב על האתר</h2>
+                <form id="feedbackForm">
+                    <label for="rating">עד כמה אתה מרוצה מהאתר?</label>
+                    <select id="rating" name="rating" required>
+                        <option value="1">1 - בכלל לא מרוצה</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 - מאוד מרוצה</option>
+                    </select>
+                    <label for="uiSatisfaction">עד כמה אתה מרוצה מהממשק?</label>
+                    <select id="uiSatisfaction" name="uiSatisfaction" required>
+                        <option value="1">1 - בכלל לא מרוצה</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 - מאוד מרוצה</option>
+                    </select>
+                    <label for="learningExperience">איך היית מדרג את חווית הלימוד?</label>
+                    <select id="learningExperience" name="learningExperience" required>
+                        <option value="1">1 - בכלל לא מרוצה</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 - מאוד מרוצה</option>
+                    </select>
+                    <label for="improvements">מה היית משפר באתר?</label>
+                    <textarea id="improvements" name="improvements" rows="4" required></textarea>
+                    <label for="additionalFeedback">משוב נוסף:</label>
+                    <textarea id="additionalFeedback" name="additionalFeedback" rows="4"></textarea>
+                    <button type="submit">שלח משוב</button>
                 </form>
-              </div>
             </div>
-            <img src="/icons/requestorange.webp" alt="About Icon">
-            <p>בקשות לסדרות</p>
-          </div>
-        </a>
-        <a href="#tips" class="shortcut-rectangle" id="to-tips" onclick="openTipsModal()">
-          <div class="content">
-              <img src="/icons/tipsorange.webp" alt="Tips Icon">
-              <p>טיפים ללמידה</p>
-          </div>
-      </a>
-      <a href="#series" class="shortcut-rectangle" id="to-series">
-        <div class="content">
-          <img src="/icons/seriesorange.webp" alt="Series Icon">
-          <p>לעמוד הסדרות</p>
         </div>
-      </a>
-      <div id="tipsModal" class="modal">
-          <div class="modal-content">
-              <span class="close" onclick="closeTipsModal()">&times;</span>
-              <h2>Learning Tips</h2>
-              <div class="tips-container">
-                  <!-- Tips will be listed here dynamically -->
-              </div>
-          </div>
-      </div>
-      
-        
-        <a href="#bot" class="shortcut-rectangle" id="to-bot">
-          <div class="content">
-            <img src="/icons/botorange.webp" alt="Bot Icon">
-            <p>בוט לבחירת סדרה</p>
-          </div>
-        </a>
-       <a href="#about" class="shortcut-rectangle" id="to-about" onclick="openModalVideo()">
-        <div class="shortcut-rectangle video-container">
-          <video id="myVideo" controls>
-            <source src="/website/StudyWatch.mp4" type="video/mp4">
-          </video>
+        <div id="favoritesModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('favoritesModal')">&times;</span>
+                <h2>My Favorites</h2>
+                <div class="favorites-container">
+                    <div class="favorite-words">
+                        <h3>Favorite Words</h3>
+                        <ul id="favoriteWordsList">
+                            <!-- Favorite words will be listed here -->
+                        </ul>
+                    </div>
+                    <div class="favorite-series">
+                        <h3>Favorite Series</h3>
+                        <ul id="favoriteSeriesList">
+                            <!-- Favorite series will be listed here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-
-</div>
-</a>
-      </div>
-    </div>
-    
-    <!-- חלק התחתון של הדף עם הסדרות -->
-    <div id="series-section">
-   <div class="container">
-   
-
-        <!-- סדרת Friends -->
-        <div class="tv-show" id="friends">
-          <img src="img/friends good.webp" alt="חברים" class="tv-show-image">
-          <h2 class="tv-show-title">חברים</h2>
-          <i id="star-series-friends" class="star-icon far fa-star" onclick="toggleFavorite('series', 'friends', event)"></i>
+        <button class="back-to-top-button">חזור לראש העמוד</button>
+        <div id="searchBarContainer" style="display: none;">
+            <div class="search-bar">
+                <span class="site-name">StudyWatch</span>
+                <input type="text" id="searchInputSeries" placeholder="Search for series...">
+            </div>
         </div>
-        <!-- סדרת Brooklyn Nine-Nine -->
-        <div class="tv-show" id="brooklyn99">
-          <img src="img/brooklyn 99.webp" alt="ברוקלין 99" class="tv-show-image">
-          <h2 class="tv-show-title">ברוקלין 99</h2>
-          <i id="star-series-brooklyn99" class="star-icon far fa-star" onclick="toggleFavorite('brooklyn99')"></i>
+        <div class="penguin-container">
+            <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/pinguin1.png" alt="Penguin" id="penguin" onclick="togglePenguinInfo()">
+            <div class="thought-bubble" id="thoughtBubble">
+                <p id="didYouKnowText">Did you know?</p>
+            </div>
         </div>
-        <!-- סדרת The 100 -->
-        <div class="tv-show" id="the100">
-          <img src="img/the 100 good.webp" alt="ה-100" class="tv-show-image">
-          <h2 class="tv-show-title">ה-100</h2>
-          <i id="star-series-the100" class="star-icon far fa-star" onclick="toggleFavorite('the100')"></i>
+        <div class="top-section">
+            <!-- תוכן של החלק העליון -->
         </div>
-        <!-- סדרת המפץ הגדול -->
-        <div class="tv-show" id="bigbang">
-          <img src="img/bigbang theory.webp" alt="המפץ הגדול" class="tv-show-image">
-          <h2 class="tv-show-title">המפץ הגדול</h2>
-          <i id="star-series-bigbang" class="star-icon far fa-star" onclick="toggleFavorite('bigbang')"></i>
-        </div>
-        <!-- סדרת משפחה מודרנית -->
-        <div class="tv-show" id="modernfamily">
-          <img src="img/modern family.webp" alt="משפחה מודרנית" class="tv-show-image">
-          <h2 class="tv-show-title">משפחה מודרנית</h2>
-          <i id="star-series-modernfamily" class="star-icon far fa-star" onclick="toggleFavorite('modernfamily')"></i>
-        </div>
-        <!-- סדרת איך פגשתי את אמא -->
-        <div class="tv-show" id="himym">
-          <img src="img/how i met your mother 1.webp" alt="איך פגשתי את אמא" class="tv-show-image">
-          <h2 class="tv-show-title">איך פגשתי את אמא</h2>
-          <i id="star-series-himym" class="star-icon far fa-star" onclick="toggleFavorite('himym')"></i>
-        </div>
-        <!-- סדרת סיינפלד -->
-        <div class="tv-show" id="seinfeld">
-          <img src="img/seinfeld 1.webp" alt="סיינפלד" class="tv-show-image">
-          <h2 class="tv-show-title">סיינפלד</h2>
-          <i id="star-series-seinfeld" class="star-icon far fa-star" onclick="toggleFavorite('seinfeld')"></i>
-        </div>
-        <!-- סדרת הבחורה החדשה -->
-        <div class="tv-show" id="newgirl">
-          <img src="img/new girl 1.webp" alt="הבחורה החדשה" class="tv-show-image">
-          <h2 class="tv-show-title">הבחורה החדשה</h2>
-          <i id="star-series-newgirl" class="star-icon far fa-star" onclick="toggleFavorite('newgirl')"></i>
-        </div>
-        <!-- סדרת משחקי הכס -->
-        <div class="tv-show" id="theoffice">
-          <img src="img/DALL·E 2024-05-28 12.54.15 - Create an image resembling the cover of 'The Office' complete series box set. Show the main cast members sitting around a round office table, with Dwi.webp" alt="המשרד" class="tv-show-image">
-          <h2 class="tv-show-title">המשרד</h2>
-          <i id="star-series-theoffice" class="star-icon far fa-star" onclick="toggleFavorite('theoffice')"></i>
-        </div>
-        <!-- סדרת פה גדול -->
-        <div class="tv-show" id="Bigmouth">
-          <img src="img/Big Mouth.jpeg" alt="פה גדול" class="tv-show-image">
-          <h2 class="tv-show-title">פה גדול</h2>
-          <i id="star-series-Bigmouth" class="star-icon far fa-star" onclick="toggleFavorite('Bigmouth')"></i>
-        </div>
-        <!-- סדרת משפחת סימפסון -->
-        <div class="tv-show" id="simpsons">
-          <img src="img/simpsons 1.webp" alt="משפחת סימפסון" class="tv-show-image">
-          <h2 class="tv-show-title">משפחת סימפסון</h2>
-          <i id="star-series-simpsons" class="star-icon far fa-star" onclick="toggleFavorite('simpsons')"></i>
-        </div>
-        <!-- סדרת הקודש -->
-        <div class="tv-show" id="thegoodplace">
-          <img src="img/the good place.webp" alt="המקום הטוב" class="tv-show-image">
-          <h2 class="tv-show-title">הקודש</h2>
-          <i id="star-series-thegoodplace" class="star-icon far fa-star" onclick="toggleFavorite('thegoodplace')"></i>
-        </div>
-        <div id="modalWordTreasure" style="display: none;">
-          <div id="episode-links" class="episode-links">
-            <h3>קישורים לפרק:</h3>
-            <div id="links-container">
-                <!-- הכפתור נמצא כאן ומוסתר כברירת מחדל -->
-                <a id="netflixLink" href="#" target="_blank" class="link-button" style="display: none;">
-                    <img src="img/netflix.png" alt="Netflix Logo" class="platform-logo">לצפייה ב-Netflix
+        <div class="bottom-section">
+            <link rel="stylesheet" type="text/css" href="styles.css">
+            <div class="bottom-section">
+                <a href="#Series Rerquest" class="shortcut-rectangle" id="to-request">
+                    <div class="content">
+                        <div id="requestSeriesModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <h2>בקשת סדרה חדשה</h2>
+                                <form id="seriesRequestForm">
+                                    <input type="text" placeholder="שם הסדרה" name="seriesName" required>
+                                    <textarea placeholder="הערות נוספות (אופציונלי)"></textarea>
+                                    <button type="submit">שלח בקשה</button>
+                                </form>
+                            </div>
+                        </div>
+                        <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/icons/requestorange.webp" alt="About Icon">
+                        <p>בקשות לסדרות</p>
+                    </div>
+                </a>
+                <a href="#tips" class="shortcut-rectangle" id="to-tips" onclick="openTipsModal()">
+                    <div class="content">
+                        <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/icons/tipsorange.webp" alt="Tips Icon">
+                        <p>טיפים ללמידה</p>
+                    </div>
+                </a>
+                <a href="#series" class="shortcut-rectangle" id="to-series">
+                    <div class="content">
+                        <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/icons/seriesorange.webp" alt="Series Icon">
+                        <p>לעמוד הסדרות</p>
+                    </div>
+                </a>
+                <div id="tipsModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeTipsModal()">&times;</span>
+                        <h2>Learning Tips</h2>
+                        <div class="tips-container">
+                            <!-- Tips will be listed here dynamically -->
+                        </div>
+                    </div>
+                </div>
+                <a href="#bot" class="shortcut-rectangle" id="to-bot">
+                    <div class="content">
+                        <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/icons/botorange.webp" alt="Bot Icon">
+                        <p>בוט לבחירת סדרה</p>
+                    </div>
+                </a>
+                <a href="#about" class="shortcut-rectangle" id="to-about" onclick="openModalVideo()">
+                    <div class="shortcut-rectangle video-container">
+                        <video id="myVideo" controls>
+                            <source src="https://raw.githubusercontent.com/username/repo/branch/path/to/website/StudyWatch.mp4" type="video/mp4">
+                        </video>
+                    </div>
                 </a>
             </div>
-          </div>
-          <!-- תוכן נוסף של המודאל -->
-      </div>
-    </div>
-    </div>
-<!-- Include this link tag in the head if styles.css is in the same directory -->
- <!--
-        <div class="button-container">
-            <button class="info-button" id="series-requests-button">Series Requests</button>
-            <button class="info-button" id="learning-tips-button">Learning Tips</button>
-            <button class="info-button" id="about-website-button">About the website</button>
-          </div>
-          
-          Modals -->
-         <!--  <div id="series-requests-modal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>Suggest your favorite TV series for inclusion. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <img src="path/to/series-image.jpg" alt="Series Image">
-              <textarea id="user-request" placeholder="הזן כאן את בקשתך לשיפור..."></textarea>
-              <button id="submit-request-button">שלח בקשה</button>
+        </div>
+        <div id="series-section">
+            <div class="container">
+                <!-- סדרת Friends -->
+                <div class="tv-show" id="friends">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/friends good.webp" alt="חברים" class="tv-show-image">
+                    <h2 class="tv-show-title">חברים</h2>
+                    <i id="star-series-friends" class="star-icon far fa-star" onclick="toggleFavorite('series', 'friends', event)"></i>
+                </div>
+                <!-- סדרת Brooklyn Nine-Nine -->
+                <div class="tv-show" id="brooklyn99">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/brooklyn 99.webp" alt="ברוקלין 99" class="tv-show-image">
+                    <h2 class="tv-show-title">ברוקלין 99</h2>
+                    <i id="star-series-brooklyn99" class="star-icon far fa-star" onclick="toggleFavorite('brooklyn99')"></i>
+                </div>
+                <!-- סדרת The 100 -->
+                <div class="tv-show" id="the100">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/the 100 good.webp" alt="ה-100" class="tv-show-image">
+                    <h2 class="tv-show-title">ה-100</h2>
+                    <i id="star-series-the100" class="star-icon far fa-star" onclick="toggleFavorite('the100')"></i>
+                </div>
+                <!-- סדרת המפץ הגדול -->
+                <div class="tv-show" id="bigbang">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/bigbang theory.webp" alt="המפץ הגדול" class="tv-show-image">
+                    <h2 class="tv-show-title">המפץ הגדול</h2>
+                    <i id="star-series-bigbang" class="star-icon far fa-star" onclick="toggleFavorite('bigbang')"></i>
+                </div>
+                <!-- סדרת משפחה מודרנית -->
+                <div class="tv-show" id="modernfamily">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/modern family.webp" alt="משפחה מודרנית" class="tv-show-image">
+                    <h2 class="tv-show-title">משפחה מודרנית</h2>
+                    <i id="star-series-modernfamily" class="star-icon far fa-star" onclick="toggleFavorite('modernfamily')"></i>
+                </div>
+                <!-- סדרת איך פגשתי את אמא -->
+                <div class="tv-show" id="himym">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/how i met your mother 1.webp" alt="איך פגשתי את אמא" class="tv-show-image">
+                    <h2 class="tv-show-title">איך פגשתי את אמא</h2>
+                    <i id="star-series-himym" class="star-icon far fa-star" onclick="toggleFavorite('himym')"></i>
+                </div>
+                <!-- סדרת סיינפלד -->
+                <div class="tv-show" id="seinfeld">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/seinfeld 1.webp" alt="סיינפלד" class="tv-show-image">
+                    <h2 class="tv-show-title">סיינפלד</h2>
+                    <i id="star-series-seinfeld" class="star-icon far fa-star" onclick="toggleFavorite('seinfeld')"></i>
+                </div>
+                <!-- סדרת הבחורה החדשה -->
+                <div class="tv-show" id="newgirl">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/new girl 1.webp" alt="הבחורה החדשה" class="tv-show-image">
+                    <h2 class="tv-show-title">הבחורה החדשה</h2>
+                    <i id="star-series-newgirl" class="star-icon far fa-star" onclick="toggleFavorite('newgirl')"></i>
+                </div>
+                <!-- סדרת המשרד -->
+                <div class="tv-show" id="theoffice">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/DALL·E 2024-05-28 12.54.15 - Create an image resembling the cover of 'The Office' complete series box set. Show the main cast members sitting around a round office table, with Dwi.webp" alt="המשרד" class="tv-show-image">
+                    <h2 class="tv-show-title">המשרד</h2>
+                    <i id="star-series-theoffice" class="star-icon far fa-star" onclick="toggleFavorite('theoffice')"></i>
+                </div>
+                <!-- סדרת פה גדול -->
+                <div class="tv-show" id="Bigmouth">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/Big Mouth.jpeg" alt="פה גדול" class="tv-show-image">
+                    <h2 class="tv-show-title">פה גדול</h2>
+                    <i id="star-series-Bigmouth" class="star-icon far fa-star" onclick="toggleFavorite('Bigmouth')"></i>
+                </div>
+                <!-- סדרת משפחת סימפסון -->
+                <div class="tv-show" id="simpsons">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/simpsons 1.webp" alt="משפחת סימפסון" class="tv-show-image">
+                    <h2 class="tv-show-title">משפחת סימפסון</h2>
+                    <i id="star-series-simpsons" class="star-icon far fa-star" onclick="toggleFavorite('simpsons')"></i>
+                </div>
+                <!-- סדרת הקודש -->
+                <div class="tv-show" id="thegoodplace">
+                    <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/the good place.webp" alt="המקום הטוב" class="tv-show-image">
+                    <h2 class="tv-show-title">הקודש</h2>
+                    <i id="star-series-thegoodplace" class="star-icon far fa-star" onclick="toggleFavorite('thegoodplace')"></i>
+                </div>
+                <div id="modalWordTreasure" style="display: none;">
+                    <div id="episode-links" class="episode-links">
+                        <h3>קישורים לפרק:</h3>
+                        <div id="links-container">
+                            <!-- הכפתור נמצא כאן ומוסתר כברירת מחדל -->
+                            <a id="netflixLink" href="#" target="_blank" class="link-button" style="display: none;">
+                                <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/img/netflix.png" alt="Netflix Logo" class="platform-logo">לצפייה ב-Netflix
+                            </a>
+                        </div>
+                    </div>
+                    <!-- תוכן נוסף של המודאל -->
+                </div>
             </div>
-          </div>
-          <div id="learning-tips-modal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>צפייה פעילה: כשאתה צופה בסדרה, נסה להיות פעיל וממוקד במילים ובביטויים שלמדת. זה אומר להקשיב בקפידה לשימוש במילים אלו בהקשרם ולנסות להבין את המשמעות מתוך ההקשר.
-
-                רשימת מילים: לפני התחלת הפרק, קח כמה דקות לעבור על רשימת המילים שאתה עומד ללמוד. נסה להבין את משמעותן ואיך להשתמש בהן במשפט.
-                
-                חזרה על המילים: לאחר סיום הפרק, חזור על רשימת המילים ונסה לכתוב משפט אחד לפחות עם כל מילה. זה יעזור לך לזכור את המילים בצורה טובה יותר.
-                
-                שימוש בתרגומים: אם אתה מתקשה להבין מילה מסוימת, אל תהסס להשתמש בתרגומים או במילון. הבנת המילה בהקשרה היא חשובה ללמידה עמוקה.
-                
-                חשיבה באנגלית: נסה לחשוב על התוכן שראית באנגלית, גם אם זה דורש מאמץ. השתדל להפנים את השפה על ידי חשיבה ודיבור באנגלית ככל האפשר.
-                
-                צפייה מחודשת: צפה בפרקים שאהבת מחדש. הפעם, נסה להתמקד בהבנת התוכן והשפה בלי להסתכל על התרגום. זו דרך מעולה לבדוק את ההתקדמות שלך.
-                
-                תרגול עם חברים: אם יש לך חברים שלומדים אנגלית, נסו לדבר על הסדרות שצפיתם בהן באנגלית. זה יכול להיות דיון על עלילה, דמויות, או אפילו על המילים החדשות שלמדתם.
-                
-                הקלט והאזן: הקלט את עצמך קורא או מדבר באנגלית, ואז האזן להקלטה. זה יעזור לך לזהות את נקודות החוזק והחולשה בהגייה ובשימוש בשפה.
-                
-                השתמש ביומן: רשום ביומן או ביומן מקוון את התובנות והשאלות שלך לגבי השפה. זה יעזור לך לעקוב אחר התקדמותך ולחזור על נקודות חשובות.
-                
-                למידה דרך סדרות היא דרך כיפית ויעילה לשפר את השפה שלך. זכור שהתמדה וחשיבה פעילה הן מפתחות להצלחה. בהצלחה!</p>
+        </div>
+        <div class="accessibility-menu">
+            <button id="accessibilityBtn">
+                <img src="https://raw.githubusercontent.com/username/repo/branch/path/to/icons/wheelchair-icon1.png" alt="Accessibility" class="nav-icon">
+            </button>
+            <div id="accessibilityOptions">
+                <button id="increaseText">הגדל טקסט</button>
+                <button id="decreaseText">הקטן טקסט</button>
+                <button id="toggleContrast">ניגודיות גבוהה</button>
             </div>
-          </div>
-          <div id="about-website-modal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>Information about the Website...</p>
-            </div>
-          </div>
-       </div>-->
-              
-            </header>
-    
-        
-              <div class="accessibility-menu">
-  <button id="accessibilityBtn">
-    <img src="icons/wheelchair-icon1.png" alt="Accessibility" class="nav-icon">
-  </button>
-  <div id="accessibilityOptions">
-    <button id="increaseText">הגדל טקסט</button>
-    <button id="decreaseText">הקטן טקסט</button>
-    <button id="toggleContrast">ניגודיות גבוהה</button>
-  </div>
-
-   
-    <!-- חלון המידע 
-<div class="cool-window">
-    <span class="exit-button" onclick="closeInfoWindow()">X</span>
-    <h2>חדש באתר</h2>
-    <p>כאן תתעדכנו בכל מה שחדש באתר והפרקים שעלו!</p></div>-->
-
-
-
+        </div>
+    </header>
 </body>
 </html>
