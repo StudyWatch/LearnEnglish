@@ -9,7 +9,8 @@ body, html {
 
 .top-section {
   height: 80vh;
- background: url(https://username.github.io/repo/path/to/website/background6.png) no-repeat center / cover;
+background: url(./website/background6.png) no-repeat center / cover;
+
   background-position: 50% 20%; /* מתאים את המיקום אופקית למרכז ואנכית ל-20% מהחלק העליון */
 }
 
