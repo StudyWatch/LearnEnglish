@@ -1,0 +1,1555 @@
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Assistant', sans-serif; /* שימוש בגופן Roboto */
+  font-size: 20px;
+  
+}
+
+.top-section {
+  height: 80vh;
+  background: url(/website/בדיקה.webp) no-repeat center / cover;
+  background-position: 50% 20%; /* מתאים את המיקום אופקית למרכז ואנכית ל-10% מהחלק העליון */
+}
+
+.word-treasure-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.word-item {
+  margin-bottom: 20px;
+}
+
+.word, .translation {
+  color: #007bff; /* Blue color for words and translations */
+  font-weight: bold;
+}
+
+.sentence {
+  margin-top: 5px;
+}
+
+.highlight {
+  background-color: yellow; /* Highlight color for the word in the sentence */
+  font-weight: bold;
+}
+.bottom-section {
+  display: flex;
+  justify-content: center; /* מרכזים את המלבנים */
+  align-items: center;
+  height: 20vh;
+  background-color: #333;
+  padding: 20px 0; /* נשאר ללא שינוי */
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10; /* Sit on top */
+  right: 0;
+  top: 0;
+  width: 30%; /* Width of the sidebar */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #ffeb3b; /* Yellow background */
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2); /* Shadow to the left */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  margin: 0; /* No margin */
+  padding: 20px;
+  border: none; /* No border */
+}
+
+/* The Close Button */
+.close {
+  color: #333;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* The button to open the modal */
+.favorites-btn {
+  background-color: #ffc107; /* Light yellow color */
+  color: #333;
+  position: fixed; /* Fix position */
+  right: 20px; /* Place it 20px from the right edge */
+  top: 100px; /* Adjust this value as needed to avoid overlapping */
+  z-index: 11; /* Make sure it's above other content */
+  padding: 15px 30px; /* Larger padding for a bigger button */
+  font-size: 20px; /* Larger font size */
+  border-radius: 25px; /* Fully rounded corners */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+  border: none; /* Remove default border */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
+
+.favorites-btn:hover {
+  background-color: #ffeb3b; /* A slightly different shade for hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+/* סגנון בסיסי לכוכב */
+.star-icon {
+  cursor: pointer;
+  color: grey; /* צבע ברירת מחדל לכוכב לא מועדף */
+  font-size: 24px; /* גודל מתאים לאינטרקציה */
+  position: absolute; /* מיקום מוחלט ביחס לאלמנט האב */
+  top: 10px; /* יישור למעלה */
+  right: 10px; /* יישור לימין */
+  transition: color 0.3s, transform 0.3s; /* מעבר חלק לצבע וגודל */
+}
+
+/* התנהגות הכוכב בעת ה-hover */
+.star-icon:hover {
+  color: gold; /* צבע כאשר המשתמש מעביר את העכבר מעל הכוכב */
+  transform: scale(1.1); /* הגדלה קלה בעת ה-hover */
+}
+
+/* התנהגות הכוכב כאשר הוא מועדף */
+.star-icon.favorited {
+  color: gold; /* הכוכב ישאר זהב כאשר הוא מועדף */
+}
+/* styles.css */
+
+/* Link container style */
+.link-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: relative;
+}
+
+.link-container a {
+  flex-grow: 1;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.link-container a:hover {
+  text-decoration: underline;
+}
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  background-color: transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.link-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.platform-logo {
+  width: 100px;
+  height: auto;
+}
+.exit-game, .restart-btn, .play-again-btn, .back-to-games-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+ .restart-btn:hover, .play-again-btn:hover, .back-to-games-btn:hover {
+  background-color: #005bb5;
+}
+
+.timer-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+.timer-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px; /* Position clock at the bottom-right corner */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clock-image {
+  width: 100px;
+  height: auto;
+}
+
+.timer-display {
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #333;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 5px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tips-container {
+  background-color: #f4f4f4;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.tip-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+
+.link-text {
+  font-size: 0.8em;
+  color: #888;
+  margin-left: 10px;
+  word-break: break-all;
+}
+
+/* Other modal styles here */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.penguin-container {
+  position: fixed;
+  top: 10px;
+  left: 20%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#penguin {
+  position: fixed;
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.thought-bubble {
+  display: none;
+  position: absolute;
+  top: 120px;
+  left: -20px;
+  width: 250px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.thought-bubble:before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 30px;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+}
+
+.thought-bubble.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.thought-bubble p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+
+
+/* Accessibility Button Styles */
+/* Accessibility Button Styles */
+
+
+/* High Contrast Mode Styles */
+.high-contrast {
+  background-color: #1a1a1a; /* Darker background for better contrast */
+  color: #5100ff; /* White text for readability */
+}
+
+.high-contrast a, .high-contrast a:visited { /* Links */
+  color: #ffcc00; /* Bright color for links that stands out */
+}
+
+.high-contrast button, .high-contrast button:hover, .high-contrast button:focus { /* Buttons */
+  background-color: #0a0a0a; /* Darker button background */
+  color: #ffffff; /* White text for buttons */
+  border: 2px solid #ffcc00; /* Bright border color for buttons */
+}
+
+.high-contrast .tv-show-title { /* Titles on the series images */
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8); /* Shadow to make text stand out */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+  color: #ffffff; /* White text for readability */
+  padding: 5px; /* Padding inside the titles for better visibility */
+}
+
+.high-contrast img { /* Image outlines */
+  border: 2px solid #ffffff; /* White border around images */
+}
+
+/* Additional selectors for other elements you wish to adjust can go here */
+
+
+/* עד פה נגישות*/
+
+
+#difficulty-tabs {
+  overflow: hidden;
+  background-color: white;
+  display: flex; /* Use flexbox for layout */
+  justify-content: end; /* Align items to the start */
+  width: calc(100%); /* Adjust width to not exceed exit button */
+  margin-right: 10px; /* Adjust based on your exit button's size */
+}
+
+/* Reset style for the tab buttons */
+.tablink {
+  background-color: #5100ff !important;
+  color: rgb(0, 0, 0);
+  display: block; /* Make tabs stack vertically */
+  width: 80%; /* משנה מ-100% ל-auto כדי שהרוחב יותאם לתוכן */
+  text-align: center; /* Align text to the left */
+  padding: 3px 5px !important;   /* הקטנת ה-padding */
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 10px; /* Rounded corners for the tabs */
+  margin-top: 30px !important; /* הוספת מרווח רק מלמעלה ומלמטה, ללא שינוי בין הטאבים באופן אופקי */
+  font-family: 'Assistant', sans-serif; /* שינוי פונט */
+  font-size: 0.9rem; /* הקטנת גודל הכתב אם יש צורך */
+  display: flex; /* שינוי מ-display:block; ל-inline-block; כדי שהטאבים יופיעו בשורה אחת */
+  justify-content: center;
+  
+
+}
+
+/* Change background color of tabs on hover */
+.tablink:hover {
+  background-color: #ddd;
+  border-color: #bbb;
+
+}
+
+/* Style the active tab to appear as if it is popping out */
+.tablink.active, .tablink.active:hover {
+  background-color: #4CAF50 !important;
+  color: white;
+  border-color: #4CAF50 !important;
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  top: -1px; /* Move the tab up by 1px to make it stand out */
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.2); /* Add shadow for depth effect */
+}
+
+/* Ensure the exit button does not get covered */
+.exit-button {
+  display: block; /* Make sure it's a block-level element */
+  width: 100%; /* Full width button */
+  margin-top: 10px; /* Space above the exit button */
+}
+
+/* הגדרות כלליות */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(80px, 1fr)); /* שינוי גודל הקלפים */
+  gap: 10px;
+  justify-content: center;
+  padding: 20px;
+}
+/* Control Buttons for Memory Game */
+.memory-game-buttons, .game-control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px; /* הפחתת המרווח העליון */
+  flex-wrap: wrap;
+  margin-bottom: 0; /* ביטול המרווח התחתון */
+}
+
+.memory-game-button, .restart-btn, .play-again-btn, .back-to-games-btn {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #333;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  width: 150px;
+  height: 50px;
+  margin: 5px;
+  text-align: center;
+}
+.memory-game-button:hover, .restart-btn:hover, .play-again-btn:hover, .back-to-games-btn:hover {
+  background-color: #f8f8f8;
+  color: #007bff;
+  transform: scale(1.05);
+}
+
+/* הגדרת סגנונות ייחודיים עבור close-btn */
+.close-btn {
+  padding: 0;
+  background-color: transparent;
+  color: #333;
+  border: none;
+  font-size: 16px; /* קטן יותר */
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: color 0.3s;
+}
+.close-btn:hover {
+  color: #007bff;
+}
+
+.end-game-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  text-align: center;
+  width: 80%;
+  max-width: 600px;
+}
+
+.end-game-modal h2 {
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.penguin-image {
+  width: 150px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.play-again-btn, .back-to-games-btn {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.play-again-btn:hover, .back-to-games-btn:hover {
+  background-color: #0056b3;
+}
+
+.memory-card {
+  background-color: #fff;
+  border-radius: 10px;
+  height: 80px; /* קטן יותר */
+  width: 60px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 16px;
+  color: #333;
+  transition: transform 0.3s, box-shadow 0.3s; /* מהירות האנימציה מוגדלת */
+}
+
+.memory-card.flip {
+  transform: scale(1.1); /* הגדלה בעת הפיכה */
+}
+
+.memory-card:not(.flip):hover {
+  transform: scale(1.03); /* הגדלה עבור קלף שלא הופך */
+}
+
+.memory-card.match {
+  animation: correct 0.3s, jello-horizontal 0.9s both;
+  box-shadow: 0 0 10px #28a745;
+}
+
+.memory-card.wrong {
+  animation: shake 0.2s both;
+  box-shadow: 0 0 10px #dc3545;
+}
+
+.exit-game, .play-again-btn, .back-to-vocab-btn, .back-to-games-btn {
+  padding: 10px 20px;
+  background-color: #007bff; /* כחול בהיר */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+ .play-again-btn:hover, .back-to-vocab-btn:hover, .back-to-games-btn:hover {
+  background-color: #0056b3; /* כחול כהה */
+}
+
+/* סגנון לחלון המודאל בסוף המשחק */
+.end-game-modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 100;
+  text-align: center;
+}
+
+.exit-game {
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* הוספת אפקטים חזותיים */
+@keyframes correct {
+  0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px #28a745;
+  }
+  50% {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #28a745;
+  }
+}
+
+
+@keyframes shake {
+  10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+      transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+      transform: translate3d(4px, 0, 0);
+  }
+}
+
+
+
+/* Further customize styles as needed */
+
+
+
+.shortcut-rectangle {
+  width: 16%; /* הקטנת רוחב המלבן */
+  margin: 0 1%; /* הגדלת מרווחים בין המלבנים */
+  background-color: #2e2e2f;
+  color: #eeeeeed9;
+  text-align: center;
+  padding: 10px; /* הקטנת ה-padding מסביב לתוכן */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.shortcut-rectangle img {
+  max-width: 80%; /* הקטנת גודל התמונה בתוך המלבן */
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: -13px; 
+}
+
+.shortcut-rectangle p {
+  font-size: 1rem; /* אפשרות להקטין את גודל הכותרת אם נדרש */
+  margin-top: 10px; /* הוספת מרווח עליון לטקסט */
+  font-weight: 700; /* עובי הגופן להדגשה */
+}
+
+
+#series-section {
+  display: none;
+  background-image: url(/website/backgroundseries.webp); /* החלף בנתיב לתמונת הרקע שלך */
+  background-size: cover; /* מתאים את התמונה כך שתכסה את כל האלמנט */
+  background-position: center; /* ממרכז את התמונה באלמנט */
+    height: 100vh; /* הגדרת הגובה לגובה של עמוד שלם */
+    overflow: auto; /* מאפשר גלילה פנימית אם התוכן גדול מהגובה */
+    
+  }
+
+.series-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('path/to/your/background-image.jpg') no-repeat center center / cover;
+}
+
+.tv-show {
+  width: 150px; /* Adjust the width as necessary */
+  margin: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.tv-show:hover {
+  transform: scale(1.05);
+}
+
+.tv-show img {
+  width: 100%;
+  display: block;
+    height: 150px;
+    object-fit: cover;
+  }
+.tv-show {
+  width: 200px; /* או כל רוחב אחר בהתאם לעיצוב הרצוי */
+  text-align: center;
+}
+
+.tv-show-title {
+  background-color: #FFF;
+  padding: 5px 10px;
+  font-size: 0.9em;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* מרווח בין האלמנטים */
+  justify-content: center;
+}
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  
+  width: 80%; /* או רוחב קבוע בפיקסלים אם תרצה */
+  max-width: 800px; /* יכול לשמש כהגדלה אם המסך גדול מספיק */
+  margin: 20px auto; /* ממרכז את המודאל במסך עם מרווח למעלה ולמטה */
+  padding: 20px; /* מוסיף מרווח בפנים המודאל */
+  background: white; /* או צבע אחר שתבחר */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* מוסיף צל עדין */
+  border-radius: 10px; /* קצוות מעוגלים */
+  max-height: 90vh; /* גובה מקסימלי של 70% מגובה המסך */
+  overflow-y: auto; /* אפשר גלילה אנכית עבור תוכן שמעבר לגובה */
+  position: relative; /* יאפשר מיקום יחסי לפסקאות או אלמנטים אחרים */
+}
+/* עיצוב מגניב לכותרות עם אפקט קליל */
+.modal-content h2 {
+  font-size: 2em;
+  color: #007bff; /* צבע בולט */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* הוספת צל עדין לטקסט */
+  text-align: center; /* מרכז את הטקסט */
+  margin-bottom: 20px; /* מרווח למטה */
+}
+
+/* עיצוב פסקאות עם קו מתחת לכל פסקה */
+.modal-content p {
+  font-size: 1em;
+  color: #333;
+  line-height: 1.6;
+  border-bottom: 1px solid #eee; /* קו תחתון עדין לכל פסקה */
+  padding-bottom: 10px; /* רווח למטה של הפסקה */
+  margin-bottom: 10px; /* מרווח בין פסקאות */
+}
+
+/* עיצוב כפתור שיקפוץ מעט כאשר מעבירים מעליו את העכבר */
+.modal-content button {
+  /* הגדרות כפתור קודמות */
+  transform: translateY(0); /* התחל במצב רגיל */
+  transition: transform 0.3s ease, background-color 0.3s; /* אפקט חלק ללחיצה ורקע */
+}
+
+.modal-content button:hover {
+  transform: translateY(-3px); /* קפיצה קלה למעלה כאשר מעבירים מעליו את העכבר */
+  background-color: #0056b3; /* צבע רקע כהה יותר בעת עבור העכבר */
+}
+
+.close {
+  color: #aaaaaa;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+:root {
+  --primary-color: #2e2e2f;
+  --secondary-color: #757f80;
+}
+
+body {
+  color: var(--primary-color);
+}
+
+
+/* Effect Styles */
+.tv-show:hover .tv-show-image {
+  transform: scale(1.1);
+  filter: brightness(50%);
+}
+
+/* New Styles */
+.modal-content button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.shortcut-rectangle {
+  width: 16%; /* הרוחב של כל מלבן כולל הסרטון */
+  margin: 0 1%; /* המרווחים של כל מלבן כולל הסרטון */
+  /* ...שאר הסגנון של המלבן... */
+}
+
+/* עיצוב מיוחד למיכל הסרטון */
+.video-container {
+  position: relative; /* כדי שנוכל למקם את הכפתור 'הגדל' באופן יחסי למיכל */
+  width: 100%; /* יורש את רוחב האב המכיל שקבענו ב'.shortcut-rectangle' */
+  height: 0; /* נתחיל עם גובה 0 ונשתמש ב-padding-top ליצירת יחס גודל */
+  padding-top: 56.25%; /* יחס הגודל ליצירת 16:9 */
+  background-color: black; /* צבע רקע שיהיה נראה בטעינת הסרטון */
+}
+
+/* עיצוב הסרטון עצמו */
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* אם יש כפתור להגדלת הסרטון ואתה רוצה להציג אותו מעל הסרטון */
+.expand-video {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  /* ...עיצוב נוסף לכפתור... */
+}
+
+
+.exit-button {
+  position: absolute;
+  top: -10px; /* מרווח מהקצה העליון של המודאל */
+  left: 10px; /* מרווח מהקצה השמאלי של המודאל */
+  font-size: 20px;
+  background-color: transparent;
+  color: #555;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.exit-button:hover {
+  color: #333;
+}
+
+/* סגנון נוסף */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* מתאים את עצמו לגודל המודאל */
+  gap: 15px; /* מרווח בין הכפתורים */
+  justify-content: center;
+  padding: 10px;
+}
+
+.button {
+  padding: 10px 20px;
+  width: 100%; /* מותאם לרוחב העמודה שנוצרת על ידי הגריד */
+  box-sizing: border-box; /* כולל ה-padding וה-border בחישוב הרוחב */
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:not(:last-child) {
+  margin-bottom: 15px; /* מרווח בין כפתורים, אך לא לכפתור האחרון */
+}
+
+
+/* סגנון נוסף לעמוד סדרות */
+.tv-show-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* סגנון נוסף לעמוד עונות ופרקים */
+.modal-content .grid-container {
+  grid-template-columns: repeat(5, 1fr); /* 5 עמודות */
+}
+.cool-window {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation: slideUpDown 3s ease-in-out infinite alternate;
+}
+.top-info {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 20px;
+  margin-top: 0px;
+  margin-left: -40px;
+}
+.series-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('path/to/your/background-image.jpg') no-repeat center center / cover;
+}
+#searchBarContainer {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f8f8f8; /* שינוי צבע רקע בהתאם לעיצוב שלך */
+  border-radius: 25px;
+  margin: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* הוספת צל קל */
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-bar .site-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.search-bar input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+}
+
+.search-bar input[type="text"]::placeholder {
+  color: #999;
+}
+.back-to-top-button {
+  display:none;
+  position: fixed; /* יוצר כפתור שניתן לראות מכל מקום בעמוד */
+  bottom: 20px; /* מרחק מתחתית העמוד */
+  right: 20px; /* מרחק מצד ימין של העמוד */
+  padding: 10px 15px;
+  background-color: #3498db; /* או צבע אחר שמתאים לאתר שלך */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.7; /* שקיפות למראה מעודן יותר */
+  transition: opacity 0.3s, transform 0.3s; /* מעברים לכפתור */
+}
+
+.back-to-top-button:hover {
+  opacity: 1; /* שינוי שקיפות בעת העברת העכבר */
+  transform: translateY(-3px); /* קפיצה קטנה למעלה */
+}
+
+.quiz-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Quiz Box Styles */
+.quiz-box {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 30px;
+  border: none;
+  width: 70%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+}
+
+.answer-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff; /* רקע לבן */
+  color: #333; /* טקסט כהה */
+  border: 2px solid black; /* גבול שחור */
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+  width: 150px; /* רוחב קבוע */
+  height: 50px; /* גובה קבוע */
+  text-align: center;
+  margin: 5px auto; /* מרכז את הכפתור */
+}
+
+.answer-button:hover {
+  background-color: #f8f8f8; /* צבע לבן מעט כהה יותר בהובר */
+  color: #007bff; /* טקסט כחול בהובר */
+  transform: scale(1.05);
+}
+
+.close-btn {
+  color: #000; /* Black color */
+  position: absolute;
+  top: 10px; /* Adjust position as needed */
+  right: 20px; /* Adjust position as needed */
+  font-size: 20px; /* Smaller font size for the 'X' */
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: #555; /* Slightly lighter color on hover */
+}
+
+
+.question {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.answer {
+  padding: 15px;
+  margin: 10px 0;
+  border: 2px solid black; /* גבול שחור */
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  transition: background-color 0.3s, border-color 0.3s;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px; /* רוחב קבוע */
+  height: 50px; /* גובה קבוע */
+}
+
+.answer:hover {
+  background-color: #e0e0e0;
+  border-color: #007bff;
+}
+
+.answer.correct {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
+
+.answer.incorrect {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+}
+
+.feedback-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  text-align: center;
+  padding: 10px;
+  font-size: 1.2em;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s;
+}
+
+.feedback-container.hidden {
+  opacity: 0;
+}
+
+.feedback-container.correct {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.feedback-container.incorrect {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Score Display */
+#score-display {
+  font-size: 1.5em;
+  color: #333;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Game Control Buttons */
+.game-control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: '10'px; /* מותאם לעליון יותר */
+  margin-bottom: 0; /* להסרת המרווח התחתון */
+}
+
+.play-again-btn, .back-to-games-btn, .close-btn {
+  padding: 10px 20px;
+  background-color: #fff; /* רקע לבן */
+  color: #333; /* טקסט כהה */
+  border: 2px solid black; /* גבול שחור */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s;
+  width: 150px; /* רוחב קבוע */
+  height: 50px; /* גובה קבוע */
+}
+
+.play-again-btn:hover, .back-to-games-btn:hover {
+  background-color: #f8f8f8; /* צבע לבן מעט כהה יותר בהובר */
+  color: #007bff; /* טקסט כחול בהובר */
+  transform: scale(1.05);
+}
+
+
+.info-box {
+  width: 120px;
+  height: 50px;
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid #87d1dc;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  position: relative;
+  margin-right: 5px;
+  margin-left: -270px;
+}
+
+.modal-content p {
+  color: #000; /* Or any color that contrasts well with your modal background */
+}
+
+/* If there are other elements containing text, set their color as well */
+.modal-content h2,
+.modal-content div,
+.modal-content span {
+  color: #000; /* Replace with the desired color */
+}
+/*פה זה העיצוב של בקשות הסדרות*/
+.modal {
+  display: none; /* הסתר את המודאל כברירת מחדל */
+  position: fixed; /* הצב את המודאל קבוע במרכז המסך */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* הזז את המודאל למרכז באמצעות transform */
+  z-index: 2; /* הגבהה מעל לשאר האלמנטים */
+  width: 80%; /* רוחב המודאל */
+  max-width: 600px; /* רוחב מקסימלי למודאל */
+  background: rgba(255, 255, 255, 0.95); /* רקע שקוף מעט */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* צל עדין להדגשת המודאל */
+  border-radius: 10px; /* קיבולות מעוגלות */
+  overflow: hidden; /* מנע גלילה חיצונית */
+}
+
+.modal-content {
+  padding: 20px; /* ריווחים פנימיים לתוכן המודאל */
+}
+
+.modal h2 {
+  font-size: 24px; /* גודל כותרת */
+  margin-bottom: 20px; /* ריווח למטה מהכותרת */
+  text-align: center; /* יישור הטקסט למרכז */
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column; /* מיין את השדות בטופס באופן ורטיקלי */
+}
+
+.modal input[type="text"],
+.modal textarea {
+  font-size: 18px; /* גודל פונט לקלט */
+  margin-bottom: 15px; /* ריווח בין שדות הקלט */
+  padding: 10px; /* ריווח פנימי בשדות הקלט */
+  border: 1px solid #ddd; /* גבול עדין */
+  border-radius: 5px; /* קיבולות מעוגלות */
+}
+
+.modal button {
+  padding: 10px 20px; /* ריווחים פנימיים לכפתור */
+  font-size: 18px; /* גודל פונט */
+  color: white; /* צבע טקסט */
+  background-color: #5C6BC0; /* צבע רקע של הכפתור */
+  border: none; /* ללא גבול */
+  border-radius: 5px; /* קיבולות מעוגלות */
+  cursor: pointer; /* מצביע כאשר העכבר מעל הכפתור */
+  transition: background-color 0.3s ease; /* מעבר צבע חלק */
+}
+
+.modal button:hover {
+  background-color: #3949AB; /* צבע רקע של הכפתור כאשר העכבר מעליו */
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.feedback-container {
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  width: 100%; /* מוסיף רוחב לקונטיינר */
+}
+
+.feedback .correct {
+  color: #28a745; /* ירוק */
+  font-weight: bold;
+}
+
+.feedback .incorrect {
+  color: #dc3545; /* אדום */
+  font-weight: bold;
+}
+
+.answers-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.answer-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.answer-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+
+/* סגנונות לנייד */
+/* styles.css - הגדרות רספונסיביות למכשירים ניידים */
+@media (max-width: 600px) {
+  
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      overflow-x: hidden;
+    }
+  
+    .bottom-section {
+      display: flex;
+      flex-direction: row;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory; /* מאפשר גלילה מדויקת לאלמנטים */
+      -webkit-overflow-scrolling: touch; /* גלילה חלקה על iOS */
+    }
+  
+    .shortcut-rectangle {
+      flex-basis: 35%; /* Makes rectangles take about half the width, showing two per row */
+      margin-bottom: 10px; /* Adds space between rows */    
+      width: 70vw; /* רוחב המלבן שווה לרוחב המסך */
+      height: 70vh; /* גובה המלבן שווה לגובה המסך */
+      flex-shrink: 0; /* מונע כיווץ של המלבן */
+      margin-right: -30px; /* מרווח בין המלבנים */
+      display: flex;
+      align-items: center; /* ממרכז את התוכן במלבן */
+      justify-content: center; /* ממרכז את התוכן במלבן */
+    }
+ 
+    .bottom-section img {
+      width: 100%; /* התמונה תמלא את רוחב האלמנט המכיל אותה */
+      height: auto; /* הגובה משתנה אוטומטית לשמירה על יחסי מימדים */
+      object-fit: contain; /* מאפשר לתמונה להתאים לגודל המכיל אותה */
+      display: block; /* מונע רווחים למטה */
+      max-height: 120px; /* מגביל את הגובה המרבי של התמונה */
+    }
+body, button, input[type="text"] {
+  font-size: 10px;
+}
+
+header, .bottom-section a, .tv-show-title {
+  font-size: 12px; /* Increase if necessary for readability */
+}
+
+
+  .shortcut-rectangle img {
+    width: 250%; /* מתאים את התמונה לרוחב המלבן */
+    height: auto;
+    margin-bottom: -10px;
+  }
+
+  .shortcut-rectangle p {
+    font-size: 1em; /* גודל טקסט מותאם */
+  }
+  .shortcut-rectangle:not(#to-bot):not(#to-series):not(#to-tips) {
+    display: none; /* הסתרת כרטיסים שאינם רלוונטיים לנייד */
+  }
+  /* סגנון עבור סרגל החיפוש */
+  #searchBarContainer .search-bar {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  #searchInputSeries {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+  }
+
+  /* הסתרת החלון המגניב */
+  .cool-window {
+    display: none;
+  }
+}
+משחק הזיכרון:.quiz-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.quiz-box {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 30px;
+  border: none;
+  width: 70%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+}
+
+.answer-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #333;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  margin: 5px auto;
+}
+
+.answer-button:hover {
+  background-color: #f8f8f8;
+  color: #007bff;
+  transform: scale(1.05);
+}
+
+.close-btn {
+  color: #000;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  transition: none;
+}
+
+.close-btn:hover {
+  color: #000;
+  background: none;
+  border: none;
+}
+
+.question {
+  font-size: 1.2em; /* הוקטן */
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.answer {
+  padding: 15px;
+  margin: 10px 0;
+  border: 2px solid black;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  transition: background-color 0.3s, border-color 0.3s;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 50px;
+}
+
+.answer:hover {
+  background-color: #e0e0e0;
+  border-color: #007bff;
+}
+
+.answer.correct {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
+
+.answer.incorrect {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+}
+
+.feedback-container {
+  position: absolute;
+  bottom: 80px; /* הוגדל כדי להופיע מעל הכפתורים */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  text-align: center;
+  padding: 10px;
+  font-size: 1.2em;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s;
+}
+
+.feedback-container.hidden {
+  opacity: 0;
+}
+
+.feedback-container.correct {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.feedback-container.incorrect {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+#score-display {
+  font-size: 1.2em; /* הוקטן */
+  color: #333;
+  margin-top: 20px;
+  font-weight: bold;
+  position: absolute;
+  left: 20px;
+  top: -5px;
+}
+
+.game-control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.play-again-btn, .back-to-games-btn, .back-to-vocabulary-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem; /* הוקטן */
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+  margin: 5px;
+  min-width: 120px;
+}
+
+.play-again-btn:hover, .back-to-games-btn:hover, .back-to-vocabulary-btn:hover {
+  background-color: #0056b3;
+  color: #fff;
+  transform: scale(1.05);
+}
