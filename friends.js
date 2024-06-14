@@ -324,40 +324,42 @@ document.addEventListener("DOMContentLoaded", () => {
     backToTopButton.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
 function handleSeriesClick() {
     const seriesSection = document.getElementById('series-section');
     const searchBarContainer = document.getElementById("searchBarContainer");
-    if (searchBarContainer) {
+    // Ensure the searchBar is only moved if it's not already the first child
+    if (seriesSection.firstChild !== searchBarContainer) {
         seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
-        searchBarContainer.style.display = 'flex';
     }
+    searchBarContainer.style.display = 'flex';
     seriesSection.style.display = 'block';
-
+    // Delay scroll into view to ensure layout has stabilized
     setTimeout(() => {
-        seriesSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }, 100);  // Delay to ensure the browser finishes rendering the layout changes
+        seriesSection.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
 }
 
-// Attaching event listener to click to handle both desktop and mobile
 const seriesButton = document.getElementById('to-series');
+// Listen for both click and touchend events
 seriesButton.addEventListener('click', (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent the default click behavior
     handleSeriesClick();
 });
 
-// Optional: Handling series search input filtering
+seriesButton.addEventListener('touchend', (e) => {
+    e.preventDefault(); // Prevent the default touch behavior
+    handleSeriesClick();
+});
+
 const searchInputSeries = document.getElementById("searchInputSeries");
-if (searchInputSeries) {
-    const tvShowElements = document.querySelectorAll(".tv-show");
-    searchInputSeries.addEventListener("input", () => {
-        const searchTerm = searchInputSeries.value.toLowerCase();
-        tvShowElements.forEach((tvShow) => {
-            const title = tvShow.querySelector(".tv-show-title").textContent.toLowerCase();
-            tvShow.style.display = title.includes(searchTerm) ? "" : "none";
-        });
+const tvShowElements = document.querySelectorAll(".tv-show");
+searchInputSeries.addEventListener("input", () => {
+    const searchTerm = searchInputSeries.value.toLowerCase();
+    tvShowElements.forEach((tvShow) => {
+        const title = tvShow.querySelector(".tv-show-title").textContent.toLowerCase();
+        tvShow.style.display = title.includes(searchTerm) ? "" : "none";
     });
-}
+});
 
 
 
