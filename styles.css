@@ -1621,14 +1621,28 @@ form button[type="submit"]:hover {
     font-size: 14px;
     overflow-x: hidden;
   }
-  .modal {
+.modal {
     width: 100%; /* מודל ברוחב מלא */
     height: 100vh; /* מודל בגובה מלא */
     top: 51%; /* מודל מתחיל מהחלק העליון של המסך */
     border: none; /* אין גבולות */
     border-radius: 0; /* אין עיגול פינות */
     overflow: hidden; /* מונע גלילה כפולה */
-  }
+}
+
+.modal-content {
+    height: 100%; /* תוכן המודל ממלא את המודל */
+    border-radius: 0; /* אין עיגול פינות לתוכן */
+    padding-top: 30px !important; /* הכרחי להשיג רווח רצוי בחלק העליון */
+    display: flex;
+    flex-direction: column;
+}
+
+.exit-button {
+    align-self: flex-end;
+    margin: 10px;
+    font-size: 24px;
+}
   .grid-container, .word-treasure-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* שתי עמודות */
@@ -1637,12 +1651,7 @@ form button[type="submit"]:hover {
     padding: 10px; /* רווח בפנים */
     gap: 5px; /* מרווח בין כפתורים */
   }
-  .modal-content {
-    height: 100%; /* תוכן המודל ממלא את המודל */
-    border-radius: 0; /* אין עיגול פינות לתוכן */
-    padding-top: 30px !important; /* הכרחי להשיג רווח רצוי בחלק העליון */
-    display: flex;
-    flex-direction: column;
+ 
     
   }
   .memory-game-button, .restart-btn, .play-again-btn, .back-to-games-btn {
@@ -1727,6 +1736,46 @@ form button[type="submit"]:hover {
     color: #007bff; /* צבע המילים המודגשות */
     font-weight: bold; /* משקל פונט למילים מודגשות */
 }
+.tablink {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.tabcontent {
+    display: none;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+.test-knowledge-button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.episode-links {
+    margin-top: 20px;
+}
+
+.link-button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.link-button img {
+    margin-right: 10px;
+}
 
 
 .episode-button {
@@ -1741,6 +1790,7 @@ form button[type="submit"]:hover {
 .episode-button:active {
     transform: none;
 }
+  
 .bottom-section {
   display: flex;
   flex-direction: row;
