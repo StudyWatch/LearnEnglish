@@ -28,9 +28,6 @@
             text-align: center;
             padding: 60px;
             margin: 0;
-            background: url('./img/pingbot.png') no-repeat center / cover;
-            background-size: cover;
-            background-position: center center;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -94,7 +91,7 @@
 
         @media only screen and (max-width: 800px) {
             body {
-                background-image: url('./img/pingbot.png'); /* Replace with the mobile background image URL */
+                background-image: url('./img/pingbot_mobile.png'); /* Replace with the mobile background image URL */
                 background-size: cover; /* Ensure the background image covers the whole screen */
                 background-position: center center;
                 padding: 20px; /* Reduce padding for smaller screens */
@@ -112,6 +109,14 @@
             #recommendation {
                 font-size: 28px; /* Even larger font size for mobile to ensure readability */
                 padding: 30px; /* Increase padding for better readability */
+            }
+        }
+
+        @media only screen and (min-width: 801px) {
+            body {
+                background-image: url('./img/pingbot_desktop.png'); /* Replace with the desktop background image URL */
+                background-size: cover; /* Ensure the background image covers the whole screen */
+                background-position: center center;
             }
         }
     </style>
