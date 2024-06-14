@@ -506,19 +506,6 @@ searchInputSeries.addEventListener("input", function() {
 
     loadFavorites();
 
-const baseUrl = window.location.hostname.includes('github.io') ? '/LearnEnglish/' : '';
-fetch(`${baseUrl}episodeLinks.json`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        window.episodeLinksData = data;
-        console.log("Episode Links Data Loaded:", data);
-    })
-    .catch(error => console.error('Error fetching episode links:', error));
 
 
     var modal = document.getElementById("requestSeriesModal");
@@ -545,8 +532,7 @@ fetch(`${baseUrl}episodeLinks.json`)
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    const baseUrl = window.location.hostname.includes('github.io') ? '/LearnEnglish/' : '';
-fetch(`${baseUrl}episodeLinks.json`)
+  fetch('episodeLeLinks,json')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
