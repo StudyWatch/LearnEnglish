@@ -506,7 +506,7 @@ searchInputSeries.addEventListener("input", function() {
 
     loadFavorites();
 
- fetch('episodeLinks.json')
+ fetch('./episodeLinks.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
