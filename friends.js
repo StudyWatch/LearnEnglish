@@ -595,6 +595,8 @@ searchInputSeries.addEventListener("input", function() {
         let currentTvShowId, currentSeason, currentEpisode, currentDifficulty;
         let modalHistory = [];
         let currentWordTreasureModal = null;
+
+    
 function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty = 'easy') {
     currentTvShowId = tvShowId;
     currentSeason = season;
@@ -765,7 +767,6 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
     modal.style.display = "block";
 }
-
 
 
         
