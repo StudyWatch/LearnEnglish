@@ -325,30 +325,36 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    function handleSeriesClick() {
-        const seriesSection = document.getElementById('series-section');
-        const searchBarContainer = document.getElementById("searchBarContainer");
-        seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
-        searchBarContainer.style.display = 'flex';
-        seriesSection.style.display = 'block';
-        seriesSection.scrollIntoView({ behavior: 'smooth' });
-    }
+   function handleSeriesClick() {
+    const seriesSection = document.getElementById('series-section');
+    const searchBarContainer = document.getElementById("searchBarContainer");
+    seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
+    searchBarContainer.style.display = 'flex';
+    seriesSection.style.display = 'block';
 
-    const seriesButton = document.getElementById('to-series');
-    seriesButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        handleSeriesClick();
-    });
+    // Wait for the browser to render any changes
+    setTimeout(() => {
+        // Scroll to the very bottom of the section
+        seriesSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, 100);
+}
 
-    const searchInputSeries = document.getElementById("searchInputSeries");
-    const tvShowElements = document.querySelectorAll(".tv-show");
-    searchInputSeries.addEventListener("input", () => {
-        const searchTerm = searchInputSeries.value.toLowerCase();
-        tvShowElements.forEach((tvShow) => {
-            const title = tvShow.querySelector(".tv-show-title").textContent.toLowerCase();
-            tvShow.style.display = title.includes(searchTerm) ? "" : "none";
-        });
+const seriesButton = document.getElementById('to-series');
+seriesButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    handleSeriesClick();
+});
+
+const searchInputSeries = document.getElementById("searchInputSeries");
+const tvShowElements = document.querySelectorAll(".tv-show");
+searchInputSeries.addEventListener("input", () => {
+    const searchTerm = searchInputSeries.value.toLowerCase();
+    tvShowElements.forEach((tvShow) => {
+        const title = tvShow.querySelector(".tv-show-title").textContent.toLowerCase();
+        tvShow.style.display = title.includes(searchTerm) ? "" : "none";
     });
+});
+
 
     const tvShows = [
         { id: "friends", totalSeasons: 10, episodesPerSeason: [24, 24, 25, 24, 24, 25, 24, 24, 24, 18] },
