@@ -1642,12 +1642,16 @@ form button[type="submit"]:hover {
         z-index: 1000;
         padding: 10px;
     }
-    .tablink {
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-        margin: 5px 0;
-    }
+    #difficulty-tabs {
+    justify-content: space-around;
+  }
+
+  .tablink {
+    width: 100%; /* Use full width for smaller screens */
+    padding: 10px 5px; /* Larger padding for easier interaction */
+    margin-top: 10px; /* Adjusted margin */
+    font-size: 1.2rem; /* Larger font size for better readability */
+  }
     .tabcontent {
         display: none;
     }
