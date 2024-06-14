@@ -934,7 +934,7 @@ background: url(./website/background6.png) no-repeat center / cover;
 
 #series-section {
   display: none;
-  background-image: url('https://raw.githubusercontent.com/username/repo/branch/path/to/website/backgroundseries.webp'); /* החלף בנתיב לתמונת הרקע שלך */
+    background-image: url(./website/backgroundseries.webp); /* החלף בנתיב לתמונת הרקע שלך */
   background-size: cover;
   background-position: center;
   height: 100vh;
