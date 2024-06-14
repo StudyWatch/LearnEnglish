@@ -325,29 +325,33 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-
- function handleSeriesClick() {
+function handleSeriesClick() {
     const seriesSection = document.getElementById('series-section');
     const searchBarContainer = document.getElementById("searchBarContainer");
-    seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
-    searchBarContainer.style.display = 'flex';
+    // Ensure searchBarContainer is not null
+    if (searchBarContainer) {
+        seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
+        searchBarContainer.style.display = 'flex';
+    }
     seriesSection.style.display = 'block';
-    seriesSection.scrollIntoView({ behavior: 'smooth' });
+
+    // Delay scrolling to ensure the layout has updated
+    setTimeout(() => {
+        seriesSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, 150);  // Increased delay to 150ms
 }
 
-// Attaching the handler to both click and touchend events
 const seriesButton = document.getElementById('to-series');
 seriesButton.addEventListener('click', function(e) {
-    e.preventDefault();  // Prevents the default anchor click behavior
+    e.preventDefault();
     handleSeriesClick();
 });
 
 seriesButton.addEventListener('touchend', function(e) {
-    e.preventDefault();  // Prevents the default touch behavior
+    e.preventDefault();
     handleSeriesClick();
 });
 
-// Filtering functionality for search input
 const searchInputSeries = document.getElementById("searchInputSeries");
 const tvShowElements = document.querySelectorAll(".tv-show");
 searchInputSeries.addEventListener("input", function() {
@@ -357,6 +361,7 @@ searchInputSeries.addEventListener("input", function() {
         tvShow.style.display = title.includes(searchTerm) ? "" : "none";
     });
 });
+
 
 
     const tvShows = [
