@@ -764,7 +764,7 @@ background: url(./website/background6.png) no-repeat center / cover;
 
 .accessibility-menu {
   position: fixed;
-  top: 620px; /* שונה ל-300px כדי להוריד את הכפתור הרבה יותר למטה */
+  top: 580px; /* שונה ל-300px כדי להוריד את הכפתור הרבה יותר למטה */
   right: 8px;
   z-index: 1001;
 }
