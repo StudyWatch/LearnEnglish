@@ -546,7 +546,8 @@ searchInputSeries.addEventListener("input", function() {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-  fetch('episodeLeLinks,json')
+  fetch('
+episodeLinks.json')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
