@@ -325,44 +325,39 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
- function handleSeriesClick() {
-            const seriesSection = document.getElementById('series-section');
-            const searchBarContainer = document.getElementById("searchBarContainer");
-            if (searchBarContainer) {
-                seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
-                searchBarContainer.style.display = 'flex';
-            }
-            seriesSection.style.display = 'block';
+function handleSeriesClick() {
+    const seriesSection = document.getElementById('series-section');
+    const searchBarContainer = document.getElementById("searchBarContainer");
+    if (searchBarContainer) {
+        seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
+        searchBarContainer.style.display = 'flex';
+    }
+    seriesSection.style.display = 'block';
 
-            setTimeout(() => {
-                seriesSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
-            }, 100);  // Delay to ensure the browser finishes rendering the layout changes
-        }
+    setTimeout(() => {
+        seriesSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, 100);  // Delay to ensure the browser finishes rendering the layout changes
+}
 
-        // Attaching event listeners to both click and touchend to handle both desktop and mobile
-        const seriesButton = document.getElementById('to-series');
-        seriesButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            handleSeriesClick();
+// Attaching event listener to click to handle both desktop and mobile
+const seriesButton = document.getElementById('to-series');
+seriesButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    handleSeriesClick();
+});
+
+// Optional: Handling series search input filtering
+const searchInputSeries = document.getElementById("searchInputSeries");
+if (searchInputSeries) {
+    const tvShowElements = document.querySelectorAll(".tv-show");
+    searchInputSeries.addEventListener("input", () => {
+        const searchTerm = searchInputSeries.value.toLowerCase();
+        tvShowElements.forEach((tvShow) => {
+            const title = tvShow.querySelector(".tv-show-title").textContent.toLowerCase();
+            tvShow.style.display = title.includes(searchTerm) ? "" : "none";
         });
-
-        seriesButton.addEventListener('touchend', (e) => {
-            e.preventDefault();
-            handleSeriesClick();
-        });
-
-        // Optional: Handling series search input filtering
-        const searchInputSeries = document.getElementById("searchInputSeries");
-        if (searchInputSeries) {
-            const tvShowElements = document.querySelectorAll(".tv-show");
-            searchInputSeries.addEventListener("input", () => {
-                const searchTerm = searchInputSeries.value.toLowerCase();
-                tvShowElements.forEach((tvShow) => {
-                    const title = tvShow.querySelector(".tv-show-title").textContent.toLowerCase();
-                    tvShow.style.display = title.includes(searchTerm) ? "" : "none";
-                });
-            });
-        }
+    });
+}
 
         // Optional: Handling series search input filtering
        
