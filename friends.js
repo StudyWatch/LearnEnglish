@@ -769,47 +769,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
 
         
-            const testButton = modal.querySelector(".test-knowledge-button");
-            testButton.addEventListener('click', () => {
-                const activeDifficulty = modal.querySelector(".tablink.active").getAttribute("data-difficulty");
-                const vocabulary = getWordTreasure(tvShowId, season, episode, activeDifficulty);
-                openGameSelectionModal(vocabulary, modal);
-            });
-        
-            let exitButton = modal.querySelector(".exit-button");
-            if (!exitButton) {
-                exitButton = document.createElement("button");
-                exitButton.textContent = "יציאה";
-                exitButton.className = "exit-button";
-                exitButton.addEventListener("click", () => {
-                    modal.style.display = "none";
-                    if (prevModal) prevModal.style.display = "block";
-                });
-                modalContent.insertBefore(exitButton, modalContent.firstChild);
-            }
-        
-            // הוספת מאזין לכפתור לשינוי כיוון הטקסט
-            const toggleDirectionBtn = modalContent.querySelector(".toggle-direction-btn");
-            toggleDirectionBtn.addEventListener('click', () => {
-                if (modalContent.style.direction === 'ltr') {
-                    modalContent.style.direction = 'rtl';
-                    modalContent.style.textAlign = 'right';
-                } else {
-                    modalContent.style.direction = 'ltr';
-                    modalContent.style.textAlign = 'left';
-                }
-            });
-        
-            modal.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                    modalContent.innerHTML = ''; // מאתחל את התוכן כאשר המודל נסגר
-                    if (prevModal) prevModal.style.display = "block";
-                }
-            });
-        
-            modal.style.display = "block";
-        }
+           
         
         function openGameSelectionModal(vocabulary, prevModal) {
             prevModal.style.display = "none";
