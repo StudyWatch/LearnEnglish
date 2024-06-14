@@ -326,38 +326,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    function handleSeriesClick() {
+ function handleSeriesClick() {
     const seriesSection = document.getElementById('series-section');
     const searchBarContainer = document.getElementById("searchBarContainer");
-    // Ensure the searchBar is only moved if it's not already the first child
-    if (seriesSection.firstChild !== searchBarContainer) {
-        seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
-    }
+    seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
     searchBarContainer.style.display = 'flex';
     seriesSection.style.display = 'block';
-    // Delay scroll into view to ensure layout has stabilized
-    setTimeout(() => {
-        seriesSection.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    seriesSection.scrollIntoView({ behavior: 'smooth' });
 }
 
+// Attaching the handler to both click and touchend events
 const seriesButton = document.getElementById('to-series');
-// Listen for both click and touchend events
-seriesButton.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent the default click behavior
+seriesButton.addEventListener('click', function(e) {
+    e.preventDefault();  // Prevents the default anchor click behavior
     handleSeriesClick();
 });
 
-seriesButton.addEventListener('touchend', (e) => {
-    e.preventDefault(); // Prevent the default touch behavior
+seriesButton.addEventListener('touchend', function(e) {
+    e.preventDefault();  // Prevents the default touch behavior
     handleSeriesClick();
 });
 
+// Filtering functionality for search input
 const searchInputSeries = document.getElementById("searchInputSeries");
 const tvShowElements = document.querySelectorAll(".tv-show");
-searchInputSeries.addEventListener("input", () => {
+searchInputSeries.addEventListener("input", function() {
     const searchTerm = searchInputSeries.value.toLowerCase();
-    tvShowElements.forEach((tvShow) => {
+    tvShowElements.forEach(function(tvShow) {
         const title = tvShow.querySelector(".tv-show-title").textContent.toLowerCase();
         tvShow.style.display = title.includes(searchTerm) ? "" : "none";
     });
