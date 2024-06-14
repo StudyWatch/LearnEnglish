@@ -1621,8 +1621,8 @@ form button[type="submit"]:hover {
         overflow-x: hidden;
     }
     .modal {
-        width: 100%; /* מודל ברוחב מלא */
-        height: 100vh; /* מודל בגובה מלא */
+        width: 95%; /* מודל ברוחב קצת קטן יותר מהמסך */
+        height: 95vh; /* מודל בגובה קצת קטן יותר מהמסך */
         top: 51%; /* מודל מתחיל מהחלק העליון של המסך */
         border: none; /* אין גבולות */
         border-radius: 0; /* אין עיגול פינות */
@@ -1843,4 +1843,5 @@ form button[type="submit"]:hover {
         height: 30px; /* Smaller size */
     }
 }
+
 
