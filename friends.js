@@ -596,7 +596,7 @@ searchInputSeries.addEventListener("input", function() {
         let modalHistory = [];
         let currentWordTreasureModal = null;
         
-       function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty = 'easy') {
+   function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty = 'easy') {
     currentTvShowId = tvShowId;
     currentSeason = season;
     currentEpisode = episode;
@@ -613,18 +613,24 @@ searchInputSeries.addEventListener("input", function() {
         modal.style.display = "block";
     }
 
-    currentWordTreasureModal = modal;
     const modalContent = modal.querySelector(".modal-content");
-    modalContent.innerHTML = '';
+    modalContent.innerHTML = ''; // Clear previous content
 
     appendDirectionToggle(modalContent);
-    appendDifficultyTabs(modalContent);
-
+    appendDifficultyTabs(modalContent, difficulty);
     loadEpisodeLinks(tvShowId, season, episode, modal);
     loadContentForDifficulty(tvShowId, season, episode, difficulty, modal);
 
     setupEventListeners(modal, difficulty);
     showModal(modal, prevModal);
+}
+
+function createModal(id) {
+    const modal = document.createElement('div');
+    modal.id = id;
+    modal.className = 'modal';
+    document.body.appendChild(modal);
+    return modal;
 }
 
 function appendDirectionToggle(modalContent) {
@@ -633,21 +639,19 @@ function appendDirectionToggle(modalContent) {
             <button class="toggle-direction-btn">⇆</button>
         </div>
     `;
-    modalContent.innerHTML = directionToggleHtml;
+    modalContent.innerHTML += directionToggleHtml;
 }
 
-function appendDifficultyTabs(modalContent) {
+function appendDifficultyTabs(modalContent, initialDifficulty) {
     const difficultyTabsHtml = `
         <div id="difficulty-tabs" style="margin-bottom: 20px;">
             <button class="tablink" data-difficulty="easy">קל</button>
             <button class="tablink" data-difficulty="medium">בינוני</button>
             <button class="tablink" data-difficulty="hard">קשה</button>
         </div>
-        <div id="easy" class="tabcontent"></div>
-        <div id="medium" class="tabcontent" style="display: none;"></div>
-        <div id="hard" class="tabcontent" style="display: none;"></div>
     `;
     modalContent.innerHTML += difficultyTabsHtml;
+    modalContent.querySelector(`.tablink[data-difficulty='${initialDifficulty}']`).classList.add("active");
 }
 
 function loadEpisodeLinks(tvShowId, season, episode, modal) {
@@ -657,13 +661,13 @@ function loadEpisodeLinks(tvShowId, season, episode, modal) {
 }
 
 function generateLinkButtons(links) {
-    let html = '';
-    Object.keys(links).forEach(key => {
-        if (links[key].trim() !== "") {
-            html += createLinkButton(`לצפייה ב-${key}`, links[key], `${key}.png`);
+    let buttonsHtml = '';
+    Object.keys(links).forEach(platform => {
+        if (links[platform].trim() !== "") {
+            buttonsHtml += createLinkButton(`לצפייה ב-${platform}`, links[platform], `${platform}.png`);
         }
     });
-    return html;
+    return buttonsHtml;
 }
 
 function createLinkButton(platformText, url, imageName) {
@@ -675,30 +679,12 @@ function createLinkButton(platformText, url, imageName) {
     `;
 }
 
-function loadContentForDifficulty(tvShowId, season, episodeNum, difficulty, modal) {
-    const words = getWordTreasure(tvShowId, season, episodeNum, difficulty);
-    const targetDiv = modal.querySelector(`#${difficulty}`);
-    targetDiv.innerHTML = words.length > 0 ? words.map(wordItem => wordTemplate(wordItem)).join('') : "<p>No Words</p>";
-}
-
-function wordTemplate(item) {
-    const sentenceHighlighted = item.sentence.replace(new RegExp(item.word, 'gi'), `<span class="highlight">${item.word}</span>`);
-    return `
-        <div class="word-item">
-            <span class="word"><strong>${item.word}</strong></span> - 
-            <span class="translation">${item.translate}</span>
-            <p class="sentence">${sentenceHighlighted}</p>
-        </div>
-    `;
-}
-
 function setupEventListeners(modal, initialDifficulty) {
     modal.querySelectorAll(".tablink").forEach(tab => {
         tab.addEventListener("click", function() {
             switchTab(modal, this.getAttribute("data-difficulty"));
         });
     });
-    modal.querySelector(`.tablink[data-difficulty='${initialDifficulty}']`).classList.add("active");
 }
 
 function switchTab(modal, difficulty) {
@@ -715,6 +701,29 @@ function switchTab(modal, difficulty) {
         }
     });
     loadContentForDifficulty(currentTvShowId, currentSeason, currentEpisode, difficulty, modal);
+}
+
+function loadContentForDifficulty(tvShowId, season, episodeNum, difficulty, modal) {
+    const words = getWordTreasure(tvShowId, season, episodeNum, difficulty);
+    const targetDiv = modal.querySelector(`#${difficulty}`);
+    targetDiv.innerHTML = ''; // Clear existing content
+
+    if (words && words.length > 0) {
+        const wordsHtml = words.map(item => {
+            const sentenceHighlighted = item.sentence.replace(new RegExp(item.word, 'gi'), `<span class="highlight">${item.word}</span>`);
+            return `
+                <div class="word-item">
+                    <span class="word"><strong>${item.word}</strong></span> -
+                    <span class="translation">${item.translate}</span>
+                    <p class="sentence">${sentenceHighlighted}</p>
+                </div>
+            `;
+        }).join('');
+        targetDiv.innerHTML = `<h2>אוצר מילים - עונה ${season}, פרק ${episodeNum}:</h2>
+                               <div class="word-treasure-container">${wordsHtml}</div>`;
+    } else {
+        targetDiv.innerHTML = "<p>No Words</p>";
+    }
 }
         
             const testButton = modal.querySelector(".test-knowledge-button");
