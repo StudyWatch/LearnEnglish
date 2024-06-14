@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showDailyFact();
 
     // Define the function to display tips
-  function displayTips() {
+function displayTips() {
     const tips = [
         "רשימת מילים: לפני כל פרק, עבור על רשימת המילים שאתה עתיד ללמוד. זה יעזור לך להכיר ולזהות את המילים במהלך הצפייה.",
         "צפייה פעילה: כשאתה צופה בסדרה, שים לב במיוחד למילים וביטויים שלמדת. נסה להיות ממוקד ולהבין איך הם משולבים בדיאלוג.",
@@ -209,8 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "חשיבה באנגלית: נסה לחשוב על התוכן שראית באנגלית. זה יכול להיות מאתגר אך יעזור לך להפנים את השפה באופן יותר טבעי."
     ];
 
-    const tipsContainer = document.getElementById('tipsContainer');
-    tipsContainer.innerHTML = ""; // כדי לוודא שאין תוכן קודם
+    const tipsContainer = document.getElementById('tipsContainer'); // תוסיף את זה ב-HTML שלך
 
     tips.forEach(tip => {
         const tipElement = document.createElement('div');
