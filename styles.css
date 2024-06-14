@@ -1822,12 +1822,18 @@ form button[type="submit"]:hover {
   .penguin-container {
     display: none;
   }
+   #hamburgerBtn {
+      position: fixed;
+      top: 20px; /* התאם לגובה הרצוי */
+      left: 320px; /* התאם לצד הרצוי */
+    z-index: 1000; /* ודא שהכפתור יהיה מעל לשאר האלמנטים */
+}
 
   /* Smaller and repositioned accessibility and back-to-top buttons */
   .accessibility-menu {
     position: fixed;
     top: 500px; /* Adjusted position */
-    right: 8px;
+     left: 320px;
     z-index: 1001;
   }
 
