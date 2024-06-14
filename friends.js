@@ -596,8 +596,7 @@ searchInputSeries.addEventListener("input", function() {
         let modalHistory = [];
         let currentWordTreasureModal = null;
 
-    
-function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty = 'easy') {
+ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty = 'easy') {
     currentTvShowId = tvShowId;
     currentSeason = season;
     currentEpisode = episode;
@@ -628,7 +627,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
     modalContent.innerHTML = directionToggleHtml;
 
     const difficultyTabsHtml = `
-        <div id="difficulty-tabs" style="margin-bottom: 20px;">
+        <div id="difficulty-tabs" class="difficulty-tabs-fixed">
             <button class="tablink" data-difficulty="easy">קל</button>
             <button class="tablink" data-difficulty="medium">בינוני</button>
             <button class="tablink" data-difficulty="hard">קשה</button>
@@ -767,7 +766,6 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
     modal.style.display = "block";
 }
-
 
         
            
