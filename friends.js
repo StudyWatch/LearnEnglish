@@ -546,18 +546,20 @@ searchInputSeries.addEventListener("input", function() {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    fetch('./episodeLinks.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            window.episodeLinksData = data;
-            console.log("Episode Links Data Loaded:", data);
-        })
-        .catch(error => console.error('Error fetching episode links:', error));
+    const baseUrl = window.location.hostname.includes('github.io') ? '/LearnEnglish/' : '';
+fetch(`${baseUrl}episodeLinks.json`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        window.episodeLinksData = data;
+        console.log("Episode Links Data Loaded:", data);
+    })
+    .catch(error => console.error('Error fetching episode links:', error));
+
 
         
         let currentTvShowId, currentSeason, currentEpisode, currentDifficulty;
