@@ -352,17 +352,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // Optional: Handling series search input filtering
-        const searchInputSeries = document.getElementById("searchInputSeries");
-        if (searchInputSeries) {
-            const tvShowElements = document.querySelectorAll(".tv-show");
-            searchInputSeries.addEventListener("input", () => {
-                const searchTerm = searchInputSeries.value.toLowerCase();
-                tvShowElements.forEach((tvShow) => {
-                    const title = tvShow.querySelector(".tv-show-title").textContent.toLowerCase();
-                    tvShow.style.display = title.includes(searchTerm) ? "" : "none";
-                });
-            });
-        }
+       
+        
 const searchInputSeries = document.getElementById("searchInputSeries");
 const tvShowElements = document.querySelectorAll(".tv-show");
 searchInputSeries.addEventListener("input", () => {
