@@ -505,6 +505,8 @@ searchInputSeries.addEventListener("input", function() {
     }
 
     loadFavorites();
+
+    
  fetch('path/to/episodeLinks.json')
         .then(response => response.json())
         .then(data => {
@@ -512,6 +514,14 @@ searchInputSeries.addEventListener("input", function() {
             console.log("Episode Links Data Loaded:", data);
         })
         .catch(error => console.error('Error fetching episode links:', error));
+
+    document.querySelectorAll('.add-to-favorites-btn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            const type = this.dataset.type;
+            const identifier = this.dataset.identifier;
+            toggleFavorite(type, identifier, event);
+        });
+    });
 
     document.querySelectorAll('.add-to-favorites-btn').forEach(button => {
         button.addEventListener('click', function(event) {
@@ -546,8 +556,7 @@ searchInputSeries.addEventListener("input", function() {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-  fetch('
-episodeLinks.json')
+  fetch('episodeLinks.json')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
