@@ -596,7 +596,7 @@ searchInputSeries.addEventListener("input", function() {
         let modalHistory = [];
         let currentWordTreasureModal = null;
         
-   function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty = 'easy') {
+function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty = 'easy') {
     currentTvShowId = tvShowId;
     currentSeason = season;
     currentEpisode = episode;
@@ -725,6 +725,15 @@ function loadContentForDifficulty(tvShowId, season, episodeNum, difficulty, moda
         targetDiv.innerHTML = "<p>No Words</p>";
     }
 }
+
+function showModal(modal, prevModal) {
+    modal.style.display = "block";
+    if (prevModal) {
+        prevModal.style.display = "none";
+    }
+}
+
+
         
             const testButton = modal.querySelector(".test-knowledge-button");
             testButton.addEventListener('click', () => {
