@@ -1736,47 +1736,6 @@ form button[type="submit"]:hover {
     color: #007bff; /* צבע המילים המודגשות */
     font-weight: bold; /* משקל פונט למילים מודגשות */
 }
-.tablink {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    margin: 5px 0;
-}
-
-.tabcontent {
-    display: none;
-}
-
-.tabcontent.active {
-    display: block;
-}
-
-.test-knowledge-button {
-    margin-top: 20px;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.episode-links {
-    margin-top: 20px;
-}
-
-.link-button {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #333;
-}
-
-.link-button img {
-    margin-right: 10px;
-}
-
 
 .episode-button {
     padding: 5px;
