@@ -1825,7 +1825,7 @@ form button[type="submit"]:hover {
    #hamburgerBtn {
       position: fixed;
       top: 40px; /* התאם לגובה הרצוי */
-      left: 90%; /* התאם לצד הרצוי */
+      left: 270px; /* התאם לצד הרצוי */
     z-index: 1000; /* ודא שהכפתור יהיה מעל לשאר האלמנטים */
 }
 
@@ -1833,7 +1833,7 @@ form button[type="submit"]:hover {
   .accessibility-menu {
     position: fixed;
     top: 600px; /* Adjusted position */
-     left: 90%;
+     left: 270px;
     z-index: 1001;
   }
 
