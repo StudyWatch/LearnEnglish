@@ -324,7 +324,9 @@ document.addEventListener("DOMContentLoaded", () => {
     backToTopButton.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-function handleSeriesClick() {
+
+
+    function handleSeriesClick() {
     const seriesSection = document.getElementById('series-section');
     const searchBarContainer = document.getElementById("searchBarContainer");
     // Ensure the searchBar is only moved if it's not already the first child
@@ -360,7 +362,6 @@ searchInputSeries.addEventListener("input", () => {
         tvShow.style.display = title.includes(searchTerm) ? "" : "none";
     });
 });
-
 
 
     const tvShows = [
