@@ -208,15 +208,16 @@ function displayTips() {
         "שימוש ביומן: רשום ביומן את התובנות והשאלות שלך לגבי הלמידה. זה יעזור לך לעקוב אחרי ההתקדמות ולהתמיד בלמידה.",
         "חשיבה באנגלית: נסה לחשוב על התוכן שראית באנגלית. זה יכול להיות מאתגר אך יעזור לך להפנים את השפה באופן יותר טבעי."
     ];
-
-    const tipsContainer = document.getElementById('tipsContainer'); // תוסיף את זה ב-HTML שלך
-
+    const tipsContainer = document.querySelector('.tips-container');
+    tipsContainer.innerHTML = '';
     tips.forEach(tip => {
         const tipElement = document.createElement('div');
-        tipElement.textContent = tip;
+        tipElement.classList.add('tip-card');
+        tipElement.innerHTML = `<p>${tip}</p>`;
         tipsContainer.appendChild(tipElement);
     });
 }
+
 
 
     function openTipsModal() {
