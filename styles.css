@@ -1825,15 +1825,15 @@ form button[type="submit"]:hover {
    #hamburgerBtn {
       position: fixed;
       top: 40px; /* התאם לגובה הרצוי */
-      left: 270px; /* התאם לצד הרצוי */
+      left: 300px; /* התאם לצד הרצוי */
     z-index: 1000; /* ודא שהכפתור יהיה מעל לשאר האלמנטים */
 }
 
   /* Smaller and repositioned accessibility and back-to-top buttons */
   .accessibility-menu {
     position: fixed;
-    top: 600px; /* Adjusted position */
-     left: 270px;
+    top: 500px; /* Adjusted position */
+     left: 300px;
     z-index: 1001;
   }
 
@@ -1844,7 +1844,7 @@ form button[type="submit"]:hover {
 
   .back-to-top-button {
     bottom: 50px; /* Adjusted position */
-    right: 10px;
+    right: 10%;
     width: 40px; /* Smaller size */
     height: 40px; /* Smaller size */
     font-size: 10px; /* Smaller font size */
