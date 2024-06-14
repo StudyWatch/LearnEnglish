@@ -505,7 +505,21 @@ searchInputSeries.addEventListener("input", function() {
     }
 
     loadFavorites();
+ fetch('path/to/episodeLinks.json')
+        .then(response => response.json())
+        .then(data => {
+            window.episodeLinksData = data;
+            console.log("Episode Links Data Loaded:", data);
+        })
+        .catch(error => console.error('Error fetching episode links:', error));
 
+    document.querySelectorAll('.add-to-favorites-btn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            const type = this.dataset.type;
+            const identifier = this.dataset.identifier;
+            toggleFavorite(type, identifier, event);
+        });
+    });
 
 
     var modal = document.getElementById("requestSeriesModal");
