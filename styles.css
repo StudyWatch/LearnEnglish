@@ -1867,5 +1867,12 @@ form button[type="submit"]:hover {
     width: 30px; /* Smaller size */
     height: 30px; /* Smaller size */
   }
-  
+    .tablink {
+        font-size: 0.9em;
+        padding: 8px 10px;
+    }
+    
+    .word-item {
+        font-size: 1em;
+    }
 }
