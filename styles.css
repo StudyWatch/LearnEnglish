@@ -1741,33 +1741,34 @@ form button[type="submit"]:hover {
 .episode-button:active {
     transform: none;
 }
-  .bottom-section {
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
+.bottom-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  width: 100%;
+  margin-top: -20px; /* הקטן את המרווח מלמעלה להעלות את הסקשיין */
+  padding: 5px 0;
+}
 
-  .shortcut-rectangle {
-    flex-basis: 35%;
-    margin-bottom: 25px;
-    width: 70vh;
-    height: 15vh;
-    flex-shrink: 0;
-    margin-right: -30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.shortcut-rectangle {
+  flex-basis: 30%;
+  margin: 10px 2%;
+  width: calc(100% - 10px);
+  height: 30vh; /* גובה גדול יותר להגדלת התמונות */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
 
-  .bottom-section img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    max-height: 120px;
-  }
+.bottom-section img {
+  max-width: 100%;
+  height: 100%; /* גובה מלא של המלבן, מתאים את עצמו לגובה המלבן */
+  object-fit: cover; /* מבטיח שהתמונה תמלא את המלבן ללא חתכים */
+}
+
 
   body, button, input[type="text"] {
     font-size: 10px;
