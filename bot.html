@@ -3,7 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <title>Series Recommendation Bot</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        .back-to-home-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 20px 40px; /* Increased padding for larger buttons */
+            background-color: #ff5733; /* Change to a more visible color */
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 24px; /* Larger font size for readability */
+        }
+
+        .back-to-home-button:hover {
+            background-color: #c70039; /* Darker when mouse hover */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #282c34;
+            color: #ffffff; /* Change to white for better contrast */
+            text-align: center;
+            padding: 60px;
+            margin: 0;
+            background: url('./img/pingbot.png') no-repeat center / cover;
+            background-size: cover;
+            background-position: center center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensures the body takes at least full viewport height */
+        }
+
+        h2 {
+            font-weight: normal;
+            font-size: 36px; /* Larger font size for readability */
+            color: #ffffff; /* Change to white for better contrast */
+        }
+
+        p {
+            font-size: 24px; /* Larger font size for readability */
+            color: #ffffff; /* Change to white for better contrast */
+        }
+
+        select, button {
+            margin: 15px 0;
+            padding: 30px 60px; /* Increased padding for larger buttons */
+            border-radius: 20px;
+            border: 2px solid #090a0a;
+            outline: none;
+            font-size: 24px; /* Larger font size for readability */
+            color: #ffffff;
+            background-color: #ff5733; /* Change to a more visible color */
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        select:hover, button:hover {
+            background-color: #c70039; /* Darker when mouse hover */
+            color: #ffffff;
+            border: 2px solid #ff5733;
+        }
+
+        #recommendation {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #080b0c;
+            color: #ffffff;
+            display: inline-block;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 24px; /* Larger font size for better readability on mobile */
+        }
+
+        .bot-image {
+            width: 240px; /* Increased size for better visibility */
+            height: auto;
+            display: block;
+            margin: 0 auto 30px auto;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .bot-image:hover {
+            transform: scale(1.1);
+        }
+
+        @media only screen and (max-width: 800px) {
+            body {
+                background-image: url('./img/pingbot.png'); /* Replace with the mobile background image URL */
+                background-size: cover; /* Ensure the background image covers the whole screen */
+                background-position: center center;
+                padding: 20px; /* Reduce padding for smaller screens */
+            }
+
+            h2, p, select, button, #recommendation {
+                font-size: 28px; /* Larger text size for readability on mobile */
+                font-weight: bold; /* Make text bolder */
+            }
+
+            select, button {
+                padding: 30px 70px; /* Larger buttons for mobile */
+            }
+
+            #recommendation {
+                font-size: 28px; /* Even larger font size for mobile to ensure readability */
+                padding: 30px; /* Increase padding for better readability */
+            }
+        }
+    </style>
 </head>
 <body>
     <a href="index.html" class="back-to-home-button">חזור לדף הבית</a>
