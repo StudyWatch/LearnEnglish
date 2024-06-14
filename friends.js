@@ -492,7 +492,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadFavorites();
 
-    fetch('path/to/episodeLinks.json')
+   fetch('./episodeLinks.json')
         .then(response => response.json())
         .then(data => {
             window.episodeLinksData = data;
