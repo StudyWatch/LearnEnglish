@@ -1623,7 +1623,8 @@ form button[type="submit"]:hover {
     .modal {
         width: 95%; /* מודל ברוחב קצת קטן יותר מהמסך */
         height: 95vh; /* מודל בגובה קצת קטן יותר מהמסך */
-        top: 51%; /* מודל מתחיל מהחלק העליון של המסך */
+        top: 50%; /* מודל מתחיל מהחלק העליון של המסך */
+        transform: translateY(-50%); /* מרכז את המודל אנכית */
         border: none; /* אין גבולות */
         border-radius: 0; /* אין עיגול פינות */
         overflow: hidden; /* מונע גלילה כפולה */
@@ -1631,7 +1632,7 @@ form button[type="submit"]:hover {
     .modal-content {
         height: 100%; /* תוכן המודל ממלא את המודל */
         border-radius: 0; /* אין עיגול פינות לתוכן */
-        padding-top: 30px !important; /* הכרחי להשיג רווח רצוי בחלק העליון */
+        padding-top: 10px !important; /* הכרחי להשיג רווח רצוי בחלק העליון */
         display: flex;
         flex-direction: column;
     }
@@ -1683,7 +1684,7 @@ form button[type="submit"]:hover {
     }
     .grid-container, .word-treasure-container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* שתי עמודות */
+        grid-template-columns: 1fr; /* עמודה אחת */
         overflow-y: auto; /* אפשרות לגלילה אנכית אם יש הרבה תוכן */
         flex-grow: 1; /* הגריד יתפשט לכל המקום הזמין */
         padding: 10px; /* רווח בפנים */
@@ -1696,12 +1697,6 @@ form button[type="submit"]:hover {
         height: 50px; /* גובה הכפתור */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* הוספת צל לבולטות */
         border: 1px solid black; /* מסגרת שחורה דקה להבלטה נוספת */
-    }
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* שתי עמודות בלבד */
-        gap: 5px; /* מרווח קטן יותר */
-        padding: 5px;
     }
     button.episode-button {
         padding: 12px; /* ריווח גדול יותר לנוחות */
@@ -1725,16 +1720,6 @@ form button[type="submit"]:hover {
         font-size: 20px; /* גודל הכתב למילים מודגשות */
         color: #007bff; /* צבע המילים המודגשות */
         font-weight: bold; /* משקל פונט למילים מודגשות */
-    }
-    .episode-button {
-        padding: 5px;
-        font-size: 10px;
-    }
-    .episode-button:hover {
-        transform: none;
-    }
-    .episode-button:active {
-        transform: none;
     }
     .bottom-section {
         display: flex;
