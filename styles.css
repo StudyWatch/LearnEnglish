@@ -1824,7 +1824,7 @@ form button[type="submit"]:hover {
   }
    #hamburgerBtn {
       position: fixed;
-      top: 20px; /* התאם לגובה הרצוי */
+      top: 40px; /* התאם לגובה הרצוי */
       left: 320px; /* התאם לצד הרצוי */
     z-index: 1000; /* ודא שהכפתור יהיה מעל לשאר האלמנטים */
 }
