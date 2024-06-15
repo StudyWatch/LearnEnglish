@@ -1761,7 +1761,7 @@ form button[type="submit"]:hover {
     flex-basis: 100%;
     margin: 10px 0;
     width: 100%;
-    height: auto;
+    height: 150px; /* גובה מוגדל */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1781,7 +1781,7 @@ form button[type="submit"]:hover {
     height: auto;
     object-fit: contain;
     display: block;
-    max-height: 120px;
+    max-height: 140px;
   }
 
   body, button, input[type="text"] {
