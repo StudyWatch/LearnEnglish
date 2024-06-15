@@ -1624,7 +1624,6 @@ form button[type="submit"]:hover {
     font-size: 14px;
     overflow-x: hidden;
   }
-
   .modal {
     width: 100%; /* מודל ברוחב מלא */
     height: 100vh; /* מודל בגובה מלא */
@@ -1633,7 +1632,6 @@ form button[type="submit"]:hover {
     border-radius: 0; /* אין עיגול פינות */
     overflow: hidden; /* מונע גלילה כפולה */
   }
-
   .grid-container, .word-treasure-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* שתי עמודות */
@@ -1642,7 +1640,6 @@ form button[type="submit"]:hover {
     padding: 10px; /* רווח בפנים */
     gap: 5px; /* מרווח בין כפתורים */
   }
-
   .modal-content {
     height: 100%; /* תוכן המודל ממלא את המודל */
     border-radius: 0; /* אין עיגול פינות לתוכן */
@@ -1650,7 +1647,6 @@ form button[type="submit"]:hover {
     display: flex;
     flex-direction: column;
   }
-
   .memory-game-button, .restart-btn, .play-again-btn, .back-to-games-btn {
     padding: 5px 10px; /* פדינג מתאים */
     font-size: 10px; /* גודל פונט קטן יותר */
@@ -1659,32 +1655,27 @@ form button[type="submit"]:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* הוספת צל לבולטות */
     border: 1px solid black; /* מסגרת שחורה דקה להבלטה נוספת */
   }
-
   .grid-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* מנסה להכיל 5 טורים */
     gap: 1px; /* מקטין את הרווח בין טורים ושורות למינימום */
   }
-
   .memory-card {
     height: 60px; /* מקטין את הגובה */
     width: 40px; /* מקטין את הרוחב של כל קלף כדי להתאים לטור */
     margin: 1px; /* מקטין את הרווחים סביב הקלפים */
     font-size: 10px; /* מקטין את גודל הפונט בתוך קלף */
   }
-
   /* כפתורי ניווט במודלים */
   .exit-button, .close, #back-to-word-treasure {
     font-size: 16px; /* קטן יותר */
     padding: 8px; /* קטן יותר */
   }
-
   /* תיקון כללי לתצוגת מודל */
   .modal-content {
     padding: 10px; /* פדינג קטן יותר */
     width: 90%; /* הקטנת רוחב המודל */
   }
-
   /* תיקון לכפתורים תחתונים כגון back-to-top וכו' */
   .back-to-top-button, .feedback-button {
     font-size: 10px; /* קטן יותר */
@@ -1692,132 +1683,114 @@ form button[type="submit"]:hover {
     width: 30px; /* קטן יותר */
     height: 30px; /* קטן יותר */
   }
-
   .exit-button {
     align-self: flex-end; /* כפתור היציאה בצד ימין למעלה */
     margin: 10px; /* רווח סביב כפתור היציאה */
     font-size: 24px; /* גודל פונט גדול יותר לנגישות */
   }
-
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* שתי עמודות בלבד */
+    gap: 5px; /* מרווח קטן יותר */
+    padding: 5px;
+  }
   button.episode-button {
     padding: 12px; /* ריווח גדול יותר לנוחות */
     font-size: 16px; /* גודל פונט גדול יותר לקריאות */
   }
-
   .word-treasure-container {
     font-size: 18px; /* שנה לגודל הכתב הרצוי */
     line-height: 1.5; /* להבטיח שהטקסט יהיה קריא */
     padding: 10px; /* ריווח פנימי לאלמנט */
   }
-
   .word-treasure-container h2 {
     font-size: 24px; /* גודל הכתב לכותרות */
     font-weight: bold;
     margin-bottom: 10px; /* רווח תחתון לכותרת */
   }
-
   .word-treasure-container p {
     font-size: 18px; /* גודל הכתב לפסקאות */
     margin-bottom: 10px; /* רווח תחתון לפסקאות */
   }
-
   .word-treasure-container .highlight {
     font-size: 20px; /* גודל הכתב למילים מודגשות */
     color: #007bff; /* צבע המילים המודגשות */
     font-weight: bold; /* משקל פונט למילים מודגשות */
   }
-
   .episode-button {
     padding: 5px;
     font-size: 10px;
   }
-
   .episode-button:hover {
     transform: none;
   }
-
   .episode-button:active {
     transform: none;
   }
-
   .bottom-section {
     display: flex;
     flex-direction: row;
-    justify-content: space-around; /* מבטיח חלוקה שווה של המקום */
+    justify-content: space-around; /* מרכז את המלבנים */
     align-items: center;
-    background-color: #000; /* הגדרת רקע כהה לכל הקטע התחתון */
-    padding: 5px 0; /* מרווח קטן בין המלבנים */
-    width: 100%; /* מתאים לרוחב המלא */
-    overflow-x: scroll; /* מאפשר גלילה אופקית */
+    overflow-x: hidden;
+    background: transparent;
+    padding: 0;
+    width: 100%;
+    height: auto;
   }
-
   .shortcut-rectangle {
-    flex: 0 0 30%; /* אחוז רוחב קבוע לכל מלבן */
-    margin: 5px; /* מרווח קטן בין המלבנים */
-    background-color: #444; /* רקע כהה יותר למלבן כל אחד */
-    height: 100px; /* גובה קבוע למלבנים */
-    color: white; /* צבע טקסט לבן */
+    flex-basis: 30%; /* מקטין את רוחב המלבנים */
+    margin: 0; /* מסיר את הרווחים */
+    height: auto;
     display: flex;
-    justify-content: center;
     align-items: center;
-    border-radius: 5px; /* פינות מעוגלות למראה חלק יותר */
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* הוספת צל להבלטה */
+    justify-content: center;
+    background: #333;
   }
-
-  .shortcut-rectangle img {
-    max-width: 80%; /* מתאים את רוחב התמונה לאחוז קבוע מהמלבן */
-    height: auto; /* גובה אוטומטי לשמירה על יחסי הממדים */
-    margin-bottom: 0; /* אין רווח למטה */
-  }
-
   .shortcut-rectangle p {
-    font-size: 12px; /* גודל פונט מותאם */
-    margin: 0; /* אין שוליים */
-    text-align: center; /* יישור טקסט למרכז */
+    font-size: 12px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-
+  .bottom-section img {
+    width: 100%; /* רוחב התמונות */
+    height: auto;
+    object-fit: contain;
+    display: block;
+    max-height: 80px; /* גובה התמונות */
+  }
   body, button, input[type="text"] {
     font-size: 10px;
   }
-
   header, .bottom-section a, .tv-show-title {
-    font-size: 12px; /* גודל פונט מותאם לכותרות ולינקים */
+    font-size: 12px;
   }
-
   .shortcut-rectangle img {
-    width: 100%; /* מתאים את רוחב התמונה לאחוז קבוע מהמלבן */
-    height: auto; /* גובה אוטומטי לשמירה על יחסי הממדים */
-    margin-bottom: 0; /* אין רווח למטה */
+    width: 100%; /* מתאים את הרוחב */
+    height: auto;
+    margin-bottom: -10px;
   }
-
-  .shortcut-rectangle p {
-    font-size: 1em;
-  }
-
   .shortcut-rectangle:not(#to-bot):not(#to-series):not(#to-tips) {
     display: none;
   }
-
   #searchBarContainer .search-bar {
     width: 90%;
     margin: 10px auto;
   }
-
   #searchInputSeries {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
   }
-
   .cool-window {
     display: none;
   }
-
   /* Hide penguin on mobile */
   .penguin-container {
     display: none;
   }
-
   /* Smaller and repositioned accessibility and back-to-top buttons */
   .accessibility-menu {
     position: fixed;
@@ -1825,12 +1798,10 @@ form button[type="submit"]:hover {
     right: 8px;
     z-index: 1001;
   }
-
   #accessibilityBtn img {
     width: 30px; /* Smaller size */
     height: auto;
   }
-
   .back-to-top-button {
     position: fixed;
     bottom: 20px;
@@ -1842,7 +1813,6 @@ form button[type="submit"]:hover {
     cursor: pointer;
     display: none; /* עשוי להיות מוסתר כברירת מחדל */
   }
-
   /* Responsive navbar */
   .navbar-container {
     display: flex;
@@ -1850,17 +1820,14 @@ form button[type="submit"]:hover {
     align-items: flex-start;
     padding: 10px;
   }
-
   .nav-link {
     font-size: 12px; /* Smaller font size */
     padding: 5px 10px; /* Smaller padding */
   }
-
   .nav-icon {
     width: 30px; /* Smaller size */
     height: 30px; /* Smaller size */
   }
-
   #difficulty-tabs {
     position: fixed; /* יישאר במיקום קבוע */
     top: 70px; /* מתחת לכפתור היציאה */
@@ -1872,7 +1839,6 @@ form button[type="submit"]:hover {
     justify-content: space-around;
     padding: 0; /* ביטול הרווח מסביב */
   }
-
   .tablink {
     flex: 1;
     padding: 5px;
@@ -1882,7 +1848,6 @@ form button[type="submit"]:hover {
     background: none;
     font-size: 16px;
   }
-
   .tablink.active {
     background: lightgray !important; /* צבע רקע לכפתור הפעיל */
   }
