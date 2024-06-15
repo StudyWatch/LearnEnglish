@@ -632,8 +632,8 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
             <button class="tablink" data-difficulty="hard">קשה</button>
         </div>
         <div id="easy" class="tabcontent"></div>
-        <div id="medium" class="tabcontent" style="display: none;"></div>
-        <div id="hard" class="tabcontent" style="display: none;"></div>
+        <div id="medium" class="tabcontent"></div>
+        <div id="hard" class="tabcontent"></div>
         <button class="test-knowledge-button">בחן את הידע שלך</button>
         <div id="episode-links" class="episode-links">
             <h3>קישורים לפרק:</h3>
@@ -708,6 +708,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
     loadContentForDifficulty(tvShowId, season, episode, difficulty); 
     modal.querySelector(`.tablink[data-difficulty='${difficulty}']`).classList.add("active");
+    modal.querySelector(`#${difficulty}`).style.display = "block"; // Ensure the selected difficulty tab is shown
 
     modal.querySelectorAll(".tablink").forEach(tab => {
         tab.addEventListener("click", function() {
@@ -765,6 +766,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
     modal.style.display = "block";
 }
+
 
         
         function openGameSelectionModal(vocabulary, prevModal) {
