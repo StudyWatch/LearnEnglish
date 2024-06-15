@@ -1729,18 +1729,18 @@ form button[type="submit"]:hover {
     align-items: center;
     overflow-x: hidden; /* מונע גלילה אופקית */
     background: transparent; /* הסרת רקע לבן */
-    margin-top: -5px; /* מתקן את המיקום למעלה */
+    margin-top: -11px; /* מתקן את המיקום למעלה */
     padding: 0;
     width: 100%; /* מתאים את הרוחב לרוחב המסך */
     height: auto; /* גובה אוטומטי מותאם לתוכן */
 }
   .shortcut-rectangle {
     flex-basis: 35%;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     width: 70vw;
     height: 10vh;
     flex-shrink: 0;
-    margin-right: -25px;
+    margin-right: -37px;
     display: flex;
     align-items: center;
     justify-content: center;
