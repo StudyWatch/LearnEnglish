@@ -1,16 +1,5 @@
-import friendsItemList from "./series json/friends.json" assert { type: "json" };
-import howItemList from "./series json/himym.json" assert { type: "json" };
-import the100itemList from "./series json/the100.json" assert { type: "json" };
-import bigbang from "./series json/bigbang.json" assert { type: "json" };
-import simpsons from "./series json/simpsons.json" assert { type: "json" };
-import brooklyn99 from "./series json/brooklyn99.json" assert { type: "json" };
-import modernfamily from "./series json/modern.json" assert { type: "json" };
-import BigmouthItemList from "./series json/bigmouth.json" assert { type: "json" };
-import newgirlItemList from "./series json/newgirl.json" assert { type: "json" };
-import seinfeldItemList from "./series json/seinfeld.json" assert { type: "json" };
-import thegoodplaceItemList from "./series json/thegoodplace.json" assert { type: "json" };
-import theofficeItemList from "./series json/theoffice.json" assert { type: "json" };
-document.addEventListener('DOMContentLoaded', () => {
+
+document.addEventListener('DOMContentLoaded', async () => {
     const feedbackButton = document.getElementById('feedbackButton');
     const feedbackModal = document.getElementById('feedbackModal');
     const closeModalButton = feedbackModal.querySelector('.close');
@@ -18,6 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToTopButton = document.querySelector('.back-to-top-button');
 
     const hideButtonScrollThreshold = 100; // Adjust this value as needed
+
+    // Fetch JSON data
+    const friendsItemList = await fetch('./series json/friends.json').then(response => response.json());
+    const howItemList = await fetch('./series json/himym.json').then(response => response.json());
+    const the100itemList = await fetch('./series json/the100.json').then(response => response.json());
+    const bigbang = await fetch('./series json/bigbang.json').then(response => response.json());
+    const simpsons = await fetch('./series json/simpsons.json').then(response => response.json());
+    const brooklyn99 = await fetch('./series json/brooklyn99.json').then(response => response.json());
+    const modernfamily = await fetch('./series json/modern.json').then(response => response.json());
+    const BigmouthItemList = await fetch('./series json/bigmouth.json').then(response => response.json());
+    const newgirlItemList = await fetch('./series json/newgirl.json').then(response => response.json());
+    const seinfeldItemList = await fetch('./series json/seinfeld.json').then(response => response.json());
+    const thegoodplaceItemList = await fetch('./series json/thegoodplace.json').then(response => response.json());
+    const theofficeItemList = await fetch('./series json/theoffice.json').then(response => response.json());
 
     feedbackButton.addEventListener('click', () => {
         feedbackModal.style.display = 'flex';
@@ -64,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial check to ensure the button is displayed correctly on page load
     toggleFeedbackButton();
 });
-;
 
+// Additional DOMContentLoaded event listener setup...
 document.addEventListener("DOMContentLoaded", () => {
     const hamburgerBtn = document.getElementById("hamburgerBtn");
     const navbar = document.getElementById("navbar");
@@ -140,37 +143,36 @@ document.addEventListener("DOMContentLoaded", () => {
         element.classList.toggle('visible');
     }
 
-  const didYouKnowFacts = [
-    { word: "Elixir", explanation: "משקה קסום שמעניק חיי נצח או מרפא לכל מחלה. מקורה בערבית, 'al-iksir' שפירושו אבן החכמים." },
-    { word: "Phoenix", explanation: "עוף החול המיתולוגי שמתחדש מחורבותיו. מקור המילה במיתולוגיה היוונית." },
-    { word: "Renaissance", explanation: "תקופת התחדשות תרבותית ואומנותית באירופה. מקורה בלטינית, 'renasci' שפירושו להיוולד מחדש." },
-    { word: "Labyrinthine", explanation: "מסובך ומבוך. מקורה במיתוס היווני של המינוטאור." },
-    { word: "Nefarious", explanation: "רע ומרושע. מקורה בלטינית, 'nefas' שפירושו פשע גדול." },
-    { word: "Esoteric", explanation: "ידוע למעטים בלבד. מקורה ביוונית, 'esoterikos' שפירושו פנימי." },
-    { word: "Abyss", explanation: "תהום אין סופית. מקורה ביוונית, 'abyssos' שפירושו ללא תחתית." },
-    { word: "Gossamer", explanation: "דק ועדין כמו קורי עכביש. מקורה באנגלית תיכונה, 'goose summer' בגלל קורי העכביש שמופיעים באוויר בסתיו." },
-    { word: "Zephyr", explanation: "רוח קלילה ונעימה. מקורה במיתולוגיה היוונית, שם 'זפירוס' היה אל הרוח המערבית." },
-    { word: "Obsidian", explanation: "סוג של זכוכית געשית. מקורה בלטינית, שם 'obsidianus' נכתב על פי האגדה על Obsius שגילה אותה." },
-    { word: "Lethargy", explanation: "עייפות רבה או שינה עמוקה. מקורה במיתולוגיה היוונית, שם נהר 'Lethe' היה נהר השכחה." },
-    { word: "Pandemonium", explanation: "כאוס ובלגן גדול. מקורה בלטינית, 'pan' פירושו הכל ו-'demonium' שפירושו שדים. תואר זה ניתן לעיר השדים ביצירתו של מילטון, 'גן עדן האבוד'." },
-    { word: "Cacophony", explanation: "רעש צורם ולא נעים. מקורה ביוונית, 'kakophonia' שפירושו צליל רע." },
-    { word: "Mirage", explanation: "אשליה אופטית במדבר. מקורה בצרפתית, 'mirer' שפירושו להסתכל." },
-    { word: "Ethereal", explanation: "אוורירי ועדין כאלמנט שמימי. מקורה ביוונית, 'aither' שפירושו שמיים." },
-    { word: "Maelstrom", explanation: "מערבולת חזקה בים. מקורה בהולנדית, 'malen' שפירושו לטחון ו-'stroom' שפירושו זרם." },
-    { word: "Nebula", explanation: "ענן גז בחלל. מקורה בלטינית, 'nebula' שפירושו ערפל." },
-    { word: "Eclipse", explanation: "ליקוי. מקורה ביוונית, 'ekleipsis' שפירושו נטישה." },
-    { word: "Chimera", explanation: "יצור מיתולוגי שמורכב מחלקי גוף של חיות שונות. מקורה במיתולוגיה היוונית." },
-    { word: "Aurora", explanation: "זוהר צפוני. מקורה ברומית, שם אורורה הייתה אלת השחר." },
-    { word: "Horizon", explanation: "קו שבו השמיים והארץ נפגשים. מקורה ביוונית, 'horizōn' שפירושו להגביל." },
-    { word: "Turbulence", explanation: "תנועה סוערת באוויר או מים. מקורה בלטינית, 'turbulentus' שפירושו סוער." },
-    { word: "Cascade", explanation: "מפל מים קטן. מקורה בלטינית, 'cascare' שפירושו ליפול." },
-    { word: "Myriad", explanation: "מספר גדול מאוד. מקורה ביוונית, 'myrios' שפירושו עשרת אלפים." },
-    { word: "Tranquility", explanation: "שלווה ורוגע. מקורה בלטינית, 'tranquillitas' שפירושו שקט." },
-    { word: "Tempest", explanation: "סערה חזקה. מקורה בלטינית, 'tempestas' שפירושו מזג אוויר סוער." },
-    { word: "Tapestry", explanation: "שטיח קיר עם ציורים. מקורה בצרפתית, 'tapisserie' שפירושו שטיח." },
-    { word: "Nebulous", explanation: "מעורפל ולא ברור. מקורה בלטינית, 'nebulosus' שפירושו מעורפל." }
-];
-
+    const didYouKnowFacts = [
+        { word: "Elixir", explanation: "משקה קסום שמעניק חיי נצח או מרפא לכל מחלה. מקורה בערבית, \"al-iksir\" שפירושו אבן החכמים." },
+        { word: "Phoenix", explanation: "עוף החול המיתולוגי שמתחדש מחורבותיו. מקור המילה במיתולוגיה היוונית." },
+        { word: "Renaissance", explanation: "תקופת התחדשות תרבותית ואומנותית באירופה. מקורה בלטינית, \"renasci\" שפירושו להיוולד מחדש." },
+        { word: "Labyrinthine", explanation: "מסובך ומבוך. מקורה במיתוס היווני של המינוטאור." },
+        { word: "Nefarious", explanation: "רע ומרושע. מקורה בלטינית, \"nefas\" שפירושו פשע גדול." },
+        { word: "Esoteric", explanation: "ידוע למעטים בלבד. מקורה ביוונית, \"esoterikos\" שפירושו פנימי." },
+        { word: "Abyss", explanation: "תהום אין סופית. מקורה ביוונית, \"abyssos\" שפירושו ללא תחתית." },
+        { word: "Gossamer", explanation: "דק ועדין כמו קורי עכביש. מקורה באנגלית תיכונה, \"goose summer\" בגלל קורי העכביש שמופיעים באוויר בסתיו." },
+        { word: "Zephyr", explanation: "רוח קלילה ונעימה. מקורה במיתולוגיה היוונית, שם \"זפירוס\" היה אל הרוח המערבית." },
+        { word: "Obsidian", explanation: "סוג של זכוכית געשית. מקורה בלטינית, שם \"obsidianus\" נכתב על פי האגדה על Obsius שגילה אותה." },
+        { word: "Lethargy", explanation: "עייפות רבה או שינה עמוקה. מקורה במיתולוגיה היוונית, שם נהר \"Lethe\" היה נהר השכחה." },
+        { word: "Pandemonium", explanation: "כאוס ובלגן גדול. מקורה בלטינית, \"pan\" פירושו הכל ו-\"demonium\" שפירושו שדים, תואר זה ניתן לעיר השדים ביצירתו של מילטון, \"גן עדן האבוד\"." },
+        { word: "Cacophony", explanation: "רעש צורם ולא נעים. מקורה ביוונית, \"kakophonia\" שפירושו צליל רע." },
+        { word: "Mirage", explanation: "אשליה אופטית במדבר. מקורה בצרפתית, \"mirer\" שפירושו להסתכל." },
+        { word: "Ethereal", explanation: "אוורירי ועדין כאלמנט שמימי. מקורה ביוונית, \"aither\" שפירושו שמיים." },
+        { word: "Maelstrom", explanation: "מערבולת חזקה בים. מקורה בהולנדית, \"malen\" שפירושו לטחון ו-\"stroom\" שפירושו זרם." },
+        { word: "Nebula", explanation: "ענן גז בחלל. מקורה בלטינית, \"nebula\" שפירושו ערפל." },
+        { word: "Eclipse", explanation: "ליקוי. מקורה ביוונית, \"ekleipsis\" שפירושו נטישה." },
+        { word: "Chimera", explanation: "יצור מיתולוגי שמורכב מחלקי גוף של חיות שונות. מקורה במיתולוגיה היוונית." },
+        { word: "Aurora", explanation: "זוהר צפוני. מקורה ברומית, שם אורורה הייתה אלת השחר." },
+        { word: "Horizon", explanation: "קו שבו השמיים והארץ נפגשים. מקורה ביוונית, \"horizōn\" שפירושו להגביל." },
+        { word: "Turbulence", explanation: "תנועה סוערת באוויר או מים. מקורה בלטינית, \"turbulentus\" שפירושו סוער." },
+        { word: "Cascade", explanation: "מפל מים קטן. מקורה בלטינית, \"cascare\" שפירושו ליפול." },
+        { word: "Myriad", explanation: "מספר גדול מאוד. מקורה ביוונית, \"myrios\" שפירושו עשרת אלפים." },
+        { word: "Tranquility", explanation: "שלווה ורוגע. מקורה בלטינית, \"tranquillitas\" שפירושו שקט." },
+        { word: "Tempest", explanation: "סערה חזקה. מקורה בלטינית, \"tempestas\" שפירושו מזג אוויר סוער." },
+        { word: "Tapestry", explanation: "שטיח קיר עם ציורים. מקורה בצרפתית, \"tapisserie\" שפירושו שטיח." },
+        { word: "Nebulous", explanation: "מעורפל ולא ברור. מקורה בלטינית, \"nebulosus\" שפירושו מעורפל." }
+    ];
 
     const penguinImg = document.getElementById('penguin');
     const thoughtBubble = document.getElementById('thoughtBubble');
@@ -589,7 +591,7 @@ searchInputSeries.addEventListener("input", function() {
         let currentTvShowId, currentSeason, currentEpisode, currentDifficulty;
         let modalHistory = [];
         let currentWordTreasureModal = null;
-function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty = 'easy') {
+async function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty = 'easy') {
     currentTvShowId = tvShowId;
     currentSeason = season;
     currentEpisode = episode;
@@ -640,6 +642,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
     modalContent.style.direction = 'ltr';
     modalContent.style.textAlign = 'left';
 
+    // טעינת נתוני הקישורים של הפרק
     const episodeData = window.episodeLinksData?.[tvShowId]?.[`season-${season}`]?.[`episode-${episode}`];
     const linksContainer = modal.querySelector('#links-container');
     if (episodeData && episodeData.links) {
@@ -677,8 +680,8 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         return button;
     }
 
-    function loadContentForDifficulty(tvShowId, season, episodeNum, difficulty) {
-        const words = getWordTreasure(tvShowId, season, episodeNum, difficulty);
+    async function loadContentForDifficulty(tvShowId, season, episodeNum, difficulty) {
+        const words = await getWordTreasure(tvShowId, season, episodeNum, difficulty);
         const targetDiv = modal.querySelector(`#${difficulty}`);
         targetDiv.innerHTML = ''; 
 
@@ -700,11 +703,11 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         }
     }
 
-    loadContentForDifficulty(tvShowId, season, episode, difficulty); 
+    await loadContentForDifficulty(tvShowId, season, episode, difficulty); 
     modal.querySelector(`.tablink[data-difficulty='${difficulty}']`).classList.add("active");
 
     modal.querySelectorAll(".tablink").forEach(tab => {
-        tab.addEventListener("click", function() {
+        tab.addEventListener("click", async function() {
             modal.querySelectorAll(".tablink").forEach(t => {
                 t.classList.remove("active");
                 modal.querySelector(`#${t.getAttribute("data-difficulty")}`).style.display = "none";
@@ -714,7 +717,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
             const newDifficulty = this.getAttribute("data-difficulty");
             currentDifficulty = newDifficulty; // Update current difficulty
             modal.querySelector(`#${newDifficulty}`).style.display = "block";
-            loadContentForDifficulty(tvShowId, season, episode, newDifficulty);
+            await loadContentForDifficulty(tvShowId, season, episode, newDifficulty);
         });
     });
 
@@ -759,6 +762,36 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
     modal.style.display = "block";
 }
+
+async function getWordTreasure(tvShowId, season, episodeNum, difficulty) {
+    const showsEnum = {
+        friends: './series json/friends.json',
+        himym: './series json/himym.json',
+        the100: './series json/the100.json',
+        bigbang: './series json/bigbang.json',
+        simpsons: './series json/simpsons.json',
+        brooklyn99: './series json/brooklyn99.json',
+        modernfamily: './series json/modern.json',
+        Bigmouth: './series json/bigmouth.json',
+        newgirl: './series json/newgirl.json',
+        seinfeld: './series json/seinfeld.json',
+        thegoodplace: './series json/thegoodplace.json',
+        theoffice: './series json/theoffice.json',
+    };
+
+    const url = showsEnum[tvShowId];
+    if (!url) return null;
+
+    const response = await fetch(url);
+    const tvShowData = await response.json();
+
+    const episodeData = tvShowData[`season-${season}`]?.[`episode-${episodeNum}`];
+    if (!episodeData) return null;
+
+    const difficultyData = episodeData[difficulty];
+    return difficultyData ? difficultyData : null;
+}
+
 
         
         function openGameSelectionModal(vocabulary, prevModal) {
