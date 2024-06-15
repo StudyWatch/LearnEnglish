@@ -70,7 +70,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            height: 200px; /* הגדלתי את הגובה */
+            height: 300px; /* הגדלתי את הגובה */
             overflow: hidden;
             position: relative;
             margin-top: 20px;
@@ -82,7 +82,7 @@
             border-radius: 10px;
             color: #ffffff;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-            font-size: 28px; /* הגדלתי את הכתב */
+            font-size: 32px; /* הגדלתי את הכתב */
             width: 100%; /* הגדלתי את הרוחב */
             text-align: center;
             position: absolute;
@@ -116,7 +116,7 @@
             }
 
             #recommendation .recommendation-slide {
-                font-size: 32px; /* הגדלתי את הכתב */
+                font-size: 36px; /* הגדלתי את הכתב */
                 height: 220px; /* הגדלתי את גובה הלוח */
             }
 
@@ -135,7 +135,7 @@
 
         @media only screen and (min-width: 801px) {
             body {
-                background-image: url('./img/pingbot.png');
+                background-image: url('./img/pingbot_desktop.png');
                 background-size: cover;
                 background-position: center center;
                 padding: 40px;
@@ -295,27 +295,24 @@
             recommendationElement.innerHTML = ''; // ניקוי תוכן קודם
 
             if (recommendations.length > 0) {
-                let delay = 0;
                 recommendations.forEach((series, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'recommendation-slide';
-                    slide.style.animationDelay = `${delay}s`;
                     slide.innerHTML = `<strong>${series.name}</strong>`;
                     recommendationElement.appendChild(slide);
-                    delay += 3; // Increment delay for each slide
                 });
 
-                setInterval(() => {
-                    const activeSlide = document.querySelector('.recommendation-slide.active-slide');
-                    let nextSlide = activeSlide.nextElementSibling;
+                const slides = document.querySelectorAll('.recommendation-slide');
+                let currentIndex = 0;
 
-                    if (!nextSlide) {
-                        nextSlide = recommendationElement.firstElementChild;
-                    }
+                function showNextSlide() {
+                    slides[currentIndex].classList.remove('active-slide');
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    slides[currentIndex].classList.add('active-slide');
+                }
 
-                    activeSlide.classList.remove('active-slide');
-                    nextSlide.classList.add('active-slide');
-                }, 3000); // Change slide every 3 seconds
+                slides[currentIndex].classList.add('active-slide');
+                setInterval(showNextSlide, 3000); // Change slide every 3 seconds
             } else {
                 recommendationElement.innerHTML = "מצטערים, לא מצאנו סדרה שתואמת את ההעדפות שלך.";
             }
