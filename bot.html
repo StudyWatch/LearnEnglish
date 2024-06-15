@@ -76,8 +76,8 @@
         #recommendation {
             margin-top: 20px;
             padding: 10px;
-            background-color: #000000; /* Black background */
-            color: #ffffff; /* White text */
+            background-color: #000000;
+            color: #ffffff;
             display: inline-block;
             border-radius: 20px;
             transition: all 0.3s ease;
@@ -220,7 +220,6 @@
 
     <script>
         const seriesDB = [
-            // Comedy
             { name: "Friends", genre: "comedy", level: "beginner" },
             { name: "The Office (US)", genre: "comedy", level: "beginner" },
             { name: "Brooklyn Nine-Nine", genre: "comedy", level: "intermediate" },
@@ -241,7 +240,6 @@
             { name: "The Good Place", genre: "comedy", level: "intermediate" },
             { name: "Silicon Valley", genre: "comedy", level: "intermediate" },
             { name: "Unbreakable Kimmy Schmidt", genre: "comedy", level: "intermediate" },
-            // Drama
             { name: "The Crown", genre: "drama", level: "advanced" },
             { name: "Breaking Bad", genre: "drama", level: "intermediate" },
             { name: "Mad Men", genre: "drama", level: "advanced" },
@@ -262,7 +260,6 @@
             { name: "Outlander", genre: "drama", level: "advanced" },
             { name: "The Americans", genre: "drama", level: "advanced" },
             { name: "Lost", genre: "drama", level: "intermediate" },
-            // Sci-Fi & Fantasy
             { name: "Stranger Things", genre: "sci-fi", level: "intermediate" },
             { name: "Game of Thrones", genre: "sci-fi", level: "advanced" },
             { name: "Black Mirror", genre: "sci-fi", level: "intermediate" },
@@ -278,7 +275,6 @@
             { name: "The Umbrella Academy", genre: "sci-fi", level: "intermediate" },
             { name: "Westworld (again)", genre: "sci-fi", level: "advanced" },
             { name: "The Magicians", genre: "sci-fi", level: "intermediate" },
-            // Animation
             { name: "The Simpsons", genre: "animation", level: "intermediate" },
             { name: "Rick and Morty", genre: "animation", level: "intermediate" },
             { name: "BoJack Horseman", genre: "animation", level: "intermediate" },
@@ -289,7 +285,6 @@
             { name: "Archer", genre: "animation", level: "intermediate" },
             { name: "Steven Universe", genre: "animation", level: "beginner" },
             { name: "Futurama", genre: "animation", level: "intermediate" },
-            // Crime & Thriller
             { name: "Peaky Blinders", genre: "crime", level: "advanced" },
             { name: "Mindhunter", genre: "crime", level: "advanced" },
             { name: "Narcos", genre: "crime", level: "intermediate" },
@@ -305,7 +300,6 @@
             { name: "Money Heist (La Casa de Papel)", genre: "crime", level: "intermediate" },
             { name: "Line of Duty", genre: "crime", level: "advanced" },
             { name: "Sherlock (again)", genre: "crime", level: "advanced" },
-            // Romance
             { name: "Bridgerton", genre: "romance", level: "intermediate" },
             { name: "The Gilmore Girls", genre: "romance", level: "intermediate" },
             { name: "Jane the Virgin", genre: "romance", level: "intermediate" },
@@ -316,7 +310,6 @@
             { name: "The Marvelous Mrs. Maisel (again)", genre: "romance", level: "advanced" },
             { name: "Younger", genre: "romance", level: "intermediate" },
             { name: "Crazy Ex-Girlfriend", genre: "romance", level: "intermediate" },
-            // Documentary
             { name: "Planet Earth", genre: "documentary", level: "intermediate" },
             { name: "The Last Dance", genre: "documentary", level: "intermediate" },
             { name: "Making a Murderer", genre: "documentary", level: "intermediate" },
@@ -347,6 +340,10 @@
             } else {
                 recommendationElement.innerHTML = "מצטערים, לא מצאנו סדרה שתואמת את ההעדפות שלך.";
             }
+
+            // Ensure the animation restarts
+            const clonedElement = recommendationElement.cloneNode(true);
+            recommendationElement.parentNode.replaceChild(clonedElement, recommendationElement);
         }
     </script>
 </body>
