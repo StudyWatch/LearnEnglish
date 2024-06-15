@@ -269,6 +269,8 @@ background: url(./website/background6.png) no-repeat center / cover;
   margin-bottom: 10px;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: right;
+            direction: rtl;
 }
 
 .link-text {
