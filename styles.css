@@ -1752,11 +1752,11 @@ form button[type="submit"]:hover {
         text-overflow: ellipsis;
     }
   .bottom-section img {
-    width: 100%;
+    width: 120%;
     height: auto;
     object-fit: contain;
     display: block;
-    max-height: 120px;
+    max-height: 140px;
   }
   body, button, input[type="text"] {
     font-size: 10px;
