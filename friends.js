@@ -679,7 +679,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
                 padding: 10px;
             }
             .tablink {
-                width: 100%;
+                width: 30%;
                 padding: 10px 5px;
                 margin-top: 10px;
                 font-size: 1.2rem;
@@ -945,18 +945,19 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
     loadContentForDifficulty(tvShowId, season, episode, difficulty);
     modal.querySelector(`.tablink[data-difficulty='${difficulty}']`).classList.add("active");
+    modal.querySelector(`#${difficulty}`).classList.add("active");
 
     modal.querySelectorAll(".tablink").forEach(tab => {
-        tab.addEventListener("click", function () {
+        tab.addEventListener("click", function() {
             modal.querySelectorAll(".tablink").forEach(t => {
                 t.classList.remove("active");
-                modal.querySelector(`#${t.getAttribute("data-difficulty")}`).style.display = "none";
+                modal.querySelector(`#${t.getAttribute("data-difficulty")}`).classList.remove("active");
             });
 
             this.classList.add("active");
             const newDifficulty = this.getAttribute("data-difficulty");
             currentDifficulty = newDifficulty; // Update current difficulty
-            modal.querySelector(`#${newDifficulty}`).style.display = "block";
+            modal.querySelector(`#${newDifficulty}`).classList.add("active");
             loadContentForDifficulty(tvShowId, season, episode, newDifficulty);
         });
     });
@@ -992,7 +993,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         }
     });
 
-    modal.addEventListener('click', function (event) {
+    modal.addEventListener('click', function(event) {
         if (event.target === modal) {
             modal.style.display = "none";
             modalContent.innerHTML = ''; // מאתחל את התוכן כאשר המודל נסגר
@@ -1002,6 +1003,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
     modal.style.display = "block";
 }
+
 
         
         function openGameSelectionModal(vocabulary, prevModal) {
