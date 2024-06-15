@@ -1655,7 +1655,7 @@ form button[type="submit"]:hover {
         display: block !important; /* מבטיח שהכפתורים יוצגו */
     }
     .tabcontent {
-        display: none !important; /* הסתרת תוכן לא פעיל */
+      /*  display: none !important; /* הסתרת תוכן לא פעיל */
         padding: 20px;
         flex-grow: 1;
         overflow-y: auto;
