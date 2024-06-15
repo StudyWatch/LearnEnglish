@@ -22,14 +22,14 @@
         .back-to-home-button {
             display: inline-block;
             margin: 10px;
-            padding: 10px 15px;
+            padding: 30px 60px; /* הגדלתי את הכפתור פי שניים */
             background-color: #3498db;
             color: white;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
-            font-size: 14px;
+            font-size: 24px; /* הגדלתי את הכתב */
         }
 
         .back-to-home-button:hover {
@@ -37,9 +37,18 @@
             transform: scale(1.1);
         }
 
-        h2, p {
+        h2 {
             margin-top: 20px;
-            font-size: 22px;
+            font-size: 36px; /* הגדלתי את הכותרת */
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 25px 50px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        p {
+            font-size: 24px;
+            margin-top: 20px;
             background-color: rgba(0, 0, 0, 0.7);
             padding: 15px 30px;
             border-radius: 10px;
@@ -48,11 +57,11 @@
 
         select, button {
             margin: 15px 0;
-            padding: 8px 16px;
+            padding: 20px 40px; /* הגדלתי את הכפתורים פי שניים */
             border-radius: 20px;
             border: 2px solid #ffffff;
             outline: none;
-            font-size: 14px;
+            font-size: 24px; /* הגדלתי את הכתב */
             color: #ffffff;
             background-color: #e74c3c;
             transition: all 0.3s ease, transform 0.3s;
@@ -67,65 +76,44 @@
 
         #recommendation {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: center;
             width: 100%;
-            margin-top: 20px;
+            height: 200px; /* הגדלתי את הגובה */
             overflow: hidden;
+            position: relative;
+            margin-top: 20px;
         }
 
         .recommendation-slide {
-            margin: 10px;
             padding: 20px;
             background-color: #16222a;
             border-radius: 10px;
             color: #ffffff;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-            font-size: 18px;
-            width: 90%;
+            font-size: 28px; /* הגדלתי את הכתב */
+            width: 100%; /* הגדלתי את הרוחב */
             text-align: center;
-            transition: transform 0.5s ease;
+            position: absolute;
+            animation: slide 10s infinite linear;
         }
 
-        .recommendation-slide:hover {
-            transform: scale(1.1);
-        }
-
-        @media only screen and (max-width: 800px) {
-            body {
-                padding: 20px;
-                background-image: linear-gradient(to bottom right, #1c1c1c, #575757);
+        @keyframes slide {
+            0%, 100% {
+                transform: translateX(100%);
+                opacity: 0;
             }
-
-            .back-to-home-button {
-                padding: 15px 30px;
-                font-size: 18px;
+            10%, 30% {
+                transform: translateX(0);
+                opacity: 1;
             }
-
-            h2, p {
-                font-size: 28px;
-                padding: 20px 40px;
+            40%, 60% {
+                transform: translateX(-100%);
+                opacity: 0;
             }
-
-            select, button {
-                padding: 15px 30px;
-                font-size: 18px;
-            }
-
-            #recommendation .recommendation-slide {
-                font-size: 22px;
-            }
-
-            h2 {
-                margin-top: 10px;
-            }
-
-            p {
-                margin-top: 10px;
-            }
-
-            select, button {
-                margin-top: 20px;
+            70%, 90% {
+                transform: translateX(0);
+                opacity: 1;
             }
         }
 
@@ -142,6 +130,48 @@
             transform: scale(1.1);
         }
 
+        @media only screen and (max-width: 800px) {
+            .back-to-home-button {
+                padding: 25px 50px; /* הגדלתי עוד יותר את הכפתור */
+                font-size: 22px;
+            }
+
+            h2 {
+                font-size: 32px;
+                padding: 25px 50px;
+            }
+
+            p {
+                font-size: 28px;
+                padding: 25px 50px;
+            }
+
+            select, button {
+                padding: 20px 40px; /* הגדלתי עוד יותר את הכפתורים */
+                font-size: 22px;
+            }
+
+            #recommendation {
+                height: 250px; /* הגדלתי את גובה הלוח */
+            }
+
+            #recommendation .recommendation-slide {
+                font-size: 28px; /* הגדלתי את הכתב */
+            }
+
+            h2 {
+                margin-top: 10px;
+            }
+
+            p {
+                margin-top: 10px;
+            }
+
+            select, button {
+                margin-top: 20px;
+            }
+        }
+
         @media only screen and (min-width: 801px) {
             body {
                 background-image: url('./img/pingbot.png');
@@ -150,17 +180,23 @@
                 padding: 40px;
             }
 
+            .back-to-home-button {
+                padding: 20px 40px; /* גדלתי את הכפתור */
+                font-size: 18px; /* גדלתי את הכתב */
+            }
+
             h2, p {
                 font-size: 24px;
             }
 
             select, button {
-                padding: 10px 20px;
-                font-size: 16px;
+                padding: 15px 30px;
+                font-size: 20px;
             }
 
             #recommendation .recommendation-slide {
-                font-size: 18px;
+                font-size: 24px; /* גדלתי את הכתב */
+                height: 180px; /* הגדלתי את גובה הלוח */
             }
         }
     </style>
@@ -189,9 +225,7 @@
 
     <button onclick="recommendSeries()">המלץ על סדרה</button>
 
-    <div id="recommendation">
-        <!-- Slides will be injected here by JavaScript -->
-    </div>
+    <div id="recommendation"></div>
 
     <script>
         const seriesDB = [
@@ -310,14 +344,17 @@
             const recommendations = seriesDB.filter(series => series.genre === genre && series.level === level);
 
             const recommendationElement = document.getElementById("recommendation");
-            recommendationElement.innerHTML = ''; // Clear existing recommendations
+            recommendationElement.innerHTML = ''; // ניקוי תוכן קודם
 
             if (recommendations.length > 0) {
-                recommendations.forEach(series => {
+                recommendations.forEach((series, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'recommendation-slide';
                     slide.innerHTML = `<strong>${series.name}</strong>`;
                     recommendationElement.appendChild(slide);
+
+                    // הוספת אנימציה להצגת הסדרות באופן רציף
+                    slide.style.animation = `slide-in-out ${recommendations.length * 2}s ${index * 2}s infinite`;
                 });
             } else {
                 recommendationElement.innerHTML = "מצטערים, לא מצאנו סדרה שתואמת את ההעדפות שלך.";
