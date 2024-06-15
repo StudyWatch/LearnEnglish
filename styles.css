@@ -1625,7 +1625,8 @@ form button[type="submit"]:hover {
         top: 52%;
         border: none;
         border-radius: 0;
-        overflow: hidden;
+        overflow-x: hidden;
+      overflow-y: auto;
     }
     .modal-content {
         height: 100%;
