@@ -1776,6 +1776,7 @@ form button[type="submit"]:hover {
     object-fit: cover; /* מתאים את התמונה למלא את המלבן */
     position: absolute;
     top: 0; /* ממקם את התמונה בראש המלבן */
+    right: 0%
   }
 
   .shortcut-rectangle p {
