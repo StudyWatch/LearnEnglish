@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he">
 <head>
     <meta charset="UTF-8">
-    <title>Series Recommendation Bot</title>
+    <title>בוט המלצות לסדרות</title>
     <style>
         .back-to-home-button {
             display: inline-block;
@@ -35,13 +35,13 @@
         }
 
         h2 {
-            font-weight: normal;
-            font-size: 36px; /* Larger font size for readability */
+            font-weight: bold;
+            font-size: 48px; /* Larger font size for readability */
             color: #ffffff; /* Change to white for better contrast */
         }
 
         p {
-            font-size: 24px; /* Larger font size for readability */
+            font-size: 28px; /* Larger font size for readability */
             color: #ffffff; /* Change to white for better contrast */
         }
 
@@ -51,7 +51,7 @@
             border-radius: 20px;
             border: 2px solid #090a0a;
             outline: none;
-            font-size: 24px; /* Larger font size for readability */
+            font-size: 28px; /* Larger font size for readability */
             color: #ffffff;
             background-color: #ff5733; /* Change to a more visible color */
             transition: all 0.3s ease;
@@ -66,15 +66,15 @@
 
         #recommendation {
             margin-top: 20px;
-            padding: 20px;
+            padding: 30px;
             background-color: #080b0c;
             color: #ffffff;
             display: inline-block;
             border-radius: 20px;
             transition: all 0.3s ease;
-            font-size: 24px; /* Larger font size for better readability on mobile */
-            width: 80%;
-            max-width: 800px;
+            font-size: 32px; /* Larger font size for better readability on mobile */
+            width: 90%;
+            max-width: 1000px;
             overflow: hidden;
             white-space: nowrap;
         }
@@ -82,14 +82,20 @@
         .recommendation-slide {
             display: inline-block;
             width: 100%;
-            animation: slide 10s infinite;
+            animation: slide 20s infinite;
+            font-size: 36px; /* Larger font size for readability */
+            font-weight: bold; /* Bold text */
         }
 
         @keyframes slide {
             0% { transform: translateX(0); }
+            20% { transform: translateX(0); }
             25% { transform: translateX(-100%); }
+            45% { transform: translateX(-100%); }
             50% { transform: translateX(-200%); }
+            70% { transform: translateX(-200%); }
             75% { transform: translateX(-300%); }
+            95% { transform: translateX(-300%); }
             100% { transform: translateX(0); }
         }
 
@@ -115,7 +121,7 @@
             }
 
             h2, p, select, button, #recommendation {
-                font-size: 28px; /* Larger text size for readability on mobile */
+                font-size: 32px; /* Larger text size for readability on mobile */
                 font-weight: bold; /* Make text bolder */
             }
 
@@ -124,7 +130,7 @@
             }
 
             #recommendation {
-                font-size: 28px; /* Even larger font size for mobile to ensure readability */
+                font-size: 32px; /* Even larger font size for mobile to ensure readability */
                 padding: 30px; /* Increase padding for better readability */
             }
         }
@@ -140,27 +146,27 @@
 </head>
 <body>
     <a href="index.html" class="back-to-home-button">חזור לדף הבית</a>
-    <img src="./img/bot_image.webp" alt="Recommendation Bot" class="bot-image">
-    <h2>TV Series Recommendation Bot</h2>
-    <p>Which genre are you interested in?</p>
+    <img src="./img/bot_image.webp" alt="בוט המלצות" class="bot-image">
+    <h2>בוט המלצות לסדרות</h2>
+    <p>באיזה ז'אנר אתה מעוניין?</p>
     <select id="genre">
-        <option value="comedy">Comedy</option>
-        <option value="drama">Drama</option>
-        <option value="sci-fi">Sci-Fi & Fantasy</option>
-        <option value="animation">Animation</option>
-        <option value="crime">Crime & Thriller</option>
-        <option value="romance">Romance</option>
-        <option value="documentary">Documentary</option>
+        <option value="comedy">קומדיה</option>
+        <option value="drama">דרמה</option>
+        <option value="sci-fi">מדע בדיוני ופנטזיה</option>
+        <option value="animation">אנימציה</option>
+        <option value="crime">פשע ומתח</option>
+        <option value="romance">רומנטיקה</option>
+        <option value="documentary">דוקומנטרי</option>
     </select>
 
-    <p>What is your English level?</p>
+    <p>מהי רמת האנגלית שלך?</p>
     <select id="englishLevel">
-        <option value="beginner">Beginner</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="advanced">Advanced</option>
+        <option value="beginner">מתחיל</option>
+        <option value="intermediate">בינוני</option>
+        <option value="advanced">מתקדם</option>
     </select>
 
-    <button onclick="recommendSeries()">Recommend Series</button>
+    <button onclick="recommendSeries()">המלץ על סדרה</button>
 
     <div id="recommendation">
         <!-- Slides will be injected here by JavaScript -->
@@ -293,7 +299,7 @@
                     recommendationElement.appendChild(slide);
                 });
             } else {
-                recommendationElement.innerHTML = "Sorry, we couldn't find a series that matches your preferences.";
+                recommendationElement.innerHTML = "מצטערים, לא מצאנו סדרה שתואמת את ההעדפות שלך.";
             }
         }
     </script>
