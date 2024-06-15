@@ -1635,7 +1635,7 @@ form button[type="submit"]:hover {
         flex-direction: column;
     }
     .difficulty-tabs-fixed {
-        position: fixed;
+        position: sticky;
         top: 0;
         width: 100%;
         background: white;
@@ -1652,6 +1652,7 @@ form button[type="submit"]:hover {
         border: none;
         cursor: pointer;
         font-size: 14px;
+        display: inline-block !important;
     }
     .tablink.active {
         background-color: #ccc;
@@ -1661,6 +1662,9 @@ form button[type="submit"]:hover {
         padding: 20px;
         flex-grow: 1;
         overflow-y: auto;
+    }
+    .tabcontent.active {
+        display: block !important; /* חובה להציג את התוכן כאשר הפעיל */
     }
     .test-knowledge-button {
         margin-top: 20px;
@@ -1843,8 +1847,8 @@ form button[type="submit"]:hover {
         font-size: 12px;
         padding: 5px 10px;
     }
-   .nav-icon {
+    .nav-icon {
         width: 30px;
         height: 30px; 
-   }
+    }
 }
