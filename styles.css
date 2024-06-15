@@ -1781,10 +1781,10 @@ form button[type="submit"]:hover {
 
   .shortcut-rectangle p {
     position: absolute; /* ממקם את הטקסט באופן מוחלט */
-    bottom: 5px; /* מתחת לכל */
+    bottom: 15px; /* מתחת לכל */
     left: 50%; /* ממרכז הטקסט אופקית */
     transform: translateX(-50%); /* מבטיח שהטקסט ממורכז */
-    font-size: 12px;
+    font-size: 8px;
     color: white;
     text-align: center;
     margin: 0;
