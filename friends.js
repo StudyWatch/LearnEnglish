@@ -235,14 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
     displayTips();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    displayTips();
-});
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    displayTips();
-});
 
 
 
