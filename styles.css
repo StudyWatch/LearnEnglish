@@ -1619,135 +1619,199 @@ form button[type="submit"]:hover {
     font-size: 14px;
     overflow-x: hidden;
   }
+
   .modal {
-    width: 100%; /* מודל ברוחב מלא */
-    height: 100vh; /* מודל בגובה מלא */
-    top: 50%; /* מודל מתחיל מהחלק העליון של המסך */
-    border: none; /* אין גבולות */
-    border-radius: 0; /* אין עיגול פינות */
-    overflow: hidden; /* מונע גלילה כפולה */
-  }
-  .modal-content {
-    height: 100%; /* תוכן המודל ממלא את המודל */
-    border-radius: 0; /* אין עיגול פינות לתוכן */
-    padding-top: 50px !important; /* ריווח מוגדל לכפתור היציאה */
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    position: fixed; /* Makes sure modal is always fixed full screen */
     display: flex;
     flex-direction: column;
   }
-  
+
+  .modal-content {
+    height: 100%;
+    border-radius: 0;
+    padding-top: 30px !important;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Allows scrolling within the modal */
+  }
+
+  .difficulty-tabs-fixed {
+    position: sticky;
+    top: 0; /* Keeps difficulty tabs at the top */
+    z-index: 1000; /* Makes sure tabs are above other content */
+    background-color: #fff; /* Ensures contrast against content */
+    width: 100%; /* Full width */
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+
+  .tablink {
+    background-color: #eee;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 0 5px;
+    width: auto; /* Adjusts width based on content */
+  }
+
+  .tabcontent {
+    display: none;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+  }
+
+  .tabcontent.active {
+    display: block;
+  }
+
+  .word-treasure-container {
+    font-size: 16px;
+    line-height: 1.4;
+    padding: 15px;
+  }
+
+  .word-treasure-container h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .word-treasure-container p {
+    margin-bottom: 15px;
+  }
+
+  .word-treasure-container .highlight {
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  .exit-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+  }
+
+  .memory-game-button, .restart-btn, .play-again-btn, .back-to-games-btn {
+    padding: 5px 10px;
+    font-size: 10px;
+    width: 100px;
+    height: 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid black;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    padding: 5px;
+  }
+
+  .memory-card {
+    height: 60px;
+    width: 40px;
+    margin: 1px;
+    font-size: 10px;
+  }
+
   .bottom-section {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden; /* מונע גלילה אופקית */
-    background: transparent; /* הסרת רקע לבן */
-    margin-top: -5px; /* מתקן את המיקום למעלה */
-    padding: 0;
-    width: 100%; /* מתאים את הרוחב לרוחב המסך */
-    height: auto; /* גובה אוטומטי מותאם לתוכן */
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
+
   .shortcut-rectangle {
-    flex-basis: 100%; /* מלא את הרוחב במסכים צרים */
-    margin: 10px 0; /* מרווח למעלה ולמטה */
-    width: 100%; /* רוחב מלא */
-    height: auto; /* גובה מתאים אוטומטי */
+    flex-basis: 35%;
+    margin-bottom: 10px;
+    width: 70vw;
+    height: 10vh;
+    flex-shrink: 0;
+    margin-right: -30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #333; /* רקע אפור כהה, התאם לעיצוב שלך */
   }
-  .shortcut-rectangle p {
-    font-size: 12px; /* הקטנת גודל הפונט */
-    margin: 0; /* הסרת שוליים על מנת למנוע דחיקה לשורה נוספת */
-    white-space: nowrap; /* מונע שבירת שורה */
-    overflow: hidden; /* מונע הצגת טקסט שלא נכנס בשורה */
-    text-overflow: ellipsis; /* מוסיף נקודות בסוף הטקסט אם הוא נחתך */
-  }
+
   .bottom-section img {
-    max-width: 100%; /* מונע יציאה של התמונות מהמלבן */
-    height: auto; /* שמירה על גובה אוטומטי */
-    object-fit: cover; /* מבטיח שהתמונה מתאימה לגובה ורוחב המלבן */
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    max-height: 120px;
   }
+
   body, button, input[type="text"] {
     font-size: 10px;
   }
+
   header, .bottom-section a, .tv-show-title {
     font-size: 12px;
   }
+
   .shortcut-rectangle img {
     width: 250%;
     height: auto;
     margin-bottom: -10px;
   }
+
+  .shortcut-rectangle p {
+    font-size: 1em;
+  }
+
   .shortcut-rectangle:not(#to-bot):not(#to-series):not(#to-tips) {
     display: none;
   }
+
   #searchBarContainer .search-bar {
     width: 90%;
     margin: 10px auto;
   }
+
   #searchInputSeries {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
   }
+
   .cool-window {
     display: none;
   }
-  /* Hide penguin on mobile */
+
   .penguin-container {
     display: none;
   }
-  #hamburgerBtn {
-    position: fixed;
-    top: 40px; /* התאם לגובה הרצוי */
-    left: 300px; /* התאם לצד הרצוי */
-    z-index: 1000; /* ודא שהכפתור יהיה מעל לשאר האלמנטים */
-  }
-  /* Smaller and repositioned accessibility and back-to-top buttons */
+
   .accessibility-menu {
     position: fixed;
-    top: 500px; /* Adjusted position */
-    left: 300px;
+    top: 500px;
+    right: 8px;
     z-index: 1001;
   }
+
   #accessibilityBtn img {
-    width: 30px; /* Smaller size */
+    width: 30px;
     height: auto;
   }
-difficulty-tabs-fixed {
-    position: sticky; /* מיקום קבוע בתחילת הגלילה */
-    top: 0; /* יתיישב בראש המסך */
-    background-color: white; /* רקע לבן להבחנה טובה */
-    z-index: 1000; /* מבטיח שהסרגל ישאר מעל כל התוכן */
-    width: 100%; /* רוחב מלא */
+
+  .back-to-top-button {
+    bottom: 50px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 10px;
   }
 
-  .tablink {
-    width: 33%; /* שלושה כפתורים בשורה אחת */
-    padding: 10px; /* פדינג מרווח */
-    font-size: 16px; /* גודל פונט גדול יותר לנוחות */
-    display: inline-block; /* הצגה בשורה */
-  }
-
-  .tabcontent {
-    display: block; /* מוצג כברירת מחדל */
-    padding: 10px; /* פדינג לתוכן */
-  }
-
-  .word-treasure-container {
-    font-size: 18px; /* שנה לגודל הכתב הרצוי */
-    line-height: 1.5; /* להבטיח שהטקסט יהיה קריא */
-    padding: 10px; /* ריווח פנימי לאלמנט */
-  }
-
-  .exit-button {
-    align-self: flex-end; /* כפתור היציאה בצד ימין למעלה */
-    margin: 10px; /* רווח סביב כפתור היציאה */
-    font-size: 24px; /* גודל פונט גדול יותר לנגישות */
-  }
-  /* Responsive navbar */
   .navbar-container {
     display: flex;
     flex-direction: column;
@@ -1755,4 +1819,13 @@ difficulty-tabs-fixed {
     padding: 10px;
   }
 
+  .nav-link {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .nav-icon {
+    width: 30px;
+    height: 30px;
+  }
 }
