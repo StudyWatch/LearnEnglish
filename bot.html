@@ -8,7 +8,6 @@
             font-family: 'Arial', sans-serif;
             color: #ffffff;
             text-align: center;
-            padding: 20px;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -17,6 +16,7 @@
             min-height: 100vh;
             background-color: #000;
             background-image: linear-gradient(to bottom right, #00416a, #e4e5e6);
+            padding: 0 10px;
         }
 
         .back-to-home-button {
@@ -27,7 +27,7 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 10px;
             transition: background-color 0.3s, transform 0.3s;
             font-size: 22px;
         }
@@ -107,7 +107,7 @@
             }
 
             .back-to-home-button {
-                padding: 40px 80px;
+                padding: 30px 60px;
                 font-size: 26px;
             }
 
@@ -149,6 +149,7 @@
 
             h2, p {
                 font-size: 24px;
+                margin: 10px 0;
             }
 
             select, button {
@@ -318,7 +319,7 @@
                 }
 
                 slides[currentIndex].classList.add('active-slide');
-                setInterval(showNextSlide, 3000); // Change slide every 3 seconds
+                setInterval(showNextSlide, 3000);
             } else {
                 recommendationElement.innerHTML = "מצטערים, לא מצאנו סדרה שתואמת את ההעדפות שלך.";
             }
