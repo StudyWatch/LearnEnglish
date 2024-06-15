@@ -1770,7 +1770,7 @@ form button[type="submit"]:hover {
     font-size: 12px;
   }
   .shortcut-rectangle img {
-    width: 250%;
+    width: 300%;
     height: auto;
     margin-bottom: -10px;
   }
