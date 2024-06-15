@@ -1746,7 +1746,7 @@ form button[type="submit"]:hover {
     transform: none;
   }
 
-  .bottom-section {
+.bottom-section {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1800,7 +1800,6 @@ form button[type="submit"]:hover {
     margin-right: auto; /* דחיפה למרכז */
     margin-left: auto; /* דחיפה למרכז */
   }
-}
 
   body, button, input[type="text"] {
     font-size: 10px;
