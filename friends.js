@@ -626,21 +626,258 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
     modalContent.innerHTML = directionToggleHtml;
 
     const difficultyTabsHtml = `
-        <div id="difficulty-tabs" class="difficulty-tabs-fixed" style="display: flex; justify-content: space-around; width: 100%; position: sticky; top: 0; background: white; z-index: 1000;">
-            <button class="tablink" data-difficulty="easy" style="width: 100%; padding: 10px 5px; margin-top: 10px; font-size: 1.2rem;">קל</button>
-            <button class="tablink" data-difficulty="medium" style="width: 100%; padding: 10px 5px; margin-top: 10px; font-size: 1.2rem;">בינוני</button>
-            <button class="tablink" data-difficulty="hard" style="width: 100%; padding: 10px 5px; margin-top: 10px; font-size: 1.2rem;">קשה</button>
+        <div id="difficulty-tabs" class="difficulty-tabs-fixed">
+            <button class="tablink" data-difficulty="easy">קל</button>
+            <button class="tablink" data-difficulty="medium">בינוני</button>
+            <button class="tablink" data-difficulty="hard">קשה</button>
         </div>
-        <div id="easy" class="tabcontent active"></div>
-        <div id="medium" class="tabcontent"></div>
-        <div id="hard" class="tabcontent"></div>
-        <button class="test-knowledge-button" style="margin-top: 20px; padding: 10px; font-size: 16px;">בחן את הידע שלך</button>
-        <div id="episode-links" class="episode-links" style="margin-top: 20px;">
+        <div id="easy" class="tabcontent"></div>
+        <div id="medium" class="tabcontent" style="display: none;"></div>
+        <div id="hard" class="tabcontent" style="display: none;"></div>
+        <button class="test-knowledge-button">בחן את הידע שלך</button>
+        <div id="episode-links" class="episode-links">
             <h3>קישורים לפרק:</h3>
             <div id="links-container"></div>
         </div>
     `;
     modalContent.innerHTML += difficultyTabsHtml;
+
+    // הוספת CSS ישירות דרך JavaScript
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @media (max-width: 600px) {
+            body, html {
+                margin: 0;
+                padding: 0;
+                font-family: 'Roboto', sans-serif;
+                font-size: 14px;
+                overflow-x: hidden;
+            }
+            .modal {
+                width: 100%;
+                height: 100vh;
+                top: 51%;
+                border: none;
+                border-radius: 0;
+                overflow: hidden;
+            }
+            .modal-content {
+                height: 100%;
+                border-radius: 0;
+                padding-top: 50px !important;
+                display: flex;
+                flex-direction: column;
+            }
+            .difficulty-tabs-fixed {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                position: sticky;
+                top: 0;
+                background: white;
+                z-index: 1000;
+                padding: 10px;
+            }
+            .tablink {
+                width: 100%;
+                padding: 10px 5px;
+                margin-top: 10px;
+                font-size: 1.2rem;
+            }
+            .tabcontent {
+                display: none;
+            }
+            .tabcontent.active {
+                display: block;
+            }
+            .test-knowledge-button {
+                margin-top: 20px;
+                padding: 10px;
+                font-size: 16px;
+            }
+            .episode-links {
+                margin-top: 20px;
+            }
+            .link-button {
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                margin: 5px 0;
+                background-color: #f0f0f0;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                text-decoration: none;
+                color: #333;
+            }
+            .link-button img {
+                margin-right: 10px;
+            }
+            .exit-button {
+                align-self: flex-end;
+                margin: 10px;
+                font-size: 24px;
+            }
+            .grid-container, .word-treasure-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                overflow-y: auto;
+                flex-grow: 1;
+                padding: 10px;
+                gap: 5px;
+            }
+            .memory-game-button, .restart-btn, .play-again-btn, .back-to-games-btn {
+                padding: 5px 10px;
+                font-size: 10px;
+                width: 100px;
+                height: 50px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                border: 1px solid black;
+            }
+            .bottom-section {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                overflow-x: hidden;
+                background: transparent;
+                margin-top: -5px;
+                padding: 0;
+                width: 100%;
+                height: auto;
+            }
+            .shortcut-rectangle {
+                flex-basis: 100%;
+                margin: 10px 0;
+                width: 100%;
+                height: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #333;
+            }
+            .shortcut-rectangle p {
+                font-size: 12px;
+                margin: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .bottom-section img {
+                max-width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+            body, button, input[type="text"] {
+                font-size: 10px;
+            }
+            header, .bottom-section a, .tv-show-title {
+                font-size: 12px;
+            }
+            .shortcut-rectangle img {
+                width: 250%;
+                height: auto;
+                margin-bottom: -10px;
+            }
+            .shortcut-rectangle p {
+                font-size: 1em;
+            }
+            .shortcut-rectangle:not(#to-bot):not(#to-series):not(#to-tips) {
+                display: none;
+            }
+            #searchBarContainer .search-bar {
+                width: 90%;
+                margin: 10px auto;
+            }
+            #searchInputSeries {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+            }
+            .cool-window {
+                display: none;
+            }
+            .penguin-container {
+                display: none;
+            }
+            #hamburgerBtn {
+                position: fixed;
+                top: 40px;
+                left: 300px;
+                z-index: 1000;
+            }
+            .accessibility-menu {
+                position: fixed;
+                top: 500px;
+                left: 300px;
+                z-index: 1001;
+            }
+            #accessibilityBtn img {
+                width: 30px;
+                height: auto;
+            }
+            .back-to-top-button {
+                bottom: 50px;
+                right: 10%;
+                width: 40px;
+                height: 40px;
+                font-size: 10px;
+            }
+            .navbar-container {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 5px;
+                padding: 5px;
+            }
+            button.episode-button {
+                padding: 12px;
+                font-size: 16px;
+            }
+            .word-treasure-container {
+                font-size: 18px;
+                line-height: 1.5;
+                padding: 10px;
+            }
+            .word-treasure-container h2 {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            .word-treasure-container p {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .word-treasure-container .highlight {
+                font-size: 20px;
+                color: #007bff;
+                font-weight: bold;
+            }
+            .episode-button {
+                padding: 5px;
+                font-size: 10px;
+            }
+            .episode-button:hover {
+                transform: none;
+            }
+            .episode-button:active {
+                transform: none;
+            }
+            .nav-link {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+            .nav-icon {
+                width: 30px;
+                height: 30px; 
+            }
+        }
+    `;
+    document.head.appendChild(style);
 
     // הגדרת כיוון טקסט ותוכן ראשוני
     modalContent.style.direction = 'ltr';
