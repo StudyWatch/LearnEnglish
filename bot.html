@@ -4,23 +4,6 @@
     <meta charset="UTF-8">
     <title>בוט המלצות לסדרות</title>
     <style>
-        .back-to-home-button {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px; /* גודל הכפתור למחשב */
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            font-size: 16px; /* גודל הטקסט למחשב */
-        }
-
-        .back-to-home-button:hover {
-            background-color: #2980b9;
-        }
-
         body {
             font-family: 'Arial', sans-serif;
             color: #ffffff;
@@ -33,6 +16,9 @@
             align-items: center;
             min-height: 100vh;
             background-color: #000;
+            background-image: url('./img/pingbot.png');
+            background-size: cover;
+            background-position: center;
         }
 
         h2, p {
@@ -55,6 +41,7 @@
             background-color: #e74c3c;
             transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         select:hover, button:hover {
@@ -63,17 +50,36 @@
             border: 2px solid #e74c3c;
         }
 
+        .back-to-home-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px; /* גודל הכפתור למחשב */
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 16px; /* גודל הטקסט למחשב */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-home-button:hover {
+            background-color: #2980b9;
+        }
+
         #recommendation {
             margin-top: 20px;
             padding: 20px;
             background-color: #000000;
             color: #ffffff;
             display: flex;
-            overflow: hidden; /* שינוי כאן */
+            overflow: hidden;
             border-radius: 20px;
             font-size: 18px;
-            width: 100%; /* שינוי כאן */
+            width: 80%;
             height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
         .recommendation-slide {
@@ -83,7 +89,7 @@
             font-weight: bold;
             margin-right: 10px;
             display: inline-block;
-            animation: slide 20s linear infinite; /* הוספת אנימציה */
+            animation: slide 20s linear infinite;
         }
 
         @keyframes slide {
@@ -101,6 +107,7 @@
             margin: 0 auto 30px auto;
             border-radius: 50%;
             transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
         .bot-image:hover {
@@ -109,7 +116,7 @@
 
         @media only screen and (max-width: 800px) {
             body {
-                background-image: url('./img/pingbot.png');
+                background-image: url('./img/botmodal.webp');
                 background-size: cover;
                 background-position: center center;
                 padding: 20px;
@@ -117,14 +124,21 @@
 
             h2, p {
                 font-size: 32px;
+                padding: 15px 30px;
             }
 
             select, button {
                 padding: 20px 40px; /* הגדלת הכפתורים לנייד */
                 font-size: 24px; /* הגדלת הטקסט לנייד */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             }
 
-            #recommendation .recommendation-slide {
+            #recommendation {
+                font-size: 24px;
+                padding: 20px;
+            }
+
+            .recommendation-slide {
                 font-size: 24px;
             }
 
@@ -143,7 +157,7 @@
 
         @media only screen and (min-width: 801px) {
             body {
-                background-image: url('./img/pingbot.png');
+                background-image: url('./img/pingbot_desktop.png');
                 background-size: cover;
                 background-position: center center;
                 padding: 40px;
@@ -158,7 +172,12 @@
                 font-size: 16px;
             }
 
-            #recommendation .recommendation-slide {
+            #recommendation {
+                font-size: 18px;
+                padding: 20px;
+            }
+
+            .recommendation-slide {
                 font-size: 18px;
             }
         }
@@ -194,7 +213,6 @@
 
     <script>
         const seriesDB = [
-            // Comedy
             { name: "Friends", genre: "comedy", level: "beginner" },
             { name: "The Office (US)", genre: "comedy", level: "beginner" },
             { name: "Brooklyn Nine-Nine", genre: "comedy", level: "intermediate" },
@@ -215,7 +233,6 @@
             { name: "The Good Place", genre: "comedy", level: "intermediate" },
             { name: "Silicon Valley", genre: "comedy", level: "intermediate" },
             { name: "Unbreakable Kimmy Schmidt", genre: "comedy", level: "intermediate" },
-            // Drama
             { name: "The Crown", genre: "drama", level: "advanced" },
             { name: "Breaking Bad", genre: "drama", level: "intermediate" },
             { name: "Mad Men", genre: "drama", level: "advanced" },
@@ -236,7 +253,6 @@
             { name: "Outlander", genre: "drama", level: "advanced" },
             { name: "The Americans", genre: "drama", level: "advanced" },
             { name: "Lost", genre: "drama", level: "intermediate" },
-            // Sci-Fi & Fantasy
             { name: "Stranger Things", genre: "sci-fi", level: "intermediate" },
             { name: "Game of Thrones", genre: "sci-fi", level: "advanced" },
             { name: "Black Mirror", genre: "sci-fi", level: "intermediate" },
@@ -252,7 +268,6 @@
             { name: "The Umbrella Academy", genre: "sci-fi", level: "intermediate" },
             { name: "Westworld (again)", genre: "sci-fi", level: "advanced" },
             { name: "The Magicians", genre: "sci-fi", level: "intermediate" },
-            // Animation
             { name: "The Simpsons", genre: "animation", level: "intermediate" },
             { name: "Rick and Morty", genre: "animation", level: "intermediate" },
             { name: "BoJack Horseman", genre: "animation", level: "intermediate" },
@@ -263,7 +278,6 @@
             { name: "Archer", genre: "animation", level: "intermediate" },
             { name: "Steven Universe", genre: "animation", level: "beginner" },
             { name: "Futurama", genre: "animation", level: "intermediate" },
-            // Crime & Thriller
             { name: "Peaky Blinders", genre: "crime", level: "advanced" },
             { name: "Mindhunter", genre: "crime", level: "advanced" },
             { name: "Narcos", genre: "crime", level: "intermediate" },
@@ -279,7 +293,6 @@
             { name: "Money Heist (La Casa de Papel)", genre: "crime", level: "intermediate" },
             { name: "Line of Duty", genre: "crime", level: "advanced" },
             { name: "Sherlock (again)", genre: "crime", level: "advanced" },
-            // Romance
             { name: "Bridgerton", genre: "romance", level: "intermediate" },
             { name: "The Gilmore Girls", genre: "romance", level: "intermediate" },
             { name: "Jane the Virgin", genre: "romance", level: "intermediate" },
@@ -290,7 +303,6 @@
             { name: "The Marvelous Mrs. Maisel (again)", genre: "romance", level: "advanced" },
             { name: "Younger", genre: "romance", level: "intermediate" },
             { name: "Crazy Ex-Girlfriend", genre: "romance", level: "intermediate" },
-            // Documentary
             { name: "Planet Earth", genre: "documentary", level: "intermediate" },
             { name: "The Last Dance", genre: "documentary", level: "intermediate" },
             { name: "Making a Murderer", genre: "documentary", level: "intermediate" },
