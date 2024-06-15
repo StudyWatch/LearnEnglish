@@ -22,14 +22,14 @@
         .back-to-home-button {
             display: inline-block;
             margin: 10px;
-            padding: 30px 60px; /* גדלתי את הכפתור פי שניים */
+            padding: 10px 15px;
             background-color: #3498db;
             color: white;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
-            font-size: 22px; /* גדלתי את הכתב */
+            font-size: 14px;
         }
 
         .back-to-home-button:hover {
@@ -39,20 +39,20 @@
 
         h2, p {
             margin-top: 20px;
-            font-size: 32px; /* גדלתי את הכותרת */
+            font-size: 22px;
             background-color: rgba(0, 0, 0, 0.7);
-            padding: 25px 50px;
+            padding: 15px 30px;
             border-radius: 10px;
             transition: transform 0.3s;
         }
 
         select, button {
-            margin: 20px 0;
-            padding: 20px 40px; /* הגדלתי את הכפתורים פי שניים */
+            margin: 15px 0;
+            padding: 8px 16px;
             border-radius: 20px;
             border: 2px solid #ffffff;
             outline: none;
-            font-size: 24px; /* גדלתי את הכתב */
+            font-size: 14px;
             color: #ffffff;
             background-color: #e74c3c;
             transition: all 0.3s ease, transform 0.3s;
@@ -67,44 +67,65 @@
 
         #recommendation {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
             width: 100%;
-            height: 200px; /* גדלתי את הגובה */
-            overflow: hidden;
-            position: relative;
             margin-top: 20px;
+            overflow: hidden;
         }
 
         .recommendation-slide {
+            margin: 10px;
             padding: 20px;
             background-color: #16222a;
             border-radius: 10px;
             color: #ffffff;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-            font-size: 28px; /* גדלתי את הכתב */
-            width: 100%; /* גדלתי את הרוחב */
+            font-size: 18px;
+            width: 90%;
             text-align: center;
-            position: absolute;
-            animation: slide 10s infinite linear;
+            transition: transform 0.5s ease;
         }
 
-        @keyframes slide {
-            0%, 100% {
-                transform: translateX(100%);
-                opacity: 0;
+        .recommendation-slide:hover {
+            transform: scale(1.1);
+        }
+
+        @media only screen and (max-width: 800px) {
+            body {
+                padding: 20px;
+                background-image: linear-gradient(to bottom right, #1c1c1c, #575757);
             }
-            10%, 30% {
-                transform: translateX(0);
-                opacity: 1;
+
+            .back-to-home-button {
+                padding: 15px 30px;
+                font-size: 18px;
             }
-            40%, 60% {
-                transform: translateX(-100%);
-                opacity: 0;
+
+            h2, p {
+                font-size: 28px;
+                padding: 20px 40px;
             }
-            70%, 90% {
-                transform: translateX(0);
-                opacity: 1;
+
+            select, button {
+                padding: 15px 30px;
+                font-size: 18px;
+            }
+
+            #recommendation .recommendation-slide {
+                font-size: 22px;
+            }
+
+            h2 {
+                margin-top: 10px;
+            }
+
+            p {
+                margin-top: 10px;
+            }
+
+            select, button {
+                margin-top: 20px;
             }
         }
 
@@ -119,40 +140,6 @@
 
         .bot-image:hover {
             transform: scale(1.1);
-        }
-
-        @media only screen and (max-width: 800px) {
-            .back-to-home-button {
-                padding: 25px 50px; /* הגדלתי עוד יותר את הכפתור */
-                font-size: 22px;
-            }
-
-            h2, p {
-                font-size: 28px;
-                padding: 20px 40px;
-            }
-
-            select, button {
-                padding: 20px 40px; /* הגדלתי עוד יותר את הכפתורים */
-                font-size: 22px;
-            }
-
-            #recommendation .recommendation-slide {
-                font-size: 26px; /* הגדלתי את הכתב */
-                height: 180px; /* הגדלתי את גובה הלוח */
-            }
-
-            h2 {
-                margin-top: 10px;
-            }
-
-            p {
-                margin-top: 10px;
-            }
-
-            select, button {
-                margin-top: 20px;
-            }
         }
 
         @media only screen and (min-width: 801px) {
@@ -173,7 +160,7 @@
             }
 
             #recommendation .recommendation-slide {
-                font-size: 20px;
+                font-size: 18px;
             }
         }
     </style>
@@ -202,10 +189,13 @@
 
     <button onclick="recommendSeries()">המלץ על סדרה</button>
 
-    <div id="recommendation"></div>
+    <div id="recommendation">
+        <!-- Slides will be injected here by JavaScript -->
+    </div>
 
     <script>
         const seriesDB = [
+            // Comedy
             { name: "Friends", genre: "comedy", level: "beginner" },
             { name: "The Office (US)", genre: "comedy", level: "beginner" },
             { name: "Brooklyn Nine-Nine", genre: "comedy", level: "intermediate" },
@@ -226,6 +216,7 @@
             { name: "The Good Place", genre: "comedy", level: "intermediate" },
             { name: "Silicon Valley", genre: "comedy", level: "intermediate" },
             { name: "Unbreakable Kimmy Schmidt", genre: "comedy", level: "intermediate" },
+            // Drama
             { name: "The Crown", genre: "drama", level: "advanced" },
             { name: "Breaking Bad", genre: "drama", level: "intermediate" },
             { name: "Mad Men", genre: "drama", level: "advanced" },
@@ -246,6 +237,7 @@
             { name: "Outlander", genre: "drama", level: "advanced" },
             { name: "The Americans", genre: "drama", level: "advanced" },
             { name: "Lost", genre: "drama", level: "intermediate" },
+            // Sci-Fi & Fantasy
             { name: "Stranger Things", genre: "sci-fi", level: "intermediate" },
             { name: "Game of Thrones", genre: "sci-fi", level: "advanced" },
             { name: "Black Mirror", genre: "sci-fi", level: "intermediate" },
@@ -261,6 +253,7 @@
             { name: "The Umbrella Academy", genre: "sci-fi", level: "intermediate" },
             { name: "Westworld (again)", genre: "sci-fi", level: "advanced" },
             { name: "The Magicians", genre: "sci-fi", level: "intermediate" },
+            // Animation
             { name: "The Simpsons", genre: "animation", level: "intermediate" },
             { name: "Rick and Morty", genre: "animation", level: "intermediate" },
             { name: "BoJack Horseman", genre: "animation", level: "intermediate" },
@@ -271,6 +264,7 @@
             { name: "Archer", genre: "animation", level: "intermediate" },
             { name: "Steven Universe", genre: "animation", level: "beginner" },
             { name: "Futurama", genre: "animation", level: "intermediate" },
+            // Crime & Thriller
             { name: "Peaky Blinders", genre: "crime", level: "advanced" },
             { name: "Mindhunter", genre: "crime", level: "advanced" },
             { name: "Narcos", genre: "crime", level: "intermediate" },
@@ -286,6 +280,7 @@
             { name: "Money Heist (La Casa de Papel)", genre: "crime", level: "intermediate" },
             { name: "Line of Duty", genre: "crime", level: "advanced" },
             { name: "Sherlock (again)", genre: "crime", level: "advanced" },
+            // Romance
             { name: "Bridgerton", genre: "romance", level: "intermediate" },
             { name: "The Gilmore Girls", genre: "romance", level: "intermediate" },
             { name: "Jane the Virgin", genre: "romance", level: "intermediate" },
@@ -296,6 +291,7 @@
             { name: "The Marvelous Mrs. Maisel (again)", genre: "romance", level: "advanced" },
             { name: "Younger", genre: "romance", level: "intermediate" },
             { name: "Crazy Ex-Girlfriend", genre: "romance", level: "intermediate" },
+            // Documentary
             { name: "Planet Earth", genre: "documentary", level: "intermediate" },
             { name: "The Last Dance", genre: "documentary", level: "intermediate" },
             { name: "Making a Murderer", genre: "documentary", level: "intermediate" },
@@ -314,17 +310,14 @@
             const recommendations = seriesDB.filter(series => series.genre === genre && series.level === level);
 
             const recommendationElement = document.getElementById("recommendation");
-            recommendationElement.innerHTML = ''; // ניקוי תוכן קודם
+            recommendationElement.innerHTML = ''; // Clear existing recommendations
 
             if (recommendations.length > 0) {
-                recommendations.forEach((series, index) => {
+                recommendations.forEach(series => {
                     const slide = document.createElement('div');
                     slide.className = 'recommendation-slide';
                     slide.innerHTML = `<strong>${series.name}</strong>`;
                     recommendationElement.appendChild(slide);
-
-                    // הוספת אנימציה להצגת הסדרות באופן רציף
-                    slide.style.animation = `slide-in-out ${recommendations.length * 2}s ${index * 2}s infinite`;
                 });
             } else {
                 recommendationElement.innerHTML = "מצטערים, לא מצאנו סדרה שתואמת את ההעדפות שלך.";
