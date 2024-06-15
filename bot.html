@@ -67,28 +67,45 @@
 
         #recommendation {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: center;
             width: 100%;
-            margin-top: 20px;
+            height: 100px;
             overflow: hidden;
+            position: relative;
+            margin-top: 20px;
         }
 
         .recommendation-slide {
-            margin: 10px;
             padding: 20px;
             background-color: #16222a;
             border-radius: 10px;
             color: #ffffff;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
             font-size: 18px;
-            width: 90%;
+            width: 80%;
             text-align: center;
-            transition: transform 0.5s ease;
+            position: absolute;
+            animation: slide 10s infinite;
         }
 
-        .recommendation-slide:hover {
-            transform: scale(1.1);
+        @keyframes slide {
+            0%, 100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            10%, 30% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            40%, 60% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            70%, 90% {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         @media only screen and (max-width: 800px) {
@@ -313,11 +330,14 @@
             recommendationElement.innerHTML = ''; // Clear existing recommendations
 
             if (recommendations.length > 0) {
-                recommendations.forEach(series => {
+                let delay = 0;
+                recommendations.forEach((series, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'recommendation-slide';
+                    slide.style.animationDelay = `${delay}s`;
                     slide.innerHTML = `<strong>${series.name}</strong>`;
                     recommendationElement.appendChild(slide);
+                    delay += 2;
                 });
             } else {
                 recommendationElement.innerHTML = "מצטערים, לא מצאנו סדרה שתואמת את ההעדפות שלך.";
