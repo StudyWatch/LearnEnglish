@@ -1728,6 +1728,9 @@ form button[type="submit"]:hover {
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    z-index: 1000;
+    justify-content: space-around;
+    padding: 0; /* ביטול הרווח מסביב */
   }
   .shortcut-rectangle {
     flex-basis: 35%;
