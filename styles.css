@@ -1815,14 +1815,14 @@ form button[type="submit"]:hover {
   }
   #difficulty-tabs {
     position: fixed; /* יישאר במיקום קבוע */
-    top: 50px; /* מתחת לכפתור היציאה */
+    top: 70px; /* מתחת לכפתור היציאה */
     left: 0;
     width: 100%; /* רוחב מלא */
-    background: white;
+    background: transparent; /* הפיכת רקע לשקוף */
     z-index: 1000;
     display: flex;
     justify-content: space-around;
-    padding: 5px;
+    padding: 0; /* ביטול הרווח מסביב */
   }
   .tablink {
     flex: 1;
@@ -1834,6 +1834,6 @@ form button[type="submit"]:hover {
     font-size: 16px;
   }
   .tablink.active {
-    background: lightgray; /* רקע לכפתור הפעיל */
+    background: lightgray !important; /* צבע רקע לכפתור הפעיל */
   }
 }
