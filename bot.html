@@ -43,7 +43,7 @@
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px 20px;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         p {
@@ -52,6 +52,7 @@
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px 20px;
             border-radius: 10px;
+            margin-top: 10px;
         }
 
         select, button {
@@ -76,7 +77,7 @@
         #recommendation {
             margin-top: 20px;
             padding: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: #000;
             color: #ffffff;
             display: inline-block;
             border-radius: 20px;
@@ -87,6 +88,9 @@
             overflow: hidden;
             white-space: nowrap;
             height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .recommendation-slide {
@@ -95,17 +99,17 @@
             animation: slide 20s infinite;
             font-size: 24px;
             font-weight: bold;
+            color: #ffffff; /* Text color white */
+            background-color: #000; /* Background color black */
+            padding: 10px;
         }
 
         @keyframes slide {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(0); }
-            30% { transform: translateX(-100%); }
-            55% { transform: translateX(-100%); }
-            60% { transform: translateX(-200%); }
-            85% { transform: translateX(-200%); }
-            90% { transform: translateX(-300%); }
-            100% { transform: translateX(-300%); }
+            0%, 20% { transform: translateX(0); }
+            25%, 45% { transform: translateX(-100%); }
+            50%, 70% { transform: translateX(-200%); }
+            75%, 95% { transform: translateX(-300%); }
+            100% { transform: translateX(0); }
         }
 
         .bot-image {
@@ -123,29 +127,30 @@
 
         @media only screen and (max-width: 800px) {
             body {
-                background-image: url('./img/pingbot.png');
+                background-image: url('./img/pingbot_mobile.png');
                 background-size: cover;
                 background-position: center center;
                 padding: 20px;
             }
 
             h2, p {
-                font-size: 32px;
+                font-size: 28px;
+                margin-top: 10px;
             }
 
             select, button {
-                padding: 30px 70px;
-                font-size: 32px;
+                padding: 20px 40px;
+                font-size: 24px;
             }
 
             #recommendation {
-                font-size: 36px;
-                padding: 30px;
-                height: 100px;
+                font-size: 24px;
+                padding: 20px;
+                height: 80px;
             }
 
             .recommendation-slide {
-                font-size: 36px;
+                font-size: 24px;
             }
         }
 
@@ -157,22 +162,23 @@
             }
 
             h2, p {
-                font-size: 36px;
+                font-size: 24px;
+                margin-top: 10px;
             }
 
             select, button {
                 padding: 10px 20px;
-                font-size: 20px;
+                font-size: 18px;
             }
 
             #recommendation {
-                font-size: 24px;
-                padding: 20px;
+                font-size: 18px;
+                padding: 10px;
                 height: 60px;
             }
 
             .recommendation-slide {
-                font-size: 24px;
+                font-size: 18px;
             }
         }
     </style>
@@ -207,7 +213,6 @@
 
     <script>
         const seriesDB = [
-            // Comedy
             { name: "Friends", genre: "comedy", level: "beginner" },
             { name: "The Office (US)", genre: "comedy", level: "beginner" },
             { name: "Brooklyn Nine-Nine", genre: "comedy", level: "intermediate" },
@@ -228,7 +233,6 @@
             { name: "The Good Place", genre: "comedy", level: "intermediate" },
             { name: "Silicon Valley", genre: "comedy", level: "intermediate" },
             { name: "Unbreakable Kimmy Schmidt", genre: "comedy", level: "intermediate" },
-            // Drama
             { name: "The Crown", genre: "drama", level: "advanced" },
             { name: "Breaking Bad", genre: "drama", level: "intermediate" },
             { name: "Mad Men", genre: "drama", level: "advanced" },
@@ -249,7 +253,6 @@
             { name: "Outlander", genre: "drama", level: "advanced" },
             { name: "The Americans", genre: "drama", level: "advanced" },
             { name: "Lost", genre: "drama", level: "intermediate" },
-            // Sci-Fi & Fantasy
             { name: "Stranger Things", genre: "sci-fi", level: "intermediate" },
             { name: "Game of Thrones", genre: "sci-fi", level: "advanced" },
             { name: "Black Mirror", genre: "sci-fi", level: "intermediate" },
@@ -265,7 +268,6 @@
             { name: "The Umbrella Academy", genre: "sci-fi", level: "intermediate" },
             { name: "Westworld (again)", genre: "sci-fi", level: "advanced" },
             { name: "The Magicians", genre: "sci-fi", level: "intermediate" },
-            // Animation
             { name: "The Simpsons", genre: "animation", level: "intermediate" },
             { name: "Rick and Morty", genre: "animation", level: "intermediate" },
             { name: "BoJack Horseman", genre: "animation", level: "intermediate" },
@@ -276,7 +278,6 @@
             { name: "Archer", genre: "animation", level: "intermediate" },
             { name: "Steven Universe", genre: "animation", level: "beginner" },
             { name: "Futurama", genre: "animation", level: "intermediate" },
-            // Crime & Thriller
             { name: "Peaky Blinders", genre: "crime", level: "advanced" },
             { name: "Mindhunter", genre: "crime", level: "advanced" },
             { name: "Narcos", genre: "crime", level: "intermediate" },
@@ -292,7 +293,6 @@
             { name: "Money Heist (La Casa de Papel)", genre: "crime", level: "intermediate" },
             { name: "Line of Duty", genre: "crime", level: "advanced" },
             { name: "Sherlock (again)", genre: "crime", level: "advanced" },
-            // Romance
             { name: "Bridgerton", genre: "romance", level: "intermediate" },
             { name: "The Gilmore Girls", genre: "romance", level: "intermediate" },
             { name: "Jane the Virgin", genre: "romance", level: "intermediate" },
@@ -303,7 +303,6 @@
             { name: "The Marvelous Mrs. Maisel (again)", genre: "romance", level: "advanced" },
             { name: "Younger", genre: "romance", level: "intermediate" },
             { name: "Crazy Ex-Girlfriend", genre: "romance", level: "intermediate" },
-            // Documentary
             { name: "Planet Earth", genre: "documentary", level: "intermediate" },
             { name: "The Last Dance", genre: "documentary", level: "intermediate" },
             { name: "Making a Murderer", genre: "documentary", level: "intermediate" },
