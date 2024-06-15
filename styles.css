@@ -1722,16 +1722,18 @@ form button[type="submit"]:hover {
   .episode-button:active {
     transform: none;
   }
-  .bottom-section {
+.bottom-section {
     display: flex;
     flex-direction: row;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    z-index: 1000;
-    justify-content: space-around;
-    padding: 0; /* ביטול הרווח מסביב */
-  }
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; /* מונע גלילה אופקית */
+    background: transparent; /* הסרת רקע לבן */
+    margin-top: -5px; /* מתקן את המיקום למעלה */
+    padding: 0;
+    width: 100%; /* מתאים את הרוחב לרוחב המסך */
+    height: auto; /* גובה אוטומטי מותאם לתוכן */
+}
   .shortcut-rectangle {
     flex-basis: 35%;
     margin-bottom: 10px;
@@ -1817,7 +1819,8 @@ form button[type="submit"]:hover {
     height: 30px; /* Smaller size */
   }
   #difficulty-tabs {
-    position: fixed; /* יישאר במיקום קבוע */
+     position: sticky; /* הופך את הטאבים ל'נצמדים' */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* צל נחמד להבדלה ויזואלית *
     top: 70px; /* מתחת לכפתור היציאה */
     left: 0;
     width: 100%; /* רוחב מלא */
