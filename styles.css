@@ -1634,25 +1634,26 @@ form button[type="submit"]:hover {
         display: flex;
         flex-direction: column;
     }
-    .difficulty-tabs-fixed {
-        position: sticky;
-        top: 0;
+    
+     .difficulty-tabs-fixed {
+        position: fixed;
+        bottom: 0;
         width: 100%;
-        background: white;
+        background: #f0f0f0; /* רקע בולט יותר */
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.2); /* צל להבלטה */
         z-index: 1000;
-        padding: 10px;
-        display: flex !important; /* מבטיח שהסרגל תמיד יופיע */
-        justify-content: space-around;
     }
     .tablink {
-        width: 33%; /* מחלק את הכפתורים לרוחב שווה */
-        padding: 10px 0;
-        text-align: center;
-        background-color: #f1f1f1;
-        border: none;
-        cursor: pointer;
-        font-size: 14px;
-        display: block !important; /* מבטיח שהכפתורים יוצגו */
+        width: 33%;
+        padding: 12px;
+        font-size: 16px; /* גודל פונט גדול יותר לקריאות */
+        border: none; /* ללא מסגרת */
+        background: transparent; /* רקע שקוף */
+        color: black; /* צבע טקסט שחור */
+    }
+    .tablink.active, .tablink:hover {
+        background: #007bff; /* רקע כחול בבחירה או הובר */
+        color: white; /* טקסט לבן */
     }
     .tabcontent {
       /*  display: none !important; /* הסתרת תוכן לא פעיל */
@@ -1660,9 +1661,7 @@ form button[type="submit"]:hover {
         flex-grow: 1;
         overflow-y: auto;
     }
-    .tabcontent.active {
-        display: block !important; /* הצגת תוכן פעיל */
-    }
+    
     .test-knowledge-button {
         margin-top: 20px;
         padding: 10px;
