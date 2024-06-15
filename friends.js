@@ -627,15 +627,15 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
     const difficultyTabsHtml = `
         <div id="difficulty-tabs" class="difficulty-tabs-fixed" style="display: flex; justify-content: space-around; width: 100%; position: sticky; top: 0; background: white; z-index: 1000;">
-            <button class="tablink" data-difficulty="easy">קל</button>
-            <button class="tablink" data-difficulty="medium">בינוני</button>
-            <button class="tablink" data-difficulty="hard">קשה</button>
+            <button class="tablink" data-difficulty="easy" style="width: 100%; padding: 10px 5px; margin-top: 10px; font-size: 1.2rem;">קל</button>
+            <button class="tablink" data-difficulty="medium" style="width: 100%; padding: 10px 5px; margin-top: 10px; font-size: 1.2rem;">בינוני</button>
+            <button class="tablink" data-difficulty="hard" style="width: 100%; padding: 10px 5px; margin-top: 10px; font-size: 1.2rem;">קשה</button>
         </div>
         <div id="easy" class="tabcontent active"></div>
         <div id="medium" class="tabcontent"></div>
         <div id="hard" class="tabcontent"></div>
-        <button class="test-knowledge-button">בחן את הידע שלך</button>
-        <div id="episode-links" class="episode-links">
+        <button class="test-knowledge-button" style="margin-top: 20px; padding: 10px; font-size: 16px;">בחן את הידע שלך</button>
+        <div id="episode-links" class="episode-links" style="margin-top: 20px;">
             <h3>קישורים לפרק:</h3>
             <div id="links-container"></div>
         </div>
@@ -671,7 +671,42 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         linksContainer.innerHTML = '<p>לא נמצאו קישורים לפרק זה.</p>';
     }
 
-    loadContentForDifficulty(tvShowId, season, episode, difficulty);
+    function createLinkButton(platformText, url, imageName) {
+        const button = document.createElement('a');
+        button.href = url;
+        button.target = '_blank';
+        button.className = 'link-button';
+        button.innerHTML = `
+            <img src="img/${imageName}" alt="${platformText} logo" class="platform-logo">
+            ${platformText}
+        `;
+        return button;
+    }
+
+    function loadContentForDifficulty(tvShowId, season, episodeNum, difficulty) {
+        const words = getWordTreasure(tvShowId, season, episodeNum, difficulty);
+        const targetDiv = modal.querySelector(`#${difficulty}`);
+        targetDiv.innerHTML = ''; 
+
+        if (words && words.length > 0) {
+            const wordsHtml = words.map(item => {
+                const sentenceHighlighted = item.sentence.replace(new RegExp(item.word, 'gi'), `<span class="highlight">${item.word}</span>`);
+                return `
+                    <div class="word-item">
+                        <span class="word"><strong>${item.word}</strong></span> - 
+                        <span class="translation">${item.translate}</span>
+                        <p class="sentence">${sentenceHighlighted}</p>
+                    </div>
+                `;
+            }).join('');
+            targetDiv.innerHTML = `<h2>אוצר מילים - עונה ${season}, פרק ${episodeNum}:</h2>
+                                   <div class="word-treasure-container">${wordsHtml}</div>`;
+        } else {
+            targetDiv.innerHTML = "<p>No Words</p>";
+        }
+    }
+
+    loadContentForDifficulty(tvShowId, season, episode, difficulty); 
     modal.querySelector(`.tablink[data-difficulty='${difficulty}']`).classList.add("active");
 
     modal.querySelectorAll(".tablink").forEach(tab => {
