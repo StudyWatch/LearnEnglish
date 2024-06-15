@@ -1745,8 +1745,7 @@ form button[type="submit"]:hover {
   .episode-button:active {
     transform: none;
   }
-
-.bottom-section {
+ .bottom-section {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1761,44 +1760,41 @@ form button[type="submit"]:hover {
 
   .shortcut-rectangle {
     flex-basis: 100%;
-    margin: 5px 0; /* מרווח קטן יותר למעלה ולמטה */
+    margin: 5px 0; /* קטן מעט את הרווחים */
     width: 100%;
-    height: 70px; /* הגבהה קטנה מקודם */
+    height: 80px; /* גובה גדול יותר */
     display: flex;
     align-items: center;
     justify-content: center;
     background: #333;
-    position: relative; /* הוספת מיקום יחסי להתאמה דקדקנית יותר */
+    position: relative;
   }
 
   .shortcut-rectangle img {
     width: 100%;
     height: auto;
-    object-fit: contain; /* מבטיח שהתמונה תתאים תוך שמירה על פרופורציות */
+    object-fit: cover; /* מתאים את התמונה למלא את המלבן */
+    position: absolute;
+    top: 0; /* ממקם את התמונה בראש המלבן */
   }
 
   .shortcut-rectangle p {
-    position: absolute; /* מיקום מוחלט בתוך המלבן */
-    top: 50%; /* ממרכז ורטיקלית */
-    left: 50%; /* ממרכז אופקית */
-    transform: translate(-50%, -50%); /* הזזה מדויקת למרכז */
-    font-size: 12px; /* גודל הפונט */
-    color: white; /* צבע הפונט */
-    text-align: center; /* יישור טקסט למרכז */
+    position: absolute; /* ממקם את הטקסט באופן מוחלט */
+    bottom: 5px; /* מתחת לכל */
+    left: 50%; /* ממרכז הטקסט אופקית */
+    transform: translateX(-50%); /* מבטיח שהטקסט ממורכז */
+    font-size: 12px;
+    color: white;
+    text-align: center;
     margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .bottom-section img {
-    max-width: 100%; /* מקסימום רוחב תמונה */
-    height: auto; /* גובה אוטומטי */
-    object-fit: cover; /* מילוי התכולה ללא עיוות */
+    max-width: 100%; /* מונע מהתמונה לחרוג מהמלבן */
+    height: auto;
+    object-fit: cover; /* מבטיח שהתמונה תמלא את המלבן ללא עיוות */
     display: block;
-    max-height: 120px; /* גובה מקסימלי */
-    margin-right: auto; /* דחיפה למרכז */
-    margin-left: auto; /* דחיפה למרכז */
+    max-height: 75px; /* גובה גבוה יותר מתוך המלבן */
   }
 
   body, button, input[type="text"] {
