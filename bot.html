@@ -99,6 +99,44 @@
             margin-bottom: 20px;
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         @media only screen and (max-width: 800px) {
             body {
                 background-image: url('./img/mobile_background.jpg');
@@ -162,33 +200,57 @@
                 font-size: 20px;
             }
         }
+
+        .question {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .question.active {
+            display: block;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
     <a href="index.html" class="back-to-home-button">חזור לדף הבית</a>
     <img src="./img/bot_image.webp" alt="בוט המלצות" class="bot-image">
     <h2>בוט המלצות לסדרות</h2>
-    <p>באיזה ז'אנר אתה מעוניין?</p>
-    <select id="genre">
-        <option value="comedy">קומדיה</option>
-        <option value="drama">דרמה</option>
-        <option value="sci-fi">מדע בדיוני ופנטזיה</option>
-        <option value="animation">אנימציה</option>
-        <option value="crime">פשע ומתח</option>
-        <option value="romance">רומנטיקה</option>
-        <option value="documentary">דוקומנטרי</option>
-    </select>
-
-    <p>מהי רמת האנגלית שלך?</p>
-    <select id="englishLevel">
-        <option value="beginner">מתחיל</option>
-        <option value="intermediate">בינוני</option>
-        <option value="advanced">מתקדם</option>
-    </select>
-
-    <button onclick="recommendSeries()">המלץ על סדרה</button>
+    
+    <div class="question active" id="question-1">
+        <p>באיזה ז'אנר אתה מעוניין?</p>
+        <select id="genre">
+            <option value="comedy">קומדיה</option>
+            <option value="drama">דרמה</option>
+            <option value="sci-fi">מדע בדיוני ופנטזיה</option>
+            <option value="animation">אנימציה</option>
+            <option value="crime">פשע ומתח</option>
+            <option value="romance">רומנטיקה</option>
+            <option value="documentary">דוקומנטרי</option>
+        </select>
+        <button onclick="nextQuestion(2)">הבא</button>
+    </div>
+    
+    <div class="question" id="question-2">
+        <p>מהי רמת האנגלית שלך?</p>
+        <select id="englishLevel">
+            <option value="beginner">מתחיל</option>
+            <option value="intermediate">בינוני</option>
+            <option value="advanced">מתקדם</option>
+        </select>
+        <button onclick="recommendSeries()">המלץ על סדרה</button>
+    </div>
 
     <div id="recommendation"></div>
+
+    <div id="seriesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="seriesName"></h2>
+            <p id="seriesDescription"></p>
+        </div>
+    </div>
 
     <script>
       const seriesDB = [
@@ -292,6 +354,11 @@
 ];
 
 
+        function nextQuestion(questionNumber) {
+            document.querySelector('.question.active').classList.remove('active');
+            document.getElementById(`question-${questionNumber}`).classList.add('active');
+        }
+
         function recommendSeries() {
             const genre = document.getElementById("genre").value;
             const level = document.getElementById("englishLevel").value;
@@ -326,7 +393,13 @@
         }
 
         function showSeriesDetails(series) {
-            alert(series.description);
+            document.getElementById("seriesName").innerText = series.name;
+            document.getElementById("seriesDescription").innerText = series.description;
+            document.getElementById("seriesModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("seriesModal").style.display = "none";
         }
     </script>
 </body>
