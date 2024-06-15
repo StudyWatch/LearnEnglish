@@ -1723,36 +1723,40 @@ form button[type="submit"]:hover {
   .episode-button:active {
     transform: none;
   }
-.bottom-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden; /* מונע גלילה אופקית */
-    background: transparent; /* הסרת רקע לבן */
-    margin-top: -11px; /* מתקן את המיקום למעלה */
-    padding: 0;
-    width: 100%; /* מתאים את הרוחב לרוחב המסך */
-    height: auto; /* גובה אוטומטי מותאם לתוכן */
-}
-  .shortcut-rectangle {
-    flex-basis: 35%;
-    margin-bottom: 15px;
-    width: 70vw;
-    height: 10vh;
-    flex-shrink: 0;
-    margin-right: -37px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .bottom-section img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    max-height: 120px;
-  }
+ .bottom-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden; /* מונע גלילה אופקית */
+        background: transparent; /* הסרת רקע לבן */
+        margin-top: -5px; /* מתקן את המיקום למעלה */
+        padding: 0;
+        width: 100%; /* מתאים את הרוחב לרוחב המסך */
+        height: auto; /* גובה אוטומטי מותאם לתוכן */
+    }
+    .shortcut-rectangle {
+        flex-basis: 100%; /* מלא את הרוחב במסכים צרים */
+        margin: 10px 0; /* מרווח למעלה ולמטה */
+        width: 100%; /* רוחב מלא */
+        height: auto; /* גובה מתאים אוטומטי */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #333; /* רקע אפור כהה, התאם לעיצוב שלך */
+    }
+    .shortcut-rectangle p {
+        font-size: 12px; /* הקטנת גודל הפונט */
+        margin: 0; /* הסרת שוליים על מנת למנוע דחיקה לשורה נוספת */
+        white-space: nowrap; /* מונע שבירת שורה */
+        overflow: hidden; /* מונע הצגת טקסט שלא נכנס בשורה */
+        text-overflow: ellipsis; /* מוסיף נקודות בסוף הטקסט אם הוא נחתך */
+    }
+    .bottom-section img {
+        max-width: 100%; /* מונע יציאה של התמונות מהמלבן */
+        height: auto; /* שמירה על גובה אוטומטי */
+        object-fit: cover; /* מבטיח שהתמונה מתאימה לגובה ורוחב המלבן */
+    }
   body, button, input[type="text"] {
     font-size: 10px;
   }
@@ -1764,9 +1768,7 @@ form button[type="submit"]:hover {
     height: auto;
     margin-bottom: -10px;
   }
-  .shortcut-rectangle p {
-    font-size: 1em;
-  }
+
   .shortcut-rectangle:not(#to-bot):not(#to-series):not(#to-tips) {
     display: none;
   }
