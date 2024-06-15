@@ -1671,8 +1671,21 @@ form button[type="submit"]:hover {
     padding: 10px; /* פדינג קטן יותר */
     width: 90%; /* הקטנת רוחב המודל */
   }
+  .back-to-top-button {
+  position: fixed; // Ensures the button stays in a fixed position on the screen
+  bottom: 20px; // Distance from the bottom of the viewport
+  right: 20px; // Distance from the right of the viewport
+  z-index: 1500; // High z-index to ensure visibility above other elements
+  display: none; // Initially hidden
+  padding: 10px 20px;
+  background-color: #007bff; // Or any color that fits the design
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
   /* תיקון לכפתורים תחתונים כגון back-to-top וכו' */
-  .back-to-top-button, .feedback-button {
+   .feedback-button {
     font-size: 10px; /* קטן יותר */
     padding: 5px 10px; /* קטן יותר */
     width: 30px; /* קטן יותר */
