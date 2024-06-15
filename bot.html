@@ -23,7 +23,6 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #282c34;
             color: #ffffff; /* Change to white for better contrast */
             text-align: center;
             padding: 60px;
@@ -36,7 +35,7 @@
         }
 
         h2 {
-            font-weight: normal;
+            font-weight: bold;
             font-size: 36px; /* Larger font size for readability */
             color: #ffffff; /* Change to white for better contrast */
         }
@@ -89,6 +88,31 @@
             transform: scale(1.1);
         }
 
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 2px solid #ff5733;
+        }
+
+        .carousel-slide {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-slide img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
         @media only screen and (max-width: 800px) {
             body {
                 background-image: url('./img/pingbot.png'); /* Replace with the mobile background image URL */
@@ -114,7 +138,7 @@
 
         @media only screen and (min-width: 801px) {
             body {
-                background-image: url('./img/pingbot.png'); /* Replace with the desktop background image URL */
+                background-image: url('./img/pingbot_desktop.png'); /* Replace with the desktop background image URL */
                 background-size: cover; /* Ensure the background image covers the whole screen */
                 background-position: center center;
             }
@@ -145,11 +169,14 @@
 
     <button onclick="recommendSeries()">Recommend Series</button>
 
-    <div id="recommendation"></div>
+    <div id="recommendation" class="carousel">
+        <div class="carousel-slide active" id="slide1"></div>
+        <div class="carousel-slide" id="slide2"></div>
+        <div class="carousel-slide" id="slide3"></div>
+    </div>
 
     <script>
         const seriesDB = [
-            // Comedy
             { name: "Friends", genre: "comedy", level: "beginner" },
             { name: "The Office (US)", genre: "comedy", level: "beginner" },
             { name: "Brooklyn Nine-Nine", genre: "comedy", level: "intermediate" },
@@ -170,7 +197,6 @@
             { name: "The Good Place", genre: "comedy", level: "intermediate" },
             { name: "Silicon Valley", genre: "comedy", level: "intermediate" },
             { name: "Unbreakable Kimmy Schmidt", genre: "comedy", level: "intermediate" },
-            // Drama
             { name: "The Crown", genre: "drama", level: "advanced" },
             { name: "Breaking Bad", genre: "drama", level: "intermediate" },
             { name: "Mad Men", genre: "drama", level: "advanced" },
@@ -191,7 +217,6 @@
             { name: "Outlander", genre: "drama", level: "advanced" },
             { name: "The Americans", genre: "drama", level: "advanced" },
             { name: "Lost", genre: "drama", level: "intermediate" },
-            // Sci-Fi & Fantasy
             { name: "Stranger Things", genre: "sci-fi", level: "intermediate" },
             { name: "Game of Thrones", genre: "sci-fi", level: "advanced" },
             { name: "Black Mirror", genre: "sci-fi", level: "intermediate" },
@@ -207,7 +232,6 @@
             { name: "The Umbrella Academy", genre: "sci-fi", level: "intermediate" },
             { name: "Westworld (again)", genre: "sci-fi", level: "advanced" },
             { name: "The Magicians", genre: "sci-fi", level: "intermediate" },
-            // Animation
             { name: "The Simpsons", genre: "animation", level: "intermediate" },
             { name: "Rick and Morty", genre: "animation", level: "intermediate" },
             { name: "BoJack Horseman", genre: "animation", level: "intermediate" },
@@ -218,7 +242,6 @@
             { name: "Archer", genre: "animation", level: "intermediate" },
             { name: "Steven Universe", genre: "animation", level: "beginner" },
             { name: "Futurama", genre: "animation", level: "intermediate" },
-            // Crime & Thriller
             { name: "Peaky Blinders", genre: "crime", level: "advanced" },
             { name: "Mindhunter", genre: "crime", level: "advanced" },
             { name: "Narcos", genre: "crime", level: "intermediate" },
@@ -234,7 +257,6 @@
             { name: "Money Heist (La Casa de Papel)", genre: "crime", level: "intermediate" },
             { name: "Line of Duty", genre: "crime", level: "advanced" },
             { name: "Sherlock (again)", genre: "crime", level: "advanced" },
-            // Romance
             { name: "Bridgerton", genre: "romance", level: "intermediate" },
             { name: "The Gilmore Girls", genre: "romance", level: "intermediate" },
             { name: "Jane the Virgin", genre: "romance", level: "intermediate" },
@@ -245,7 +267,6 @@
             { name: "The Marvelous Mrs. Maisel (again)", genre: "romance", level: "advanced" },
             { name: "Younger", genre: "romance", level: "intermediate" },
             { name: "Crazy Ex-Girlfriend", genre: "romance", level: "intermediate" },
-            // Documentary
             { name: "Planet Earth", genre: "documentary", level: "intermediate" },
             { name: "The Last Dance", genre: "documentary", level: "intermediate" },
             { name: "Making a Murderer", genre: "documentary", level: "intermediate" },
@@ -255,21 +276,38 @@
             { name: "The World According to Jeff Goldblum", genre: "documentary", level: "intermediate" },
             { name: "Wild Wild Country", genre: "documentary", level: "intermediate" },
             { name: "Abstract: The Art of Design", genre: "documentary", level: "intermediate" },
-            { name: "Our Planet", genre: "documentary", level: "intermediate" },
+            { name: "Our Planet", genre: "documentary", level: "intermediate" }
         ];
+
+        let currentSlide = 0;
 
         function recommendSeries() {
             const genre = document.getElementById("genre").value;
             const level = document.getElementById("englishLevel").value;
             const recommendations = seriesDB.filter(series => series.genre === genre && series.level === level);
             
-            const recommendationElement = document.getElementById("recommendation");
+            const recommendationElement1 = document.getElementById("slide1");
+            const recommendationElement2 = document.getElementById("slide2");
+            const recommendationElement3 = document.getElementById("slide3");
+
             if (recommendations.length > 0) {
-                const names = recommendations.map(series => series.name).join("<br>"); /* Each recommendation on a new line */
-                recommendationElement.innerHTML = `Based on your choices, we recommend: <br>${names}`;
+                recommendationElement1.innerHTML = `Recommendation 1: ${recommendations[0].name}`;
+                recommendationElement2.innerHTML = `Recommendation 2: ${recommendations[1].name}`;
+                recommendationElement3.innerHTML = `Recommendation 3: ${recommendations[2].name}`;
+                startCarousel();
             } else {
-                recommendationElement.innerHTML = "Sorry, we couldn't find a series that matches your preferences.";
+                recommendationElement1.innerHTML = "Sorry, we couldn't find a series that matches your preferences.";
+                recommendationElement2.innerHTML = "";
+                recommendationElement3.innerHTML = "";
             }
+        }
+
+        function startCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            setTimeout(startCarousel, 3000); // Change slide every 3 seconds
         }
     </script>
 </body>
