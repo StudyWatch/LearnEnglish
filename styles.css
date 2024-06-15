@@ -1626,6 +1626,7 @@ form button[type="submit"]:hover {
     font-size: 14px;
     overflow-x: hidden;
   }
+
   .modal {
     width: 100%; 
     height: 100vh; 
@@ -1634,14 +1635,16 @@ form button[type="submit"]:hover {
     border-radius: 0; 
     overflow: hidden; 
   }
+
   .grid-container, .word-treasure-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     overflow-y: auto; 
     flex-grow: 1; 
     padding: 10px; 
     gap: 5px; 
   }
+
   .modal-content {
     height: 100%; 
     border-radius: 0; 
@@ -1649,83 +1652,100 @@ form button[type="submit"]:hover {
     display: flex;
     flex-direction: column;
   }
+
   .memory-game-button, .restart-btn, .play-again-btn, .back-to-games-btn {
     padding: 5px 10px;
     font-size: 10px;
     width: 100px; 
-    height: 50px; 
+    height: 50px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border: 1px solid black;
   }
+
   .grid-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1px;
   }
+
   .memory-card {
     height: 60px;
     width: 40px;
     margin: 1px;
     font-size: 10px;
   }
+
   .exit-button, .close, #back-to-word-treasure {
     font-size: 16px;
     padding: 8px;
   }
+
   .modal-content {
     padding: 10px;
     width: 90%;
   }
+
   .back-to-top-button, .feedback-button {
     font-size: 10px;
     padding: 5px 10px;
     width: 30px;
     height: 30px;
   }
+
   .exit-button {
     align-self: flex-end;
     margin: 10px;
     font-size: 24px;
   }
+
   .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
     padding: 5px;
   }
+
   button.episode-button {
     padding: 12px;
     font-size: 16px;
   }
+
   .word-treasure-container {
     font-size: 18px;
     line-height: 1.5;
     padding: 10px;
   }
+
   .word-treasure-container h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
   }
+
   .word-treasure-container p {
     font-size: 18px;
     margin-bottom: 10px;
   }
+
   .word-treasure-container .highlight {
     font-size: 20px;
     color: #007bff;
     font-weight: bold;
   }
+
   .episode-button {
     padding: 5px;
     font-size: 10px;
   }
+
   .episode-button:hover {
     transform: none;
   }
+
   .episode-button:active {
     transform: none;
   }
+
   .bottom-section {
     display: flex;
     flex-direction: row;
@@ -1738,16 +1758,18 @@ form button[type="submit"]:hover {
     width: 100%;
     height: auto;
   }
+
   .shortcut-rectangle {
     flex-basis: 100%;
     margin: 10px 0;
     width: 100%;
-    height: 150px; /* הגדל את הגובה של המלבנים */
+    height: 120px; /* הגדלת הגובה */
     display: flex;
     align-items: center;
     justify-content: center;
     background: #333;
   }
+
   .shortcut-rectangle p {
     font-size: 12px;
     margin: 0;
@@ -1755,52 +1777,63 @@ form button[type="submit"]:hover {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .bottom-section img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: contain;
     display: block;
-    max-height: 140px;
   }
+
   body, button, input[type="text"] {
     font-size: 10px;
   }
+
   header, .bottom-section a, .tv-show-title {
     font-size: 12px;
   }
+
   .shortcut-rectangle img {
-    width: 100%;
+    width: 90%;
     height: auto;
     margin-bottom: -10px;
   }
+
   .shortcut-rectangle:not(#to-bot):not(#to-series):not(#to-tips) {
     display: none;
   }
+
   #searchBarContainer .search-bar {
     width: 90%;
     margin: 10px auto;
   }
+
   #searchInputSeries {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
   }
+
   .cool-window {
     display: none;
   }
+
   .penguin-container {
     display: none;
   }
+
   .accessibility-menu {
     position: fixed;
     top: 500px;
     right: 8px;
     z-index: 1001;
   }
+
   #accessibilityBtn img {
     width: 30px;
     height: auto;
   }
+
   .back-to-top-button {
     position: fixed;
     bottom: 20px;
@@ -1812,20 +1845,24 @@ form button[type="submit"]:hover {
     cursor: pointer;
     display: none;
   }
+
   .navbar-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 10px;
   }
+
   .nav-link {
     font-size: 12px;
     padding: 5px 10px;
   }
+
   .nav-icon {
     width: 30px;
     height: 30px;
   }
+
   #difficulty-tabs {
     position: fixed;
     top: 70px;
@@ -1837,6 +1874,7 @@ form button[type="submit"]:hover {
     justify-content: space-around;
     padding: 0;
   }
+
   .tablink {
     flex: 1;
     padding: 5px;
@@ -1846,7 +1884,9 @@ form button[type="submit"]:hover {
     background: none;
     font-size: 16px;
   }
+
   .tablink.active {
     background: lightgray !important;
   }
 }
+
