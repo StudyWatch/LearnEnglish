@@ -1716,7 +1716,37 @@ form button[type="submit"]:hover {
     width: 30px; /* Smaller size */
     height: auto;
   }
+difficulty-tabs-fixed {
+    position: sticky; /* מיקום קבוע בתחילת הגלילה */
+    top: 0; /* יתיישב בראש המסך */
+    background-color: white; /* רקע לבן להבחנה טובה */
+    z-index: 1000; /* מבטיח שהסרגל ישאר מעל כל התוכן */
+    width: 100%; /* רוחב מלא */
+  }
 
+  .tablink {
+    width: 33%; /* שלושה כפתורים בשורה אחת */
+    padding: 10px; /* פדינג מרווח */
+    font-size: 16px; /* גודל פונט גדול יותר לנוחות */
+    display: inline-block; /* הצגה בשורה */
+  }
+
+  .tabcontent {
+    display: block; /* מוצג כברירת מחדל */
+    padding: 10px; /* פדינג לתוכן */
+  }
+
+  .word-treasure-container {
+    font-size: 18px; /* שנה לגודל הכתב הרצוי */
+    line-height: 1.5; /* להבטיח שהטקסט יהיה קריא */
+    padding: 10px; /* ריווח פנימי לאלמנט */
+  }
+
+  .exit-button {
+    align-self: flex-end; /* כפתור היציאה בצד ימין למעלה */
+    margin: 10px; /* רווח סביב כפתור היציאה */
+    font-size: 24px; /* גודל פונט גדול יותר לנגישות */
+  }
   /* Responsive navbar */
   .navbar-container {
     display: flex;
