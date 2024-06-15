@@ -1800,6 +1800,45 @@ form button[type="submit"]:hover {
         align-items: flex-start;
         padding: 10px;
     }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* שתי עמודות בלבד */
+        gap: 5px; /* מרווח קטן יותר */
+        padding: 5px;
+    }
+    button.episode-button {
+        padding: 12px; /* ריווח גדול יותר לנוחות */
+        font-size: 16px; /* גודל פונט גדול יותר לקריאות */
+    }
+    .word-treasure-container {
+        font-size: 18px; /* שנה לגודל הכתב הרצוי */
+        line-height: 1.5; /* להבטיח שהטקסט יהיה קריא */
+        padding: 10px; /* ריווח פנימי לאלמנט */
+    }
+    .word-treasure-container h2 {
+        font-size: 24px; /* גודל הכתב לכותרות */
+        font-weight: bold;
+        margin-bottom: 10px; /* רווח תחתון לכותרת */
+    }
+    .word-treasure-container p {
+        font-size: 18px; /* גודל הכתב לפסקאות */
+        margin-bottom: 10px; /* רווח תחתון לפסקאות */
+    }
+    .word-treasure-container .highlight {
+        font-size: 20px; /* גודל הכתב למילים מודגשות */
+        color: #007bff; /* צבע המילים המודגשות */
+        font-weight: bold; /* משקל פונט למילים מודגשות */
+    }
+    .episode-button {
+        padding: 5px;
+        font-size: 10px;
+    }
+    .episode-button:hover {
+        transform: none;
+    }
+    .episode-button:active {
+        transform: none;
+    }
     .nav-link {
         font-size: 12px; /* Smaller font size */
         padding: 5px 10px; /* Smaller padding */
