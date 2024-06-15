@@ -1639,12 +1639,15 @@ form button[type="submit"]:hover {
     margin: 10px;
     font-size: 24px;
   }
-  .difficulty-tabs-fixed {
-    position: sticky;
-    top: 0;
-    background: white;
+   .difficulty-tabs-fixed {
+    position: sticky !important;
+    top: 0 !important; /* Always visible at the top */
     z-index: 1000;
+    background: white;
     padding: 10px;
+    display: flex;
+    justify-content: space-around !important;
+    width: 100%; /* Full width */
   }
   #difficulty-tabs {
     justify-content: space-around;
