@@ -12,7 +12,7 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             min-height: 100vh;
             background-color: #000;
@@ -22,17 +22,14 @@
         .back-to-home-button {
             display: inline-block;
             margin: 10px;
-            padding: 10px 15px;
+            padding: 20px 40px; /* גדלתי את הכפתור */
             background-color: #3498db;
             color: white;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
-            font-size: 16px;
-            position: absolute;
-            top: 20px;
-            right: 20px;
+            font-size: 18px; /* גדלתי את הכתב */
         }
 
         .back-to-home-button:hover {
@@ -42,7 +39,7 @@
 
         h2, p {
             margin-top: 20px;
-            font-size: 32px;
+            font-size: 22px;
             background-color: rgba(0, 0, 0, 0.7);
             padding: 15px 30px;
             border-radius: 10px;
@@ -51,11 +48,11 @@
 
         select, button {
             margin: 15px 0;
-            padding: 16px 32px;
+            padding: 15px 30px; /* הגדלתי כפתורים */
             border-radius: 20px;
             border: 2px solid #ffffff;
             outline: none;
-            font-size: 20px;
+            font-size: 18px; /* גדלתי את הכתב */
             color: #ffffff;
             background-color: #e74c3c;
             transition: all 0.3s ease, transform 0.3s;
@@ -73,7 +70,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            height: 200px; /* הגדלתי את הגובה של הלוח */
+            height: 150px; /* גדלתי את הגובה */
             overflow: hidden;
             position: relative;
             margin-top: 20px;
@@ -85,27 +82,27 @@
             border-radius: 10px;
             color: #ffffff;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-            font-size: 32px; /* הגדלתי את הטקסט */
-            width: 80%;
+            font-size: 24px; /* גדלתי את הכתב */
+            width: 90%;
             text-align: center;
             position: absolute;
-            animation: slide 10s infinite;
+            animation: slide 10s infinite linear;
         }
 
         @keyframes slide {
-            0%, 25% {
+            0%, 100% {
                 transform: translateX(100%);
                 opacity: 0;
             }
-            30%, 45% {
+            10%, 30% {
                 transform: translateX(0);
                 opacity: 1;
             }
-            50%, 75% {
+            40%, 60% {
                 transform: translateX(-100%);
                 opacity: 0;
             }
-            80%, 100% {
+            70%, 90% {
                 transform: translateX(0);
                 opacity: 1;
             }
@@ -118,26 +115,23 @@
             }
 
             .back-to-home-button {
-                padding: 30px 60px;
-                font-size: 36px;
+                padding: 25px 50px; /* הגדלתי עוד יותר את הכפתור */
+                font-size: 22px;
             }
 
             h2, p {
-                font-size: 36px;
-                padding: 30px 60px;
+                font-size: 32px;
+                padding: 25px 50px;
             }
 
             select, button {
-                padding: 30px 60px; /* הגדלתי את הכפתורים לנייד */
-                font-size: 36px; /* הגדלתי את הטקסט בכפתורים לנייד */
-            }
-
-            #recommendation {
-                height: 250px; /* הגדלתי את הגובה של הלוח בנייד */
+                padding: 20px 40px; /* הגדלתי עוד יותר את הכפתורים */
+                font-size: 22px;
             }
 
             #recommendation .recommendation-slide {
-                font-size: 36px; /* הגדלתי את הטקסט בנייד */
+                font-size: 28px; /* הגדלתי את הכתב */
+                height: 180px; /* הגדלתי את גובה הלוח */
             }
 
             h2 {
@@ -157,7 +151,7 @@
             width: 150px;
             height: auto;
             display: block;
-            margin: 30px auto 30px auto;
+            margin: 0 auto 30px auto;
             border-radius: 50%;
             transition: transform 0.3s ease;
         }
@@ -168,23 +162,23 @@
 
         @media only screen and (min-width: 801px) {
             body {
-                background-image: url('./img/pingbot.png');
+                background-image: url('./img/pingbot_desktop.png');
                 background-size: cover;
                 background-position: center center;
                 padding: 40px;
             }
 
             h2, p {
-                font-size: 28px;
+                font-size: 24px;
             }
 
             select, button {
-                padding: 15px 30px;
-                font-size: 18px;
+                padding: 10px 20px;
+                font-size: 16px;
             }
 
             #recommendation .recommendation-slide {
-                font-size: 24px;
+                font-size: 20px;
             }
         }
     </style>
@@ -218,7 +212,7 @@
     </div>
 
     <script>
-        const seriesDB = [
+         const seriesDB = [
             // Comedy
             { name: "Friends", genre: "comedy", level: "beginner" },
             { name: "The Office (US)", genre: "comedy", level: "beginner" },
@@ -326,6 +320,7 @@
             { name: "Wild Wild Country", genre: "documentary", level: "intermediate" },
             { name: "Abstract: The Art of Design", genre: "documentary", level: "intermediate" },
             { name: "Our Planet", genre: "documentary", level: "intermediate" },
+        
         ];
 
         function recommendSeries() {
@@ -344,7 +339,7 @@
                     slide.style.animationDelay = `${delay}s`;
                     slide.innerHTML = `<strong>${series.name}</strong>`;
                     recommendationElement.appendChild(slide);
-                    delay += 3;
+                    delay += 3; // Increment delay for each slide
                 });
             } else {
                 recommendationElement.innerHTML = "מצטערים, לא מצאנו סדרה שתואמת את ההעדפות שלך.";
@@ -353,3 +348,8 @@
     </script>
 </body>
 </html>
+
+
+        
+
+   
