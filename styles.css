@@ -1611,7 +1611,6 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
   background-color: #0056b3;
 }
-
 @media (max-width: 600px) {
     body, html {
         margin: 0;
@@ -1621,17 +1620,17 @@ form button[type="submit"]:hover {
         overflow-x: hidden;
     }
     .modal {
-        width: 100%; /* מודל ברוחב מלא */
-        height: 100vh; /* מודל בגובה מלא */
-        top: 55%; /* מודל מתחיל מהחלק העליון של המסך */
-        border: none; /* אין גבולות */
-        border-radius: 0; /* אין עיגול פינות */
-        overflow: hidden; /* מונע גלילה כפולה */
+        width: 100%;
+        height: 100vh;
+        top: 52%;
+        border: none;
+        border-radius: 0;
+        overflow: hidden;
     }
     .modal-content {
-        height: 100%; /* תוכן המודל ממלא את המודל */
-        border-radius: 0; /* אין עיגול פינות לתוכן */
-        padding-top: 50px !important; /* ריווח מוגדל לכפתור היציאה */
+        height: 100%;
+        border-radius: 0;
+        padding-top: 50px !important;
         display: flex;
         flex-direction: column;
     }
@@ -1641,9 +1640,10 @@ form button[type="submit"]:hover {
         background: white;
         z-index: 1000;
         padding: 10px;
-        width: 100%; /* Ensuring it spans the full width */
+        width: 100%;  /* Ensuring it spans the full width */
     }
     #difficulty-tabs {
+        display: flex;
         justify-content: space-around;
     }
     .tablink {
@@ -1688,54 +1688,45 @@ form button[type="submit"]:hover {
     }
     .grid-container, .word-treasure-container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* שתי עמודות */
-        overflow-y: auto; /* אפשרות לגלילה אנכית אם יש הרבה תוכן */
-        flex-grow: 1; /* הגריד יתפשט לכל המקום הזמין */
-        padding: 10px; /* רווח בפנים */
-        gap: 5px; /* מרווח בין כפתורים */
+        grid-template-columns: repeat(2, 1fr);
+        overflow-y: auto;
+        flex-grow: 1;
+        padding: 10px;
+        gap: 5px;
     }
-    .memory-game-button, .restart-btn, .play-again-btn, .back-to-games-btn {
-        padding: 5px 10px; /* פדינג מתאים */
-        font-size: 10px; /* גודל פונט קטן יותר */
-        width: 100px; /* רוחב הכפתור */
-        height: 50px; /* גובה הכפתור */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* הוספת צל לבולטות */
-        border: 1px solid black; /* מסגרת שחורה דקה להבלטה נוספת */
-    }
-  
     .bottom-section {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        overflow-x: hidden; /* מונע גלילה אופקית */
-        background: transparent; /* הסרת רקע לבן */
-        margin-top: -5px; /* מתקן את המיקום למעלה */
+        overflow-x: hidden;
+        background: transparent;
+        margin-top: -5px;
         padding: 0;
-        width: 100%; /* מתאים את הרוחב לרוחב המסך */
-        height: auto; /* גובה אוטומטי מותאם לתוכן */
+        width: 100%;
+        height: auto;
     }
     .shortcut-rectangle {
-        flex-basis: 100%; /* מלא את הרוחב במסכים צרים */
-        margin: 10px 0; /* מרווח למעלה ולמטה */
-        width: 100%; /* רוחב מלא */
-        height: auto; /* גובה מתאים אוטומטי */
+        flex-basis: 100%;
+        margin: 10px 0;
+        width: 100%;
+        height: auto;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #333; /* רקע אפור כהה, התאם לעיצוב שלך */
+        background: #333;
     }
     .shortcut-rectangle p {
-        font-size: 12px; /* הקטנת גודל הפונט */
-        margin: 0; /* הסרת שוליים על מנת למנוע דחיקה לשורה נוספת */
-        white-space: nowrap; /* מונע שבירת שורה */
-        overflow: hidden; /* מונע הצגת טקסט שלא נכנס בשורה */
-        text-overflow: ellipsis; /* מוסיף נקודות בסוף הטקסט אם הוא נחתך */
+        font-size: 12px;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .bottom-section img {
-        max-width: 100%; /* מונע יציאה של התמונות מהמלבן */
-        height: auto; /* שמירה על גובה אוטומטי */
-        object-fit: cover; /* מבטיח שהתמונה מתאימה לגובה ורוחב המלבן */
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
     }
     body, button, input[type="text"] {
         font-size: 10px;
@@ -1766,35 +1757,32 @@ form button[type="submit"]:hover {
     .cool-window {
         display: none;
     }
-    /* Hide penguin on mobile */
     .penguin-container {
         display: none;
     }
     #hamburgerBtn {
         position: fixed;
-        top: 40px; /* התאם לגובה הרצוי */
-        left: 300px; /* התאם לצד הרצוי */
-        z-index: 1000; /* ודא שהכפתור יהיה מעל לשאר האלמנטים */
+        top: 40px;
+        left: 300px;
+        z-index: 1000;
     }
-    /* Smaller and repositioned accessibility and back-to-top buttons */
     .accessibility-menu {
         position: fixed;
-        top: 500px; /* Adjusted position */
+        top: 500px;
         left: 300px;
         z-index: 1001;
     }
     #accessibilityBtn img {
-        width: 30px; /* Smaller size */
+        width: 30px;
         height: auto;
     }
     .back-to-top-button {
-        bottom: 50px; /* Adjusted position */
+        bottom: 50px;
         right: 10%;
-        width: 40px; /* Smaller size */
-        height: 40px; /* Smaller size */
-        font-size: 10px; /* Smaller font size */
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
     }
-    /* Responsive navbar */
     .navbar-container {
         display: flex;
         flex-direction: column;
@@ -1803,32 +1791,32 @@ form button[type="submit"]:hover {
     }
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* שתי עמודות בלבד */
-        gap: 5px; /* מרווח קטן יותר */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
         padding: 5px;
     }
     button.episode-button {
-        padding: 12px; /* ריווח גדול יותר לנוחות */
-        font-size: 16px; /* גודל פונט גדול יותר לקריאות */
+        padding: 12px;
+        font-size: 16px;
     }
     .word-treasure-container {
-        font-size: 18px; /* שנה לגודל הכתב הרצוי */
-        line-height: 1.5; /* להבטיח שהטקסט יהיה קריא */
-        padding: 10px; /* ריווח פנימי לאלמנט */
+        font-size: 18px;
+        line-height: 1.5;
+        padding: 10px;
     }
     .word-treasure-container h2 {
-        font-size: 24px; /* גודל הכתב לכותרות */
+        font-size: 24px;
         font-weight: bold;
-        margin-bottom: 10px; /* רווח תחתון לכותרת */
+        margin-bottom: 10px;
     }
     .word-treasure-container p {
-        font-size: 18px; /* גודל הכתב לפסקאות */
-        margin-bottom: 10px; /* רווח תחתון לפסקאות */
+        font-size: 18px;
+        margin-bottom: 10px;
     }
     .word-treasure-container .highlight {
-        font-size: 20px; /* גודל הכתב למילים מודגשות */
-        color: #007bff; /* צבע המילים המודגשות */
-        font-weight: bold; /* משקל פונט למילים מודגשות */
+        font-size: 20px;
+        color: #007bff;
+        font-weight: bold;
     }
     .episode-button {
         padding: 5px;
@@ -1841,11 +1829,11 @@ form button[type="submit"]:hover {
         transform: none;
     }
     .nav-link {
-        font-size: 12px; /* Smaller font size */
-        padding: 5px 10px; /* Smaller padding */
+        font-size: 12px;
+        padding: 5px 10px;
     }
-   .nav-icon {
+    .nav-icon {
         width: 30px;
-height: 30px; 
-}
+        height: 30px;
+    }
 }
