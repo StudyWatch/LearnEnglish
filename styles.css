@@ -1619,110 +1619,109 @@ form button[type="submit"]:hover {
     font-size: 14px;
     overflow-x: hidden;
   }
-
   .modal {
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    border: none;
-    border-radius: 0;
-    overflow: hidden;
-    position: fixed; /* Makes sure modal is always fixed full screen */
-    display: flex;
-    flex-direction: column;
+    width: 100%; /* מודל ברוחב מלא */
+    height: 100vh; /* מודל בגובה מלא */
+    top: 50%; /* מודל מתחיל מהחלק העליון של המסך */
+    border: none; /* אין גבולות */
+    border-radius: 0; /* אין עיגול פינות */
+    overflow: hidden; /* מונע גלילה כפולה */
   }
-
+  .grid-container, .word-treasure-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* שתי עמודות */
+    overflow-y: auto; /* אפשרות לגלילה אנכית אם יש הרבה תוכן */
+    flex-grow: 1; /* הגריד יתפשט לכל המקום הזמין */
+    padding: 10px; /* רווח בפנים */
+    gap: 5px; /* מרווח בין כפתורים */
+  }
   .modal-content {
-    height: 100%;
-    border-radius: 0;
-    padding-top: 30px !important;
+    height: 100%; /* תוכן המודל ממלא את המודל */
+    border-radius: 0; /* אין עיגול פינות לתוכן */
+    padding-top: 30px !important; /* הכרחי להשיג רווח רצוי בחלק העליון */
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* Allows scrolling within the modal */
   }
-
-  .difficulty-tabs-fixed {
-    position: sticky;
-    top: 0; /* Keeps difficulty tabs at the top */
-    z-index: 1000; /* Makes sure tabs are above other content */
-    background-color: #fff; /* Ensures contrast against content */
-    width: 100%; /* Full width */
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-  }
-
-  .tablink {
-    background-color: #eee;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    margin: 0 5px;
-    width: auto; /* Adjusts width based on content */
-  }
-
-  .tabcontent {
-    display: none;
-    padding: 20px;
-    border-top: 1px solid #ccc;
-  }
-
-  .tabcontent.active {
-    display: block;
-  }
-
-  .word-treasure-container {
-    font-size: 16px;
-    line-height: 1.4;
-    padding: 15px;
-  }
-
-  .word-treasure-container h2 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-
-  .word-treasure-container p {
-    margin-bottom: 15px;
-  }
-
-  .word-treasure-container .highlight {
-    color: #007bff;
-    font-weight: bold;
-  }
-
-  .exit-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-  }
-
   .memory-game-button, .restart-btn, .play-again-btn, .back-to-games-btn {
-    padding: 5px 10px;
-    font-size: 10px;
-    width: 100px;
-    height: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    border: 1px solid black;
+    padding: 5px 10px; /* פדינג מתאים */
+    font-size: 10px; /* גודל פונט קטן יותר */
+    width: 100px; /* רוחב הכפתור */
+    height: 50px; /* גובה הכפתור */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* הוספת צל לבולטות */
+    border: 1px solid black; /* מסגרת שחורה דקה להבלטה נוספת */
   }
-
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(5, 1fr); /* מנסה להכיל 5 טורים */
+    gap: 1px; /* מקטין את הרווח בין טורים ושורות למינימום */
+  }
+  .memory-card {
+    height: 60px; /* מקטין את הגובה */
+    width: 40px; /* מקטין את הרוחב של כל קלף כדי להתאים לטור */
+    margin: 1px; /* מקטין את הרווחים סביב הקלפים */
+    font-size: 10px; /* מקטין את גודל הפונט בתוך קלף */
+  }
+  /* כפתורי ניווט במודלים */
+  .exit-button, .close, #back-to-word-treasure {
+    font-size: 16px; /* קטן יותר */
+    padding: 8px; /* קטן יותר */
+  }
+  /* תיקון כללי לתצוגת מודל */
+  .modal-content {
+    padding: 10px; /* פדינג קטן יותר */
+    width: 90%; /* הקטנת רוחב המודל */
+  }
+  /* תיקון לכפתורים תחתונים כגון back-to-top וכו' */
+  .back-to-top-button, .feedback-button {
+    font-size: 10px; /* קטן יותר */
+    padding: 5px 10px; /* קטן יותר */
+    width: 30px; /* קטן יותר */
+    height: 30px; /* קטן יותר */
+  }
+  .exit-button {
+    align-self: flex-end; /* כפתור היציאה בצד ימין למעלה */
+    margin: 10px; /* רווח סביב כפתור היציאה */
+    font-size: 24px; /* גודל פונט גדול יותר לנגישות */
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* שתי עמודות בלבד */
+    gap: 5px; /* מרווח קטן יותר */
     padding: 5px;
   }
-
-  .memory-card {
-    height: 60px;
-    width: 40px;
-    margin: 1px;
+  button.episode-button {
+    padding: 12px; /* ריווח גדול יותר לנוחות */
+    font-size: 16px; /* גודל פונט גדול יותר לקריאות */
+  }
+  .word-treasure-container {
+    font-size: 18px; /* שנה לגודל הכתב הרצוי */
+    line-height: 1.5; /* להבטיח שהטקסט יהיה קריא */
+    padding: 10px; /* ריווח פנימי לאלמנט */
+  }
+  .word-treasure-container h2 {
+    font-size: 24px; /* גודל הכתב לכותרות */
+    font-weight: bold;
+    margin-bottom: 10px; /* רווח תחתון לכותרת */
+  }
+  .word-treasure-container p {
+    font-size: 18px; /* גודל הכתב לפסקאות */
+    margin-bottom: 10px; /* רווח תחתון לפסקאות */
+  }
+  .word-treasure-container .highlight {
+    font-size: 20px; /* גודל הכתב למילים מודגשות */
+    color: #007bff; /* צבע המילים המודגשות */
+    font-weight: bold; /* משקל פונט למילים מודגשות */
+  }
+  .episode-button {
+    padding: 5px;
     font-size: 10px;
   }
-
+  .episode-button:hover {
+    transform: none;
+  }
+  .episode-button:active {
+    transform: none;
+  }
   .bottom-section {
     display: flex;
     flex-direction: row;
@@ -1730,7 +1729,6 @@ form button[type="submit"]:hover {
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
-
   .shortcut-rectangle {
     flex-basis: 35%;
     margin-bottom: 10px;
@@ -1742,7 +1740,6 @@ form button[type="submit"]:hover {
     align-items: center;
     justify-content: center;
   }
-
   .bottom-section img {
     width: 100%;
     height: auto;
@@ -1750,82 +1747,93 @@ form button[type="submit"]:hover {
     display: block;
     max-height: 120px;
   }
-
   body, button, input[type="text"] {
     font-size: 10px;
   }
-
   header, .bottom-section a, .tv-show-title {
     font-size: 12px;
   }
-
   .shortcut-rectangle img {
     width: 250%;
     height: auto;
     margin-bottom: -10px;
   }
-
   .shortcut-rectangle p {
     font-size: 1em;
   }
-
   .shortcut-rectangle:not(#to-bot):not(#to-series):not(#to-tips) {
     display: none;
   }
-
   #searchBarContainer .search-bar {
     width: 90%;
     margin: 10px auto;
   }
-
   #searchInputSeries {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
   }
-
   .cool-window {
     display: none;
   }
-
+  /* Hide penguin on mobile */
   .penguin-container {
     display: none;
   }
-
+  /* Smaller and repositioned accessibility and back-to-top buttons */
   .accessibility-menu {
     position: fixed;
-    top: 500px;
+    top: 500px; /* Adjusted position */
     right: 8px;
     z-index: 1001;
   }
-
   #accessibilityBtn img {
-    width: 30px;
+    width: 30px; /* Smaller size */
     height: auto;
   }
-
   .back-to-top-button {
-    bottom: 50px;
+    bottom: 50px; /* Adjusted position */
     right: 10px;
-    width: 40px;
-    height: 40px;
-    font-size: 10px;
+    width: 40px; /* Smaller size */
+    height: 40px; /* Smaller size */
+    font-size: 10px; /* Smaller font size */
   }
-
+  /* Responsive navbar */
   .navbar-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 10px;
   }
-
   .nav-link {
-    font-size: 12px;
-    padding: 5px 10px;
+    font-size: 12px; /* Smaller font size */
+    padding: 5px 10px; /* Smaller padding */
   }
-
   .nav-icon {
-    width: 30px;
-    height: 30px;
+    width: 30px; /* Smaller size */
+    height: 30px; /* Smaller size */
+  }
+  #difficulty-tabs {
+    position: fixed; /* יישאר במיקום קבוע */
+    top: 50px; /* מתחת לכפתור היציאה */
+    left: 0;
+    width: 100%; /* רוחב מלא */
+    background: white;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+  }
+  .tablink {
+    flex: 1;
+    padding: 5px;
+    margin: 0;
+    text-align: center;
+    border: none;
+    background: none;
+    font-size: 16px;
+  }
+  .tablink.active {
+    background: lightgray; /* רקע לכפתור הפעיל */
   }
 }
