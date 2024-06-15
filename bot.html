@@ -7,23 +7,23 @@
         .back-to-home-button {
             display: inline-block;
             margin: 10px;
-            padding: 10px 20px; /* Smaller padding for desktop */
-            background-color: #3498db; /* Change to a more visible color */
+            padding: 20px 40px;
+            background-color: #3498db;
             color: white;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
             transition: background-color 0.3s;
-            font-size: 20px; /* Smaller font size for desktop */
+            font-size: 24px;
         }
 
         .back-to-home-button:hover {
-            background-color: #2980b9; /* Darker when mouse hover */
+            background-color: #2980b9;
         }
 
         body {
             font-family: 'Arial', sans-serif;
-            color: #ffffff; /* Change to white for better contrast */
+            color: #ffffff;
             text-align: center;
             padding: 20px;
             margin: 0;
@@ -31,42 +31,42 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Ensures the body takes at least full viewport height */
-            direction: rtl; /* Right-to-left layout */
+            min-height: 100vh;
+            direction: rtl;
         }
 
         h2 {
             font-weight: bold;
-            font-size: 32px; /* Smaller font size for desktop */
-            color: #ffffff; /* Change to white for better contrast */
-            background-color: rgba(0, 0, 0, 0.7); /* Add a semi-transparent background for better visibility */
+            font-size: 36px;
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 10px 20px;
             border-radius: 10px;
         }
 
         p {
-            font-size: 24px; /* Smaller font size for desktop */
-            color: #ffffff; /* Change to white for better contrast */
-            background-color: rgba(0, 0, 0, 0.7); /* Add a semi-transparent background for better visibility */
+            font-size: 24px;
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 10px 20px;
             border-radius: 10px;
         }
 
         select, button {
-            margin: 10px 0;
-            padding: 15px 30px; /* Smaller padding for desktop */
+            margin: 15px 0;
+            padding: 20px 40px;
             border-radius: 20px;
             border: 2px solid #ffffff;
             outline: none;
-            font-size: 18px; /* Smaller font size for desktop */
+            font-size: 24px;
             color: #ffffff;
-            background-color: #e74c3c; /* Change to a more visible color */
+            background-color: #e74c3c;
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         select:hover, button:hover {
-            background-color: #c0392b; /* Darker when mouse hover */
+            background-color: #c0392b;
             color: #ffffff;
             border: 2px solid #e74c3c;
         }
@@ -74,25 +74,25 @@
         #recommendation {
             margin-top: 20px;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7); /* Add a semi-transparent background for better visibility */
+            background-color: rgba(0, 0, 0, 0.7);
             color: #ffffff;
             display: inline-block;
             border-radius: 20px;
             transition: all 0.3s ease;
-            font-size: 24px; /* Smaller font size for desktop */
+            font-size: 24px;
             width: 80%;
-            max-width: 1000px;
+            max-width: 800px;
             overflow: hidden;
             white-space: nowrap;
-            height: 80px; /* Fixed height for better visibility */
+            height: 60px;
         }
 
         .recommendation-slide {
             display: inline-block;
             width: 100%;
             animation: slide 20s infinite;
-            font-size: 24px; /* Smaller font size for desktop */
-            font-weight: bold; /* Bold text */
+            font-size: 24px;
+            font-weight: bold;
         }
 
         @keyframes slide {
@@ -108,7 +108,7 @@
         }
 
         .bot-image {
-            width: 240px; /* Increased size for better visibility */
+            width: 200px;
             height: auto;
             display: block;
             margin: 0 auto 30px auto;
@@ -121,40 +121,57 @@
         }
 
         @media only screen and (max-width: 800px) {
-            .back-to-home-button {
-                padding: 20px 40px; /* Larger padding for mobile */
-                font-size: 28px; /* Larger font size for mobile */
+            body {
+                background-image: url('./img/pingbot_mobile.png');
+                background-size: cover;
+                background-position: center center;
+                padding: 20px;
             }
 
-            h2 {
-                font-size: 48px; /* Larger font size for mobile */
-            }
-
-            p {
-                font-size: 32px; /* Larger font size for mobile */
+            h2, p {
+                font-size: 32px;
             }
 
             select, button {
-                padding: 30px 60px; /* Larger padding for mobile */
-                font-size: 28px; /* Larger font size for mobile */
+                padding: 30px 70px;
+                font-size: 32px;
             }
 
             #recommendation {
-                font-size: 36px; /* Larger font size for mobile */
-                padding: 30px; /* Increased padding for better readability */
-                height: 100px; /* Increased height for better visibility */
+                font-size: 36px;
+                padding: 30px;
+                height: 100px;
             }
 
             .recommendation-slide {
-                font-size: 36px; /* Larger font size for mobile */
+                font-size: 36px;
             }
         }
 
         @media only screen and (min-width: 801px) {
             body {
-                background-image: url('./img/pingbot.png'); /* Replace with the desktop background image URL */
-                background-size: cover; /* Ensure the background image covers the whole screen */
+                background-image: url('./img/pingbot.png');
+                background-size: cover;
                 background-position: center center;
+            }
+
+            h2, p {
+                font-size: 36px;
+            }
+
+            select, button {
+                padding: 20px 40px;
+                font-size: 24px;
+            }
+
+            #recommendation {
+                font-size: 24px;
+                padding: 20px;
+                height: 60px;
+            }
+
+            .recommendation-slide {
+                font-size: 24px;
             }
         }
     </style>
