@@ -1634,74 +1634,7 @@ form button[type="submit"]:hover {
     display: flex;
     flex-direction: column;
   }
-  .exit-button {
-    align-self: flex-end;
-    margin: 10px;
-    font-size: 24px;
-  }
-   .difficulty-tabs-fixed {
-    position: sticky !important;
-    top: 0 !important; /* Always visible at the top */
-    z-index: 1000;
-    background: white;
-    padding: 10px;
-    display: flex;
-    justify-content: space-around !important;
-    width: 100%; /* Full width */
-  }
-  #difficulty-tabs {
-    justify-content: space-around;
-  }
-  .tablink {
-    width: 100%; /* Use full width for smaller screens */
-    padding: 10px 5px; /* Larger padding for easier interaction */
-    margin-top: 10px; /* Adjusted margin */
-    font-size: 1.2rem; /* Larger font size for better readability */
-  }
-  .tabcontent {
-    display: none;
-  }
-  .tabcontent.active {
-    display: block;
-  }
-  .test-knowledge-button {
-    margin-top: 20px;
-    padding: 10px;
-    font-size: 16px;
-  }
-  .episode-links {
-    margin-top: 20px;
-  }
-  .link-button {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #333;
-  }
-  .link-button img {
-    margin-right: 10px;
-  }
-  .grid-container, .word-treasure-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* שתי עמודות */
-    overflow-y: auto; /* אפשרות לגלילה אנכית אם יש הרבה תוכן */
-    flex-grow: 1; /* הגריד יתפשט לכל המקום הזמין */
-    padding: 10px; /* רווח בפנים */
-    gap: 5px; /* מרווח בין כפתורים */
-  }
-  .memory-game-button, .restart-btn, .play-again-btn, .back-to-games-btn {
-    padding: 5px 10px; /* פדינג מתאים */
-    font-size: 10px; /* גודל פונט קטן יותר */
-    width: 100px; /* רוחב הכפתור */
-    height: 50px; /* גובה הכפתור */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* הוספת צל לבולטות */
-    border: 1px solid black; /* מסגרת שחורה דקה להבלטה נוספת */
-  }
+  
   .bottom-section {
     display: flex;
     flex-direction: row;
@@ -1783,13 +1716,7 @@ form button[type="submit"]:hover {
     width: 30px; /* Smaller size */
     height: auto;
   }
-  .back-to-top-button {
-    bottom: 50px; /* Adjusted position */
-    right: 10%;
-    width: 40px; /* Smaller size */
-    height: 40px; /* Smaller size */
-    font-size: 10px; /* Smaller font size */
-  }
+
   /* Responsive navbar */
   .navbar-container {
     display: flex;
@@ -1797,51 +1724,5 @@ form button[type="submit"]:hover {
     align-items: flex-start;
     padding: 10px;
   }
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* שתי עמודות */
-    gap: 5px; /* מרווח קטן יותר */
-    padding: 5px;
-  }
-  button.episode-button {
-    padding: 12px; /* ריווח גדול יותר לנוחות */
-    font-size: 16px; /* גודל פונט גדול יותר לקריאות */
-  }
-  .word-treasure-container {
-    font-size: 18px; /* שנה לגודל הכתב הרצוי */
-    line-height: 1.5; /* להבטיח שהטקסט יהיה קריא */
-    padding: 10px; /* ריווח פנימי לאלמנט */
-  }
-  .word-treasure-container h2 {
-    font-size: 24px; /* גודל הכתב לכותרות */
-    font-weight: bold;
-    margin-bottom: 10px; /* רווח תחתון לכותרת */
-  }
-  .word-treasure-container p {
-    font-size: 18px; /* גודל הכתב לפסקאות */
-    margin-bottom: 10px; /* רווח תחתון לפסקאות */
-  }
-  .word-treasure-container .highlight {
-    font-size: 20px; /* גודל הכתב למילים מודגשות */
-    color: #007bff; /* צבע המילים המודגשות */
-    font-weight: bold; /* משקל פונט למילים מודגשות */
-  }
-  .episode-button {
-    padding: 5px;
-    font-size: 10px;
-  }
-  .episode-button:hover {
-    transform: none;
-  }
-  .episode-button:active {
-    transform: none;
-  }
-  .nav-link {
-    font-size: 12px; /* Smaller font size */
-    padding: 5px 10px; /* Smaller padding */
-  }
-  .nav-icon {
-    width: 30px; /* Smaller size */
-    height: 30px; /* Smaller size */
-  }
+
 }
