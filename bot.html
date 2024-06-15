@@ -87,12 +87,11 @@
             text-align: center;
             position: absolute;
             opacity: 0;
-            transition: opacity 1s ease, transform 1s ease;
+            transition: opacity 1s ease-in-out;
         }
 
-        .recommendation-slide.active {
+        .active-slide {
             opacity: 1;
-            transform: translateX(0);
         }
 
         @media only screen and (max-width: 800px) {
@@ -296,15 +295,27 @@
             recommendationElement.innerHTML = ''; // ניקוי תוכן קודם
 
             if (recommendations.length > 0) {
+                let delay = 0;
                 recommendations.forEach((series, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'recommendation-slide';
+                    slide.style.animationDelay = `${delay}s`;
                     slide.innerHTML = `<strong>${series.name}</strong>`;
                     recommendationElement.appendChild(slide);
-
-                    // הוספת אנימציה להצגת הסדרות באופן רציף
-                    slide.style.animation = `slide-in-out ${recommendations.length * 2}s ${index * 2}s infinite`;
+                    delay += 3; // Increment delay for each slide
                 });
+
+                setInterval(() => {
+                    const activeSlide = document.querySelector('.recommendation-slide.active-slide');
+                    let nextSlide = activeSlide.nextElementSibling;
+
+                    if (!nextSlide) {
+                        nextSlide = recommendationElement.firstElementChild;
+                    }
+
+                    activeSlide.classList.remove('active-slide');
+                    nextSlide.classList.add('active-slide');
+                }, 3000); // Change slide every 3 seconds
             } else {
                 recommendationElement.innerHTML = "מצטערים, לא מצאנו סדרה שתואמת את ההעדפות שלך.";
             }
