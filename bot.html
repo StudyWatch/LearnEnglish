@@ -92,7 +92,7 @@
         .recommendation-slide {
             display: inline-block;
             width: 100%;
-            animation: slide 20s infinite;
+            animation: slide 25s infinite;
             font-size: 24px;
             font-weight: bold;
         }
@@ -124,7 +124,7 @@
 
         @media only screen and (max-width: 800px) {
             body {
-                background-image: url('./img/pingbot.png');
+                background-image: url('./img/pingbot_mobile.png');
                 background-size: cover;
                 background-position: center center;
                 padding: 20px;
@@ -160,11 +160,16 @@
             select, button {
                 margin-top: 20px;
             }
+
+            select, button {
+                width: 100%;
+                box-sizing: border-box;
+            }
         }
 
         @media only screen and (min-width: 801px) {
             body {
-                background-image: url('./img/pingbot.png');
+                background-image: url('./img/pingbot_desktop.png');
                 background-size: cover;
                 background-position: center center;
                 padding: 40px;
