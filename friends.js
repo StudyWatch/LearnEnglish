@@ -612,7 +612,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         modal.style.display = "block";
     }
 
-    currentWordTreasureModal = modal;
+    currentWordTreasureModal = modal;  // עדכון המודל הנוכחי
 
     const modalContent = modal.querySelector(".modal-content");
     modalContent.innerHTML = ''; // מאתחל את התוכן בכל פעם שהמודל נפתח מחדש
@@ -632,8 +632,8 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
             <button class="tablink" data-difficulty="hard">קשה</button>
         </div>
         <div id="easy" class="tabcontent"></div>
-        <div id="medium" class="tabcontent"></div>
-        <div id="hard" class="tabcontent"></div>
+        <div id="medium" class="tabcontent" style="display: none;"></div>
+        <div id="hard" class="tabcontent" style="display: none;"></div>
         <button class="test-knowledge-button">בחן את הידע שלך</button>
         <div id="episode-links" class="episode-links">
             <h3>קישורים לפרק:</h3>
@@ -686,7 +686,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
     function loadContentForDifficulty(tvShowId, season, episodeNum, difficulty) {
         const words = getWordTreasure(tvShowId, season, episodeNum, difficulty);
         const targetDiv = modal.querySelector(`#${difficulty}`);
-        targetDiv.innerHTML = '';
+        targetDiv.innerHTML = ''; 
 
         if (words && words.length > 0) {
             const wordsHtml = words.map(item => {
@@ -704,20 +704,13 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         } else {
             targetDiv.innerHTML = "<p>No Words</p>";
         }
-
-        // ודא שהטאבים מוצגים מעל התוכן
-        const difficultyTabs = document.querySelector('.difficulty-tabs-fixed');
-        if (difficultyTabs) {
-            difficultyTabs.style.display = 'flex';
-        }
-        targetDiv.style.paddingTop = '50px'; // מוסיף ריווח בראש התוכן
     }
 
-    loadContentForDifficulty(tvShowId, season, episode, difficulty);
+    loadContentForDifficulty(tvShowId, season, episode, difficulty); 
     modal.querySelector(`.tablink[data-difficulty='${difficulty}']`).classList.add("active");
 
     modal.querySelectorAll(".tablink").forEach(tab => {
-        tab.addEventListener("click", function () {
+        tab.addEventListener("click", function() {
             modal.querySelectorAll(".tablink").forEach(t => {
                 t.classList.remove("active");
                 modal.querySelector(`#${t.getAttribute("data-difficulty")}`).style.display = "none";
@@ -725,7 +718,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
             this.classList.add("active");
             const newDifficulty = this.getAttribute("data-difficulty");
-            currentDifficulty = newDifficulty;
+            currentDifficulty = newDifficulty; // Update current difficulty
             modal.querySelector(`#${newDifficulty}`).style.display = "block";
             loadContentForDifficulty(tvShowId, season, episode, newDifficulty);
         });
@@ -762,7 +755,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         }
     });
 
-    modal.addEventListener('click', function (event) {
+    modal.addEventListener('click', function(event) {
         if (event.target === modal) {
             modal.style.display = "none";
             modalContent.innerHTML = ''; // מאתחל את התוכן כאשר המודל נסגר
