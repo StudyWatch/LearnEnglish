@@ -1763,7 +1763,7 @@ form button[type="submit"]:hover {
     flex-basis: 100%;
     margin: 10px 0;
     width: 100%;
-    height: 120px; /* הגדלת הגובה */
+    height: 80px; /* הפחתת הגובה בשליש */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1780,7 +1780,7 @@ form button[type="submit"]:hover {
 
   .bottom-section img {
     width: 100%;
-    height: 100%;
+    height: 90%; /* הגדלת גובה התמונה */
     object-fit: contain;
     display: block;
   }
@@ -1794,7 +1794,7 @@ form button[type="submit"]:hover {
   }
 
   .shortcut-rectangle img {
-    width: 90%;
+    width: 100%;
     height: auto;
     margin-bottom: -10px;
   }
