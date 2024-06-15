@@ -1623,7 +1623,7 @@ form button[type="submit"]:hover {
     .modal {
         width: 100%; /* מודל ברוחב מלא */
         height: 100vh; /* מודל בגובה מלא */
-        top: 51%; /* מודל מתחיל מהחלק העליון של המסך */
+        top: 0; /* מודל מתחיל מהחלק העליון של המסך */
         border: none; /* אין גבולות */
         border-radius: 0; /* אין עיגול פינות */
         overflow: hidden; /* מונע גלילה כפולה */
@@ -1641,19 +1641,20 @@ form button[type="submit"]:hover {
         background: white;
         z-index: 1000;
         padding: 10px;
+        width: 100%; /* Ensuring it spans the full width */
     }
     #difficulty-tabs {
-    justify-content: space-around;
-  }
-
-  .tablink {
-    width: 100%; /* Use full width for smaller screens */
-    padding: 10px 5px; /* Larger padding for easier interaction */
-    margin-top: 10px; /* Adjusted margin */
-    font-size: 1.2rem; /* Larger font size for better readability */
-  }
+        justify-content: space-around;
+    }
+    .tablink {
+        width: 33%; /* Set width to a third for each tab */
+        padding: 10px 5px;
+        margin-top: 0; /* Adjust margin to avoid unnecessary space */
+        font-size: 16px; /* Increase font size for better readability */
+    }
     .tabcontent {
         display: none;
+        padding: 10px;  /* Add padding for spacing inside the content area */
     }
     .tabcontent.active {
         display: block;
