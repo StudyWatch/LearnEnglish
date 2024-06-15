@@ -632,8 +632,8 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
             <button class="tablink" data-difficulty="hard">קשה</button>
         </div>
         <div id="easy" class="tabcontent"></div>
-        <div id="medium" class="tabcontent" style="display: none;"></div>
-        <div id="hard" class="tabcontent" style="display: none;"></div>
+        <div id="medium" class="tabcontent"></div>
+        <div id="hard" class="tabcontent"></div>
         <button class="test-knowledge-button">בחן את הידע שלך</button>
         <div id="episode-links" class="episode-links">
             <h3>קישורים לפרק:</h3>
@@ -923,7 +923,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
     function loadContentForDifficulty(tvShowId, season, episodeNum, difficulty) {
         const words = getWordTreasure(tvShowId, season, episodeNum, difficulty);
         const targetDiv = modal.querySelector(`#${difficulty}`);
-        targetDiv.innerHTML = ''; 
+        targetDiv.innerHTML = '';
 
         if (words && words.length > 0) {
             const wordsHtml = words.map(item => {
@@ -943,11 +943,11 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         }
     }
 
-    loadContentForDifficulty(tvShowId, season, episode, difficulty); 
+    loadContentForDifficulty(tvShowId, season, episode, difficulty);
     modal.querySelector(`.tablink[data-difficulty='${difficulty}']`).classList.add("active");
 
     modal.querySelectorAll(".tablink").forEach(tab => {
-        tab.addEventListener("click", function() {
+        tab.addEventListener("click", function () {
             modal.querySelectorAll(".tablink").forEach(t => {
                 t.classList.remove("active");
                 modal.querySelector(`#${t.getAttribute("data-difficulty")}`).style.display = "none";
@@ -992,7 +992,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         }
     });
 
-    modal.addEventListener('click', function(event) {
+    modal.addEventListener('click', function (event) {
         if (event.target === modal) {
             modal.style.display = "none";
             modalContent.innerHTML = ''; // מאתחל את התוכן כאשר המודל נסגר
@@ -1003,8 +1003,6 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
     modal.style.display = "block";
 }
 
-        
-           
         
         function openGameSelectionModal(vocabulary, prevModal) {
             prevModal.style.display = "none";
