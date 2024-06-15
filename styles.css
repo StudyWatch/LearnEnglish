@@ -1820,9 +1820,9 @@ form button[type="submit"]:hover {
     height: 30px; /* Smaller size */
   }
   #difficulty-tabs {
-     position: sticky; /* הופך את הטאבים ל'נצמדים' */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* צל נחמד להבדלה ויזואלית *
-    top: 70px; /* מתחת לכפתור היציאה */
+     position: flex; /* הופך את הטאבים ל'נצמדים' */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+    top: 70px;  
     left: 0;
     width: 100%; /* רוחב מלא */
     background: transparent; /* הפיכת רקע לשקוף */
