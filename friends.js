@@ -627,9 +627,9 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
     const difficultyTabsHtml = `
         <div id="difficulty-tabs" class="difficulty-tabs-fixed">
-            <button class="tablink" data-difficulty="easy">קל</button>
-            <button class="tablink" data-difficulty="medium">בינוני</button>
-            <button class="tablink" data-difficulty="hard">קשה</button>
+            <button class="tablink" data-difficulty="easy">${difficulty === 'easy' ? 'קל - נוכחי' : 'קל'}</button>
+            <button class="tablink" data-difficulty="medium">${difficulty === 'medium' ? 'בינוני - נוכחי' : 'בינוני'}</button>
+            <button class="tablink" data-difficulty="hard">${difficulty === 'hard' ? 'קשה - נוכחי' : 'קשה'}</button>
         </div>
         <div id="easy" class="tabcontent"></div>
         <div id="medium" class="tabcontent" style="display: none;"></div>
@@ -765,8 +765,6 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
     modal.style.display = "block";
 }
-
-
 
         
         function openGameSelectionModal(vocabulary, prevModal) {
