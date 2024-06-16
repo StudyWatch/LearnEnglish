@@ -1694,9 +1694,9 @@ form button[type="submit"]:hover {
     height: 30px;
   }
 
-  .exit-button {
+ .exit-button {
     align-self: flex-end;
-    right:0.2%;
+    left:-0.5px;
     margin: 10px;
     font-size: 24px;
   }
