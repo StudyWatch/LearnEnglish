@@ -319,6 +319,14 @@
 
     // Back to top button
   
+ const backToTopButton = document.createElement('button');
+    backToTopButton.textContent = '🔝';
+    backToTopButton.className = 'back-to-top-button';
+    document.body.appendChild(backToTopButton);
+    document.getElementById('to-bot').addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = 'bot.html';
+    });
     window.addEventListener('scroll', () => {
         if (window.scrollY > 200) {
             backToTopButton.style.display = 'block';
