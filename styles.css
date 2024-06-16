@@ -1648,7 +1648,7 @@ form button[type="submit"]:hover {
   .modal-content {
     height: 100%;
     border-radius: 0;
-    padding-top: 30px !important;
+    padding-top: 60px !important;
     display: flex;
     flex-direction: column;
   }
@@ -1681,8 +1681,8 @@ form button[type="submit"]:hover {
   }
 
   .modal-content {
-    padding: 10px;
-    width: 90%;
+    padding: 5px;
+    width: 92%;
   }
 
   .back-to-top-button, .feedback-button {
@@ -1712,24 +1712,24 @@ form button[type="submit"]:hover {
 
   .word-treasure-container {
     font-size: 18px;
-    line-height: 1.5;
+    line-height:1.5;
     padding: 10px;
   }
 
   .word-treasure-container h2 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
   }
 
   .word-treasure-container p {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 10px;
   }
 
   .word-treasure-container .highlight {
     font-size: 20px;
-    color: #007bff;
+    color: #1d15de;
     font-weight: bold;
   }
 
@@ -1885,9 +1885,9 @@ bottom:130px;
 }
   #difficulty-tabs {
     position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
+    top: 35px;
+    left: 30px;
+    width: 85%;
     background: transparent;
     z-index: 1000;
     display: flex;
@@ -1909,3 +1909,4 @@ bottom:130px;
     background: lightgray !important;
   }
 }
+
