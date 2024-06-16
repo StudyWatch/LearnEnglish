@@ -1872,9 +1872,10 @@ form button[type="submit"]:hover {
     height: 30px;
   }
 .feedback-button{
+  left:10px;
   display: block;
   position:fixed;
-bottom:10px;
+bottom:100px;
   padding: 10px 15px;
   width:auto;
   color:white;
