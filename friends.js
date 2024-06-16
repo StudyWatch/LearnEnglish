@@ -367,11 +367,7 @@ seriesButton.addEventListener('touchend', function(e) {
     handleSeriesClick();
 });
 
-const seriesButton = document.getElementById('to-series');
-seriesButton.addEventListener('click', (e) => {
-e.preventDefault();
-handleSeriesClick();
-});
+
 
 const searchInputSeries = document.getElementById("searchInputSeries");
 const tvShowElements = document.querySelectorAll(".tv-show");
