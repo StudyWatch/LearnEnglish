@@ -1638,11 +1638,11 @@ form button[type="submit"]:hover {
 
   .grid-container, .word-treasure-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     overflow-y: auto;
     flex-grow: 1;
     padding: 10px;
-    gap: 5px;
+    gap: 0px;
   }
 
   .modal-content {
@@ -1887,7 +1887,7 @@ bottom:130px;
 }
   #difficulty-tabs {
     position: fixed;
-    top: 35px;
+    top: 60px;
     left: 30px;
     width: 85%;
     background:none;
@@ -1900,18 +1900,28 @@ bottom:130px;
  
   }
 
-  .tablink {
-    flex: 1;
-    padding: 8px 16px;
-    margin: 0;
-    text-align: center;
-    border: none;
-    background: none;
-    font-size: 16px;
-    pointer-events: auto;
-  }
+ .tablink {
+  background-color: #5100ff !important;
+  color: rgb(0, 0, 0);
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 3px 5px !important;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 4px !important;
+  font-family: 'Assistant', sans-serif;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+}
 
   .tablink.active {
     background: #3bb23c !important;
   }
 }
+
