@@ -1752,7 +1752,7 @@ form button[type="submit"]:hover {
     align-items: center;
     overflow-x: hidden;
     background: transparent;
-    margin-top: -5px;
+    margin-top: -3px;
     padding: 0;
     width: 100%;
     height: auto;
@@ -1781,7 +1781,7 @@ form button[type="submit"]:hover {
 
   .shortcut-rectangle p {
     position: absolute; /* ממקם את הטקסט באופן מוחלט */
-    bottom: 15px; /* מתחת לכל */
+    bottom: 18px; /* מתחת לכל */
     left: 50%; /* ממרכז הטקסט אופקית */
     transform: translateX(-50%); /* מבטיח שהטקסט ממורכז */
     font-size: 8px;
@@ -1791,10 +1791,12 @@ form button[type="submit"]:hover {
   }
 
   .bottom-section img {
-    max-width: 100%; /* מונע מהתמונה לחרוג מהמלבן */
+    max-width: 90%; /* מונע מהתמונה לחרוג מהמלבן */
     height: auto;
     object-fit: cover; /* מבטיח שהתמונה תמלא את המלבן ללא עיוות */
     display: block;
+    right:6px;
+    top:3px;
     max-height: 75px; /* גובה גבוה יותר מתוך המלבן */
   }
 
@@ -1888,25 +1890,28 @@ bottom:130px;
     top: 35px;
     left: 30px;
     width: 85%;
-    background: transparent;
+    background:none;
     z-index: 1000;
     display: flex;
     justify-content: space-around;
-    padding: 0;
+    padding:0;
+    height:px;
+    pointer-events:auto;
+ 
   }
 
   .tablink {
     flex: 1;
-    padding: 5px;
+    padding: 8px 16px;
     margin: 0;
     text-align: center;
     border: none;
     background: none;
     font-size: 16px;
+    pointer-events: auto;
   }
 
   .tablink.active {
-    background: lightgray !important;
+    background: #3bb23c !important;
   }
 }
-
