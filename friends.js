@@ -341,13 +341,26 @@ window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 function handleSeriesClick() {
-const seriesSection = document.getElementById('series-section');
-const searchBarContainer = document.getElementById("searchBarContainer");
-seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
-searchBarContainer.style.display = 'flex';
-seriesSection.style.display = 'block';
-seriesSection.scrollIntoView({ behavior: 'smooth' });
+    const seriesSection = document.getElementById('series-section');
+    const searchBarContainer = document.getElementById("searchBarContainer");
+    seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
+    searchBarContainer.style.display = 'flex';
+    seriesSection.style.display = 'block';
+    seriesSection.scrollIntoView({ behavior: 'smooth' });
 }
+
+toSeriesButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    handleSeriesClick();
+});
+
+toSeriesButton.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    handleSeriesClick();
+});
+
+toggleFeedbackButton(); // בדיקה ראשונית להבטחת תצוגה נכונה של הכפתור בטעינת הדף
+
 
 const seriesButton = document.getElementById('to-series');
 seriesButton.addEventListener('click', (e) => {
