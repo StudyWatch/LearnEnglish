@@ -1,246 +1,235 @@
+   document.addEventListener('DOMContentLoaded', async () => {
+            const feedbackButton = document.getElementById('feedbackButton');
+            const feedbackModal = document.getElementById('feedbackModal');
+            const closeModalButton = feedbackModal.querySelector('.close');
+            const toSeriesButton = document.getElementById('to-series');
+            const backToTopButton = document.querySelector('.back-to-top-button');
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const feedbackButton = document.getElementById('feedbackButton');
-    const feedbackModal = document.getElementById('feedbackModal');
-    const closeModalButton = feedbackModal.querySelector('.close');
-    const toSeriesButton = document.getElementById('to-series');
-    const backToTopButton = document.querySelector('.back-to-top-button');
+            const hideButtonScrollThreshold = 100; // Adjust this value as needed
 
-    const hideButtonScrollThreshold = 100; // Adjust this value as needed
+            async function fetchData(url) {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch ${url}`);
+                }
+                return response.json();
+            }
 
-    // Fetch JSON data
-    const friendsItemList = await fetch('./series json/friends.json').then(response => response.json());
-    const howItemList = await fetch('./series json/himym.json').then(response => response.json());
-    const the100itemList = await fetch('./series json/the100.json').then(response => response.json());
-    const bigbang = await fetch('./series json/bigbang.json').then(response => response.json());
-    const simpsons = await fetch('./series json/simpsons.json').then(response => response.json());
-    const brooklyn99 = await fetch('./series json/brooklyn99.json').then(response => response.json());
-    const modernfamily = await fetch('./series json/modern.json').then(response => response.json());
-    const BigmouthItemList = await fetch('./series json/bigmouth.json').then(response => response.json());
-    const newgirlItemList = await fetch('./series json/newgirl.json').then(response => response.json());
-    const seinfeldItemList = await fetch('./series json/seinfeld.json').then(response => response.json());
-    const thegoodplaceItemList = await fetch('./series json/thegoodplace.json').then(response => response.json());
-    const theofficeItemList = await fetch('./series json/theoffice.json').then(response => response.json());
+            const friendsItemList = await fetchData('./series json/friends.json');
+            const howItemList = await fetchData('./series json/himym.json');
+            const the100itemList = await fetchData('./series json/the100.json');
+            const bigbang = await fetchData('./series json/bigbang.json');
+            const simpsons = await fetchData('./series json/simpsons.json');
+            const brooklyn99 = await fetchData('./series json/brooklyn99.json');
+            const modernfamily = await fetchData('./series json/modern.json');
+            const BigmouthItemList = await fetchData('./series json/bigmouth.json');
+            const newgirlItemList = await fetchData('./series json/newgirl.json');
+            const seinfeldItemList = await fetchData('./series json/seinfeld.json');
+            const thegoodplaceItemList = await fetchData('./series json/thegoodplace.json');
+            const theofficeItemList = await fetchData('./series json/theoffice.json');
 
-    feedbackButton.addEventListener('click', () => {
-        feedbackModal.style.display = 'flex';
-    });
+            feedbackButton.addEventListener('click', () => {
+                feedbackModal.style.display = 'flex';
+            });
 
-    closeModalButton.addEventListener('click', () => {
-        feedbackModal.style.display = 'none';
-    });
+            closeModalButton.addEventListener('click', () => {
+                feedbackModal.style.display = 'none';
+            });
 
-    window.addEventListener('click', (event) => {
-        if (event.target === feedbackModal) {
-            feedbackModal.style.display = 'none';
-        }
-    });
+            window.addEventListener('click', (event) => {
+                if (event.target === feedbackModal) {
+                    feedbackModal.style.display = 'none';
+                }
+            });
 
-    document.getElementById('feedbackForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-        alert('תודה שמילאתם את השאלון! המשוב שלכם חשוב לנו.');
-        feedbackModal.style.display = 'none';
-        this.reset();
-    });
+            document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                alert('תודה שמילאתם את השאלון! המשוב שלכם חשוב לנו.');
+                feedbackModal.style.display = 'none';
+                this.reset();
+            });
 
-    function toggleFeedbackButton() {
-        const scrollPosition = window.scrollY;
-        if (scrollPosition > hideButtonScrollThreshold || window.location.hash !== '') {
-            feedbackButton.style.display = 'none';
-        } else {
-            feedbackButton.style.display = 'block';
-        }
-    }
+            function toggleFeedbackButton() {
+                const scrollPosition = window.scrollY;
+                if (scrollPosition > hideButtonScrollThreshold || window.location.hash !== '') {
+                    feedbackButton.style.display = 'none';
+                } else {
+                    feedbackButton.style.display = 'block';
+                }
+            }
 
-    window.addEventListener('scroll', toggleFeedbackButton);
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        feedbackButton.style.display = 'block';
-    });
+            window.addEventListener('scroll', toggleFeedbackButton);
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                feedbackButton.style.display = 'block';
+            });
 
-    toSeriesButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        feedbackButton.style.display = 'none';
-        handleSeriesClick();
-    });
+            toSeriesButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                feedbackButton.style.display = 'none';
+                handleSeriesClick();
+            });
 
-    // Initial check to ensure the button is displayed correctly on page load
-    toggleFeedbackButton();
-});
+            // Initial check to ensure the button is displayed correctly on page load
+            toggleFeedbackButton();
 
-// Additional DOMContentLoaded event listener setup...
-document.addEventListener("DOMContentLoaded", () => {
-    const hamburgerBtn = document.getElementById("hamburgerBtn");
-    const navbar = document.getElementById("navbar");
-    const accessibilityBtn = document.getElementById("accessibilityBtn");
-    const accessibilityOptions = document.getElementById("accessibilityOptions");
-    const increaseTextBtn = document.getElementById('increaseText');
-    const decreaseTextBtn = document.getElementById('decreaseText');
-    const toggleContrastBtn = document.getElementById('toggleContrast');
-    let textSize = 100;
+            // Additional DOMContentLoaded event listener setup...
+            const hamburgerBtn = document.getElementById("hamburgerBtn");
+            const navbar = document.getElementById("navbar");
+            const accessibilityBtn = document.getElementById("accessibilityBtn");
+            const accessibilityOptions = document.getElementById("accessibilityOptions");
+            const increaseTextBtn = document.getElementById('increaseText');
+            const decreaseTextBtn = document.getElementById('decreaseText');
+            const toggleContrastBtn = document.getElementById('toggleContrast');
+            let textSize = 100;
 
-    // Toggle the display of the navbar
-    document.getElementById('hamburgerBtn').addEventListener('click', function() {
-        var btn = this; // השיג את הכפתור
-        var navbar = document.getElementById('navbar'); // השיג את הניווט
+            document.getElementById('hamburgerBtn').addEventListener('click', function() {
+                var btn = this;
+                var navbar = document.getElementById('navbar');
     
-        function updateNavbarPosition() {
-            var rect = btn.getBoundingClientRect();
-            
-            // עדכון מיקום הניווט
-            navbar.style.top = (rect.bottom + window.scrollY) + 'px';
-            navbar.style.right = (document.body.clientWidth - rect.right) + 'px';
-        }
+                function updateNavbarPosition() {
+                    var rect = btn.getBoundingClientRect();
+                    navbar.style.top = (rect.bottom + window.scrollY) + 'px';
+                    navbar.style.right = (document.body.clientWidth - rect.right) + 'px';
+                }
     
-        // משנה את מצב התצוגה של הניווט ומעדכן את מיקומו
-        if (navbar.style.display === 'block') {
-            navbar.style.display = 'none';
-            window.removeEventListener('scroll', updateNavbarPosition); // מסיר את המאזין כשהתפריט סגור
-            window.removeEventListener('resize', updateNavbarPosition); // מסיר את המאזין לשינויים בגודל החלון
-        } else {
-            navbar.style.display = 'block';
-            updateNavbarPosition(); // עדכון מיקום ראשוני
-            window.addEventListener('scroll', updateNavbarPosition); // מוסיף מאזין לגלילה
-            window.addEventListener('resize', updateNavbarPosition); // מוסיף מאזין לשינויים בגודל החלון
-        }
-    });
+                if (navbar.style.display === 'block') {
+                    navbar.style.display = 'none';
+                    window.removeEventListener('scroll', updateNavbarPosition);
+                    window.removeEventListener('resize', updateNavbarPosition);
+                } else {
+                    navbar.style.display = 'block';
+                    updateNavbarPosition();
+                    window.addEventListener('scroll', updateNavbarPosition);
+                    window.addEventListener('resize', updateNavbarPosition);
+                }
+            });
     
-    // Toggle the display of the accessibility options
-    accessibilityBtn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        toggleVisibility(accessibilityOptions);
-    });
+            accessibilityBtn.addEventListener("click", (event) => {
+                event.stopPropagation();
+                toggleVisibility(accessibilityOptions);
+            });
 
-    increaseTextBtn.addEventListener('click', () => {
-        if (textSize < 150) {
-            textSize += 10;
-            document.body.style.fontSize = textSize + '%';
-        }
-    });
+            increaseTextBtn.addEventListener('click', () => {
+                if (textSize < 150) {
+                    textSize += 10;
+                    document.body.style.fontSize = textSize + '%';
+                }
+            });
 
-    decreaseTextBtn.addEventListener('click', () => {
-        if (textSize > 100) {
-            textSize -= 10;
-            document.body.style.fontSize = textSize + '%';
-        }
-    });
+            decreaseTextBtn.addEventListener('click', () => {
+                if (textSize > 100) {
+                    textSize -= 10;
+                    document.body.style.fontSize = textSize + '%';
+                }
+            });
 
-    toggleContrastBtn.addEventListener('click', () => {
-        document.body.classList.toggle('high-contrast');
-    });
+            toggleContrastBtn.addEventListener('click', () => {
+                document.body.classList.toggle('high-contrast');
+            });
 
-    // Close the navbar and accessibility options when clicking outside of them
-    document.addEventListener("click", (event) => {
-        if (!event.target.closest('.navbar') && !event.target.closest('#hamburgerBtn')) {
-            navbar.classList.remove('visible');
-        }
-        if (!event.target.closest('#accessibilityOptions') && !event.target.closest('#accessibilityBtn')) {
-            accessibilityOptions.classList.remove('visible');
-        }
-    });
+            document.addEventListener("click", (event) => {
+                if (!event.target.closest('.navbar') && !event.target.closest('#hamburgerBtn')) {
+                    navbar.classList.remove('visible');
+                }
+                if (!event.target.closest('#accessibilityOptions') && !event.target.closest('#accessibilityBtn')) {
+                    accessibilityOptions.classList.remove('visible');
+                }
+            });
 
-    function toggleVisibility(element) {
-        element.classList.toggle('visible');
-    }
+            function toggleVisibility(element) {
+                element.classList.toggle('visible');
+            }
 
-    const didYouKnowFacts = [
-        { word: "Elixir", explanation: "משקה קסום שמעניק חיי נצח או מרפא לכל מחלה. מקורה בערבית, \"al-iksir\" שפירושו אבן החכמים." },
-        { word: "Phoenix", explanation: "עוף החול המיתולוגי שמתחדש מחורבותיו. מקור המילה במיתולוגיה היוונית." },
-        { word: "Renaissance", explanation: "תקופת התחדשות תרבותית ואומנותית באירופה. מקורה בלטינית, \"renasci\" שפירושו להיוולד מחדש." },
-        { word: "Labyrinthine", explanation: "מסובך ומבוך. מקורה במיתוס היווני של המינוטאור." },
-        { word: "Nefarious", explanation: "רע ומרושע. מקורה בלטינית, \"nefas\" שפירושו פשע גדול." },
-        { word: "Esoteric", explanation: "ידוע למעטים בלבד. מקורה ביוונית, \"esoterikos\" שפירושו פנימי." },
-        { word: "Abyss", explanation: "תהום אין סופית. מקורה ביוונית, \"abyssos\" שפירושו ללא תחתית." },
-        { word: "Gossamer", explanation: "דק ועדין כמו קורי עכביש. מקורה באנגלית תיכונה, \"goose summer\" בגלל קורי העכביש שמופיעים באוויר בסתיו." },
-        { word: "Zephyr", explanation: "רוח קלילה ונעימה. מקורה במיתולוגיה היוונית, שם \"זפירוס\" היה אל הרוח המערבית." },
-        { word: "Obsidian", explanation: "סוג של זכוכית געשית. מקורה בלטינית, שם \"obsidianus\" נכתב על פי האגדה על Obsius שגילה אותה." },
-        { word: "Lethargy", explanation: "עייפות רבה או שינה עמוקה. מקורה במיתולוגיה היוונית, שם נהר \"Lethe\" היה נהר השכחה." },
-        { word: "Pandemonium", explanation: "כאוס ובלגן גדול. מקורה בלטינית, \"pan\" פירושו הכל ו-\"demonium\" שפירושו שדים, תואר זה ניתן לעיר השדים ביצירתו של מילטון, \"גן עדן האבוד\"." },
-        { word: "Cacophony", explanation: "רעש צורם ולא נעים. מקורה ביוונית, \"kakophonia\" שפירושו צליל רע." },
-        { word: "Mirage", explanation: "אשליה אופטית במדבר. מקורה בצרפתית, \"mirer\" שפירושו להסתכל." },
-        { word: "Ethereal", explanation: "אוורירי ועדין כאלמנט שמימי. מקורה ביוונית, \"aither\" שפירושו שמיים." },
-        { word: "Maelstrom", explanation: "מערבולת חזקה בים. מקורה בהולנדית, \"malen\" שפירושו לטחון ו-\"stroom\" שפירושו זרם." },
-        { word: "Nebula", explanation: "ענן גז בחלל. מקורה בלטינית, \"nebula\" שפירושו ערפל." },
-        { word: "Eclipse", explanation: "ליקוי. מקורה ביוונית, \"ekleipsis\" שפירושו נטישה." },
-        { word: "Chimera", explanation: "יצור מיתולוגי שמורכב מחלקי גוף של חיות שונות. מקורה במיתולוגיה היוונית." },
-        { word: "Aurora", explanation: "זוהר צפוני. מקורה ברומית, שם אורורה הייתה אלת השחר." },
-        { word: "Horizon", explanation: "קו שבו השמיים והארץ נפגשים. מקורה ביוונית, \"horizōn\" שפירושו להגביל." },
-        { word: "Turbulence", explanation: "תנועה סוערת באוויר או מים. מקורה בלטינית, \"turbulentus\" שפירושו סוער." },
-        { word: "Cascade", explanation: "מפל מים קטן. מקורה בלטינית, \"cascare\" שפירושו ליפול." },
-        { word: "Myriad", explanation: "מספר גדול מאוד. מקורה ביוונית, \"myrios\" שפירושו עשרת אלפים." },
-        { word: "Tranquility", explanation: "שלווה ורוגע. מקורה בלטינית, \"tranquillitas\" שפירושו שקט." },
-        { word: "Tempest", explanation: "סערה חזקה. מקורה בלטינית, \"tempestas\" שפירושו מזג אוויר סוער." },
-        { word: "Tapestry", explanation: "שטיח קיר עם ציורים. מקורה בצרפתית, \"tapisserie\" שפירושו שטיח." },
-        { word: "Nebulous", explanation: "מעורפל ולא ברור. מקורה בלטינית, \"nebulosus\" שפירושו מעורפל." }
-    ];
+            const didYouKnowFacts = [
+                { word: "Elixir", explanation: "משקה קסום שמעניק חיי נצח או מרפא לכל מחלה. מקורה בערבית, \"al-iksir\" שפירושו אבן החכמים." },
+                { word: "Phoenix", explanation: "עוף החול המיתולוגי שמתחדש מחורבותיו. מקור המילה במיתולוגיה היוונית." },
+                { word: "Renaissance", explanation: "תקופת התחדשות תרבותית ואומנותית באירופה. מקורה בלטינית, \"renasci\" שפירושו להיוולד מחדש." },
+                { word: "Labyrinthine", explanation: "מסובך ומבוך. מקורה במיתוס היווני של המינוטאור." },
+                { word: "Nefarious", explanation: "רע ומרושע. מקורה בלטינית, \"nefas\" שפירושו פשע גדול." },
+                { word: "Esoteric", explanation: "ידוע למעטים בלבד. מקורה ביוונית, \"esoterikos\" שפירושו פנימי." },
+                { word: "Abyss", explanation: "תהום אין סופית. מקורה ביוונית, \"abyssos\" שפירושו ללא תחתית." },
+                { word: "Gossamer", explanation: "דק ועדין כמו קורי עכביש. מקורה באנגלית תיכונה, \"goose summer\" בגלל קורי העכביש שמופיעים באוויר בסתיו." },
+                { word: "Zephyr", explanation: "רוח קלילה ונעימה. מקורה במיתולוגיה היוונית, שם \"זפירוס\" היה אל הרוח המערבית." },
+                { word: "Obsidian", explanation: "סוג של זכוכית געשית. מקורה בלטינית, שם \"obsidianus\" נכתב על פי האגדה על Obsius שגילה אותה." },
+                { word: "Lethargy", explanation: "עייפות רבה או שינה עמוקה. מקורה במיתולוגיה היוונית, שם נהר \"Lethe\" היה נהר השכחה." },
+                { word: "Pandemonium", explanation: "כאוס ובלגן גדול. מקורה בלטינית, \"pan\" פירושו הכל ו-\"demonium\" שפירושו שדים, תואר זה ניתן לעיר השדים ביצירתו של מילטון, \"גן עדן האבוד\"." },
+                { word: "Cacophony", explanation: "רעש צורם ולא נעים. מקורה ביוונית, \"kakophonia\" שפירושו צליל רע." },
+                { word: "Mirage", explanation: "אשליה אופטית במדבר. מקורה בצרפתית, \"mirer\" שפירושו להסתכל." },
+                { word: "Ethereal", explanation: "אוורירי ועדין כאלמנט שמימי. מקורה ביוונית, \"aither\" שפירושו שמיים." },
+                { word: "Maelstrom", explanation: "מערבולת חזקה בים. מקורה בהולנדית, \"malen\" שפירושו לטחון ו-\"stroom\" שפירושו זרם." },
+                { word: "Nebula", explanation: "ענן גז בחלל. מקורה בלטינית, \"nebula\" שפירושו ערפל." },
+                { word: "Eclipse", explanation: "ליקוי. מקורה ביוונית, \"ekleipsis\" שפירושו נטישה." },
+                { word: "Chimera", explanation: "יצור מיתולוגי שמורכב מחלקי גוף של חיות שונות. מקורה במיתולוגיה היוונית." },
+                { word: "Aurora", explanation: "זוהר צפוני. מקורה ברומית, שם אורורה הייתה אלת השחר." },
+                { word: "Horizon", explanation: "קו שבו השמיים והארץ נפגשים. מקורה ביוונית, \"horizōn\" שפירושו להגביל." },
+                { word: "Turbulence", explanation: "תנועה סוערת באוויר או מים. מקורה בלטינית, \"turbulentus\" שפירושו סוער." },
+                { word: "Cascade", explanation: "מפל מים קטן. מקורה בלטינית, \"cascare\" שפירושו ליפול." },
+                { word: "Myriad", explanation: "מספר גדול מאוד. מקורה ביוונית, \"myrios\" שפירושו עשרת אלפים." },
+                { word: "Tranquility", explanation: "שלווה ורוגע. מקורה בלטינית, \"tranquillitas\" שפירושו שקט." },
+                { word: "Tempest", explanation: "סערה חזקה. מקורה בלטינית, \"tempestas\" שפירושו מזג אוויר סוער." },
+                { word: "Tapestry", explanation: "שטיח קיר עם ציורים. מקורה בצרפתית, \"tapisserie\" שפירושו שטיח." },
+                { word: "Nebulous", explanation: "מעורפל ולא ברור. מקורה בלטינית, \"nebulosus\" שפירושו מעורפל." }
+            ];
 
-    const penguinImg = document.getElementById('penguin');
-    const thoughtBubble = document.getElementById('thoughtBubble');
-    const didYouKnowText = document.getElementById('didYouKnowText');
+            const penguinImg = document.getElementById('penguin');
+            const thoughtBubble = document.getElementById('thoughtBubble');
+            const didYouKnowText = document.getElementById('didYouKnowText');
 
-    function showDailyFact() {
-        const today = new Date();
-        const factIndex = today.getDate() % didYouKnowFacts.length;
-        const dailyFact = didYouKnowFacts[factIndex];
-        didYouKnowText.textContent = `${dailyFact.word}: ${dailyFact.explanation}`;
-    }
+            function showDailyFact() {
+                const today = new Date();
+                const factIndex = today.getDate() % didYouKnowFacts.length;
+                const dailyFact = didYouKnowFacts[factIndex];
+                didYouKnowText.textContent = `${dailyFact.word}: ${dailyFact.explanation}`;
+            }
 
-    window.togglePenguinInfo = function() {
-        if (thoughtBubble.classList.contains('show')) {
-            penguinImg.src = "img/pinguin1.png";
-            thoughtBubble.classList.remove('show');
-        } else {
-            penguinImg.src = "img/pinguin2.png";
-            thoughtBubble.classList.add('show');
-        }
-    };
+            window.togglePenguinInfo = function() {
+                if (thoughtBubble.classList.contains('show')) {
+                    penguinImg.src = "img/pinguin1.png";
+                    thoughtBubble.classList.remove('show');
+                } else {
+                    penguinImg.src = "img/pinguin2.png";
+                    thoughtBubble.classList.add('show');
+                }
+            };
 
-    showDailyFact();
+            showDailyFact();
 
-function displayTips() {
-    const tips = [
-        "<strong>רשימת מילים:</strong> <bdi>לפני כל פרק, עבור על רשימת המילים שאתה עתיד ללמוד. זה יעזור לך להכיר ולזהות את המילים במהלך הצפייה.</bdi>",
-        "<strong>צפייה פעילה:</strong> <bdi>כשאתה צופה בסדרה, שים לב במיוחד למילים וביטויים שלמדת. נסה להיות ממוקד ולהבין איך הם משולבים בדיאלוג.</bdi>",
-        "<strong>חזרה על המילים:</strong> <bdi>לאחר סיום הפרק, חזור על רשימת המילים. נסה לכתוב משפט אחד לפחות עם כל מילה לשילוב הטכניקה שלמדת.</bdi>",
-        "<strong>שימוש בתרגומים:</strong> <bdi>אם יש מילה שאתה לא מבין, עזור לעצמך במילון או בתרגום כדי להבין את משמעותה המדויקת.</bdi>",
-        "<strong>צפייה מחודשת:</strong> <bdi>צפה שוב בפרקים שכבר ראית, כעת נסה להבין את התוכן והשפה ללא תרגום. זה מאפשר תרגול יעיל יותר של ההבנה.</bdi>",
-        "<strong>תרגול עם חברים:</strong> <bdi>שוחח על הסדרות והמילים שלמדת עם חברים שלומדים גם הם אנגלית. זה ישפר את הדיבור והבנת השפה.</bdi>",
-        "<strong>הקלט והאזן:</strong> <bdi>הקלט את עצמך מדבר באנגלית ואז האזן להקלטה. זה יסייע לך לזהות איזו תיקון נדרש בהגייה ובשימוש בשפה.</bdi>",
-        "<strong>שימוש ביומן:</strong> <bdi>רשום ביומן את התובנות והשאלות שלך לגבי הלמידה. זה יעזור לך לעקוב אחרי ההתקדמות ולהתמיד בלמידה.</bdi>",
-        "<strong>חשיבה באנגלית:</strong> <bdi>נסה לחשוב על התוכן שראית באנגלית. זה יכול להיות מאתגר אך יעזור לך להפנים את השפה באופן יותר טבעי.</bdi>",
-        "<strong>הכנת תקצירים:</strong> <bdi>אחרי הצפייה בפרק, כתוב תקציר קצר באנגלית של העלילה והשימושים שזיהית במילים שלמדת. זה יעזור לך לחזק את הידע ולזכור את המילים בהקשרן.</bdi>",
-        "<strong>משחקים אינטראקטיביים:</strong> <bdi>השתמש במשחקים האינטראקטיביים שהאתר מציע לאחר כל פרק כדי לבחון את הבנתך וזכירתך של המילים. המשחקים מותאמים לרמתך ויעזרו לך לחזק את הידע בצורה מהנה.</bdi>",
-        "<strong>צפייה עם כתוביות:</strong> <bdi>נסה לצפות בפרקים עם כתוביות באנגלית. זה יכול לעזור לך לשפר את ההבנה ואת יכולת הקריאה שלך באנגלית.</bdi>",
-        "<strong>שימוש בכרטיסיות:</strong> <bdi>צור כרטיסיות לכל מילה חדשה עם דוגמאות מהקונטקסט של הסדרה, וסקור אותן באופן קבוע.</bdi>",
-        "<strong>תרגול כתיבה:</strong> <bdi>כתוב חיבורים קצרים או יומנים באנגלית, תוך שימוש במילים ובביטויים שלמדת מהסדרות. זה יעזור לך לחזק את המילים החדשות ולשפר את יכולת הכתיבה שלך.</bdi>",
-        "<strong>מעקב אחרי דמויות:</strong> <bdi>בחר דמות אהובה מהסדרה ונסה לעקוב אחרי השפה והביטויים שהיא משתמשת בהם. זה יעזור לך להבין את הסגנון והקונטקסט שבו משתמשים במילים שונות.</bdi>",
-        "<strong>השוואת גרסאות:</strong> <bdi>אם יש גרסאות שונות של אותה סדרה (לדוגמה, גרסה בריטית וגרסה אמריקאית), נסה לצפות בשתיהן ולשים לב להבדלים בשפה ובתרבות.</bdi>",
-        "<strong>לימוד תרבותי:</strong> <bdi>בנוסף ללימוד השפה, נסה להבין את ההקשרים התרבותיים של הסדרה. זה יכול לכלול התנהגויות, מסורות או מבטאים מקומיים.</bdi>",
-        "<strong>צפייה בז'אנרים שונים:</strong> <bdi>נסה לצפות בסדרות מז'אנרים שונים (דרמה, קומדיה, מתח וכו'). כל ז'אנר יכול להעשיר את אוצר המילים שלך בדרכים שונות.</bdi>",
-        "<strong>ניתוח סצנות:</strong> <bdi>בחר סצנות מעניינות ונסה לנתח אותן מבחינת השפה, השימוש בביטויים והדיאלוגים. זה יעזור לך להבין לעומק את השימוש בשפה.</bdi>",
-        "<strong>שימוש באפליקציות עזר:</strong> <bdi>השתמש באפליקציות שמספקות כתוביות, תרגומים וכלים נוספים ללימוד אנגלית. אפליקציות אלו יכולות לסייע בלמידה מעמיקה וממוקדת יותר.</bdi>",
-        "<strong>לימוד באמצעות שירים:</strong> <bdi>אם הסדרה כוללת פסקול, נסה ללמוד את מילות השירים. שירים יכולים להיות דרך מהנה ויעילה לשיפור השפה.</bdi>",
-        "<strong>שיפור תשומת הלב לשפה:</strong> <bdi>השימוש באתר שלנו עוזר לשים יותר טוב לשפה האנגלית ולשיפור הדיבור. כאשר צופים בסדרות סתם כך, פעמים רבות מתמקדים בכתוביות ולא בשפה עצמה. האתר שלנו מאפשר לך ללמוד ולקרוא את המילים מראש, מה שמגביר את תשומת הלב לשפה ומוביל לשיפור מהיר יותר.</bdi>"
-    ];
-    const tipsContainer = document.querySelector('.tips-container');
-    tipsContainer.innerHTML = '';
-    tips.forEach(tip => {
-        const tipElement = document.createElement('div');
-        tipElement.classList.add('tip-card');
-        tipElement.innerHTML = `<p>${tip}</p>`;
-        tipsContainer.appendChild(tipElement);
-    });
-}
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    displayTips();
-});
-
-
-
-
+            // Define the function to display tips
+            function displayTips() {
+                const tips = [
+                    "<strong>רשימת מילים:</strong> <bdi>לפני כל פרק, עבור על רשימת המילים שאתה עתיד ללמוד. זה יעזור לך להכיר ולזהות את המילים במהלך הצפייה.</bdi>",
+                    "<strong>צפייה פעילה:</strong> <bdi>כשאתה צופה בסדרה, שים לב במיוחד למילים וביטויים שלמדת. נסה להיות ממוקד ולהבין איך הם משולבים בדיאלוג.</bdi>",
+                    "<strong>חזרה על המילים:</strong> <bdi>לאחר סיום הפרק, חזור על רשימת המילים. נסה לכתוב משפט אחד לפחות עם כל מילה לשילוב הטכניקה שלמדת.</bdi>",
+                    "<strong>שימוש בתרגומים:</strong> <bdi>אם יש מילה שאתה לא מבין, עזור לעצמך במילון או בתרגום כדי להבין את משמעותה המדויקת.</bdi>",
+                    "<strong>צפייה מחודשת:</strong> <bdi>צפה שוב בפרקים שכבר ראית, כעת נסה להבין את התוכן והשפה ללא תרגום. זה מאפשר תרגול יעיל יותר של ההבנה.</bdi>",
+                    "<strong>תרגול עם חברים:</strong> <bdi>שוחח על הסדרות והמילים שלמדת עם חברים שלומדים גם הם אנגלית. זה ישפר את הדיבור והבנת השפה.</bdi>",
+                    "<strong>הקלט והאזן:</strong> <bdi>הקלט את עצמך מדבר באנגלית ואז האזן להקלטה. זה יסייע לך לזהות איזו תיקון נדרש בהגייה ובשימוש בשפה.</bdi>",
+                    "<strong>שימוש ביומן:</strong> <bdi>רשום ביומן את התובנות והשאלות שלך לגבי הלמידה. זה יעזור לך לעקוב אחרי ההתקדמות ולהתמיד בלמידה.</bdi>",
+                    "<strong>חשיבה באנגלית:</strong> <bdi>נסה לחשוב על התוכן שראית באנגלית. זה יכול להיות מאתגר אך יעזור לך להפנים את השפה באופן יותר טבעי.</bdi>",
+                    "<strong>הכנת תקצירים:</strong> <bdi>אחרי הצפייה בפרק, כתוב תקציר קצר באנגלית של העלילה והשימושים שזיהית במילים שלמדת. זה יעזור לך לחזק את הידע ולזכור את המילים בהקשרן.</bdi>",
+                    "<strong>משחקים אינטראקטיביים:</strong> <bdi>השתמש במשחקים האינטראקטיביים שהאתר מציע לאחר כל פרק כדי לבחון את הבנתך וזכירתך של המילים. המשחקים מותאמים לרמתך ויעזרו לך לחזק את הידע בצורה מהנה.</bdi>",
+                    "<strong>צפייה עם כתוביות:</strong> <bdi>נסה לצפות בפרקים עם כתוביות באנגלית. זה יכול לעזור לך לשפר את ההבנה ואת יכולת הקריאה שלך באנגלית.</bdi>",
+                    "<strong>שימוש בכרטיסיות:</strong> <bdi>צור כרטיסיות לכל מילה חדשה עם דוגמאות מהקונטקסט של הסדרה, וסקור אותן באופן קבוע.</bdi>",
+                    "<strong>תרגול כתיבה:</strong> <bdi>כתוב חיבורים קצרים או יומנים באנגלית, תוך שימוש במילים ובביטויים שלמדת מהסדרות. זה יעזור לך לחזק את המילים החדשות ולשפר את יכולת הכתיבה שלך.</bdi>",
+                    "<strong>מעקב אחרי דמויות:</strong> <bdi>בחר דמות אהובה מהסדרה ונסה לעקוב אחרי השפה והביטויים שהיא משתמשת בהם. זה יעזור לך להבין את הסגנון והקונטקסט שבו משתמשים במילים שונות.</bdi>",
+                    "<strong>השוואת גרסאות:</strong> <bdi>אם יש גרסאות שונות של אותה סדרה (לדוגמה, גרסה בריטית וגרסה אמריקאית), נסה לצפות בשתיהן ולשים לב להבדלים בשפה ובתרבות.</bdi>",
+                    "<strong>לימוד תרבותי:</strong> <bdi>בנוסף ללימוד השפה, נסה להבין את ההקשרים התרבותיים של הסדרה. זה יכול לכלול התנהגויות, מסורות או מבטאים מקומיים.</bdi>",
+                    "<strong>צפייה בז'אנרים שונים:</strong> <bdi>נסה לצפות בסדרות מז'אנרים שונים (דרמה, קומדיה, מתח וכו'). כל ז'אנר יכול להעשיר את אוצר המילים שלך בדרכים שונות.</bdi>",
+                    "<strong>ניתוח סצנות:</strong> <bdi>בחר סצנות מעניינות ונסה לנתח אותן מבחינת השפה, השימוש בביטויים והדיאלוגים. זה יעזור לך להבין לעומק את השימוש בשפה.</bdi>",
+                    "<strong>שימוש באפליקציות עזר:</strong> <bdi>השתמש באפליקציות שמספקות כתוביות, תרגומים וכלים נוספים ללימוד אנגלית. אפליקציות אלו יכולות לסייע בלמידה מעמיקה וממוקדת יותר.</bdi>",
+                    "<strong>לימוד באמצעות שירים:</strong> <bdi>אם הסדרה כוללת פסקול, נסה ללמוד את מילות השירים. שירים יכולים להיות דרך מהנה ויעילה לשיפור השפה.</bdi>",
+                    "<strong>שיפור תשומת הלב לשפה:</strong> <bdi>השימוש באתר שלנו עוזר לשים יותר טוב לשפה האנגלית ולשיפור הדיבור. כאשר צופים בסדרות סתם כך, פעמים רבות מתמקדים בכתוביות ולא בשפה עצמה. האתר שלנו מאפשר לך ללמוד ולקרוא את המילים מראש, מה שמגביר את תשומת הלב לשפה ומוביל לשיפור מהיר יותר.</bdi>"
+                ];
+                const tipsContainer = document.querySelector('.tips-container');
+                tipsContainer.innerHTML = '';
+                tips.forEach(tip => {
+                    const tipElement = document.createElement('div');
+                    tipElement.classList.add('tip-card');
+                    tipElement.innerHTML = `<p>${tip}</p>`;
+                    tipsContainer.appendChild(tipElement);
+                });
+            }
 
     function openTipsModal() {
         document.getElementById('tipsModal').style.display = 'block';
@@ -329,15 +318,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Back to top button
-    const backToTopButton = document.createElement('button');
-    backToTopButton.textContent = '🔝';
-    backToTopButton.className = 'back-to-top-button';
-    document.body.appendChild(backToTopButton);
-    document.getElementById('to-bot').addEventListener('click', (e) => {
-        e.preventDefault();
-        window.location.href = 'bot.html';
-    });
-  window.addEventListener('scroll', () => {
+  
+    window.addEventListener('scroll', () => {
         if (window.scrollY > 200) {
             backToTopButton.style.display = 'block';
         } else {
@@ -349,45 +331,30 @@ document.addEventListener('DOMContentLoaded', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-
-function handleSeriesClick() {
-    const seriesSection = document.getElementById('series-section');
-    const searchBarContainer = document.getElementById("searchBarContainer");
-    // Ensure searchBarContainer is not null
-    if (searchBarContainer) {
+    function handleSeriesClick() {
+        const seriesSection = document.getElementById('series-section');
+        const searchBarContainer = document.getElementById("searchBarContainer");
         seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
         searchBarContainer.style.display = 'flex';
+        seriesSection.style.display = 'block';
+        seriesSection.scrollIntoView({ behavior: 'smooth' });
     }
-    seriesSection.style.display = 'block';
 
-    // Delay scrolling to ensure the layout has updated
-    setTimeout(() => {
-        seriesSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }, 150);  // Increased delay to 150ms
-}
-
-const seriesButton = document.getElementById('to-series');
-seriesButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    handleSeriesClick();
-});
-
-seriesButton.addEventListener('touchend', function(e) {
-    e.preventDefault();
-    handleSeriesClick();
-});
-
-const searchInputSeries = document.getElementById("searchInputSeries");
-const tvShowElements = document.querySelectorAll(".tv-show");
-searchInputSeries.addEventListener("input", function() {
-    const searchTerm = searchInputSeries.value.toLowerCase();
-    tvShowElements.forEach(function(tvShow) {
-        const title = tvShow.querySelector(".tv-show-title").textContent.toLowerCase();
-        tvShow.style.display = title.includes(searchTerm) ? "" : "none";
+    const seriesButton = document.getElementById('to-series');
+    seriesButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        handleSeriesClick();
     });
-});
 
-
+    const searchInputSeries = document.getElementById("searchInputSeries");
+    const tvShowElements = document.querySelectorAll(".tv-show");
+    searchInputSeries.addEventListener("input", () => {
+        const searchTerm = searchInputSeries.value.toLowerCase();
+        tvShowElements.forEach((tvShow) => {
+            const title = tvShow.querySelector(".tv-show-title").textContent.toLowerCase();
+            tvShow.style.display = title.includes(searchTerm) ? "" : "none";
+        });
+    });
 
     const tvShows = [
         { id: "friends", totalSeasons: 10, episodesPerSeason: [24, 24, 25, 24, 24, 25, 24, 24, 24, 18] },
@@ -531,7 +498,13 @@ searchInputSeries.addEventListener("input", function() {
 
     loadFavorites();
 
-    
+    fetch('path/to/episodeLinks.json')
+        .then(response => response.json())
+        .then(data => {
+            window.episodeLinksData = data;
+            console.log("Episode Links Data Loaded:", data);
+        })
+        .catch(error => console.error('Error fetching episode links:', error));
 
     document.querySelectorAll('.add-to-favorites-btn').forEach(button => {
         button.addEventListener('click', function(event) {
@@ -540,15 +513,6 @@ searchInputSeries.addEventListener("input", function() {
             toggleFavorite(type, identifier, event);
         });
     });
-
-    document.querySelectorAll('.add-to-favorites-btn').forEach(button => {
-        button.addEventListener('click', function(event) {
-            const type = this.dataset.type;
-            const identifier = this.dataset.identifier;
-            toggleFavorite(type, identifier, event);
-        });
-    });
-
 
     var modal = document.getElementById("requestSeriesModal");
     var trigger = document.getElementById("to-request");
@@ -574,226 +538,194 @@ searchInputSeries.addEventListener("input", function() {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-  fetch('episodeLinks.json')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        window.episodeLinksData = data;
-        console.log("Episode Links Data Loaded:", data);
-    })
-    .catch(error => console.error('Error fetching episode links:', error));
-
+    fetch('episodeLinks.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            window.episodeLinksData = data;
+            console.log("Episode Links Data Loaded:", data);
+        })
+        .catch(error => console.error('Error fetching episode links:', error));
 
         
         let currentTvShowId, currentSeason, currentEpisode, currentDifficulty;
         let modalHistory = [];
         let currentWordTreasureModal = null;
-async function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty = 'easy') {
-    currentTvShowId = tvShowId;
-    currentSeason = season;
-    currentEpisode = episode;
-    currentDifficulty = difficulty;
-
-    if (prevModal) {
-        prevModal.style.display = "none";
-    }
-
-    let modal = document.getElementById(`modalWordTreasure-${tvShowId}-${season}-${episode}`);
-    if (!modal) {
-        modal = createModal(`modalWordTreasure-${tvShowId}-${season}-${episode}`);
-    } else {
-        modal.style.display = "block";
-    }
-
-    currentWordTreasureModal = modal;  // עדכון המודל הנוכחי
-
-    const modalContent = modal.querySelector(".modal-content");
-    modalContent.innerHTML = ''; // מאתחל את התוכן בכל פעם שהמודל נפתח מחדש
-
-    // הוספת כפתור להחלפת כיוון הטקסט
-    const directionToggleHtml = `
-        <div class="direction-toggle">
-            <button class="toggle-direction-btn">⇆</button>
-        </div>
-    `;
-    modalContent.innerHTML = directionToggleHtml;
-
-    const difficultyTabsHtml = `
-        <div id="difficulty-tabs" class="difficulty-tabs-fixed">
-            <button class="tablink" data-difficulty="easy">קל</button>
-            <button class="tablink" data-difficulty="medium">בינוני</button>
-            <button class="tablink" data-difficulty="hard">קשה</button>
-        </div>
-        <div id="easy" class="tabcontent"></div>
-        <div id="medium" class="tabcontent" style="display: none;"></div>
-        <div id="hard" class="tabcontent" style="display: none;"></div>
-        <button class="test-knowledge-button">בחן את הידע שלך</button>
-        <div id="episode-links" class="episode-links">
-            <h3>קישורים לפרק:</h3>
-            <div id="links-container"></div>
-        </div>
-    `;
-    modalContent.innerHTML += difficultyTabsHtml;
-
-    // הגדרת כיוון טקסט ותוכן ראשוני
-    modalContent.style.direction = 'ltr';
-    modalContent.style.textAlign = 'left';
-
-    // טעינת נתוני הקישורים של הפרק
-    const episodeData = window.episodeLinksData?.[tvShowId]?.[`season-${season}`]?.[`episode-${episode}`];
-    const linksContainer = modal.querySelector('#links-container');
-    if (episodeData && episodeData.links) {
-        linksContainer.innerHTML = '';
-
-        if (episodeData.links.netflix && episodeData.links.netflix.trim() !== "") {
-            const netflixButton = createLinkButton('לצפייה ב-Netflix', episodeData.links.netflix, 'netflix.png');
-            linksContainer.appendChild(netflixButton);
-        }
-        if (episodeData.links.disney && episodeData.links.disney.trim() !== "") {
-            const disneyButton = createLinkButton('לצפייה ב-Disney+', episodeData.links.disney, 'disney.png');
-            linksContainer.appendChild(disneyButton);
-        }
-        if (episodeData.links.appletv && episodeData.links.appletv.trim() !== "") {
-            const appleTVButton = createLinkButton('לצפייה ב-Apple TV', episodeData.links.appletv, 'appletv.png');
-            linksContainer.appendChild(appleTVButton);
-        }
-        if (episodeData.links.amazon && episodeData.links.amazon.trim() !== "") {
-            const amazonButton = createLinkButton('לצפייה ב-Amazon', episodeData.links.amazon, 'amazon.png');
-            linksContainer.appendChild(amazonButton);
-        }
-    } else {
-        linksContainer.innerHTML = '<p>לא נמצאו קישורים לפרק זה.</p>';
-    }
-
-    function createLinkButton(platformText, url, imageName) {
-        const button = document.createElement('a');
-        button.href = url;
-        button.target = '_blank';
-        button.className = 'link-button';
-        button.innerHTML = `
-            <img src="img/${imageName}" alt="${platformText} logo" class="platform-logo">
-            ${platformText}
-        `;
-        return button;
-    }
-
-    async function loadContentForDifficulty(tvShowId, season, episodeNum, difficulty) {
-        const words = await getWordTreasure(tvShowId, season, episodeNum, difficulty);
-        const targetDiv = modal.querySelector(`#${difficulty}`);
-        targetDiv.innerHTML = ''; 
-
-        if (words && words.length > 0) {
-            const wordsHtml = words.map(item => {
-                const sentenceHighlighted = item.sentence.replace(new RegExp(item.word, 'gi'), `<span class="highlight">${item.word}</span>`);
-                return `
-                    <div class="word-item">
-                        <span class="word"><strong>${item.word}</strong></span> - 
-                        <span class="translation">${item.translate}</span>
-                        <p class="sentence">${sentenceHighlighted}</p>
-                    </div>
-                `;
-            }).join('');
-            targetDiv.innerHTML = `<h2>אוצר מילים - עונה ${season}, פרק ${episodeNum}:</h2>
-                                   <div class="word-treasure-container">${wordsHtml}</div>`;
-        } else {
-            targetDiv.innerHTML = "<p>No Words</p>";
-        }
-    }
-
-    await loadContentForDifficulty(tvShowId, season, episode, difficulty); 
-    modal.querySelector(`.tablink[data-difficulty='${difficulty}']`).classList.add("active");
-
-    modal.querySelectorAll(".tablink").forEach(tab => {
-        tab.addEventListener("click", async function() {
-            modal.querySelectorAll(".tablink").forEach(t => {
-                t.classList.remove("active");
-                modal.querySelector(`#${t.getAttribute("data-difficulty")}`).style.display = "none";
-            });
-
-            this.classList.add("active");
-            const newDifficulty = this.getAttribute("data-difficulty");
-            currentDifficulty = newDifficulty; // Update current difficulty
-            modal.querySelector(`#${newDifficulty}`).style.display = "block";
-            await loadContentForDifficulty(tvShowId, season, episode, newDifficulty);
-        });
-    });
-
-    const testButton = modal.querySelector(".test-knowledge-button");
-    testButton.addEventListener('click', () => {
-        const activeDifficulty = modal.querySelector(".tablink.active").getAttribute("data-difficulty");
-        const vocabulary = getWordTreasure(tvShowId, season, episode, activeDifficulty);
-        openGameSelectionModal(vocabulary, modal);
-    });
-
-    let exitButton = modal.querySelector(".exit-button");
-    if (!exitButton) {
-        exitButton = document.createElement("button");
-        exitButton.textContent = "יציאה";
-        exitButton.className = "exit-button";
-        exitButton.addEventListener("click", () => {
-            modal.style.display = "none";
-            if (prevModal) prevModal.style.display = "block";
-        });
-        modalContent.insertBefore(exitButton, modalContent.firstChild);
-    }
-
-    // הוספת מאזין לכפתור לשינוי כיוון הטקסט
-    const toggleDirectionBtn = modalContent.querySelector(".toggle-direction-btn");
-    toggleDirectionBtn.addEventListener('click', () => {
-        if (modalContent.style.direction === 'ltr') {
-            modalContent.style.direction = 'rtl';
-            modalContent.style.textAlign = 'right';
-        } else {
+        
+        function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty = 'easy') {
+            currentTvShowId = tvShowId;
+            currentSeason = season;
+            currentEpisode = episode;
+            currentDifficulty = difficulty;
+        
+            if (prevModal) {
+                prevModal.style.display = "none";
+            }
+        
+            let modal = document.getElementById(`modalWordTreasure-${tvShowId}-${season}-${episode}`);
+            if (!modal) {
+                modal = createModal(`modalWordTreasure-${tvShowId}-${season}-${episode}`);
+            } else {
+                modal.style.display = "block";
+            }
+        
+            currentWordTreasureModal = modal;  // עדכון המודל הנוכחי
+        
+            const modalContent = modal.querySelector(".modal-content");
+            modalContent.innerHTML = ''; // מאתחל את התוכן בכל פעם שהמודל נפתח מחדש
+        
+            // הוספת כפתור להחלפת כיוון הטקסט
+            const directionToggleHtml = `
+                <div class="direction-toggle">
+                    <button class="toggle-direction-btn">⇆</button>
+                </div>
+            `;
+            modalContent.innerHTML = directionToggleHtml;
+        
+            const difficultyTabsHtml = `
+                <div id="difficulty-tabs" style="margin-bottom: 20px;">
+                    <button class="tablink" data-difficulty="easy">קל</button>
+                    <button class="tablink" data-difficulty="medium">בינוני</button>
+                    <button class="tablink" data-difficulty="hard">קשה</button>
+                </div>
+                <div id="easy" class="tabcontent"></div>
+                <div id="medium" class="tabcontent" style="display: none;"></div>
+                <div id="hard" class="tabcontent" style="display: none;"></div>
+                <button class="test-knowledge-button">בחן את הידע שלך</button>
+                <div id="episode-links" class="episode-links">
+                    <h3>קישורים לפרק:</h3>
+                    <div id="links-container"></div>
+                </div>
+            `;
+            modalContent.innerHTML += difficultyTabsHtml;
+        
+            // הגדרת כיוון טקסט ותוכן ראשוני
             modalContent.style.direction = 'ltr';
             modalContent.style.textAlign = 'left';
+        
+            const episodeData = window.episodeLinksData?.[tvShowId]?.[`season-${season}`]?.[`episode-${episode}`];
+            const linksContainer = modal.querySelector('#links-container');
+            if (episodeData && episodeData.links) {
+                linksContainer.innerHTML = '';
+        
+                if (episodeData.links.netflix && episodeData.links.netflix.trim() !== "") {
+                    const netflixButton = createLinkButton('לצפייה ב-Netflix', episodeData.links.netflix, 'netflix.png');
+                    linksContainer.appendChild(netflixButton);
+                }
+                if (episodeData.links.disney && episodeData.links.disney.trim() !== "") {
+                    const disneyButton = createLinkButton('לצפייה ב-Disney+', episodeData.links.disney, 'disney.png');
+                    linksContainer.appendChild(disneyButton);
+                }
+                if (episodeData.links.appletv && episodeData.links.appletv.trim() !== "") {
+                    const appleTVButton = createLinkButton('לצפייה ב-Apple TV', episodeData.links.appletv, 'appletv.png');
+                    linksContainer.appendChild(appleTVButton);
+                }
+                if (episodeData.links.amazon && episodeData.links.amazon.trim() !== "") {
+                    const amazonButton = createLinkButton('לצפייה ב-Amazon', episodeData.links.amazon, 'amazon.png');
+                    linksContainer.appendChild(amazonButton);
+                }
+            } else {
+                linksContainer.innerHTML = '<p>לא נמצאו קישורים לפרק זה.</p>';
+            }
+        
+            function createLinkButton(platformText, url, imageName) {
+                const button = document.createElement('a');
+                button.href = url;
+                button.target = '_blank';
+                button.className = 'link-button';
+                button.innerHTML = `
+                    <img src="img/${imageName}" alt="${platformText} logo" class="platform-logo">
+                    ${platformText}
+                `;
+                return button;
+            }
+        
+            function loadContentForDifficulty(tvShowId, season, episodeNum, difficulty) {
+                const words = getWordTreasure(tvShowId, season, episodeNum, difficulty);
+                const targetDiv = modal.querySelector(`#${difficulty}`);
+                targetDiv.innerHTML = ''; 
+        
+                if (words && words.length > 0) {
+                    const wordsHtml = words.map(item => {
+                        const sentenceHighlighted = item.sentence.replace(new RegExp(item.word, 'gi'), `<span class="highlight">${item.word}</span>`);
+                        return `
+                            <div class="word-item">
+                                <span class="word"><strong>${item.word}</strong></span> - 
+                                <span class="translation">${item.translate}</span>
+                                <p class="sentence">${sentenceHighlighted}</p>
+                            </div>
+                        `;
+                    }).join('');
+                    targetDiv.innerHTML = `<h2>אוצר מילים - עונה ${season}, פרק ${episodeNum}:</h2>
+                                           <div class="word-treasure-container">${wordsHtml}</div>`;
+                } else {
+                    targetDiv.innerHTML = "<p>No Words</p>";
+                }
+            }
+        
+            loadContentForDifficulty(tvShowId, season, episode, difficulty); 
+            modal.querySelector(`.tablink[data-difficulty='${difficulty}']`).classList.add("active");
+        
+            modal.querySelectorAll(".tablink").forEach(tab => {
+                tab.addEventListener("click", function() {
+                    modal.querySelectorAll(".tablink").forEach(t => {
+                        t.classList.remove("active");
+                        modal.querySelector(`#${t.getAttribute("data-difficulty")}`).style.display = "none";
+                    });
+        
+                    this.classList.add("active");
+                    const newDifficulty = this.getAttribute("data-difficulty");
+                    currentDifficulty = newDifficulty; // Update current difficulty
+                    modal.querySelector(`#${newDifficulty}`).style.display = "block";
+                    loadContentForDifficulty(tvShowId, season, episode, newDifficulty);
+                });
+            });
+        
+            const testButton = modal.querySelector(".test-knowledge-button");
+            testButton.addEventListener('click', () => {
+                const activeDifficulty = modal.querySelector(".tablink.active").getAttribute("data-difficulty");
+                const vocabulary = getWordTreasure(tvShowId, season, episode, activeDifficulty);
+                openGameSelectionModal(vocabulary, modal);
+            });
+        
+            let exitButton = modal.querySelector(".exit-button");
+            if (!exitButton) {
+                exitButton = document.createElement("button");
+                exitButton.textContent = "יציאה";
+                exitButton.className = "exit-button";
+                exitButton.addEventListener("click", () => {
+                    modal.style.display = "none";
+                    if (prevModal) prevModal.style.display = "block";
+                });
+                modalContent.insertBefore(exitButton, modalContent.firstChild);
+            }
+        
+            // הוספת מאזין לכפתור לשינוי כיוון הטקסט
+            const toggleDirectionBtn = modalContent.querySelector(".toggle-direction-btn");
+            toggleDirectionBtn.addEventListener('click', () => {
+                if (modalContent.style.direction === 'ltr') {
+                    modalContent.style.direction = 'rtl';
+                    modalContent.style.textAlign = 'right';
+                } else {
+                    modalContent.style.direction = 'ltr';
+                    modalContent.style.textAlign = 'left';
+                }
+            });
+        
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                    modalContent.innerHTML = ''; // מאתחל את התוכן כאשר המודל נסגר
+                    if (prevModal) prevModal.style.display = "block";
+                }
+            });
+        
+            modal.style.display = "block";
         }
-    });
-
-    modal.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-            modalContent.innerHTML = ''; // מאתחל את התוכן כאשר המודל נסגר
-            if (prevModal) prevModal.style.display = "block";
-        }
-    });
-
-    modal.style.display = "block";
-}
-
-async function getWordTreasure(tvShowId, season, episodeNum, difficulty) {
-    const showsEnum = {
-        friends: './series json/friends.json',
-        himym: './series json/himym.json',
-        the100: './series json/the100.json',
-        bigbang: './series json/bigbang.json',
-        simpsons: './series json/simpsons.json',
-        brooklyn99: './series json/brooklyn99.json',
-        modernfamily: './series json/modern.json',
-        Bigmouth: './series json/bigmouth.json',
-        newgirl: './series json/newgirl.json',
-        seinfeld: './series json/seinfeld.json',
-        thegoodplace: './series json/thegoodplace.json',
-        theoffice: './series json/theoffice.json',
-    };
-
-    const url = showsEnum[tvShowId];
-    if (!url) return null;
-
-    const response = await fetch(url);
-    const tvShowData = await response.json();
-
-    const episodeData = tvShowData[`season-${season}`]?.[`episode-${episodeNum}`];
-    if (!episodeData) return null;
-
-    const difficultyData = episodeData[difficulty];
-    return difficultyData ? difficultyData : null;
-}
-
-
         
         function openGameSelectionModal(vocabulary, prevModal) {
             prevModal.style.display = "none";
