@@ -1631,8 +1631,9 @@ form button[type="submit"]:hover {
     width: 100%;
     height: 100vh;
     top: 50%;
+    left:50%;
     border: none;
-    border-radius: 0;
+    border-radius: 65px;
     overflow: hidden;
   }
 
@@ -1647,7 +1648,7 @@ form button[type="submit"]:hover {
 
   .modal-content {
     height: 100%;
-    border-radius: 0;
+    border-radius: 26px;
     padding-top: 60px !important;
     display: flex;
     flex-direction: column;
@@ -1677,12 +1678,13 @@ form button[type="submit"]:hover {
 
   .exit-button, .close, #back-to-word-treasure {
     font-size: 16px;
-    padding: 8px;
+    padding: 10px;
   }
 
   .modal-content {
     padding: 5px;
     width: 92%;
+  
   }
 
   .back-to-top-button, .feedback-button {
@@ -1694,6 +1696,7 @@ form button[type="submit"]:hover {
 
   .exit-button {
     align-self: flex-end;
+    right:0.2%;
     margin: 10px;
     font-size: 24px;
   }
@@ -1728,7 +1731,7 @@ form button[type="submit"]:hover {
   }
 
   .word-treasure-container .highlight {
-    font-size: 20px;
+    font-size: 18px;
     color: #1d15de;
     font-weight: bold;
   }
@@ -1781,7 +1784,7 @@ form button[type="submit"]:hover {
 
   .shortcut-rectangle p {
     position: absolute; /* ממקם את הטקסט באופן מוחלט */
-    bottom: 18px; /* מתחת לכל */
+    bottom: 15px; /* מתחת לכל */
     left: 50%; /* ממרכז הטקסט אופקית */
     transform: translateX(-50%); /* מבטיח שהטקסט ממורכז */
     font-size: 8px;
@@ -1796,7 +1799,7 @@ form button[type="submit"]:hover {
     object-fit: cover; /* מבטיח שהתמונה תמלא את המלבן ללא עיוות */
     display: block;
     right:6px;
-    top:3px;
+    top:6px;
     max-height: 75px; /* גובה גבוה יותר מתוך המלבן */
   }
 
@@ -1805,7 +1808,7 @@ form button[type="submit"]:hover {
   }
 
   header, .bottom-section a, .tv-show-title {
-    font-size: 12px;
+    font-size: 14px;
   }
 
 
@@ -1814,13 +1817,13 @@ form button[type="submit"]:hover {
   }
 
   #searchBarContainer .search-bar {
-    width: 90%;
+    width: 100%;
     margin: 10px auto;
   }
 
   #searchInputSeries {
     width: 100%;
-    padding: 10px;
+    padding: 3px;
     margin-top: 5px;
   }
 
@@ -1876,7 +1879,7 @@ form button[type="submit"]:hover {
 .feedback-button{
   display: block;
   position:fixed;
-bottom:130px;
+  bottom:130px;
   right:5px;
   padding: 10px 15px;
   width:auto;
@@ -1886,8 +1889,8 @@ bottom:130px;
  
 }
   #difficulty-tabs {
-    position: fixed;
-    top: 60px;
+    position:absolute;
+    top: 40px;
     left: 30px;
     width: 85%;
     background:none;
@@ -1923,5 +1926,15 @@ bottom:130px;
   .tablink.active {
     background: #3bb23c !important;
   }
+  .direction-toggle {
+  position:fixed;
+  right: 39px; /* מתאים את המיקום האופקי של הכפתור */
+  top: 88%;
+  transform: translateY(-20%) translateX(25px); /* מתאים את הגובה של הכפתור */
 }
 
+.toggle-direction-btn:hover {
+  background-color: #0056b3;
+  opacity: 1;
+}
+}
