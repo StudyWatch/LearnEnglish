@@ -3,235 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>בוט המלצות לסדרות</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            color: #ffffff;
-            text-align: center;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 0 10px;
-        }
-
-        .back-to-home-button {
-            display: inline-block;
-            margin: 10px;
-            padding: 20px 40px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 10px;
-            transition: background-color 0.3s, transform 0.3s;
-            font-size: 22px;
-        }
-
-        .back-to-home-button:hover {
-            background-color: #2980b9;
-            transform: scale(1.1);
-        }
-
-        h2, p {
-               margin-top: 20px;
-    font-size: 70px;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 60px 80px;
-    border-radius: 10px;
-    transition: transform 0.3s;
-        }
-
-        select, button {
-    margin: 20px 0;
-    padding: 20px 40px;
-    margin-bottom: 350px;
-    border-radius: 20px;
-    border: 2px solid #ffffff;
-    outline: none;
-    font-size: 24px;
-    color: #ffffff;
-    background-color: #e74c3c;
-    transition: all 0.3s ease, transform 0.3s;
-    cursor: pointer;
-}
-
-        select:hover, button:hover {
-            background-color: #c0392b;
-            border: 2px solid #e74c3c;
-            transform: scale(1.1);
-        }
-
-       #recommendation {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 300px;
-    top: -250px;
-    overflow: hidden;
-    position: relative;
-    margin-top: 50px;
-    font-size: 50px;
-    flex-wrap: wrap;
-    align-content: stretch;
-    flex-direction: column;
-       }
-
-        .recommendation-slide {
-            padding: 20px;
-            background-color: #16222a;
-            border-radius: 10px;
-            color: #ffffff;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-            font-size: 32px;
-            width: 100%;
-            text-align: center;
-            position: absolute;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            cursor: pointer;
-        }
-
-        .active-slide {
-            opacity: 1;
-        }
-
-        .bot-image {
-            width: 150px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        @media only screen and (max-width: 800px) {
-            body {
-                background-image: url('./img/pingbot.png');
-                background-size: cover;
-                background-position: center center;
-                padding: 20px;
-            }
-
-            .back-to-home-button {
-                padding: 30px 60px;
-                font-size: 26px;
-            }
-
-            h2, p {
-                font-size: 40px;
-                padding: 30px 60px;
-            }
-
-            select, button {
-         padding: 30px 80px;
-         font-size: 45px;
-            }
-      #recommendation {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 300px;
-    top: 250px;
-    overflow: hidden;
-    position: relative;
-    margin-top: 50px;
-    font-size: 50px;
-    flex-wrap: wrap;
-    align-content: stretch;
-    flex-direction: column;
-       }
-            #recommendation .recommendation-slide {
-                font-size: 70px;
-                height: 220px;
-            }
-
-            h2 {
-                margin-top: 10px;
-            }
-
-            p {
-                margin-top: 10px;
-            }
-
-            select, button {
-                margin-top: 20px;
-            }
-        }
-
-        @media only screen and (min-width: 801px) {
-            body {
-                background-image: url('./img/pingbot.png');
-                background-size: cover;
-                background-position: center center;
-                padding: 40px;
-            }
-
-            h2, p {
-                      font-size: 35px;
-        margin: 10px 0;
-            }
-
-            select, button {
-                padding: 10px 20px;
-                font-size: 16px;
-            }
-
-            #recommendation .recommendation-slide {
-                font-size: 20px;
-            }
-        }
-
-        .question {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .question.active {
-            display: block;
-            opacity: 1;
-        }
-    </style>
+    <link rel="stylesheet" href="stylebot.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <a href="index.html" class="back-to-home-button">חזור לדף הבית</a>
@@ -273,7 +46,7 @@
     </div>
 
     <script>
-      const seriesDB = [
+     const seriesDB = [
     { name: "Friends", genre: "comedy", level: "beginner", description: "חברים היא סדרת טלוויזיה קומית אמריקאית המתארת את חייהם של שישה חברים בעיר ניו יורק. הסדרה עוסקת בחברות, אהבה, ועבודה, עם רגעים קומיים רבים." },
     { name: "The Office (US)", genre: "comedy", level: "beginner", description: "המשרד היא סדרת טלוויזיה קומית אמריקאית המתארת את חייהם היומיומיים של עובדי משרד נייר בדמונט, פנסילבניה. הסדרה מציגה את מערכת היחסים בין העובדים ואת הבוס המוזר שלהם, מייקל סקוט." },
     { name: "Brooklyn Nine-Nine", genre: "comedy", level: "intermediate", description: "ברוקלין תשע-תשע היא סדרת טלוויזיה קומית אמריקאית המתארת את חייהם של שוטרים בתחנת משטרה בברוקלין. הסדרה מתמקדת במערכת היחסים בין הבלשים והקפטן החדש שלהם." },
@@ -374,6 +147,7 @@
 ];
 
 
+
         function nextQuestion(questionNumber) {
             document.querySelector('.question.active').classList.remove('active');
             document.getElementById(`question-${questionNumber}`).classList.add('active');
@@ -392,7 +166,9 @@
                     const slide = document.createElement('div');
                     slide.className = 'recommendation-slide';
                     slide.innerHTML = `<strong>${series.name}</strong>`;
-                    slide.onclick = () => showSeriesDetails(series);
+                    slide.setAttribute('data-name', series.name);
+                    slide.setAttribute('data-description', series.description);
+                    slide.onclick = showSeriesDetails;
                     recommendationElement.appendChild(slide);
                 });
 
@@ -412,9 +188,11 @@
             }
         }
 
-        function showSeriesDetails(series) {
-            document.getElementById("seriesName").innerText = series.name;
-            document.getElementById("seriesDescription").innerText = series.description;
+        function showSeriesDetails(event) {
+            const seriesName = event.target.getAttribute('data-name');
+            const seriesDescription = event.target.getAttribute('data-description');
+            document.getElementById("seriesName").innerText = seriesName;
+            document.getElementById("seriesDescription").innerText = seriesDescription;
             document.getElementById("seriesModal").style.display = "block";
         }
 
