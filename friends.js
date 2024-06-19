@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', async () => {
     const feedbackButton = document.getElementById('feedbackButton');
     const feedbackModal = document.getElementById('feedbackModal');
@@ -9,29 +8,68 @@ document.addEventListener('DOMContentLoaded', async () => {
     const hideButtonScrollThreshold = 100; // Adjust this value as needed
 
     async function fetchData(url) {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch ${url}`);
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+            }
+            return response.json();
+        } catch (error) {
+            console.error('Fetch error:', error);
+            return null; // Return null if there's an error
         }
-        return response.json();
     }
 
-    const friendsItemList = await fetchData('./series json/friends.json');
-    const howItemList = await fetchData('./series json/himym.json');
-    const the100itemList = await fetchData('./series json/the100.json');
-    const bigbang = await fetchData('./series json/bigbang.json');
-    const simpsons = await fetchData('./series json/simpsons.json');
-    const brooklyn99 = await fetchData('./series json/brooklyn99.json');
-    const modernfamily = await fetchData('./series json/modern.json');
-    const BigmouthItemList = await fetchData('./series json/bigmouth.json');
-    const newgirlItemList = await fetchData('./series json/newgirl.json');
-    const seinfeldItemList = await fetchData('./series json/seinfeld.json');
-    const thegoodplaceItemList = await fetchData('./series json/thegoodplace.json');
-    const theofficeItemList = await fetchData('./series json/theoffice.json');
+    const seriesUrls = [
+        './series json/friends.json',
+        './series json/himym.json',
+        './series json/the100.json',
+        './series json/bigbang.json',
+        './series json/simpsons.json',
+        './series json/brooklyn99.json',
+        './series json/modern.json',
+        './series json/bigmouth.json',
+        './series json/newgirl.json',
+        './series json/seinfeld.json',
+        './series json/thegoodplace.json',
+        './series json/theoffice.json'
+    ];
+
+    // Fetch all series data in parallel
+    const seriesDataPromises = seriesUrls.map(url => fetchData(url));
+    const seriesData = await Promise.all(seriesDataPromises);
+
+    // Destructure the results into variables, each variable corresponds to a JSON file
+    const [
+        friendsItemList, 
+        howItemList, 
+        the100itemList, 
+        bigbang, 
+        simpsons, 
+        brooklyn99, 
+        modernfamily, 
+        BigmouthItemList, 
+        newgirlItemList, 
+        seinfeldItemList, 
+        thegoodplaceItemList, 
+        theofficeItemList
+    ] = seriesData;
+
+    // Check if any of the fetched data is null due to a fetch error
+    if (seriesData.some(data => data === null)) {
+        console.error('One or more series data failed to load');
+        return; // Exit early if any fetch failed
+    }
+
+    // Use these data objects as needed in your application
+    console.log(friendsItemList, howItemList, the100itemList, bigbang, simpsons, brooklyn99, modernfamily, BigmouthItemList, newgirlItemList, seinfeldItemList, thegoodplaceItemList, theofficeItemList);
+
+    // Add event listeners and other logic here
 
     feedbackButton.addEventListener('click', () => {
         feedbackModal.style.display = 'flex';
     });
+
 
     closeModalButton.addEventListener('click', () => {
         feedbackModal.style.display = 'none';
@@ -521,21 +559,8 @@ Object.keys(favorites).forEach(type => {
 
 loadFavorites();
 
-fetch('path/to/episodeLinks.json')
-.then(response => response.json())
-.then(data => {
-    window.episodeLinksData = data;
-    console.log("Episode Links Data Loaded:", data);
-})
-.catch(error => console.error('Error fetching episode links:', error));
 
-document.querySelectorAll('.add-to-favorites-btn').forEach(button => {
-button.addEventListener('click', function(event) {
-    const type = this.dataset.type;
-    const identifier = this.dataset.identifier;
-    toggleFavorite(type, identifier, event);
-});
-});
+
 
 var modal = document.getElementById("requestSeriesModal");
 var trigger = document.getElementById("to-request");
@@ -849,9 +874,7 @@ function openGameSelectionModal(vocabulary, prevModal) {
     modal.style.display = 'block';
 }
 
-// Example usage:
-// To open a new modal and close the current one
-manageModals('newModalId', 'currentModalId');
+
 
 
 
