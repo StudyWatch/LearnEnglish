@@ -8,7 +8,7 @@
 </head>
 <body>
     <a href="index.html" class="back-to-home-button">חזור לדף הבית</a>
-    <img src="./img/bot_image.webp" alt="בוט המלצות" class="bot-image">
+   
     <h2>בוט המלצות לסדרות</h2>
     
     <div class="question active" id="question-1">
@@ -46,6 +46,7 @@
     </div>
 
     <script>
+       
      const seriesDB = [
     { name: "Friends", genre: "comedy", level: "beginner", description: "חברים היא סדרת טלוויזיה קומית אמריקאית המתארת את חייהם של שישה חברים בעיר ניו יורק. הסדרה עוסקת בחברות, אהבה, ועבודה, עם רגעים קומיים רבים." },
     { name: "The Office (US)", genre: "comedy", level: "beginner", description: "המשרד היא סדרת טלוויזיה קומית אמריקאית המתארת את חייהם היומיומיים של עובדי משרד נייר בדמונט, פנסילבניה. הסדרה מציגה את מערכת היחסים בין העובדים ואת הבוס המוזר שלהם, מייקל סקוט." },
@@ -147,7 +148,6 @@
 ];
 
 
-
         function nextQuestion(questionNumber) {
             document.querySelector('.question.active').classList.remove('active');
             document.getElementById(`question-${questionNumber}`).classList.add('active');
@@ -189,8 +189,8 @@
         }
 
         function showSeriesDetails(event) {
-            const seriesName = event.target.getAttribute('data-name');
-            const seriesDescription = event.target.getAttribute('data-description');
+            const seriesName = event.currentTarget.getAttribute('data-name');
+            const seriesDescription = event.currentTarget.getAttribute('data-description');
             document.getElementById("seriesName").innerText = seriesName;
             document.getElementById("seriesDescription").innerText = seriesDescription;
             document.getElementById("seriesModal").style.display = "block";
@@ -202,3 +202,4 @@
     </script>
 </body>
 </html>
+
