@@ -149,24 +149,51 @@
 
     <!-- מעבר לקישורים שבחלק התחתון -->
     <div class="bottom-section">
-      <link rel="stylesheet" type="text/css" href="styles.css">
-      <div class="bottom-section">
-        <a href="#Series Rerquest" class="shortcut-rectangle" id="to-request">
+  
+           <div class="bottom-section">
+        <a href="#SeriesRequest" class="shortcut-rectangle" id="to-request">
           <div class="content">
-            <div id="requestSeriesModal" class="modal">
-              <div class="modal-content">
-                  <span class="close">&times;</span>
-                <h2>בקשת סדרה חדשה</h2>
-                <form id="seriesRequestForm">
-                  <input type="text" placeholder="שם הסדרה" name="seriesName" required>
-                  <textarea placeholder="הערות נוספות (אופציונלי)"></textarea>
-                  <button type="submit">שלח בקשה</button>
-                </form>
-              </div>
-            </div>
-            <img src="icons/requestorange.webp" alt="About Icon">
-            <p>בקשות לסדרות</p>
+              <img src="/icons/requestorange.webp" alt="Request Icon">
+              <p>בקשות לסדרות</p>
           </div>
+      </a>
+      
+      <div id="requestSeriesModal" class="modal">
+        <div class="modal-content" style="background-image: url(/website/sdarot\ ask.webp); background-size: cover; background-position: center;">
+            <span class="close" onclick="closeModal('requestSeriesModal')">&times;</span>
+            <h2>בקשת סדרה חדשה</h2>
+            <p>רוצים לנסות עם סדרה משלכם אבל אין אותה באתר? שלחו לנו בקשה ונוסיף אותה</p>
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+                <label for="seriesName">שם הסדרה:</label>
+                <input type="text" id="seriesName" name="seriesName" required>
+    
+                <label for="reasonForRequest">מדוע אתה רוצה לראות את הסדרה הזו?</label>
+                <textarea id="reasonForRequest" name="reasonForRequest" rows="4" required></textarea>
+    
+                <label for="preferredGenre">איזה סוג ז'אנר אתה מעדיף?</label>
+                <select id="preferredGenre" name="preferredGenre" required>
+                    <option value="comedy">קומדיה</option>
+                    <option value="drama">דרמה</option>
+                    <option value="action">אקשן</option>
+                    <option value="sci-fi">מדע בדיוני</option>
+                    <option value="fantasy">פנטזיה</option>
+                    <option value="horror">אימה</option>
+                    <option value="romance">רומנטיקה</option>
+                    <option value="documentary">דוקומנטרי</option>
+                </select>
+    
+                <label for="episodesWatched">כמה פרקים כבר צפית בסדרה הזו?</label>
+                <input type="number" id="episodesWatched" name="episodesWatched" min="0" required>
+    
+                <label for="additionalComments">הערות נוספות:</label>
+                <textarea id="additionalComments" name="additionalComments" rows="4"></textarea>
+    
+                <input type="text" name="_gotcha" style="display:none" />
+                <button type="submit">שלח בקשה</button>
+            </form>
+        </div>
+    </div>
+      
         </a>
         <a href="#tips" class="shortcut-rectangle" id="to-tips" onclick="openTipsModal()">
           <div class="content">
