@@ -1497,7 +1497,9 @@ body, html {
     overflow: hidden;
 }
 .modal {
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -1509,7 +1511,7 @@ body, html {
 }
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto;
+    margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 90%;
@@ -1518,10 +1520,10 @@ body, html {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     position: relative;
-    height: 750px; /* הגדלת הגובה */
+    height: 750px; /* Increased height */
 }
 .close {
-    color: black; /* שינוי צבע לשחור */
+    color: black; /* Changed color to black */
     position: absolute;
     top: -5px;
     right: -10px;
@@ -1537,7 +1539,7 @@ body, html {
 .game-board {
     position: relative;
     width: 100%;
-    height: 550px; /* התאמת הגובה */
+    height: 550px; /* Adjusted height */
     background: url('img/race1.png') repeat-y;
     background-size: cover;
     overflow: hidden;
@@ -1550,14 +1552,15 @@ body, html {
 }
 .penguin-car {
     left: 50%;
-    transform: translateX(-100%);
+    transform: translateX(-50%);
 }
 .opponent-car {
     left: 50%;
+    transform: translateX(-50%);
 }
 .question-box {
     position: fixed;
-    bottom: 140px; /* הורדת השאלה למטה */
+    bottom: 140px; /* Moved question box down */
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
@@ -1583,15 +1586,15 @@ body, html {
     background-color: #0056b3;
 }
 .play-again-btn, .back-to-games-btn, .back-to-vocabulary-btn {
-flex: 1; /* כל כפתור מתפשט לתפוס חלק שווה מהשטח */
-padding: 10px 20px; /* ריפוד */
-font-size: 16px; /* גודל גופן */
-border: none; /* ללא גבול */
-border-radius: 5px; /* רדיוס העיגול */
-cursor: pointer; /* סמן כפתור */
-background-color: #28a745; /* צבע רקע */
-color: white; /* צבע גופן */
-text-align: center; /* יישור טקסט למרכז */
+    flex: 1; /* Each button occupies equal space */
+    padding: 10px 20px; /* Padding */
+    font-size: 16px; /* Font size */
+    border: none; /* No border */
+    border-radius: 5px; /* Border radius */
+    cursor: pointer; /* Cursor pointer */
+    background-color: #28a745; /* Background color */
+    color: white; /* Font color */
+    text-align: center; /* Text align center */
 }
 .play-again-btn:hover {
     background-color: #218838;
@@ -1609,7 +1612,9 @@ text-align: center; /* יישור טקסט למרכז */
     background-color: #e0a800;
 }
 .end-game-modal {
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -1621,7 +1626,7 @@ text-align: center; /* יישור טקסט למרכז */
 }
 .end-game-modal-content {
     background-color: #fefefe;
-    margin: 10% auto;
+    margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
@@ -1636,7 +1641,7 @@ text-align: center; /* יישור טקסט למרכז */
 }
 .feedback-container {
     position: absolute;
-    bottom: 100px; /* הזזת הפידבק למעלה */
+    bottom: 100px; /* Moved feedback container up */
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
@@ -1661,24 +1666,6 @@ text-align: center; /* יישור טקסט למרכז */
 }
 `;
 document.head.appendChild(style);
-
-modalContent.innerHTML = `
-<div class="game-board" id="game-board">
-    <img src="img/gamecar2.png" class="car penguin-car" alt="Penguin Car">
-    <img src="img/gamecar1.jpg" class="car opponent-car" alt="Opponent Car">
-    <div class="question-box">
-        <p id="question-text"></p>
-        <div id="answer-buttons"></div>
-    </div>
-</div>
-<div class="feedback-container hidden" id="feedback-container"></div>
-<div class="game-control-buttons">
-    <button class="play-again-btn">שחק שוב</button>
-    <button class="back-to-games-btn">חזרה למשחקים</button>
-    <button class="back-to-vocabulary-btn">חזרה לאוצר מילים</button>
-</div>
-<span class="close close-btn">✖</span>
-`;
 
 const penguinCar = modalContent.querySelector('.penguin-car');
 const opponentCar = modalContent.querySelector('.opponent-car');
