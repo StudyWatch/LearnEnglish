@@ -1610,23 +1610,17 @@ function startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModa
         display: none;
         position: fixed;
         z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-    .end-game-modal-content {
-        background-color: #fefefe;
-        margin: 10% auto;
-        padding: 20px;
-        border: 1px solid #888;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         width: 80%;
         max-width: 400px;
+        background-color: rgba(0, 0, 0, 0.4);
         border-radius: 10px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         text-align: center;
+        padding: 20px;
+        border: 1px solid #888;
     }
     .penguin-image {
         width: 100px;
@@ -1661,23 +1655,21 @@ function startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModa
     document.head.appendChild(style);
 
     modalContent.innerHTML = `
-    <div class="modal-content">
-        <div class="game-board" id="game-board">
-            <img src="img/gamecar2.png" class="car penguin-car" alt="Penguin Car">
-            <img src="img/gamecar1.jpg" class="car opponent-car" alt="Opponent Car">
-            <div class="question-box">
-                <p id="question-text"></p>
-                <div id="answer-buttons"></div>
-            </div>
+    <div class="game-board" id="game-board">
+        <img src="img/gamecar2.png" class="car penguin-car" alt="Penguin Car">
+        <img src="img/gamecar1.jpg" class="car opponent-car" alt="Opponent Car">
+        <div class="question-box">
+            <p id="question-text"></p>
+            <div id="answer-buttons"></div>
         </div>
-        <div class="feedback-container hidden" id="feedback-container"></div>
-        <div class="game-control-buttons">
-            <button class="play-again-btn">שחק שוב</button>
-            <button class="back-to-games-btn">חזרה למשחקים</button>
-            <button class="back-to-vocabulary-btn">חזרה לאוצר מילים</button>
-        </div>
-        <span class="close close-btn">✖</span>
     </div>
+    <div class="feedback-container hidden" id="feedback-container"></div>
+    <div class="game-control-buttons">
+        <button class="play-again-btn">שחק שוב</button>
+        <button class="back-to-games-btn">חזרה למשחקים</button>
+        <button class="back-to-vocabulary-btn">חזרה לאוצר מילים</button>
+    </div>
+    <span class="close close-btn">✖</span>
     `;
 
     document.querySelector('.modal').style.display = 'block';
@@ -1832,15 +1824,13 @@ function startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModa
         const endGameModal = document.createElement('div');
         endGameModal.className = 'end-game-modal';
         endGameModal.innerHTML = `
-        <div class="modal-content">
+        <div class="end-game-modal-content">
             <span class="close" id="close-end-game">✖</span>
-            <div class="end-game-modal-content">
-                <h2>${message}</h2>
-                <img src="${imgSrc}" alt="Penguin" class="penguin-image">
-                <button class="play-again-btn" id="end-play-again-btn">שחק שוב</button>
-                <button class="back-to-games-btn" id="end-back-to-games-btn">חזרה לבחירת משחקים</button>
-                <button class="back-to-vocabulary-btn" id="end-back-to-vocabulary-btn">חזרה לאוצר מילים</button>
-            </div>
+            <h2>${message}</h2>
+            <img src="${imgSrc}" alt="Penguin" class="penguin-image">
+            <button class="play-again-btn" id="end-play-again-btn">שחק שוב</button>
+            <button class="back-to-games-btn" id="end-back-to-games-btn">חזרה לבחירת משחקים</button>
+            <button class="back-to-vocabulary-btn" id="end-back-to-vocabulary-btn">חזרה לאוצר מילים</button>
         </div>
         `;
         document.body.appendChild(endGameModal);
@@ -1879,6 +1869,7 @@ function startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModa
     moveCars();
     setTimeout(showQuestion, 2000); // First question appears after 2 seconds
 }
+
 
 
 
