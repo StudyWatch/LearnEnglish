@@ -1461,408 +1461,429 @@ clearInterval(timerInterval);
 }
 
 
-
-
 function startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModal, prevModal, tvShowId, season, episodeNum) {
-function removeEventListeners() {
-const oldPlayAgainBtn = document.querySelector('.play-again-btn');
-const oldBackToGamesBtn = document.querySelector('.back-to-games-btn');
-const oldBackToVocabularyBtn = document.querySelector('.back-to-vocabulary-btn');
-const oldCloseButton = document.querySelector('.close-btn');
-const oldCloseEndGameButton = document.querySelector('#close-end-game');
-const oldEndPlayAgainBtn = document.querySelector('#end-play-again-btn');
-const oldEndBackToGamesBtn = document.querySelector('#end-back-to-games-btn');
-const oldEndBackToVocabularyBtn = document.querySelector('#end-back-to-vocabulary-btn');
+    function removeEventListeners() {
+        const oldPlayAgainBtn = document.querySelector('.play-again-btn');
+        const oldBackToGamesBtn = document.querySelector('.back-to-games-btn');
+        const oldBackToVocabularyBtn = document.querySelector('.back-to-vocabulary-btn');
+        const oldCloseButton = document.querySelector('.close-btn');
+        const oldCloseEndGameButton = document.querySelector('#close-end-game');
+        const oldEndPlayAgainBtn = document.querySelector('#end-play-again-btn');
+        const oldEndBackToGamesBtn = document.querySelector('#end-back-to-games-btn');
+        const oldEndBackToVocabularyBtn = document.querySelector('#end-back-to-vocabulary-btn');
 
-if (oldPlayAgainBtn) oldPlayAgainBtn.onclick = null;
-if (oldBackToGamesBtn) oldBackToGamesBtn.onclick = null;
-if (oldBackToVocabularyBtn) oldBackToVocabularyBtn.onclick = null;
-if (oldCloseButton) oldCloseButton.onclick = null;
-if (oldCloseEndGameButton) oldCloseEndGameButton.onclick = null;
-if (oldEndPlayAgainBtn) oldEndPlayAgainBtn.onclick = null;
-if (oldEndBackToGamesBtn) oldEndBackToGamesBtn.onclick = null;
-if (oldEndBackToVocabularyBtn) oldEndBackToVocabularyBtn.onclick = null;
-}
-
-removeEventListeners();
-
-const style = document.createElement('style');
-style.innerHTML = `
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    overflow: hidden;
-}
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 90%;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    position: relative;
-    height: 750px; /* Increased height */
-}
-.close {
-    color: black; /* Changed color to black */
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.close:hover,
-.close:focus {
-    color: #333;
-    text-decoration: none;
-}
-.game-board {
-    position: relative;
-    width: 100%;
-    height: 550px; /* Adjusted height */
-    background: url('img/race1.png') repeat-y;
-    background-size: cover;
-    overflow: hidden;
-}
-.car {
-    position: absolute;
-    width: 100px;
-    height: auto;
-    transition: top 0.5s, left 0.5s;
-}
-.penguin-car {
-    left: 50%;
-    transform: translateX(-50%);
-}
-.opponent-car {
-    left: 50%;
-    transform: translateX(-50%);
-}
-.question-box {
-    position: fixed;
-    bottom: 140px; /* Moved question box down */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    max-width: 600px;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-.answer-btn {
-    display: inline-block;
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-}
-.answer-btn:hover {
-    background-color: #0056b3;
-}
-.play-again-btn, .back-to-games-btn, .back-to-vocabulary-btn {
-    flex: 1; /* Each button occupies equal space */
-    padding: 10px 20px; /* Padding */
-    font-size: 16px; /* Font size */
-    border: none; /* No border */
-    border-radius: 5px; /* Border radius */
-    cursor: pointer; /* Cursor pointer */
-    background-color: #28a745; /* Background color */
-    color: white; /* Font color */
-    text-align: center; /* Text align center */
-}
-.play-again-btn:hover {
-    background-color: #218838;
-}
-.back-to-games-btn {
-    background-color: #007bff;
-}
-.back-to-games-btn:hover {
-    background-color: #0056b3;
-}
-.back-to-vocabulary-btn {
-    background-color: #ffc107;
-}
-.back-to-vocabulary-btn:hover {
-    background-color: #e0a800;
-}
-.end-game-modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-.end-game-modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-.penguin-image {
-    width: 100px;
-    height: auto;
-}
-.feedback-container {
-    position: absolute;
-    bottom: 100px; /* Moved feedback container up */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    text-align: center;
-    padding: 10px;
-    font-size: 1.2em;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: opacity 0.3s;
-}
-.feedback-container.hidden {
-    opacity: 0;
-}
-.feedback-container.correct {
-    color: #28a745;
-    font-weight: bold;
-}
-.feedback-container.incorrect {
-    color: #dc3545;
-    font-weight: bold;
-}
-`;
-document.head.appendChild(style);
-
-const penguinCar = modalContent.querySelector('.penguin-car');
-const opponentCar = modalContent.querySelector('.opponent-car');
-const questionBox = modalContent.querySelector('.question-box');
-const questionText = modalContent.querySelector('#question-text');
-const answerButtons = modalContent.querySelector('#answer-buttons');
-const playAgainBtn = modalContent.querySelector('.play-again-btn');
-const backToGamesBtn = modalContent.querySelector('.back-to-games-btn');
-const backToVocabularyBtn = modalContent.querySelector('.back-to-vocabulary-btn');
-const closeButton = modalContent.querySelector('.close-btn');
-const feedbackContainer = modalContent.querySelector('#feedback-container');
-const gameBoard = modalContent.querySelector('#game-board');
-let penguinPosition = 0;
-let opponentPosition = 0;
-let backgroundPosition = 0;
-let currentQuestionIndex = 0;
-let correctAnswers = 0;
-let penguinSpeed = 0.3; // Initial faster speed
-const opponentSpeedBase = 0.1; // Initial constant speed of the opponent
-let opponentSpeed = opponentSpeedBase;
-const maxSpeed = 0.5; // Maximum speed
-
-// Handle car movement
-document.addEventListener('keydown', (e) => {
-if (e.key === 'ArrowLeft') {
-    penguinPosition = Math.max(0, penguinPosition - 10);
-} else if (e.key === 'ArrowRight') {
-    penguinPosition = Math.min(gameBoard.clientHeight - penguinCar.clientHeight, penguinPosition + 10);
-}
-});
-
-closeButton.onclick = () => {
-document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
-document.querySelectorAll('.modal-content').forEach(content => content.innerHTML = '');
-};
-
-playAgainBtn.onclick = () => {
-removeEventListeners(); // Remove event listeners before restarting
-startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModal, prevModal, tvShowId, season, episodeNum);
-};
-
-backToGamesBtn.onclick = () => {
-removeEventListeners(); // Remove event listeners before navigating back
-openGameSelectionModal(vocabulary, modalContent, prevModal, tvShowId, season, episodeNum);
-};
-
-backToVocabularyBtn.onclick = () => {
-removeEventListeners(); // Remove event listeners before navigating back
-reopenWordTreasureModal();
-};
-
-function moveCars() {
-backgroundPosition += penguinSpeed;
-
-gameBoard.style.backgroundPositionY = `${-backgroundPosition % gameBoard.clientHeight}px`;
-
-penguinCar.style.top = `${Math.min(penguinPosition, gameBoard.clientHeight - penguinCar.clientHeight)}px`;
-opponentCar.style.top = `${Math.min(opponentPosition, gameBoard.clientHeight - opponentCar.clientHeight)}px`;
-
-requestAnimationFrame(moveCars);
-}
-
-function showQuestion() {
-if (currentQuestionIndex >= vocabulary.length) {
-    endGame();
-    return;
-}
-
-const { word, translate, sentence } = vocabulary[currentQuestionIndex];
-if (!sentence.includes(word)) {
-    currentQuestionIndex++;
-    showQuestion();
-    return;
-}
-
-const options = vocabulary
-    .map(item => item.word) // Change the words to English
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
-if (!options.includes(word)) options[Math.floor(Math.random() * 3)] = word;
-
-questionText.innerHTML = sentence.replace(word, '_______');
-answerButtons.innerHTML = '';
-
-options.forEach(option => {
-    const btn = document.createElement('button');
-    btn.className = 'answer-btn';
-    btn.textContent = option;
-    btn.onclick = () => checkAnswer(option, word);
-    answerButtons.appendChild(btn);
-});
-
-questionBox.style.display = 'block';
-}
-
-function checkAnswer(selected, correct) {
-// Disable all answer buttons to prevent multiple clicks
-const answerBtns = answerButtons.querySelectorAll('.answer-btn');
-answerBtns.forEach(btn => btn.disabled = true);
-
-feedbackContainer.classList.remove('hidden');
-if (selected === correct) {
-    correctAnswers++;
-    feedbackContainer.textContent = "✔️ נכון! 👏";
-    feedbackContainer.className = 'feedback-container correct';
-    penguinSpeed = Math.min(maxSpeed, penguinSpeed + 0.05); // Greater acceleration
-    penguinPosition += 30; // Move the penguin car forward
-    opponentPosition = Math.max(0, opponentPosition - 15); // Move the opponent car backward slightly
-} else {
-    feedbackContainer.textContent = `❌ לא נכון. התשובה הנכונה היא: "${correct}"`;
-    feedbackContainer.className = 'feedback-container incorrect';
-    opponentSpeed = Math.min(maxSpeed, opponentSpeed + 0.05); // Computer speeds up on a mistake
-    opponentPosition += 30; // Move the opponent car forward
-    penguinPosition = Math.max(0, penguinPosition - 15); // Move the penguin car backward slightly
-}
-
-setTimeout(() => {
-    feedbackContainer.classList.add('hidden');
-    penguinSpeed = Math.max(0.1, penguinSpeed - 0.02); // Return to initial speed
-    opponentSpeed = opponentSpeedBase; // Return to initial opponent speed
-    if (currentQuestionIndex + 1 < vocabulary.length) {
-        currentQuestionIndex++;
-        showQuestion();
-    } else {
-        endGame();
+        if (oldPlayAgainBtn) oldPlayAgainBtn.onclick = null;
+        if (oldBackToGamesBtn) oldBackToGamesBtn.onclick = null;
+        if (oldBackToVocabularyBtn) oldBackToVocabularyBtn.onclick = null;
+        if (oldCloseButton) oldCloseButton.onclick = null;
+        if (oldCloseEndGameButton) oldCloseEndGameButton.onclick = null;
+        if (oldEndPlayAgainBtn) oldEndPlayAgainBtn.onclick = null;
+        if (oldEndBackToGamesBtn) oldEndBackToGamesBtn.onclick = null;
+        if (oldEndBackToVocabularyBtn) oldEndBackToVocabularyBtn.onclick = null;
     }
-}, 2000); // Short duration speed change
-}
 
-function endGame() {
-questionBox.style.display = 'none';
+    removeEventListeners();
 
-let message, imgSrc;
-if (correctAnswers >= 10) {
-    penguinPosition = gameBoard.clientHeight - penguinCar.clientHeight;
-    opponentPosition = gameBoard.clientHeight / 2;
-    message = `ניצחת! ענית נכון על ${correctAnswers} מתוך ${vocabulary.length} שאלות.`;
-    imgSrc = 'img/user-win.png'; // Change to appropriate path for the user's winning image
-} else {
-    penguinPosition = gameBoard.clientHeight / 2;
-    opponentPosition = gameBoard.clientHeight - opponentCar.clientHeight;
-    message = 'המחשב ניצח!';
-    imgSrc = 'img/computer-win.png'; // Change to appropriate path for the computer's winning image
-}
+    const style = document.createElement('style');
+    style.innerHTML = `
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        overflow: hidden;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 800px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        height: 750px; /* Adjust height if necessary */
+    }
+    .close {
+        color: black; /* Change color to black */
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .close:hover,
+    .close:focus {
+        color: #333;
+        text-decoration: none;
+    }
+    .game-board {
+        position: relative;
+        width: 100%;
+        height: 550px; /* Adjust height */
+        background: url('img/race1.png') repeat-y;
+        background-size: cover;
+        overflow: hidden;
+    }
+    .car {
+        position: absolute;
+        width: 100px;
+        height: auto;
+        transition: top 0.5s, left 0.5s;
+    }
+    .penguin-car {
+        left: 50%;
+        transform: translateX(-100%);
+    }
+    .opponent-car {
+        left: 50%;
+    }
+    .question-box {
+        position: fixed;
+        bottom: 140px; /* Lower question box */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        max-width: 600px;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    .answer-btn {
+        display: inline-block;
+        margin: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+    }
+    .answer-btn:hover {
+        background-color: #0056b3;
+    }
+    .play-again-btn, .back-to-games-btn, .back-to-vocabulary-btn {
+        flex: 1; /* Each button takes up an equal amount of space */
+        padding: 10px 20px; /* Padding */
+        font-size: 16px; /* Font size */
+        border: none; /* No border */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor */
+        background-color: #28a745; /* Background color */
+        color: white; /* Text color */
+        text-align: center; /* Center text */
+    }
+    .play-again-btn:hover {
+        background-color: #218838;
+    }
+    .back-to-games-btn {
+        background-color: #007bff;
+    }
+    .back-to-games-btn:hover {
+        background-color: #0056b3;
+    }
+    .back-to-vocabulary-btn {
+        background-color: #ffc107;
+    }
+    .back-to-vocabulary-btn:hover {
+        background-color: #e0a800;
+    }
+    .end-game-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .end-game-modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .penguin-image {
+        width: 100px;
+        height: auto;
+    }
+    .feedback-container {
+        position: absolute;
+        bottom: 100px; /* Move feedback up */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        text-align: center;
+        padding: 10px;
+        font-size: 1.2em;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: opacity 0.3s;
+    }
+    .feedback-container.hidden {
+        opacity: 0;
+    }
+    .feedback-container.correct {
+        color: #28a745;
+        font-weight: bold;
+    }
+    .feedback-container.incorrect {
+        color: #dc3545;
+        font-weight: bold;
+    }
+    `;
+    document.head.appendChild(style);
 
-penguinCar.style.top = `${penguinPosition}px`;
-opponentCar.style.top = `${opponentPosition}px`;
-
-const endGameModal = document.createElement('div');
-endGameModal.className = 'end-game-modal';
-endGameModal.innerHTML = `
+    modalContent.innerHTML = `
     <div class="modal-content">
-        <span class="close" id="close-end-game">✖</span>
-        <div class="end-game-modal-content">
-            <h2>${message}</h2>
-            <img src="${imgSrc}" alt="Penguin" class="penguin-image">
-            <button class="play-again-btn" id="end-play-again-btn">שחק שוב</button>
-            <button class="back-to-games-btn" id="end-back-to-games-btn">חזרה לבחירת משחקים</button>
-            <button class="back-to-vocabulary-btn" id="end-back-to-vocabulary-btn">חזרה לאוצר מילים</button>
+        <div class="game-board" id="game-board">
+            <img src="img/gamecar2.png" class="car penguin-car" alt="Penguin Car">
+            <img src="img/gamecar1.jpg" class="car opponent-car" alt="Opponent Car">
+            <div class="question-box">
+                <p id="question-text"></p>
+                <div id="answer-buttons"></div>
+            </div>
         </div>
+        <div class="feedback-container hidden" id="feedback-container"></div>
+        <div class="game-control-buttons">
+            <button class="play-again-btn">שחק שוב</button>
+            <button class="back-to-games-btn">חזרה למשחקים</button>
+            <button class="back-to-vocabulary-btn">חזרה לאוצר מילים</button>
+        </div>
+        <span class="close close-btn">✖</span>
     </div>
-`;
-document.body.appendChild(endGameModal);
+    `;
 
-const closeEndGameButton = document.querySelector('#close-end-game');
-const endPlayAgainBtn = document.querySelector('#end-play-again-btn');
-const endBackToGamesBtn = document.querySelector('#end-back-to-games-btn');
-const endBackToVocabularyBtn = document.querySelector('#end-back-to-vocabulary-btn');
+    // Center the modal
+    document.querySelector('.modal').style.display = 'block';
+    document.querySelector('.modal-content').style.margin = '0 auto';
+    document.querySelector('.modal-content').style.position = 'absolute';
+    document.querySelector('.modal-content').style.left = '50%';
+    document.querySelector('.modal-content').style.top = '50%';
+    document.querySelector('.modal-content').style.transform = 'translate(-50%, -50%)';
 
-closeEndGameButton.onclick = () => {
-    document.querySelector('.end-game-modal').style.display = 'none';
-    document.querySelector('.end-game-modal').remove();
-};
+    const penguinCar = modalContent.querySelector('.penguin-car');
+    const opponentCar = modalContent.querySelector('.opponent-car');
+    const questionBox = modalContent.querySelector('.question-box');
+    const questionText = modalContent.querySelector('#question-text');
+    const answerButtons = modalContent.querySelector('#answer-buttons');
+    const playAgainBtn = modalContent.querySelector('.play-again-btn');
+    const backToGamesBtn = modalContent.querySelector('.back-to-games-btn');
+    const backToVocabularyBtn = modalContent.querySelector('.back-to-vocabulary-btn');
+    const closeButton = modalContent.querySelector('.close-btn');
+    const feedbackContainer = modalContent.querySelector('#feedback-container');
+    const gameBoard = modalContent.querySelector('#game-board');
+    let penguinPosition = 0;
+    let opponentPosition = 0;
+    let backgroundPosition = 0;
+    let currentQuestionIndex = 0;
+    let correctAnswers = 0;
+    let penguinSpeed = 0.3; // Initial faster speed
+    const opponentSpeedBase = 0.1; // Initial constant speed of the opponent
+    let opponentSpeed = opponentSpeedBase;
+    const maxSpeed = 0.5; // Maximum speed
 
-endPlayAgainBtn.onclick = () => {
-    removeEventListeners(); // Remove event listeners before restarting
-    document.querySelector('.end-game-modal').remove();
-    startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModal, prevModal, tvShowId, season, episodeNum);
-};
+    // Handle car movement
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            penguinPosition = Math.max(0, penguinPosition - 10);
+        } else if (e.key === 'ArrowRight') {
+            penguinPosition = Math.min(gameBoard.clientHeight - penguinCar.clientHeight, penguinPosition + 10);
+        }
+    });
 
-endBackToGamesBtn.onclick = () => {
-    removeEventListeners(); // Remove event listeners before navigating back
-    document.querySelector('.end-game-modal').remove();
-    openGameSelectionModal(vocabulary, modalContent, prevModal, tvShowId, season, episodeNum);
-};
+    closeButton.onclick = () => {
+        document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
+        document.querySelectorAll('.modal-content').forEach(content => content.innerHTML = '');
+    };
 
-endBackToVocabularyBtn.onclick = () => {
-    removeEventListeners(); // Remove event listeners before navigating back
-    document.querySelector('.end-game-modal').remove();
-    reopenWordTreasureModal();
-};
+    playAgainBtn.onclick = () => {
+        removeEventListeners(); // Remove event listeners before restarting
+        startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModal, prevModal, tvShowId, season, episodeNum);
+    };
 
-endGameModal.style.display = 'block';
-}
+    backToGamesBtn.onclick = () => {
+        removeEventListeners(); // Remove event listeners before navigating back
+        openGameSelectionModal(vocabulary, modalContent, prevModal, tvShowId, season, episodeNum);
+    };
 
-moveCars();
-setTimeout(showQuestion, 2000); // First question appears after 2 seconds
+    backToVocabularyBtn.onclick = () => {
+        removeEventListeners(); // Remove event listeners before navigating back
+        reopenWordTreasureModal();
+    };
+
+    function moveCars() {
+        backgroundPosition += penguinSpeed;
+
+        gameBoard.style.backgroundPositionY = `${-backgroundPosition % gameBoard.clientHeight}px`;
+
+        penguinCar.style.top = `${Math.min(penguinPosition, gameBoard.clientHeight - penguinCar.clientHeight)}px`;
+        opponentCar.style.top = `${Math.min(opponentPosition, gameBoard.clientHeight - opponentCar.clientHeight)}px`;
+
+        requestAnimationFrame(moveCars);
+    }
+
+    function showQuestion() {
+        if (currentQuestionIndex >= vocabulary.length) {
+            endGame();
+            return;
+        }
+
+        const { word, translate, sentence } = vocabulary[currentQuestionIndex];
+        if (!sentence.includes(word)) {
+            currentQuestionIndex++;
+            showQuestion();
+            return;
+        }
+
+        const options = vocabulary
+            .map(item => item.word) // Change the words to English
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 3);
+        if (!options.includes(word)) options[Math.floor(Math.random() * 3)] = word;
+
+        questionText.innerHTML = sentence.replace(word, '_______');
+        answerButtons.innerHTML = '';
+
+        options.forEach(option => {
+            const btn = document.createElement('button');
+            btn.className = 'answer-btn';
+            btn.textContent = option;
+            btn.onclick = () => checkAnswer(option, word);
+            answerButtons.appendChild(btn);
+        });
+
+        questionBox.style.display = 'block';
+    }
+
+    function checkAnswer(selected, correct) {
+        // Disable all answer buttons to prevent multiple clicks
+        const answerBtns = answerButtons.querySelectorAll('.answer-btn');
+        answerBtns.forEach(btn => btn.disabled = true);
+
+        feedbackContainer.classList.remove('hidden');
+        if (selected === correct) {
+            correctAnswers++;
+            feedbackContainer.textContent = "✔️ נכון! 👏";
+            feedbackContainer.className = 'feedback-container correct';
+            penguinSpeed = Math.min(maxSpeed, penguinSpeed + 0.05); // Greater acceleration
+            penguinPosition += 30; // Move the penguin car forward
+            opponentPosition = Math.max(0, opponentPosition - 15); // Move the opponent car backward slightly
+        } else {
+            feedbackContainer.textContent = `❌ לא נכון. התשובה הנכונה היא: "${correct}"`;
+            feedbackContainer.className = 'feedback-container incorrect';
+            opponentSpeed = Math.min(maxSpeed, opponentSpeed + 0.05); // Computer speeds up on a mistake
+            opponentPosition += 30; // Move the opponent car forward
+            penguinPosition = Math.max(0, penguinPosition - 15); // Move the penguin car backward slightly
+        }
+
+        setTimeout(() => {
+            feedbackContainer.classList.add('hidden');
+            penguinSpeed = Math.max(0.1, penguinSpeed - 0.02); // Return to initial speed
+            opponentSpeed = opponentSpeedBase; // Return to initial opponent speed
+            if (currentQuestionIndex + 1 < vocabulary.length) {
+                currentQuestionIndex++;
+                showQuestion();
+            } else {
+                endGame();
+            }
+        }, 2000); // Short duration speed change
+    }
+
+    function endGame() {
+        questionBox.style.display = 'none';
+
+        let message, imgSrc;
+        if (correctAnswers >= 10) {
+            penguinPosition = gameBoard.clientHeight - penguinCar.clientHeight;
+            opponentPosition = gameBoard.clientHeight / 2;
+            message = `ניצחת! ענית נכון על ${correctAnswers} מתוך ${vocabulary.length} שאלות.`;
+            imgSrc = 'img/user-win.png'; // Change to appropriate path for the user's winning image
+        } else {
+            penguinPosition = gameBoard.clientHeight / 2;
+            opponentPosition = gameBoard.clientHeight - opponentCar.clientHeight;
+            message = 'המחשב ניצח!';
+            imgSrc = 'img/computer-win.png'; // Change to appropriate path for the computer's winning image
+        }
+
+        penguinCar.style.top = `${penguinPosition}px`;
+        opponentCar.style.top = `${opponentPosition}px`;
+
+        const endGameModal = document.createElement('div');
+        endGameModal.className = 'end-game-modal';
+        endGameModal.innerHTML = `
+        <div class="modal-content">
+            <span class="close" id="close-end-game">✖</span>
+            <div class="end-game-modal-content">
+                <h2>${message}</h2>
+                <img src="${imgSrc}" alt="Penguin" class="penguin-image">
+                <button class="play-again-btn" id="end-play-again-btn">שחק שוב</button>
+                <button class="back-to-games-btn" id="end-back-to-games-btn">חזרה לבחירת משחקים</button>
+                <button class="back-to-vocabulary-btn" id="end-back-to-vocabulary-btn">חזרה לאוצר מילים</button>
+            </div>
+        </div>
+        `;
+        document.body.appendChild(endGameModal);
+
+        const closeEndGameButton = document.querySelector('#close-end-game');
+        const endPlayAgainBtn = document.querySelector('#end-play-again-btn');
+        const endBackToGamesBtn = document.querySelector('#end-back-to-games-btn');
+        const endBackToVocabularyBtn = document.querySelector('#end-back-to-vocabulary-btn');
+
+        closeEndGameButton.onclick = () => {
+            document.querySelector('.end-game-modal').style.display = 'none';
+            document.querySelector('.end-game-modal').remove();
+        };
+
+        endPlayAgainBtn.onclick = () => {
+            removeEventListeners(); // Remove event listeners before restarting
+            document.querySelector('.end-game-modal').remove();
+            startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModal, prevModal, tvShowId, season, episodeNum);
+        };
+
+        endBackToGamesBtn.onclick = () => {
+            removeEventListeners(); // Remove event listeners before navigating back
+            document.querySelector('.end-game-modal').remove();
+            openGameSelectionModal(vocabulary, modalContent, prevModal, tvShowId, season, episodeNum);
+        };
+
+        endBackToVocabularyBtn.onclick = () => {
+            removeEventListeners(); // Remove event listeners before navigating back
+            document.querySelector('.end-game-modal').remove();
+            reopenWordTreasureModal();
+        };
+
+        endGameModal.style.display = 'block';
+    }
+
+    moveCars();
+    setTimeout(showQuestion, 2000); // First question appears after 2 seconds
 }
 
 
