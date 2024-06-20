@@ -1630,7 +1630,7 @@ form button[type="submit"]:hover {
   .modal {
     width: 100%;
     height: 110vh;
-    top: 52%;
+    top: 55%;
     left:50%;
     border: none;
     border-radius: 65px;
