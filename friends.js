@@ -1460,7 +1460,6 @@ clearInterval(timerInterval);
 }
 }
 
-
 function startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModal, prevModal, tvShowId, season, episodeNum) {
     function removeEventListeners() {
         const oldPlayAgainBtn = document.querySelector('.play-again-btn');
@@ -1498,8 +1497,9 @@ function startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModa
         display: none;
         position: fixed;
         z-index: 1000;
-        left: 0;
-        top: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         width: 100%;
         height: 100%;
         overflow: auto;
@@ -1507,7 +1507,7 @@ function startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModa
     }
     .modal-content {
         background-color: #fefefe;
-        margin: 5% auto;
+        margin: 0 auto;
         padding: 20px;
         border: 1px solid #888;
         width: 90%;
@@ -1548,7 +1548,7 @@ function startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModa
     }
     .penguin-car {
         left: 50%;
-        transform: translateX(-100%);
+        transform: translateX(-50%);
     }
     .opponent-car {
         left: 50%;
@@ -1680,13 +1680,7 @@ function startPenguinCarRaceGame(vocabulary, modalContent, openGameSelectionModa
     </div>
     `;
 
-    // Center the modal
     document.querySelector('.modal').style.display = 'block';
-    document.querySelector('.modal-content').style.margin = '0 auto';
-    document.querySelector('.modal-content').style.position = 'absolute';
-    document.querySelector('.modal-content').style.left = '50%';
-    document.querySelector('.modal-content').style.top = '50%';
-    document.querySelector('.modal-content').style.transform = 'translate(-50%, -50%)';
 
     const penguinCar = modalContent.querySelector('.penguin-car');
     const opponentCar = modalContent.querySelector('.opponent-car');
