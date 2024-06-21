@@ -6,7 +6,110 @@ body, html {
   font-size: 20px;
   text-align: right;
 }
+.modal {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+.modal h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal .close:hover {
+    color: #000;
+}
+
+.word-treasure-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.word-item {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+}
+
+.highlight {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.bold-message {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.request-vocab-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
+}
+
+.request-vocab-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.thank-you-message {
+    font-size: 1em;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
 .top-section {
   height: 80vh;
 background: url(./website/background6.png) no-repeat center / cover;
