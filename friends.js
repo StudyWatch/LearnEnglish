@@ -621,12 +621,11 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         modal.style.display = "block";
     }
 
-    currentWordTreasureModal = modal;  // עדכון המודל הנוכחי
+    currentWordTreasureModal = modal;
 
     const modalContent = modal.querySelector(".modal-content");
-    modalContent.innerHTML = ''; // מאתחל את התוכן בכל פעם שהמודל נפתח מחדש
+    modalContent.innerHTML = '';
 
-    // הוספת כפתור להחלפת כיוון הטקסט
     const directionToggleHtml = `
         <div class="direction-toggle">
             <button class="toggle-direction-btn">⇆</button>
@@ -643,7 +642,9 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         <div id="easy" class="tabcontent"></div>
         <div id="medium" class="tabcontent" style="display: none;"></div>
         <div id="hard" class="tabcontent" style="display: none;"></div>
-        <button class="test-knowledge-button">בחן את הידע שלך</button>
+        <div id="test-knowledge-container" class="test-knowledge-container">
+            <button class="test-knowledge-button">בחן את הידע שלך</button>
+        </div>
         <div id="episode-links" class="episode-links">
             <h3>קישורים לפרק:</h3>
             <div id="links-container"></div>
@@ -651,7 +652,6 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
     `;
     modalContent.innerHTML += difficultyTabsHtml;
 
-    // הגדרת כיוון טקסט ותוכן ראשוני
     modalContent.style.direction = 'ltr';
     modalContent.style.textAlign = 'left';
 
@@ -710,9 +710,49 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
             }).join('');
             targetDiv.innerHTML = `<h2>אוצר מילים - עונה ${season}, פרק ${episodeNum}:</h2>
                                    <div class="word-treasure-container">${wordsHtml}</div>`;
+            modal.querySelector('.test-knowledge-container').style.display = 'block';
         } else {
-            targetDiv.innerHTML = "<p>No Words</p>";
+            modal.querySelector('.test-knowledge-container').style.display = 'none';
+            modalContent.style.direction = 'rtl'; // שינוי כיווניות הטקסט
+            modalContent.style.textAlign = 'right';
+            let otherDifficulties = ["easy", "medium", "hard"].filter(diff => diff !== difficulty);
+            let otherWords = null;
+            let otherDifficulty = "";
+            for (let diff of otherDifficulties) {
+                otherWords = getWordTreasure(tvShowId, season, episodeNum, diff);
+                if (otherWords && otherWords.length > 0) {
+                    otherDifficulty = diff;
+                    break;
+                }
+            }
+            if (otherWords && otherWords.length > 0) {
+                const difficultyText = {easy: "קל", medium: "בינוני", hard: "קשה"};
+                targetDiv.innerHTML = `<p class="bold-message">כרגע לא קיים אוצר מילים ברמת ${difficultyText[difficulty]} אבל יש אוצר מילים ברמת ${difficultyText[otherDifficulty]}</p>`;
+            } else {
+                targetDiv.innerHTML = '<p class="bold-message">כרגע אין אוצר מילים לפרק זה, אנחנו עובדים על כך.</p>';
+            }
+            const requestButton = document.createElement('button');
+            requestButton.className = 'request-vocab-button';
+            requestButton.textContent = 'בקש אוצר מילים לפרק';
+            requestButton.addEventListener('click', () => {
+                sendVocabularyRequest(tvShowId, season, episode, targetDiv);
+            });
+            targetDiv.appendChild(requestButton);
         }
+    }
+
+    function sendVocabularyRequest(tvShowId, season, episode, targetDiv) {
+        emailjs.send("service_id", "template_id", {
+            tv_show_id: tvShowId,
+            season: season,
+            episode: episode
+        }).then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            targetDiv.innerHTML += '<p class="thank-you-message">תודה, זמן ההמתנה בדרך כלל לוקח בין יום לכמה ימים.</p>';
+        }, function(error) {
+            console.log('FAILED...', error);
+            targetDiv.innerHTML += '<p class="thank-you-message">שליחת הבקשה נכשלה, אנא נסה שנית.</p>';
+        });
     }
 
     loadContentForDifficulty(tvShowId, season, episode, difficulty); 
@@ -727,7 +767,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
             this.classList.add("active");
             const newDifficulty = this.getAttribute("data-difficulty");
-            currentDifficulty = newDifficulty; // Update current difficulty
+            currentDifficulty = newDifficulty;
             modal.querySelector(`#${newDifficulty}`).style.display = "block";
             loadContentForDifficulty(tvShowId, season, episode, newDifficulty);
         });
@@ -752,7 +792,6 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         modalContent.insertBefore(exitButton, modalContent.firstChild);
     }
 
-    // הוספת מאזין לכפתור לשינוי כיוון הטקסט
     const toggleDirectionBtn = modalContent.querySelector(".toggle-direction-btn");
     toggleDirectionBtn.addEventListener('click', () => {
         if (modalContent.style.direction === 'ltr') {
@@ -767,7 +806,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
     modal.addEventListener('click', function(event) {
         if (event.target === modal) {
             modal.style.display = "none";
-            modalContent.innerHTML = ''; // מאתחל את התוכן כאשר המודל נסגר
+            modalContent.innerHTML = '';
             if (prevModal) prevModal.style.display = "block";
         }
     });
