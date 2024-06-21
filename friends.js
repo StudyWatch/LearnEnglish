@@ -742,7 +742,8 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
     }
 
     function sendVocabularyRequest(tvShowId, season, episode, targetDiv) {
-        emailjs.send("service_id", "template_id", {
+        emailjs.send("service_n6yd0jg", "template_sj287ko", {
+            to_name: "Timor",
             tv_show_id: tvShowId,
             season: season,
             episode: episode
