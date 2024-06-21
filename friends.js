@@ -815,7 +815,6 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
     modal.style.display = "block";
 }
 
-
 function openGameSelectionModal(vocabulary, prevModal) {
     prevModal.style.display = "none";
 
