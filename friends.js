@@ -152,13 +152,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         seriesSection.classList.add('fade-in');
         setTimeout(() => {
             seriesSection.classList.add('visible');
-            if (mainContent) {
-                mainContent.style.display = 'block';
-            }
         }, 10); // Delay just enough for the browser to process the fade-in
 
         // Scroll to the section immediately without animation
         window.scrollTo(0, seriesSection.offsetTop);
+
+        // Ensure immediate scroll and then apply smooth scrolling for a better user experience
+        setTimeout(() => {
+            seriesSection.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+    } else {
+        // If not coming from bot, show main content
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+            mainContent.style.display = 'block';
+        }
     }
 
     // Additional DOMContentLoaded event listener setup...
@@ -228,7 +236,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     function toggleVisibility(element) {
         element.classList.toggle('visible');
     }
-
 
     const didYouKnowFacts = [
         { word: "Elixir", explanation: "משקה קסום שמעניק חיי נצח או מרפא לכל מחלה. מקורה בערבית, \"al-iksir\" שפירושו אבן החכמים." },
