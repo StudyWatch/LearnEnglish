@@ -2,6 +2,7 @@
   --primary-color: #2e2e2f;
   --secondary-color: #757f80;
 }
+
 .modal {
   display: none;
   position: fixed;
@@ -18,6 +19,31 @@
   padding: 20px;
   animation: fadeIn 0.5s ease-in-out;
 }
+/* CSS for fade-in effect */
+/* CSS for fade-in effect */
+/* CSS for fade-in effect */
+.fade-in {
+    opacity: 0;
+    transform: scale(0.8) rotate(-10deg);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.visible {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+/* Hide main content by default */
+#main-content {
+  display: none;
+}
+
+/* Ensure series section is hidden by default */
+#series-section {
+  display: none;
+}
+
+
+
 
 @keyframes fadeIn {
   from {
@@ -166,14 +192,7 @@ body, html {
   background-color: #ffeb3b;
   box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
 }
-.fade-in {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
 
-.visible {
-  opacity: 1;
-}
 .rtl {
   direction: rtl;
   text-align: right;
@@ -1722,6 +1741,185 @@ form button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
+/* Basic CSS Variables */
+:root {
+  --primary-color: #2e2e2f;
+  --secondary-color: #757f80;
+}
+
+/* Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Fade-in Effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal .close:hover {
+  color: #000;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: var(--primary-color);
+  text-align: right;
+}
+
+.top-section {
+  height: 80vh;
+  background: url(./website/background6.png) no-repeat center / cover;
+  background-position: 50% 20%;
+}
+
+.word-treasure-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.word-item {
+  margin-bottom: 20px;
+}
+
+.word, .translation {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.sentence {
+  margin-top: 5px;
+}
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  background-color: #333;
+  padding: 20px 0;
+}
+
+.large-icon {
+  width: 20px;
+  height: 20px;
+  margin: 20px;
+}
+
+.accessibility-menu {
+  position: fixed;
+  top: 500px;
+  right: 8px;
+  z-index: 1001;
+}
+
+#accessibilityBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#accessibilityBtn img {
+  width: 40px;
+  height: auto;
+}
+
+#accessibilityOptions {
+  display: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  top: -60px;
+  right: 100%;
+}
+
+.high-contrast {
+  filter: invert(1);
+  background-color: black;
+  color: white;
+}
+
+#accessibilityOptions button {
+  display: block;
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin-bottom: 5px;
+  width: 100%;
+  text-align: left;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#accessibilityOptions button:hover {
+  background-color: #e2e6ea;
+}
+
+.hamburger-menu {
+  position: fixed;
+  top: 10px;
+  right: -10px;
+  z-index: 1001;
+}
+
+#hamburgerBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
 @media (max-width: 600px) {
   body, html {
     margin: 0;
@@ -1729,13 +1927,24 @@ form button[type="submit"]:hover {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    position: relative;
   }
 
   .modal {
     width: 100%;
     height: 110vh;
     top: 55%;
-    left:50%;
+    left: 50%;
     border: none;
     border-radius: 65px;
     overflow: hidden;
@@ -1788,7 +1997,6 @@ form button[type="submit"]:hover {
   .modal-content {
     padding: 5px;
     width: 92%;
-  
   }
 
   .back-to-top-button, .feedback-button {
@@ -1798,9 +2006,9 @@ form button[type="submit"]:hover {
     height: 30px;
   }
 
- .exit-button {
+  .exit-button {
     align-self: flex-end;
-    left:-0.5px;
+    left: -0.5px;
     margin: 10px;
     font-size: 24px;
   }
@@ -1819,7 +2027,7 @@ form button[type="submit"]:hover {
 
   .word-treasure-container {
     font-size: 18px;
-    line-height:1.5;
+    line-height: 1.5;
     padding: 10px;
   }
 
@@ -1852,12 +2060,14 @@ form button[type="submit"]:hover {
   .episode-button:active {
     transform: none;
   }
- .bottom-section {
+
+  .bottom-section {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
+    overflow-y: visible;
     background: transparent;
     margin-top: -3px;
     padding: 0;
@@ -1867,9 +2077,9 @@ form button[type="submit"]:hover {
 
   .shortcut-rectangle {
     flex-basis: 100%;
-    margin: 5px 0; /* קטן מעט את הרווחים */
+    margin: 5px 0;
     width: 100%;
-    height: 80px; /* גובה גדול יותר */
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1880,17 +2090,17 @@ form button[type="submit"]:hover {
   .shortcut-rectangle img {
     width: 100%;
     height: auto;
-    object-fit: cover; /* מתאים את התמונה למלא את המלבן */
+    object-fit: cover;
     position: absolute;
-    top: 0; /* ממקם את התמונה בראש המלבן */
-    right: 0%
+    top: 0;
+    right: 0%;
   }
 
   .shortcut-rectangle p {
-    position: absolute; /* ממקם את הטקסט באופן מוחלט */
-    bottom: 15px; /* מתחת לכל */
-    left: 50%; /* ממרכז הטקסט אופקית */
-    transform: translateX(-50%); /* מבטיח שהטקסט ממורכז */
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 8px;
     color: white;
     text-align: center;
@@ -1898,13 +2108,13 @@ form button[type="submit"]:hover {
   }
 
   .bottom-section img {
-    max-width: 90%; /* מונע מהתמונה לחרוג מהמלבן */
+    max-width: 90%;
     height: auto;
-    object-fit: cover; /* מבטיח שהתמונה תמלא את המלבן ללא עיוות */
+    object-fit: cover;
     display: block;
-    right:6px;
-    top:6px;
-    max-height: 75px; /* גובה גבוה יותר מתוך המלבן */
+    right: 6px;
+    top: 6px;
+    max-height: 75px;
   }
 
   body, button, input[type="text"] {
@@ -1914,7 +2124,6 @@ form button[type="submit"]:hover {
   header, .bottom-section a, .tv-show-title {
     font-size: 14px;
   }
-
 
   .shortcut-rectangle:not(#to-bot):not(#to-series):not(#to-tips) {
     display: none;
@@ -1964,11 +2173,16 @@ form button[type="submit"]:hover {
   }
 
   .navbar-container {
+    position: fixed;
+    top: 60px; /* Adjust as necessary */
+    right: 10px;
+    z-index: 1000;
+    background-color: rgba(51, 51, 51, 0.8);
+    border-radius: 5px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px;
-    right:0;
   }
 
   .nav-link {
@@ -1980,65 +2194,67 @@ form button[type="submit"]:hover {
     width: 30px;
     height: 30px;
   }
-.feedback-button{
-  display: block;
-  position:fixed;
-  bottom:130px;
-  right:5px;
-  padding: 10px 15px;
-  width:auto;
-  color:white;
-  border-radius:5px;
-  font-size:12px;
- 
-}
+
+  .feedback-button {
+    display: block;
+    position: fixed;
+    bottom: 130px;
+    right: 5px;
+    padding: 10px 15px;
+    width: auto;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
   #difficulty-tabs {
-    position:absolute;
+    position: absolute;
     top: 40px;
     left: 30px;
     width: 85%;
-    background:none;
+    background: none;
     z-index: 1000;
     display: flex;
     justify-content: space-around;
-    padding:0;
-    height:px;
-    pointer-events:auto;
- 
+    padding: 0;
+    height: px;
+    pointer-events: auto;
   }
 
- .tablink {
-  background-color: #5100ff !important;
-  color: rgb(0, 0, 0);
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 3px 5px !important;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: 0.3s;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin-top: 4px !important;
-  font-family: 'Assistant', sans-serif;
-  font-size: 0.9rem;
-  display: flex;
-  justify-content: center;
-}
+  .tablink {
+    background-color: #5100ff !important;
+    color: rgb(0, 0, 0);
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 3px 5px !important;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 4px !important;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+  }
 
   .tablink.active {
     background: #3bb23c !important;
   }
+
   .direction-toggle {
-  position:fixed;
-  right: 39px; /* מתאים את המיקום האופקי של הכפתור */
-  top: 88%;
-  transform: translateY(-20%) translateX(25px); /* מתאים את הגובה של הכפתור */
+    position: fixed;
+    right: 39px;
+    top: 88%;
+    transform: translateY(-20%) translateX(25px);
+  }
+
+  .toggle-direction-btn:hover {
+    background-color: #0056b3;
+    opacity: 1;
+  }
 }
 
-.toggle-direction-btn:hover {
-  background-color: #0056b3;
-  opacity: 1;
-}
-}
