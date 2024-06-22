@@ -1726,9 +1726,9 @@ form button[type="submit"]:hover {
 
   .modal {
     width: 100%;
-    height: 100vh;
-    top: 52%;
-    left: 50%;
+    height: 110vh;
+    top: 55%;
+    left:50%;
     border: none;
     border-radius: 65px;
     overflow: hidden;
@@ -1781,6 +1781,7 @@ form button[type="submit"]:hover {
   .modal-content {
     padding: 5px;
     width: 92%;
+  
   }
 
   .back-to-top-button, .feedback-button {
@@ -1790,9 +1791,9 @@ form button[type="submit"]:hover {
     height: 30px;
   }
 
-  .exit-button {
+ .exit-button {
     align-self: flex-end;
-    left: -0.5px;
+    left:-0.5px;
     margin: 10px;
     font-size: 24px;
   }
@@ -1811,7 +1812,7 @@ form button[type="submit"]:hover {
 
   .word-treasure-container {
     font-size: 18px;
-    line-height: 1.5;
+    line-height:1.5;
     padding: 10px;
   }
 
@@ -1844,8 +1845,7 @@ form button[type="submit"]:hover {
   .episode-button:active {
     transform: none;
   }
-
-  .bottom-section {
+ .bottom-section {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1860,9 +1860,9 @@ form button[type="submit"]:hover {
 
   .shortcut-rectangle {
     flex-basis: 100%;
-    margin: 5px 0;
+    margin: 5px 0; /* קטן מעט את הרווחים */
     width: 100%;
-    height: 80px;
+    height: 80px; /* גובה גדול יותר */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1873,17 +1873,17 @@ form button[type="submit"]:hover {
   .shortcut-rectangle img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: cover; /* מתאים את התמונה למלא את המלבן */
     position: absolute;
-    top: 0;
-    right: 0%;
+    top: 0; /* ממקם את התמונה בראש המלבן */
+    right: 0%
   }
 
   .shortcut-rectangle p {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute; /* ממקם את הטקסט באופן מוחלט */
+    bottom: 15px; /* מתחת לכל */
+    left: 50%; /* ממרכז הטקסט אופקית */
+    transform: translateX(-50%); /* מבטיח שהטקסט ממורכז */
     font-size: 8px;
     color: white;
     text-align: center;
@@ -1891,13 +1891,13 @@ form button[type="submit"]:hover {
   }
 
   .bottom-section img {
-    max-width: 90%;
+    max-width: 90%; /* מונע מהתמונה לחרוג מהמלבן */
     height: auto;
-    object-fit: cover;
+    object-fit: cover; /* מבטיח שהתמונה תמלא את המלבן ללא עיוות */
     display: block;
-    right: 6px;
-    top: 6px;
-    max-height: 75px;
+    right:6px;
+    top:6px;
+    max-height: 75px; /* גובה גבוה יותר מתוך המלבן */
   }
 
   body, button, input[type="text"] {
@@ -1907,6 +1907,7 @@ form button[type="submit"]:hover {
   header, .bottom-section a, .tv-show-title {
     font-size: 14px;
   }
+
 
   .shortcut-rectangle:not(#to-bot):not(#to-series):not(#to-tips) {
     display: none;
@@ -1960,7 +1961,7 @@ form button[type="submit"]:hover {
     flex-direction: column;
     align-items: flex-start;
     padding: 10px;
-    right: 0;
+    right:0;
   }
 
   .nav-link {
@@ -1972,66 +1973,65 @@ form button[type="submit"]:hover {
     width: 30px;
     height: 30px;
   }
-
-  .feedback-button {
-    display: block;
-    position: fixed;
-    bottom: 130px;
-    right: 5px;
-    padding: 10px 15px;
-    width: auto;
-    color: white;
-    border-radius: 5px;
-    font-size: 12px;
-  }
-
+.feedback-button{
+  display: block;
+  position:fixed;
+  bottom:130px;
+  right:5px;
+  padding: 10px 15px;
+  width:auto;
+  color:white;
+  border-radius:5px;
+  font-size:12px;
+ 
+}
   #difficulty-tabs {
-    position: absolute;
+    position:absolute;
     top: 40px;
     left: 30px;
     width: 85%;
-    background: none;
+    background:none;
     z-index: 1000;
     display: flex;
     justify-content: space-around;
-    padding: 0;
-    height: px;
-    pointer-events: auto;
+    padding:0;
+    height:px;
+    pointer-events:auto;
+ 
   }
 
-  .tablink {
-    background-color: #5100ff !important;
-    color: rgb(0, 0, 0);
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 3px 5px !important;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: 0.3s;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    margin-top: 4px !important;
-    font-family: 'Assistant', sans-serif;
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: center;
-  }
+ .tablink {
+  background-color: #5100ff !important;
+  color: rgb(0, 0, 0);
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 3px 5px !important;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 4px !important;
+  font-family: 'Assistant', sans-serif;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+}
 
   .tablink.active {
     background: #3bb23c !important;
   }
-
   .direction-toggle {
-    position: fixed;
-    right: 39px;
-    top: 88%;
-    transform: translateY(-20%) translateX(25px);
-  }
+  position:fixed;
+  right: 39px; /* מתאים את המיקום האופקי של הכפתור */
+  top: 88%;
+  transform: translateY(-20%) translateX(25px); /* מתאים את הגובה של הכפתור */
+}
 
-  .toggle-direction-btn:hover {
-    background-color: #0056b3;
-    opacity: 1;
-  }
+.toggle-direction-btn:hover {
+  background-color: #0056b3;
+  opacity: 1;
+}
 }
