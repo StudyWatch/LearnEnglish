@@ -42,11 +42,15 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <h2 id="seriesName"></h2>
             <p id="seriesDescription"></p>
+            <button onclick="goToSeriesPage()">לעמוד הסדרות</button>
         </div>
     </div>
+    <button onclick="window.location.href='index.html?scrollToSeries=true'">לעמוד הסדרות</button>
+
 
     <script>
-        const seriesDB = [
+       
+       const seriesDB = [
             { name: "Friends", genre: "comedy", level: "beginner", description: "חברים היא סדרת טלוויזיה קומית אמריקאית המתארת את חייהם של שישה חברים בעיר ניו יורק. הסדרה עוסקת בחברות, אהבה, ועבודה, עם רגעים קומיים רבים." },
             { name: "The Office (US)", genre: "comedy", level: "beginner", description: "המשרד היא סדרת טלוויזיה קומית אמריקאית המתארת את חייהם היומיומיים של עובדי משרד נייר בדמונט, פנסילבניה. הסדרה מציגה את מערכת היחסים בין העובדים ואת הבוס המוזר שלהם, מייקל סקוט." },
             { name: "Brooklyn Nine-Nine", genre: "comedy", level: "intermediate", description: "ברוקלין תשע-תשע היא סדרת טלוויזיה קומית אמריקאית המתארת את חייהם של שוטרים בתחנת משטרה בברוקלין. הסדרה מתמקדת במערכת היחסים בין הבלשים והקפטן החדש שלהם." },
@@ -175,11 +179,12 @@
                 let currentIndex = 0;
 
                 function showNextSlide() {
-                    slides[currentIndex].classList.add('active-slide');
+                    slides[currentIndex].classList.remove('active-slide');
                     currentIndex = (currentIndex + 1) % slides.length;
+                    slides[currentIndex].classList.add('active-slide');
                 }
 
-                showNextSlide();
+                slides[currentIndex].classList.add('active-slide');
                 setInterval(showNextSlide, 3000);
             } else {
                 recommendationElement.style.display = 'none'; // Hide the recommendations container if no results
@@ -198,6 +203,12 @@
         function closeModal() {
             document.getElementById("seriesModal").style.display = "none";
         }
+
+        function goToSeriesPage() {
+            window.location.href = "index.html#series-section";
+        }
+        
     </script>
 </body>
 </html>
+
