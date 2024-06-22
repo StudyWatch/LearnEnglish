@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         feedbackModal.style.display = 'flex';
     });
 
-
     closeModalButton.addEventListener('click', () => {
         feedbackModal.style.display = 'none';
     });
@@ -111,6 +110,56 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Initial check to ensure the button is displayed correctly on page load
     toggleFeedbackButton();
+
+    // Function to handle the series click
+    function handleSeriesClick() {
+        const seriesSection = document.getElementById('series-section');
+        const searchBarContainer = document.getElementById("searchBarContainer");
+        // Ensure searchBarContainer is not null
+        if (searchBarContainer) {
+            seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
+            searchBarContainer.style.display = 'flex';
+        }
+        seriesSection.style.display = 'block';
+        seriesSection.classList.add('fade-in');
+
+        // Apply the fade-in effect
+        setTimeout(() => {
+            seriesSection.classList.add('visible');
+        }, 10); // Delay just enough for the browser to process the fade-in
+    }
+
+    // Check if we need to scroll to series section on load
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('scrollToSeries') === 'true') {
+        const mainContent = document.getElementById('main-content'); // Assuming main content has an ID of 'main-content'
+        const seriesSection = document.getElementById('series-section');
+        const searchBarContainer = document.getElementById("searchBarContainer");
+
+        // Hide the main content initially
+        if (mainContent) {
+            mainContent.style.display = 'none';
+        }
+
+        // Ensure searchBarContainer is not null and visible
+        if (searchBarContainer) {
+            seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
+            searchBarContainer.style.display = 'flex';
+        }
+
+        // Show the series section with fade-in
+        seriesSection.style.display = 'block';
+        seriesSection.classList.add('fade-in');
+        setTimeout(() => {
+            seriesSection.classList.add('visible');
+            if (mainContent) {
+                mainContent.style.display = 'block';
+            }
+        }, 10); // Delay just enough for the browser to process the fade-in
+
+        // Scroll to the section immediately without animation
+        window.scrollTo(0, seriesSection.offsetTop);
+    }
 
     // Additional DOMContentLoaded event listener setup...
     const hamburgerBtn = document.getElementById("hamburgerBtn");
@@ -179,6 +228,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     function toggleVisibility(element) {
         element.classList.toggle('visible');
     }
+
 
     const didYouKnowFacts = [
         { word: "Elixir", explanation: "משקה קסום שמעניק חיי נצח או מרפא לכל מחלה. מקורה בערבית, \"al-iksir\" שפירושו אבן החכמים." },
