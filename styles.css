@@ -166,7 +166,14 @@ body, html {
   background-color: #ffeb3b;
   box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
 }
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
 
+.visible {
+  opacity: 1;
+}
 .rtl {
   direction: rtl;
   text-align: right;
