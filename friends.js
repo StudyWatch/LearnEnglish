@@ -4,8 +4,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const closeModalButton = feedbackModal.querySelector('.close');
     const toSeriesButton = document.getElementById('to-series');
     const backToTopButton = document.querySelector('.back-to-top-button');
+    const accessibilityBtn = document.getElementById('accessibilityBtn');
+    const accessibilityOptions = document.getElementById('accessibilityOptions');
+    const increaseTextBtn = document.getElementById('increaseText');
+    const decreaseTextBtn = document.getElementById('decreaseText');
+    const toggleContrastBtn = document.getElementById('toggleContrast');
+    let textSize = 100;
 
-    const hideButtonScrollThreshold = 100; // Adjust this value as needed
+    const hideButtonScrollThreshold = 100;
 
     async function fetchData(url) {
         try {
@@ -16,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             return response.json();
         } catch (error) {
             console.error('Fetch error:', error);
-            return null; // Return null if there's an error
+            return null;
         }
     }
 
@@ -35,11 +41,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         './series json/theoffice.json'
     ];
 
-    // Fetch all series data in parallel
     const seriesDataPromises = seriesUrls.map(url => fetchData(url));
     const seriesData = await Promise.all(seriesDataPromises);
 
-    // Destructure the results into variables, each variable corresponds to a JSON file
     const [
         friendsItemList, 
         howItemList, 
@@ -55,16 +59,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         theofficeItemList
     ] = seriesData;
 
-    // Check if any of the fetched data is null due to a fetch error
     if (seriesData.some(data => data === null)) {
         console.error('One or more series data failed to load');
-        return; // Exit early if any fetch failed
+        return;
     }
 
-    // Use these data objects as needed in your application
     console.log(friendsItemList, howItemList, the100itemList, bigbang, simpsons, brooklyn99, modernfamily, BigmouthItemList, newgirlItemList, seinfeldItemList, thegoodplaceItemList, theofficeItemList);
-
-    // Add event listeners and other logic here
 
     feedbackButton.addEventListener('click', () => {
         feedbackModal.style.display = 'flex';
@@ -108,14 +108,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         handleSeriesClick();
     });
 
-    // Initial check to ensure the button is displayed correctly on page load
     toggleFeedbackButton();
 
-    // Function to handle the series click
     function handleSeriesClick() {
         const seriesSection = document.getElementById('series-section');
         const searchBarContainer = document.getElementById("searchBarContainer");
-        // Ensure searchBarContainer is not null
         if (searchBarContainer) {
             seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
             searchBarContainer.style.display = 'flex';
@@ -123,63 +120,42 @@ document.addEventListener('DOMContentLoaded', async () => {
         seriesSection.style.display = 'block';
         seriesSection.classList.add('fade-in');
 
-        // Apply the fade-in effect
         setTimeout(() => {
             seriesSection.classList.add('visible');
-        }, 10); // Delay just enough for the browser to process the fade-in
+        }, 10);
     }
 
-    // Check if we need to scroll to series section on load
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('scrollToSeries') === 'true') {
-        const mainContent = document.getElementById('main-content'); // Assuming main content has an ID of 'main-content'
         const seriesSection = document.getElementById('series-section');
         const searchBarContainer = document.getElementById("searchBarContainer");
-
-        // Hide the main content initially
-        if (mainContent) {
-            mainContent.style.display = 'none';
-        }
-
-        // Ensure searchBarContainer is not null and visible
         if (searchBarContainer) {
             seriesSection.insertBefore(searchBarContainer, seriesSection.firstChild);
             searchBarContainer.style.display = 'flex';
         }
-
-        // Show the series section with fade-in
         seriesSection.style.display = 'block';
         seriesSection.classList.add('fade-in');
         setTimeout(() => {
             seriesSection.classList.add('visible');
-        }, 10); // Delay just enough for the browser to process the fade-in
-
-        // Scroll to the section immediately without animation
+        }, 10);
         window.scrollTo(0, seriesSection.offsetTop);
-
-        // Ensure immediate scroll and then apply smooth scrolling for a better user experience
+        setTimeout(() => {
+            window.scrollTo(0, seriesSection.offsetTop);
+        }, 500);
         setTimeout(() => {
             seriesSection.scrollIntoView({ behavior: 'smooth' });
-        }, 50);
+        }, 1000);
     } else {
-        // If not coming from bot, show main content
         const mainContent = document.getElementById('main-content');
         if (mainContent) {
             mainContent.style.display = 'block';
         }
     }
 
-    // Additional DOMContentLoaded event listener setup...
     const hamburgerBtn = document.getElementById("hamburgerBtn");
     const navbar = document.getElementById("navbar");
-    const accessibilityBtn = document.getElementById("accessibilityBtn");
-    const accessibilityOptions = document.getElementById("accessibilityOptions");
-    const increaseTextBtn = document.getElementById('increaseText');
-    const decreaseTextBtn = document.getElementById('decreaseText');
-    const toggleContrastBtn = document.getElementById('toggleContrast');
-    let textSize = 100;
 
-    document.getElementById('hamburgerBtn').addEventListener('click', function() {
+    hamburgerBtn.addEventListener('click', function() {
         var btn = this;
         var navbar = document.getElementById('navbar');
 
@@ -236,6 +212,76 @@ document.addEventListener('DOMContentLoaded', async () => {
     function toggleVisibility(element) {
         element.classList.toggle('visible');
     }
+
+    const draggableModal = document.querySelector('.modal-content');
+    let isDragging = false;
+    let offset = { x: 0, y: 0 };
+
+    const mouseDownHandler = function (e) {
+        isDragging = true;
+        offset.x = e.clientX - draggableModal.getBoundingClientRect().left;
+        offset.y = e.clientY - draggableModal.getBoundingClientRect().top;
+        document.addEventListener('mousemove', mouseMoveHandler);
+        document.addEventListener('mouseup', mouseUpHandler);
+    };
+
+    const mouseMoveHandler = function (e) {
+        if (isDragging) {
+            draggableModal.style.left = `${e.clientX - offset.x}px`;
+            draggableModal.style.top = `${e.clientY - offset.y}px`;
+        }
+    };
+
+    const mouseUpHandler = function () {
+        isDragging = false;
+        document.removeEventListener('mousemove', mouseMoveHandler);
+        document.removeEventListener('mouseup', mouseUpHandler);
+    };
+
+    const touchStartHandler = function (e) {
+        isDragging = true;
+        const touch = e.touches[0];
+        offset.x = touch.clientX - draggableModal.getBoundingClientRect().left;
+        offset.y = touch.clientY - draggableModal.getBoundingClientRect().top;
+        document.addEventListener('touchmove', touchMoveHandler);
+        document.addEventListener('touchend', touchEndHandler);
+    };
+
+    const touchMoveHandler = function (e) {
+        if (isDragging) {
+            const touch = e.touches[0];
+            draggableModal.style.left = `${touch.clientX - offset.x}px`;
+            draggableModal.style.top = `${touch.clientY - offset.y}px`;
+        }
+    };
+
+    const touchEndHandler = function () {
+        isDragging = false;
+        document.removeEventListener('touchmove', touchMoveHandler);
+        document.removeEventListener('touchend', touchEndHandler);
+    };
+
+    draggableModal.addEventListener('mousedown', mouseDownHandler);
+    draggableModal.addEventListener('touchstart', touchStartHandler);
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'none';
+        } else {
+            console.error(`Modal with ID ${modalId} not found`);
+        }
+    }
+
+    document.querySelectorAll('.close').forEach(button => {
+        button.addEventListener('click', function() {
+            const modal = button.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+
 
     const didYouKnowFacts = [
         { word: "Elixir", explanation: "משקה קסום שמעניק חיי נצח או מרפא לכל מחלה. מקורה בערבית, \"al-iksir\" שפירושו אבן החכמים." },
