@@ -2203,17 +2203,18 @@ body, html {
     height: 30px;
   }
 
-  .feedback-button {
+.feedback-button {
     display: block;
     position: fixed;
-    bottom: 20%;
-    right: 5px;
-    padding: 10px 15px;
-    width: auto;
+    bottom: 18%;
+    right: 10px;
+    background: #007bff;
     color: white;
-    z-index: 3000;
+    padding: 10px 20px;
     border-radius: 5px;
+    cursor: pointer;
     font-size: 12px;
+    z-index: 1050;
   }
 
   #difficulty-tabs {
