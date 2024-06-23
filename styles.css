@@ -1948,22 +1948,22 @@ body, html {
     position: relative;
   }
 
-  .modal {
+ .modal {
     position: fixed;
-    top: 50%;
+    top: 57%;  // מתחיל ממעט יותר למעלה מהרגיל
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%; /* או כל רוחב אחר שמתאים לעיצוב שלך */
+    transform: translate(-50%, 0);  // יש לשנות את ההזזה להתאמה למיקום החדש
+    width: 98%;
     height: auto;
-    max-height: 100vh;
-    border: none;
-    border-radius: 25px;
-    overflow-y: auto; /* מאפשר גלילה אם התוכן גדול מהגובה המרבי */
+    max-height: 93vh;  // מוגבל ל-75% מגובה המסך
+    overflow-y: auto;  // מאפשר גלילה רק אם יש יותר תוכן מהגובה
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 1050;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    z-index: 1050; /* וודא שהמודל נמצא מעל לפריטים אחרים */
-  }
+}
+
   
   .close {
     position: fixed; /* מקום קבוע על המסך */
@@ -1974,7 +1974,6 @@ body, html {
     z-index: 1051; /* יותר גבוה מהמודל כדי שיהיה גלוי */
     cursor: pointer;
     background-color: #ffffff; /* רקע לבן */
-    border-radius: 50%; /* עיגול הכפתור */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* צל קל */
   }
 
