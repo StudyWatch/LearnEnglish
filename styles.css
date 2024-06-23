@@ -2206,7 +2206,7 @@ body, html {
   .feedback-button {
     display: block;
     position: fixed;
-    bottom: 130px;
+    bottom: 20%;
     right: 5px;
     padding: 10px 15px;
     width: auto;
