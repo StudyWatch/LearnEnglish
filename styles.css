@@ -2211,6 +2211,7 @@ body, html {
     padding: 10px 15px;
     width: auto;
     color: white;
+    z-index: 3000;
     border-radius: 5px;
     font-size: 12px;
   }
