@@ -1950,12 +1950,12 @@ body, html {
 
  .modal {
     position: fixed;
-    top: 57%;  // מתחיל ממעט יותר למעלה מהרגיל
+    top: 10%;  // מתחיל ממעט יותר למעלה מהרגיל
     left: 50%;
     transform: translate(-50%, 0);  // יש לשנות את ההזזה להתאמה למיקום החדש
-    width: 98%;
+    width: 100%;
     height: auto;
-    max-height: 93vh;  // מוגבל ל-75% מגובה המסך
+    max-height: 110vh;  // מוגבל ל-75% מגובה המסך
     overflow-y: auto;  // מאפשר גלילה רק אם יש יותר תוכן מהגובה
     border-radius: 10px;
     padding: 20px;
