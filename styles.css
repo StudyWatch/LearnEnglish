@@ -2,7 +2,15 @@
   --primary-color: #2e2e2f;
   --secondary-color: #757f80;
 }
-
+ .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: right;
+            direction: rtl;
+        }
 .modal {
   display: none;
   position: fixed;
