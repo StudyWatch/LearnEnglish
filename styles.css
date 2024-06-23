@@ -2206,12 +2206,13 @@ body, html {
 .feedback-button {
     display: block;
     position: fixed;
-    bottom: 18%;
-    right: 10px;
+    bottom: 14%;
+    right: 5px;
     background: #007bff;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 15px;
     border-radius: 5px;
+  width: auto;
     cursor: pointer;
     font-size: 12px;
     z-index: 1050;
