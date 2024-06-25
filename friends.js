@@ -754,7 +754,6 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
             <div class="notice" style="font-size: 0.8em;">
                 <p>This site is not a substitute for the series content. It is created to enhance English learning through the use of words and phrases from the series. To fully benefit, users must have a legal subscription to a viewing platform like Netflix, Disney+, Apple TV, or Amazon Prime. All rights to the original content belong to their respective owners.</p>
                  <p><p>
-               <p><p>
             </div>
         </div>
     `;
