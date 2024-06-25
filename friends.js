@@ -751,6 +751,9 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
         <div id="episode-links" class="episode-links">
             <h3>קישורים לפרק:</h3>
             <div id="links-container"></div>
+            <div class="notice">
+                <p>This site is not a substitute for the series content and is created to enhance English learning through series with a legal subscription to a viewing platform.</p>
+            </div>
         </div>
     `;
     modalContent.innerHTML += difficultyTabsHtml;
@@ -917,6 +920,7 @@ function openWordTreasureModal(tvShowId, season, episode, prevModal, difficulty 
 
     modal.style.display = "block";
 }
+
 
 function openGameSelectionModal(vocabulary, prevModal) {
     prevModal.style.display = "none";
