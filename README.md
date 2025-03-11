@@ -29,7 +29,7 @@ git clone https://github.com/your-repo/studywatch.git
 cd studywatch
 npm install
 npm run dev
-The application will run at: http://localhost:3000
+The application will run at: (https://studywatch.github.io/LearnEnglish/)
 
 🤝 Contributions & Development
 Interested in contributing? Feel free to submit pull requests or open issues on the GitHub repository.
